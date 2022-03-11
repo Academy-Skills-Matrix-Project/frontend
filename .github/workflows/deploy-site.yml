@@ -31,6 +31,13 @@ jobs:
       with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
     
+    - name: Set active account
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+            az account set -s ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+    
     - name: Upload to Azure blob storage
       uses: azure/CLI@v1
       with:
