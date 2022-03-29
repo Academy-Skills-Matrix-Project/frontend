@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-All changes are automatically deployed to https://skillsmatrixproject.z13.web.core.windows.net/ assuming the build passes. 
+all changes are automatically deployed to https://skillsmatrixproject.z13.web.core.windows.net/ assuming the build passes. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
