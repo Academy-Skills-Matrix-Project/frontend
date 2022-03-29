@@ -10,7 +10,7 @@ function Banner() {
                     <Card className="border border-4">
                         <Card.Body className="text-start px-3 pt-0">
                             <Card.Title className="mb-4 fs-4 fw-bold">Skills Matrix Abstract</Card.Title>
-                            <Card.Text className="fs-5">lori utem  asdflkbasd as;oih asd;ioa ‘apsdf’paj dfpjad ‘paijsd fpj asdp;fj as’pij asdifj aoi;sjdf;oasdf ‘aklsdfio ajdsf;l;dlfkjasdkfnmlkfn. as;kfb;ajsdflnasn, </Card.Text>
+                            <Card.Text className="fs-5">lori utem  asdflkbasd asoih asdioa apsdfpaj dfpjad paijsd fpj asdpfj aspij asdifj aoisjdfoasdf aklsdfio ajdsfldlfkjasdkfnmlkfn. askfbajsdflnasn</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
