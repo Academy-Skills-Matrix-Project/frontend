@@ -10,7 +10,7 @@ class Navbar extends Component {
     render() {
         return(
             <nav className='navbar'>
-                <img className='logo' src='SWO_logo.png' />
+                <img className='logo' src='SWO_logo.png' alt='SWO_logo' />
                 <h2 className='welcome'>Welcome to the Skill Matrix</h2>
                 <div className='item-holder'>
                     <a><img className='nav-item' src='MyAccount.png'/></a>
