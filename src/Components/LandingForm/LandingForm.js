@@ -1,7 +1,8 @@
 import React from 'react';
-import { Form, Container, Row, Col, Button  } from 'react-bootstrap';
+import { Form, Container, Row, Col } from 'react-bootstrap';
+import './LandingForm.css';
 
-const LandingForm = () => {
+function LandingForm(){
     return (
         <Container>
             <Row>
@@ -10,24 +11,24 @@ const LandingForm = () => {
                 </Col>
             </Row>
             {/* form row */}
-            <Row>
-                <Col>
-                    <Form data-testid="sign-in-form">
-                        <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
+            <Row className="border align-items-center">
+                <Col xs={7} className="m-auto border border-success">
+                    <Form data-testid="sign-in-form" className="border text-align-center border-primary">
+                        <Form.Group as={Row} className="m-auto border border-danger"  controlId="formHorizontalEmail">
                             <Form.Label column sm={2}>
                                 Email
                             </Form.Label>
                             <Col sm={10}>
-                            <Form.Control type="email" placeholder="Email" />
+                                <Form.Control className="w-25 p-3 h-25 m-auto" type="email" placeholder="Email" />
                             </Col>
                         </Form.Group>
 
-                        <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
+                        <Form.Group as={Row} className="m-auto border border-danger" controlId="formHorizontalPassword">
                             <Form.Label column sm={2}>
-                            Password
+                                Password
                             </Form.Label>
                             <Col sm={10}>
-                            <Form.Control type="password" placeholder="Password" />
+                                <Form.Control className="w-25 p-3 h-25" type="password" placeholder="Password" />
                             </Col>
                         </Form.Group>
                     </Form>
