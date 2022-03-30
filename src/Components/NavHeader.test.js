@@ -15,6 +15,11 @@ describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and a
 });
 });
 
+test('Does not render Login, Search, or My Account button', () => {
+    render(<NavHeader />);
+
+})
+
 describe('NavHeader.js', () => {test('Logo must have src = "/MyAccount.png" and alt = "MyAccount"', () => {
     render(<NavHeader/>);
     const logo = screen.getByAltText('MyAccount');
