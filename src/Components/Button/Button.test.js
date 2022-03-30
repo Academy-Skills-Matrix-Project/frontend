@@ -1,5 +1,5 @@
 import { render, screen} from '@testing-library/react';
-import Button from './Button';
+import Button from './FormButton';
 
 // Test for Button Component Render
 test('Sign-in button should be visible to user', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Card, Container, Row, Col } from 'react-bootstrap';
 
-
 function Banner() {
     return (
         <Container fluid className="mt-3">
