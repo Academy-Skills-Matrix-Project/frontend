@@ -11,7 +11,7 @@ test('Sign-in button should be visible to user', () => {
     expect(button).toBeInTheDocument();
 })
 
-// Button should read "Sign-in"
+// Button should read "Sign in"
 test(`Button should read 'Sign-in'`, () => {
     render(<Button/>);
 
@@ -19,3 +19,13 @@ test(`Button should read 'Sign-in'`, () => {
 
     expect(buttonText).toBeInTheDocument();
 })
+
+test(`Button should have text 'Sign-in'`, () => {
+    render(<Button/>);
+
+    const buttonText = screen.getByRole('button');
+
+    expect(buttonText).toHaveTextContent('Sign-in');
+})
+
+
