@@ -2,14 +2,14 @@ import React from 'react';
 import NavHeader from '../Components/NavHeader';
 
 
-class ProfileInfoPage extends React.Component {
+class SearchPage extends React.Component {
     render() {
         return (
             <>
-                <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} />
+                <NavHeader isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} />
                 <div>
                     <h1>
-                        Profile Page
+                        Search Page
                     </h1>
                 </div>
             </>
@@ -17,4 +17,4 @@ class ProfileInfoPage extends React.Component {
     }
 }
 
-export default ProfileInfoPage;
+export default SearchPage;
