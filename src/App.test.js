@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Navbar from './Components/NavHeader'; 
+import Form from './Components/LandingForm/LandingForm'
 
 test('renders learn react link', () => {
-  render(<Navbar />);
+  render(<Form />);
 });
