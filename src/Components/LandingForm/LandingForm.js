@@ -1,44 +1,39 @@
 import React from 'react';
 import { Form, Container, Row, Col } from 'react-bootstrap';
-import FormButton from './Button/FormButton';
+import FormButton from '../Button/FormButton';
 import './LandingForm.css';
 
 function LandingForm(){
     return (
-        <Container className="mt-5">
+        <Container className="mt-3">
             <Row>
                 <Col>
-                <h1>Sign in</h1>
+                <h1 className="h3 fw-bold">Sign in</h1>
                 </Col>
             </Row>
             {/* form row */}
-            <Row className=" align-items-center">
-                <Col xs={7} className="m-auto">
-                    <Form data-testid="sign-in-form" className="text-align-center">
-                        <Form.Group as={Row} className="m-auto"  controlId="formHorizontalEmail">
-                            <Col sm={10} className="d-flex justify-content-center align-items-center">
-                                <Form.Label column sm={2} className="">
-                                    Email
-                                </Form.Label>
-                                <Form.Control className="w-50 p-3 h-25" type="email" placeholder="Email" />
-                            </Col>
-                        </Form.Group>
-
-                        <Form.Group as={Row} className="m-auto" controlId="formHorizontalPassword">
-                            <Col sm={10} className="d-flex justify-content-center align-items-center">
-                                <Form.Label column sm={2} className="text-align-right">
-                                    Password
-                                </Form.Label>
-                                <Form.Control className="w-50 p-3 h-25" type="password" placeholder="Password" />
-                            </Col>
-                        </Form.Group>
-                    </Form>
-                </Col>
-            </Row>
+                <Form data-testid="sign-in-form" className="mt-5 me-5">
+                    <Form.Group as={Row} className="mb-3 me-5 justify-content-center" controlId="formHorizontalEmail">
+                        <Form.Label column sm={2} className="fs-3 fw-bold text-end">
+                        Email
+                        </Form.Label>
+                        <Col sm={3}>
+                        <Form.Control className="form-control form-control-lg border border-3" type="email" placeholder="Email" />
+                        </Col>
+                    </Form.Group>
+                    <Form.Group as={Row} className="mb-3 mt-4 me-5 justify-content-center" controlId="formHorizontalPassword">
+                        <Form.Label column sm={2} className="fs-3 fw-bold">
+                        Enter Password
+                        </Form.Label>
+                        <Col sm={3}>
+                        <Form.Control  className="form-control form-control-lg border border-3" type="password" placeholder="Enter Password" />
+                        </Col>
+                    </Form.Group>
+                </Form>
             {/* button row */}
             <Row>
                 <Col>
-                    <FormButton/>
+                    <FormButton />
                 </Col>
             </Row>
         </Container>
@@ -46,3 +41,5 @@ function LandingForm(){
 }
 
  export default LandingForm;
+
+ 
