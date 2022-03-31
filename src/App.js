@@ -1,6 +1,6 @@
-import './App.css';
 import Banner from './Components/Banner/Banner';
 import LandingForm from './Components/LandingForm/LandingForm';
+
 
 function App() {
   return (
