@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function FormButton(props) {
+function AppButton(props) {
     return (
         <Button className="btn btn-danger btn-lg mt-3" type="submit" data-testid="sign-in-button">
             {props.title}
@@ -9,4 +9,4 @@ function FormButton(props) {
     );
 }
 
-export default FormButton;
+export default AppButton;
