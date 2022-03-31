@@ -1,5 +1,6 @@
 import { render, screen} from '@testing-library/react';
 import LandingForm from './LandingForm';
+import NavHeader from '../NavHeader/NavHeader';
 
 // Test for Form Component Render
 test('Sign-in form should be rendered', () => {
@@ -40,3 +41,16 @@ test('User should see form labels Email and Enter Password', () => {
     expect(email).toHaveTextContent('Email');
     expect(password).toHaveTextContent('Password');
 })
+
+test('NavHeader.js renders NavHeader', () => {
+    render(<NavHeader />);
+    const testNavbarText = screen.getByText(/Welcome to the Skill Matrix/i);
+    expect(testNavbarText).toBeInTheDocument();
+});
+describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and alt = "SWO_Logo"', () => {
+    render(<NavHeader/>);
+    const logo = screen.getByAltText('SWO_Logo');
+    expect(logo).toHaveAttribute('src', 'SWO_logo.png');
+    expect(logo).toHaveAttribute('alt', 'SWO_Logo');
+});
+});
