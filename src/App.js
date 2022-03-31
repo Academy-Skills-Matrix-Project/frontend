@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import NavHeader from './Components/NavHeader/NavHeader';
 import Banner from './Components/Banner/Banner';
 import LandingForm from './Components/LandingForm/LandingForm';
-import ProfileInfoPage from './Pages/ProfileInfoPage';
-import SearchPage from './Pages/SearchPage';
-import LanguagesPage from './Pages/LanguagesPage';
-import SkillsPage from './Pages/SkillsPage';
+import NavHeader from './Components/NavHeader/NavHeader';
+
 
 function App() {
   return (
     <div className="App">
-      <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={true}/>
+      <NavHeader />
       <Banner />
       <LandingForm />
-      {/* <ProfileInfoPage /> */}
-      {/* <SearchPage /> */}
-      {/* <LanguagesPage /> */}
-      {/* <SkillsPage /> */}
+
 
     
     </div>
