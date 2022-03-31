@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Container, Row, Col } from 'react-bootstrap';
-import FormButton from '../Button/FormButton';
+import FormButton from '../Button/Button';
 
 
 function LandingForm(){
