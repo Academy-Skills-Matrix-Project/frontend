@@ -33,7 +33,7 @@ function LandingForm(){
             {/* button row */}
             <Row>
                 <Col>
-                    <FormButton />
+                    <FormButton title="Sign-in"/>
                 </Col>
             </Row>
         </Container>
