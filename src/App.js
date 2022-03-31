@@ -6,7 +6,7 @@ import NavHeader from './Components/NavHeader/NavHeader';
 function App() {
   return (
     <div className="App">
-      <NavHeader />
+      <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
       <Banner />
       <LandingForm />
 
