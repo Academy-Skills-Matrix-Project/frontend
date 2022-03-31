@@ -18,7 +18,7 @@ class NavHeader extends Component {
     render() {
         return(
         <>
-            <Navbar className='navbar navbar-light bg-light'>
+            <Navbar className='navbar navbar-light bg-light' data-testid = 'navbar'>
                 <div className="container-fluid">
                     <div>
                         <img className='me-auto' src='SWO_logo.png' width={250} alt = 'SWO_Logo'/>
@@ -26,7 +26,7 @@ class NavHeader extends Component {
                     <div className='mx-auto'>
                         {!this.state.isLogoutEnabled && <h3>Welcome to the Skill Matrix</h3>}
                     </div>
-                    <div className='ms-auto m-4 px-4'>
+                    <div className='ms-auto mx-4 px-4' >
                         {this.state.isMyAccountEnabled && <a className='text-black' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
                             src='MyAccount.png' width={50} alt= 'MyAccount' />My Account</a>}
                         {this.state.isSearchEnabled && <a className='text-black' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
