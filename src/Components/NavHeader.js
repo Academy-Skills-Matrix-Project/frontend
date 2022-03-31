@@ -1,41 +1,44 @@
 import React, {Component} from 'react';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 
 
-const NavHeader = () => {
-   return(
-        // <>
-        //     <Navbar bg ='light'>
-        //     <Container>   
-        //         <Navbar.Brand className ='justify-content-start'>
-        //              <img  src='SWO_logo.png' width={300} />
-        //         </Navbar.Brand>
-        //         <Navbar.Text className='justify-content-center'>
-        //             Welcome to the Skill Matrix
-        //         </Navbar.Text>
-        //         <div className='justify-content-end'>
-                
-        //             <a><img  src='MyAccount.png' width={50}/></a>
-        //             <a><img  src='Search.png' width={50}/></a>
-        //             <a><img  src='LogOut.png' width={50}/></a>
-                
-        //         </div>
-        //         </Container> 
-        //     </Navbar>
-        // </>
+
+class NavHeader extends Component {
+
+    constructor(props){
+        super(props);
+            this.state = {
+                isLogoutEnabled: props.isLogoutEnabled,
+                isSearchEnabled: props.isSearchEnabled,
+                isMyAccountEnabled: props.isMyAccountEnabled,
+               
+            }
+        };
+
+    render() {
+        return(
         <>
-           <nav className='navbar navbar-light bg-light'>
-           <img className='me-auto' src='SWO_logo.png' width={250} alt = 'SWO_Logo'/>
-                <span className='mx-auto'>Welcome to the Skill Matrix</span>
-                <div className='ms-auto'>
-                    <a><img className='nav-item' src='MyAccount.png' width={50} alt= 'MyAccount' /></a>
-                    <a><img className='nav-item' src='Search.png' width={50} alt= 'Search'/></a>
-                    <a><img className='nav-item' src='LogOut.png' width={50} alt= 'LogOut'/></a>
+            <Navbar className='navbar navbar-light bg-light'>
+                <div className="container-fluid">
+                    <div>
+                        <img className='me-auto' src='SWO_logo.png' width={250} alt = 'SWO_Logo'/>
+                    </div>
+                    <div className='mx-auto'>
+                        {!this.state.isLogoutEnabled && <h3>Welcome to the Skill Matrix</h3>}
+                    </div>
+                    <div className='ms-auto m-4 px-4'>
+                        {this.state.isMyAccountEnabled && <a className='text-black' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
+                            src='MyAccount.png' width={50} alt= 'MyAccount' />My Account</a>}
+                        {this.state.isSearchEnabled && <a className='text-black' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
+                            src='Search.png'  width={50} alt= 'Search'/>Search</a>}
+                        {this.state.isLogoutEnabled && <a className='text-black' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
+                            src='LogOut.png' width={50} alt= 'LogOut'/>Logout</a>}
+                    </div>
                 </div>
-           </nav>
+            </Navbar>
         </>
-        );
+            );
+        }
     }
-
 
 export default NavHeader;
