@@ -2,7 +2,7 @@ import { render, screen} from '@testing-library/react';
 import LandingForm from './LandingForm';
 
 // Test for Form Component Render
-test('Sign-in form should be visible to user', () => {
+test('Sign-in form should be rendered', () => {
     render(<LandingForm />);
 
     // Get the form element
@@ -11,18 +11,6 @@ test('Sign-in form should be visible to user', () => {
     expect(form).toBeInTheDocument();
 })
 
-// Test for Form Labels (sign-in, email, password)
-test('Labels display to document', () => {
-    render(<LandingForm />);
-
-    const signInLabel = screen.getByText('Sign in');
-    const emailLabel = screen.getByText('Email');
-    const passwordLabel = screen.getByText('Password');
-
-    expect(signInLabel).toBeInTheDocument();
-    expect(emailLabel).toBeInTheDocument();
-    expect(passwordLabel).toBeInTheDocument();
-})
 
 // Test for Form placeholder text
 test('Form text inputs should have placeholder text Email and Enter Password', () => {
@@ -43,12 +31,12 @@ test('For should have heading text Sign in', () => {
 
 })
 
-//Form labels are visible
+//Form labels text
 test('User should see form labels Email and Enter Password', () => {
     render(<LandingForm />);
-    const email = screen.getByLabelText('Email');
-    const password = screen.getByLabelText('Enter Password');
+    const email = screen.getByTestId('email-label');
+    const password = screen.getByTestId('password-label');
 
-    expect(email).toHaveDisplayValue('Email');
-    expect(password).toHaveDisplayValue('Enter Password');
+    expect(email).toHaveTextContent('Email');
+    expect(password).toHaveTextContent('Password');
 })

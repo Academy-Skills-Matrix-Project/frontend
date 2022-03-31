@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Container, Row, Col } from 'react-bootstrap';
 import FormButton from '../Button/FormButton';
-import './LandingForm.css';
+
 
 function LandingForm(){
     return (
@@ -14,7 +14,7 @@ function LandingForm(){
             {/* form row */}
                 <Form data-testid="sign-in-form" className="mt-5 me-5">
                     <Form.Group as={Row} className="mb-3 me-5 justify-content-center" controlId="formHorizontalEmail">
-                        <Form.Label column sm={2} className="fs-3 fw-bold text-end">
+                        <Form.Label column sm={2} className="fs-3 fw-bold text-end" data-testid="email-label">
                         Email
                         </Form.Label>
                         <Col sm={3}>
@@ -22,8 +22,8 @@ function LandingForm(){
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3 mt-4 me-5 justify-content-center" controlId="formHorizontalPassword">
-                        <Form.Label column sm={2} className="fs-3 fw-bold">
-                        Enter Password
+                        <Form.Label column sm={2} className="fs-3 fw-bold" data-testid="password-label">
+                        Password
                         </Form.Label>
                         <Col sm={3}>
                         <Form.Control  className="form-control form-control-lg border border-3" type="password" placeholder="Enter Password" />
