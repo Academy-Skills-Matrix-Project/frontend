@@ -1,5 +1,5 @@
 import React from 'react';
-import NavHeader from '../Components/NavHeader';
+import NavHeader from '../Components/NavHeader/NavHeader';
 
 
 class ProfileInfoPage extends React.Component {
