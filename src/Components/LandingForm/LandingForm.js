@@ -13,24 +13,27 @@ function LandingForm(){
                 </Col>
             </Row>
             {/* form row */}
-                <Form data-testid="sign-in-form" className="mt-5 me-5">
-                    <Form.Group as={Row} className="mb-3 me-5 justify-content-center" controlId="formHorizontalEmail">
-                        <Form.Label column sm={2} className="fs-3 fw-bold text-end" data-testid="email-label">
-                        Email
-                        </Form.Label>
-                        <Col sm={3}>
-                        <Form.Control className="form-control form-control-lg border border-3" type="email" placeholder="Email" />
-                        </Col>
-                    </Form.Group>
-                    <Form.Group as={Row} className="mb-3 mt-4 me-5 justify-content-center" controlId="formHorizontalPassword">
-                        <Form.Label column sm={2} className="fs-3 fw-bold" data-testid="password-label">
-                        Password
-                        </Form.Label>
-                        <Col sm={3}>
-                        <Form.Control  className="form-control form-control-lg border border-3" type="password" placeholder="Enter Password" />
-                        </Col>
-                    </Form.Group>
-                </Form>
+            
+                    <Form data-testid="sign-in-form" className="mt-5 mx-5 border">
+                        <Form.Group as={Row} className="mb-3 mx-auto" controlId="formHorizontalEmail">
+                            <Form.Label column xs={6} md={4} className="fs-3 fw-bold text-end" data-testid="email-label">
+                            Email
+                            </Form.Label>
+                            <Col xs={6} md={4}>
+                            <Form.Control className="form-control form-control-lg border border-3" type="email" placeholder="Email" />
+                            </Col>
+                        </Form.Group>
+
+                        <Form.Group as={Row} className="mb-3 mx-auto" controlId="formHorizontalPassword">
+                            <Form.Label column xs={6} md={4} className="fs-3 fw-bold border text-end" data-testid="password-label">
+                            Password
+                            </Form.Label>
+                            <Col xs={6} md={4}>
+                            <Form.Control className="form-control form-control-lg border border-3" type="password" placeholder="Enter Password" />
+                            </Col>
+                        </Form.Group>
+                    </Form>
+              
             {/* button row */}
             <Row>
                 <Col>

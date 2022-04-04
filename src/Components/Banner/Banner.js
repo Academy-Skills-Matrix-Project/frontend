@@ -9,7 +9,7 @@ function Banner() {
                     <Card className="border border-4">
                         <Card.Body className="text-start px-3 pt-0">
                             <Card.Title className="mb-4 fs-4 fw-bold">Skills Matrix Abstract</Card.Title>
-                            <Card.Text className="fs-5" data-testid="banner-text">lori utem   asdflkbasd asoih asdioa apsdfpaj dfpjad paijsd fpj asdpfj aspij asdifj aoisjdfoasdf aklsdfio ajdsfldlfkjasdkfnmlkfn. askfbajsdflnasn</Card.Text>
+                            <Card.Text className="fs-5" data-testid="banner-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Card.Text>
                         </Card.Body>
                     </Card>
                 </Col>
