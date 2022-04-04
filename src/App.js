@@ -1,14 +1,19 @@
+import Banner from './Components/Banner/Banner';
+import LandingForm from './Components/LandingForm/LandingForm';
+
 import './App.css';
+
 import NavHeader from './Components/NavHeader/NavHeader';
-import ProfileInfoPage from './Pages/ProfileInfoPage';
-import SearchPage from './Pages/SearchPage';
+
+
 
 function App() {
   return (
-    <div className="App" >
+    <div className="App">
+      {/* applies conditions to the props that will be passed to the navbar */}
       <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
-      <ProfileInfoPage />
-      <SearchPage />
+      <Banner />
+      <LandingForm />
     </div>
   );
 }
