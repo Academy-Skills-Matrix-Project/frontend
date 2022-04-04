@@ -48,14 +48,10 @@ class NavHeader extends Component {
                                     src='LogOut.png' width={50} alt= 'LogOut'/>Logout</a>}
                                 </Nav.Link>
                             </Nav>
-                            
-                            
-                            
                         </Col>
-                    
                 </Container>  
             </Navbar>
-       
+     
             );
         }
     }
