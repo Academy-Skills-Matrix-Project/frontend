@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import NavHeader from './NavHeader';
 
+//tests to see if the navbar is rendered to the page by using its test id
 test('NavHeader.js renders NavHeader', () => {
     render(<NavHeader />);
     const testNavbarText = screen.getByTestId('navbar');
