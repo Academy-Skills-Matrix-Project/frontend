@@ -26,7 +26,7 @@ class NavHeader extends Component {
             <Navbar className='navbar' data-testid='navbar'>    
                 <Container fluid>
                     <Navbar.Brand className='navbar-brand'>
-                        <a href='/'><img src='SWO_logo.png' width={250} alt = 'SWO_Logo'/></a>  
+                        <img src='SWO_logo.png' width={250} alt = 'SWO_Logo'/>
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto align-items-center" >
                         <Nav.Link>
@@ -41,9 +41,13 @@ class NavHeader extends Component {
                             {this.state.isLogoutEnabled && <a className='text-black' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
                             src='LogOut.png' width={35} alt= 'LogOut'/>  Logout</a>}
                         </Nav.Link>
-                    </Nav>  
+                    </Nav>
+                    
                 </Container>
-            </Navbar>    
+                
+            </Navbar>
+
+     
             );
         }
     }
