@@ -13,7 +13,7 @@ function LandingForm(){
                 </Col>
             </Row>
             {/* form row */}
-            <Form data-testid="sign-in-form" className="mt-5 mx-5 border">
+            <Form data-testid="sign-in-form" className="mt-5 mx-5">
                 <Form.Group as={Row} className="mb-3 mx-auto" controlId="formHorizontalEmail">
                     <Form.Label column xs={6} md={4} className="fs-3 fw-bold text-end" data-testid="email-label">
                     Email
@@ -24,7 +24,7 @@ function LandingForm(){
                 </Form.Group>
 
                 <Form.Group as={Row} className="mb-3 mx-auto" controlId="formHorizontalPassword">
-                    <Form.Label column xs={6} md={4} className="fs-3 fw-bold border text-end" data-testid="password-label">
+                    <Form.Label column xs={6} md={4} className="fs-3 fw-bold  text-end" data-testid="password-label">
                     Password
                     </Form.Label>
                     <Col xs={6} md={4}>
@@ -36,6 +36,12 @@ function LandingForm(){
             <Row>
                 <Col>
                     <AppButton title="Sign-in"/>
+                </Col>
+            </Row>
+            {/* Forgot Password */}
+            <Row className="mt-3">
+                <Col>
+                    <a href="/" className="fs-6 fw-bold fst-italic text-center text-decoration-none">Forgot Password?</a>
                 </Col>
             </Row>
         </Container>

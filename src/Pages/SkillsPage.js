@@ -15,3 +15,4 @@
 //     }
 // }
 // export default SkillsPage;
+// Delete this later
