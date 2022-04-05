@@ -9,7 +9,7 @@ function LandingForm(){
         <Container className="mt-3">
             <Row>
                 <Col>
-                <h1 className="h3 fw-bold">Sign in</h1>
+                    <h1 className="h3 fw-bold text-center">Sign in</h1>
                 </Col>
             </Row>
             {/* form row */}
@@ -32,10 +32,10 @@ function LandingForm(){
                     </Form.Group>
                 </Form>
             {/* button row */}
-            <Row>
-                <Col>
+            <Row className="text-center">
+                <Container>
                     <AppButton title="Sign-in"/>
-                </Col>
+                </Container>
             </Row>
         </Container>
     )
