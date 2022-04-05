@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Container, Row, Col } from 'react-bootstrap';
+import './LandingForm';
 import AppButton from '../Button/Button';
 
 
@@ -41,7 +42,7 @@ function LandingForm(){
             {/* Forgot Password */}
             <Row className="mt-3">
                 <Col>
-                    <a href="/" className="fs-6 fw-bold fst-italic text-center text-decoration-none">Forgot Password?</a>
+                    <a href="/" className="fs-5 fw-bold fst-italic text-center text-decoration-none">Forgot Password?</a>
                 </Col>
             </Row>
         </Container>
