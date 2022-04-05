@@ -6,7 +6,7 @@ import AppButton from '../Button/Button';
 
 function LandingForm(){
     return (
-        <Container className="mt-3">
+        <Container className="mt-5">
             <Row>
                 <Col>
                 <h1 className="h3 fw-bold">Sign in</h1>
