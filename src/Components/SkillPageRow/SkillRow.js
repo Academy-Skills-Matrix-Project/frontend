@@ -7,10 +7,12 @@ class SkillRow extends Component {
     render() {
         return (
             <>
-                <Container fluid className='mt-4'>
-                    <Row className='display-inline-block justify-content-center align-items-center'>
+                <Container fluid className='mt-3 bg-light'>
+                    <Row 
+                        className='py-1 display-inline-block justify-content-center align-items-center'
+                    >
                         <Col className='text-end' md='auto'>
-                            <a><img src="Cancel.png" width={35}/></a>
+                            <a href='/' ><img className='border-end border-1 border-dark p-1' src="Cancel.png" width={40}/></a>
                         </Col>
                         <Col className='text-center' md='auto'>
                             <h4>I am proficient in...</h4>

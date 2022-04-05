@@ -16,11 +16,11 @@ export default function CategoryDropdown() {
             </Dropdown.Toggle> */}
             <DropdownButton 
             className='db border border-2 border-dark rounded text-end'
-            variant='light'
+            variant='transparent'
             title={value}
             onSelect={handleSelect}>
-                <Dropdown.Item className='' eventKey={'Technical'}>Technical</Dropdown.Item>
-                <Dropdown.Item className='' eventKey={'Soft'}>Soft</Dropdown.Item>
+                <Dropdown.Item className='w-100' eventKey={'Technical'}>Technical</Dropdown.Item>
+                <Dropdown.Item className='w-100' eventKey={'Soft'}>Soft</Dropdown.Item>
             </DropdownButton>
         </Dropdown>
 

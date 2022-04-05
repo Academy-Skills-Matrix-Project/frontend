@@ -13,10 +13,10 @@ export default function Rater() {
     return (
       <div className='App'>
         <Rating 
-        transition 
+        transition
         onClick={handleRating} 
         ratingValue={rating}
-        fillColorArray={['#e80707', '#d66f15', '#e3eb10', '#0647d4', '#06d425']}
+        fillColorArray={['#e80707', '#d66f15', '#f5f542', '#0647d4', '#06d425']}
         />
       </div>
     )

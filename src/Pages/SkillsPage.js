@@ -13,14 +13,16 @@ class SkillsPage extends React.Component {
         return(
             <>
                 <NavHeader isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={false} />
-                <Container fluid >
-                    <Row style={{display:'flex', justifyContent:'left'}}>
-                            <h2 className=''>Personal Information</h2>
+                <Container fluid>
+                    <Row 
+                    style={{display:'flex', justifyContent:'left'}}
+                    >
+                            <h4 className='p-2'>Personal Information</h4>
                     </Row>
                     <Row className='text-center'>
                         <h1>List and Rank your Work Related Skills</h1>
                     </Row>
-                    <Container className='border-bottom border-4 border-dark pb-5'>
+                    <Container className='border-bottom border-top border-4 border-dark pb-5'>
                         <SkillRow />
                         <SkillRow />
                     </Container>
@@ -28,7 +30,7 @@ class SkillsPage extends React.Component {
                         <CircleButton />
                     </Container>
                     <Container className='text-center mt-4'>
-                        <AppButton title='Continue ' />
+                        <AppButton title='Continue' />
                     </Container>
                     
                 </Container>

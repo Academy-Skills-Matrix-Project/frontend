@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './NavHeader.css';
-import { Navbar, Nav,  Container } from 'react-bootstrap';
+import { Navbar, Nav,  Container, NavLink } from 'react-bootstrap';
 
 
 
@@ -26,7 +26,9 @@ class NavHeader extends Component {
             <Navbar className='navbar' data-testid='navbar'>    
                 <Container fluid>
                     <Navbar.Brand className='navbar-brand'>
-                        <img src='SWO_logo.png' width={250} alt = 'SWO_Logo'/>
+                        <NavLink className='p-0'>
+                            <img src='SWO_logo.png' href='/' width={250} alt = 'SWO_Logo'/>
+                        </NavLink>
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto align-items-center" >
                         <Nav.Link>
