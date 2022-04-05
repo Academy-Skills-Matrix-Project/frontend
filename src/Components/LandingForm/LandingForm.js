@@ -23,7 +23,7 @@ function LandingForm(){
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3 mt-4 me-5 justify-content-center" controlId="formHorizontalPassword">
-                        <Form.Label column sm={2} className="fs-3 fw-bold" data-testid="password-label">
+                        <Form.Label column sm={2} className="fs-3 fw-bold text-end" data-testid="password-label">
                         Password
                         </Form.Label>
                         <Col sm={3}>

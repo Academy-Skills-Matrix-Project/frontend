@@ -42,11 +42,6 @@ test('User should see form labels Email and Enter Password', () => {
     expect(password).toHaveTextContent('Password');
 })
 
-test('NavHeader.js renders NavHeader', () => {
-    render(<NavHeader />);
-    const testNavbarText = screen.getByText(/Welcome to the Skill Matrix/i);
-    expect(testNavbarText).toBeInTheDocument();
-});
 describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and alt = "SWO_Logo"', () => {
     render(<NavHeader/>);
     const logo = screen.getByAltText('SWO_Logo');
