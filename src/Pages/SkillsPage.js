@@ -28,7 +28,7 @@ class SkillsPage extends React.Component {
                         <SkillRow data-testid='skill-row' />
                     </Container>
                     <Container className='position-relative text-center bg-success'>
-                        <CircleButton />
+                        <CircleButton data-testid='plus-button' />
                     </Container>
                     <Container className='text-center mt-4'>
                         <AppButton title='Continue' />
