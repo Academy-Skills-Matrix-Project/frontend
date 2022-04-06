@@ -21,6 +21,7 @@ export default function CategoryDropdown() {
             onSelect={handleSelect}>
                 <Dropdown.Item className='w-100' eventKey={'Technical'}>Technical</Dropdown.Item>
                 <Dropdown.Item className='w-100' eventKey={'Soft'}>Soft</Dropdown.Item>
+                <Dropdown.Item className='w-100' eventKey={'Transferabley'}>Transferable</Dropdown.Item>
             </DropdownButton>
         </Dropdown>
 
