@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
+import SkillsPage from './SkillsPage';
 
 test('NavHeader.js renders NavHeader', () => {
     render(<NavHeader />);
