@@ -10,7 +10,7 @@ export default function CategoryDropdown() {
     });
 
     return(
-        <Dropdown className='db border border-2 border-dark rounded bg-light w-80 m-auto' data-testid='category-dropdown'>
+        <Dropdown  className='db border border-2 border-dark rounded bg-white w-80 m-auto' data-testid='category-dropdown'>
             <DropdownButton 
             className='text-end'
             variant='transparent'

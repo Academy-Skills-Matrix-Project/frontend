@@ -7,13 +7,11 @@ export default function Rater() {
     // Catch Rating value
     const handleRating = (rate) => {
       setRating(rate)
-      // other logic
     }
   
     return (
       <div className='rater'>
         <Rating 
-        
         transition
         onClick={handleRating} 
         ratingValue={rating}

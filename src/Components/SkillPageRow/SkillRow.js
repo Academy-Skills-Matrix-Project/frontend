@@ -8,28 +8,29 @@ class SkillRow extends Component {
     render() {
         return (
             <>
-                <Container fluid className=' mt-3 bg-light border rounded' >
-                    <Row 
-                        className='py-1 text-center justify-content-center align-items-center'
-                    >  
-                        <Col lg={4} md={12} xs={12} className='d-flex justify-content-center align-items-center' >
-                            <a href='/' >
-                                <img className='border-end border-1 border-dark p-1'
-                                    src="Cancel.png"
-                                    width={40}/>
-                                </a>
+                <Container fluid className='position-relative mt-3 bg-light border rounded shadow-sm' >
+
+                      {/* Renders image for red 'X' button in top left of item  */}
+                        <a className='position-absolute top-0 start-0' href='/' >
+                            <img 
+                                src="Cancel.png"
+                                width={30}/>
+                        </a>
+
+                    <Row className='py-1 text-center justify-content-center align-items-center'>  
+                        {/* Renders 'I am proficent in' text */}
+                        <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
                             <h4 className='px-3'>I am proficient in...</h4>
                         </Col>
-                        
-                        <Col lg={2} xs={6} className='mx-auto'>
+
+                        {/* Renders the category dropdown menu and text field */}
+                        <Col lg={6} xs={6} className='d-flex mx-auto text-center justify-content-center'>
                             <CategoryDropdown />
+                            <Form.Control className="textfield form-control border border-2 border-dark w-75 m-2" type="input"/>
                         </Col>
-                        
-                        <Col lg={3} xs={6} >   
-                            <Form.Control className="form-control border border-2 border-dark w-75 mx-auto" type="input"/>
-                        </Col>
-                        
-                        <Col lg={3} md={12} xs={12} >
+
+                        {/* Renders star rating item */}
+                        <Col lg={3} md={12} xs={12}>
                             <Rater />
                         </Col>       
                     </Row>
