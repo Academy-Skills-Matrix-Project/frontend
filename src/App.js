@@ -15,7 +15,7 @@ function App() {
       {/* <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
       <Banner />
       <LandingForm /> */}
-      <GeneralInfo />
+      <GeneralInfo  />
     </div>
   );
 }

@@ -98,7 +98,7 @@ function GeneralInfo(){
                 </Row>
             </Form>
             </Container>
-        <Button title='Continue' data-testid="general-button" />
+        <Button title='Continue' data-testid="general-button"  />
         </div>
 
     )
