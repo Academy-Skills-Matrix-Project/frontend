@@ -22,3 +22,10 @@ test('NavHeader.js renders NavHeader', () => {
 //     expect(logo).toHaveAttribute('alt', 'LogOut');
 // });
 // });
+
+// Sign-out icon appears when isLogoutEnabled is true
+describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled is true', () => {
+    render(<NavHeader isLogoutEnabled={true} />);
+    const signOut = screen.getByAltText('LogOut');
+    expect(signOut).toBeInTheDocument();
+})
