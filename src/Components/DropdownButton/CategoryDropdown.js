@@ -10,7 +10,7 @@ export default function CategoryDropdown() {
     });
 
     return(
-        <Dropdown>
+        <Dropdown data-testid='category-dropdown'>
             {/* <Dropdown.Toggle className='border border-2 border-dark' id='dropdown-basic' variant="light">
                 Category
             </Dropdown.Toggle> */}
