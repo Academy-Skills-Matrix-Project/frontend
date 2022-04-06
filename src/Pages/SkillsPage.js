@@ -23,8 +23,9 @@ class SkillsPage extends React.Component {
                         <h1>List and Rank your Work Related Skills</h1>
                     </Row>
                     <Container className='border-bottom border-top border-4 border-dark pb-5'>
-                        <SkillRow />
-                        <SkillRow />
+                        <SkillRow data-testid='skill-row' />
+                        <SkillRow data-testid='skill-row' />
+                        <SkillRow data-testid='skill-row' />
                     </Container>
                     <Container className='position-relative text-center bg-success'>
                         <CircleButton />

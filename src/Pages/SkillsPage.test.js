@@ -29,3 +29,10 @@ describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled
     const signOut = screen.getByAltText('LogOut');
     expect(signOut).toBeInTheDocument();
 })
+
+// Three <SkillRows /> components render to the page
+describe('SkillsPage.js', () => {test('Three <SkillRows /> components render to the page', () => {
+    render(<SkillsPage />);
+    const skillRow = screen.getAllByTestId('skill-row');
+    expect(skillRow).toBeInTheDocument();
+})
