@@ -11,8 +11,9 @@ export default function Rater() {
     }
   
     return (
-      <div className='App'>
+      <div className='rater'>
         <Rating 
+        
         transition
         onClick={handleRating} 
         ratingValue={rating}
