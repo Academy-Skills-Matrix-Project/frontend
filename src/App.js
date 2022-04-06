@@ -10,7 +10,7 @@ import GeneralInfo from './Components/GeneralInfo/GeneralInfo';
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       {/* applies conditions to the props that will be passed to the navbar */}
       {/* <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
       <Banner />
