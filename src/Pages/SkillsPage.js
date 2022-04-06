@@ -23,15 +23,15 @@ class SkillsPage extends React.Component {
 
                     {/* Renders the row for skill entry */}
                     <Container className='border-bottom border-top border-4 border-dark pb-5'>
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
-                        <SkillRow data-testid='skill-row' />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
+                        <SkillRow />
                     </Container>
 
                     {/* Renders bottom divider with 'add' button */}

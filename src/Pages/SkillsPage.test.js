@@ -1,6 +1,8 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import SkillsPage from './SkillsPage';
+import SkillRow from '../Components/SkillPageRow/SkillRow';
 
 test('NavHeader.js renders NavHeader', () => {
     render(<NavHeader />);
@@ -32,10 +34,10 @@ describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled
 });
 });
 
-// Three <SkillRows /> components render to the page
-describe('SkillsPage.js', () => {test('Three <SkillRows /> components render to the page', () => {
-    render(<SkillsPage />);
-    const skillRow = screen.getAllByTestId('skill-row');
+// <SkillRows /> components render to the page
+describe('SkillRow.js', () => {test('<SkillRows /> components render to the page', () => {
+    render(<SkillRow />);
+    const skillRow = screen.getByTestId('skill-row');
     expect(skillRow).toBeInTheDocument();
 });
 });
