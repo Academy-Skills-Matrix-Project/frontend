@@ -49,3 +49,10 @@ describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and a
     expect(logo).toHaveAttribute('alt', 'SWO_Logo');
 });
 });
+
+// Forgot Password link test
+describe('LandingForm.js', () => {test('User should see forgot password link', () => {
+    render(<LandingForm />);
+    const forgotPasswordLink = screen.getByText(/Forgot Password?/i);
+    expect(forgotPasswordLink).toBeInTheDocument();
+})})

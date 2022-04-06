@@ -5,9 +5,6 @@ import CircleButton from '../Components/Button/CircleButton';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import SkillRow from '../Components/SkillPageRow/SkillRow';
 
-
-
-
 class SkillsPage extends React.Component {
     render() {
         return(
