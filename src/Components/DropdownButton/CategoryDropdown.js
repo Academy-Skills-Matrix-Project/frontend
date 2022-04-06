@@ -10,15 +10,15 @@ export default function CategoryDropdown() {
     });
 
     return(
-        <Dropdown className='db border border-2 border-dark rounded bg-light' data-testid='category-dropdown'>
+        <Dropdown className='db border border-2 border-dark rounded bg-light w-80 m-auto' data-testid='category-dropdown'>
             <DropdownButton 
             className='text-end'
             variant='transparent'
             title={value}
             onSelect={handleSelect}>
-                <Dropdown.Item className='w-100' eventKey={'Technical'}>Technical</Dropdown.Item>
-                <Dropdown.Item className='w-100' eventKey={'Soft'}>Soft</Dropdown.Item>
-                <Dropdown.Item className='w-100' eventKey={'Transferable'}>Transferable</Dropdown.Item>
+                <Dropdown.Item className='' eventKey={'Technical'}>Technical</Dropdown.Item>
+                <Dropdown.Item className='' eventKey={'Soft'}>Soft</Dropdown.Item>
+                <Dropdown.Item className='' eventKey={'Transferable'}>Transferable</Dropdown.Item>
             </DropdownButton>
         </Dropdown>
     );

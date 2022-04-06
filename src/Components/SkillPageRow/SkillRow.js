@@ -8,11 +8,11 @@ class SkillRow extends Component {
     render() {
         return (
             <>
-                <Container fluid className=' mt-3 bg-light'>
+                <Container fluid className=' mt-3 bg-light border rounded' >
                     <Row 
                         className='py-1 text-center justify-content-center align-items-center'
                     >  
-                        <Col lg={4} md={12} xs={12} className='bg-success d-flex justify-content-center align-items-center' >
+                        <Col lg={4} md={12} xs={12} className='d-flex justify-content-center align-items-center' >
                             <a href='/' >
                                 <img className='border-end border-1 border-dark p-1'
                                     src="Cancel.png"
@@ -21,15 +21,15 @@ class SkillRow extends Component {
                             <h4 className='px-3'>I am proficient in...</h4>
                         </Col>
                         
-                        <Col lg={2} md={6} xs={5} className='bg-warning'>
+                        <Col lg={2} xs={6} className='mx-auto'>
                             <CategoryDropdown />
                         </Col>
                         
-                        <Col lg={3} md={6} xs={7} className='bg-danger'>   
-                            <Form.Control className="form-control border border-2 border-dark w-75" type="input"/>
+                        <Col lg={3} xs={6} >   
+                            <Form.Control className="form-control border border-2 border-dark w-75 mx-auto" type="input"/>
                         </Col>
                         
-                        <Col lg={3} md={12} xs={12} className='bg-secondary'>
+                        <Col lg={3} md={12} xs={12} >
                             <Rater />
                         </Col>       
                     </Row>
