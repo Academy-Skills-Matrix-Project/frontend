@@ -5,9 +5,6 @@ import CircleButton from '../Components/Button/CircleButton';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import SkillRow from '../Components/SkillPageRow/SkillRow';
 
-
-
-
 class SkillsPage extends React.Component {
     render() {
         return(
@@ -39,7 +36,7 @@ class SkillsPage extends React.Component {
 
                     {/* Renders bottom divider with 'add' button */}
                     <Container className='position-relative text-center bg-success'>
-                        <CircleButton />
+                        <CircleButton data-testid='plus-button' />
                     </Container>
 
                     {/* Renders 'Continue' button */}
