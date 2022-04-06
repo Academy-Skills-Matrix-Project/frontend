@@ -10,39 +10,16 @@ export default function CategoryDropdown() {
     });
 
     return(
-        <Dropdown data-testid='category-dropdown'>
-            {/* <Dropdown.Toggle className='border border-2 border-dark' id='dropdown-basic' variant="light">
-                Category
-            </Dropdown.Toggle> */}
+        <Dropdown className='db border border-2 border-dark rounded bg-light' data-testid='category-dropdown'>
             <DropdownButton 
-            className='db border border-2 border-dark rounded text-end'
+            className='text-end'
             variant='transparent'
             title={value}
             onSelect={handleSelect}>
                 <Dropdown.Item className='w-100' eventKey={'Technical'}>Technical</Dropdown.Item>
                 <Dropdown.Item className='w-100' eventKey={'Soft'}>Soft</Dropdown.Item>
-                <Dropdown.Item className='w-100' eventKey={'Transferabley'}>Transferable</Dropdown.Item>
+                <Dropdown.Item className='w-100' eventKey={'Transferable'}>Transferable</Dropdown.Item>
             </DropdownButton>
         </Dropdown>
-
-        // <Dropdown>
-        //     <Dropdown.Toggle 
-        //     title={value}
-        //     onSelect={handleSelect} 
-        //     className='border border-2 border-dark' 
-        //     id='dropdown-basic' 
-        //     variant="light">
-                
-        //     </Dropdown.Toggle>
-        //     <Dropdown.Menu
-        //     className='db border border-2 border-dark rounded text-end'
-        //     variant='light'
-        //     >
-        //         <Dropdown.Item className='' eventKey={'Technical'}>Technical</Dropdown.Item>
-        //         <Dropdown.Item className='' eventKey={'Soft'}>Soft</Dropdown.Item>
-        //     </Dropdown.Menu>
-        // </Dropdown>
     );
-    
-    
 }
