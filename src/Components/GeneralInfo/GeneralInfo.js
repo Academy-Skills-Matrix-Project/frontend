@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { Form, Col, Row, Container} from 'react-bootstrap';
 import Button from '../Button/Button';
 import NavHeader from '../NavHeader/NavHeader';
+
 
 function GeneralInfo(){
     return (
@@ -14,7 +15,7 @@ function GeneralInfo(){
                     </Col>
                 </Row>
             </Container>
-            <Container className="border">
+            <Container>
             <Form>
                 
                 <Row className="mb-3 ">
@@ -22,29 +23,28 @@ function GeneralInfo(){
                     <h2>Name</h2>
                     </Col>
                     <Form.Group as={Col} controlId="formGridFirst">
-                        <Form.Label>First Name</Form.Label>
-                    <Form.Control type="first" placeholder="First Name" />
+                        <Form.Label data-testid= 'fName-label'>First Name</Form.Label>
+                    <Form.Control type="first" placeholder="Enter First Name" />
                     </Form.Group>
 
 
                     <Form.Group as={Col} controlId="formGridLast">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control type="last" placeholder="Last name" />
+                    <Form.Label data-testid="lName-label">Last Name</Form.Label>
+                    <Form.Control type="last" placeholder="Enter Last Name" />
                     </Form.Group>   
                 </Row>
                 <hr />
                 <Row className="mb-3 ">
                     <Col>
-                    <h2></h2>
                     </Col>
                     <Form.Group as={Col} controlId="formGridJobT">
-                        <Form.Label>Job Title</Form.Label>
+                        <Form.Label data-testid="jTitle-label">Job Title</Form.Label>
                     <Form.Control type="job" placeholder="Enter Job Title" />
                     </Form.Group>
 
 
                     <Form.Group as={Col} controlId="formGridDepartment">
-                    <Form.Label>Department</Form.Label>
+                    <Form.Label data-testid="dTitle-label">Department</Form.Label>
                     <Form.Control type="department" placeholder="Enter Department" />
                     </Form.Group>   
                 </Row>
@@ -53,14 +53,14 @@ function GeneralInfo(){
                     <h2>Job</h2>
                     </Col>
                     <Form.Group as={Col} controlId="formGridTeam">
-                        <Form.Label>Team</Form.Label>
+                        <Form.Label data-testid="tTitle-label">Team</Form.Label>
                     <Form.Control type="team" placeholder="Enter Team Name" />
                     </Form.Group>
 
 
                     <Form.Group as={Col} controlId="formGridLast">
-                    <Form.Label>Location/Time Zone</Form.Label>
-                    <Form.Select type="last" placeholder="Last name">
+                    <Form.Label data-testid="lTitle-label">Location/Time Zone</Form.Label>
+                    <Form.Select>
                         <option></option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
@@ -75,13 +75,13 @@ function GeneralInfo(){
                     <h2>Contact Information</h2>
                     </Col>
                     <Form.Group as={Col} controlId="formGridEmail">
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label data-testid='email-Label'>Email</Form.Label>
                     <Form.Control type="email" placeholder="@softwareone.com" />
                     </Form.Group>
 
 
                     <Form.Group as={Col} controlId="formGridMobile">
-                    <Form.Label>Mobile Number</Form.Label>
+                    <Form.Label data-testid= 'mNumber-label'>Mobile Number</Form.Label>
                     <Form.Control type="mobile" placeholder="Enter Phone #" />
                     </Form.Group>   
                 </Row>
