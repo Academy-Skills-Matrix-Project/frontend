@@ -7,14 +7,14 @@ function GeneralInfo(){
     return (
         <div>
             <NavHeader isLogoutEnabled={true}/>
-           <Container fluid>
+           <Container fluid data-testid="general-info">
             <Row>
                     <Col>
                         <h1 className= 'text-start h2'>Personal Information</h1>
                     </Col>
                 </Row>
             </Container>
-            <Container class="border">
+            <Container className="border">
             <Form>
                 
                 <Row className="mb-3 ">
@@ -98,7 +98,7 @@ function GeneralInfo(){
                 </Row>
             </Form>
             </Container>
-        <Button title='Continue'/>
+        <Button title='Continue' data-testid="general-button" />
         </div>
 
     )
