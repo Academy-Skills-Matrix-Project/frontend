@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
-import GeneralInfo from "./GeneralInfo";
+import { render, screen, fireEvent} from "@testing-library/react";
+import GeneralInfo from '../Pages/GeneralInfo';
+
 
 
 //test to see if general information page is rendered
@@ -188,3 +189,11 @@ test('about text area should be in the document', () =>{
     const aboutTextArea = screen.getByPlaceholderText('Tell us about yourself!!');
     expect(aboutTextArea).toBeInTheDocument();
 })
+
+// continue button is clickable
+test('continue button can be clicked', () => {
+    render(<GeneralInfo />);
+    const button = screen.getByTestId('button');
+    fireEvent.click(button);
+    expect(button).toBeEnabled();
+});

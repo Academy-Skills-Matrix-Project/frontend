@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Col, Row, Container} from 'react-bootstrap';
-import Button from '../Button/Button';
-import NavHeader from '../NavHeader/NavHeader';
+import Button from '../Components/Button/Button';
+import NavHeader from '../Components/NavHeader/NavHeader';
 
 
 function GeneralInfo(){
@@ -87,7 +87,7 @@ function GeneralInfo(){
                 <hr style= {{height: 3}}/>
 
                 <Row className="mb-3">
-                    <Col md={4} className="mb-sm-4">
+                    <Col md={4} className="mb-sm-4 mt-3">
                     <h3>About Me</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridFirst" md={8} lg={8}>
