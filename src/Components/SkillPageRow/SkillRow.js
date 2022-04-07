@@ -8,7 +8,7 @@ class SkillRow extends Component {
     render() {
         return (
             <>
-                <Container fluid className='position-relative mt-3 bg-light border rounded shadow-sm' >
+                <Container fluid className='position-relative mt-3 bg-light border rounded shadow-sm'>
 
                       {/* Renders image for red 'X' button in top left of item  */}
                         <a className='position-absolute top-0 start-0' href='/' >
@@ -17,7 +17,7 @@ class SkillRow extends Component {
                                 width={30}/>
                         </a>
 
-                    <Row className='py-1 text-center justify-content-center align-items-center'>  
+                    <Row data-testid='skill-row' className='py-1 text-center justify-content-center align-items-center'>  
                         {/* Renders 'I am proficent in' text */}
                         <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
                             <h4 className='px-3'>I am proficient in...</h4>
