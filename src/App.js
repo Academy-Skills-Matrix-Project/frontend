@@ -4,7 +4,7 @@ import LandingForm from './Components/LandingForm/LandingForm';
 import './App.css';
 
 import NavHeader from './Components/NavHeader/NavHeader';
-import GeneralInfo from './Components/GeneralInfo/GeneralInfo';
+import GeneralInfo from './Pages/GeneralInfo';
 
 
 
@@ -12,9 +12,9 @@ function App() {
   return (
     <div className='App'>
       {/* applies conditions to the props that will be passed to the navbar */}
-      {/* <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
+     <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
       <Banner />
-      <LandingForm /> */}
+      <LandingForm /> 
       <GeneralInfo  />
     </div>
   );
