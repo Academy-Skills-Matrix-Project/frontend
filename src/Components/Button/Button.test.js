@@ -7,8 +7,8 @@ test('Sign-in button should be visible to user', () => {
     render(<Button/>);
 
     // Get the button element
-    const button = screen.getByTestId('sign-in-button');
-
+    const button = screen.getByTestId('button');
+//changed button test id to 'button'
     expect(button).toBeInTheDocument();
 })
 
