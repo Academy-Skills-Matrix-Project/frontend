@@ -11,7 +11,7 @@ function GeneralInfo(){
            <Container fluid data-testid="general-info" className="mb-5 mt-3">
             <Row>
                     <Col>
-                        <h1 className= 'text-start h2'>Personal Information</h1>
+                        <h1 className= 'text-start h2 fw-bold'>Personal Information</h1>
                     </Col>
                 </Row>
             </Container>
@@ -19,8 +19,8 @@ function GeneralInfo(){
             <Form>
                 
                 <Row className="mb-3">
-                    <Col xs={12} sm={12} md={4}>
-                    <h2>Name</h2>
+                    <Col xs={12} sm={12} md={4} className="mb-sm-4">
+                    <h3>Name</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridFirst" className="text-start" xs={6} sm={6} md={4}>
                         <Form.Label data-testid= 'fName-label'>First Name*</Form.Label>
@@ -50,7 +50,7 @@ function GeneralInfo(){
                 </Row>
                 <Row className="mb-3">
                     <Col xs={12} sm={12} md={4}>
-                    <h2>Job</h2>
+                    <h3>Job</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridTeam" className="text-start" xs={6} sm={6} md={4}>
                         <Form.Label data-testid="tTitle-label">Team</Form.Label>
@@ -71,8 +71,8 @@ function GeneralInfo(){
                 </Row>
                 <hr style= {{height: 3}}/>
                 <Row className="mb-3 ">
-                    <Col xs={12} sm={12} md={4}>
-                    <h2>Contact <br></br> Information</h2>
+                    <Col xs={12} sm={12} md={4} className="mb-sm-4">
+                    <h3>Contact <br></br> Information</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridEmail" className="text-start" xs={6} sm={6} md={4}>
                         <Form.Label data-testid='email-Label'>Email</Form.Label>
@@ -88,10 +88,10 @@ function GeneralInfo(){
                 <hr style= {{height: 3}}/>
 
                 <Row className="mb-3">
-                    <Col>
-                    <h2>About Me</h2>
+                    <Col md={4} className="mb-sm-4">
+                    <h3>About Me</h3>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridFirst" lg={8}>
+                    <Form.Group as={Col} controlId="formGridFirst" md={8} lg={8}>
                     <Form.Control as="textarea" rows={4} placeholder='Tell us about yourself!!'/>
                     </Form.Group>
 
