@@ -27,7 +27,12 @@ class NavHeader extends Component {
                 <Container fluid>
                     <Navbar.Brand className='navbar-brand p-0'>
                         <NavLink className='p-0'>
-                            <img src='SWO_logo.png' href='/' width={250} alt ='SWO_Logo'/>
+                            <a  href='/'>
+                                <img src='SWO_logo.png' 
+                                width={250} 
+                                alt ='SWO Logo' 
+                                data-testid='navbar-swo-logo'/>
+                            </a>
                         </NavLink>
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto align-items-center" >

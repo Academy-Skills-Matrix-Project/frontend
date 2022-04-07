@@ -10,7 +10,7 @@ export default function Rater() {
     }
   
     return (
-      <div className='rater'>
+      <div className='rater' data-testid='star-rater'>
         <Rating 
         transition
         onClick={handleRating} 

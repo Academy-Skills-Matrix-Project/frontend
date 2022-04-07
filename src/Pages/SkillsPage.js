@@ -26,12 +26,6 @@ class SkillsPage extends React.Component {
                         <SkillRow />
                         <SkillRow />
                         <SkillRow />
-                        <SkillRow />
-                        <SkillRow />
-                        <SkillRow />
-                        <SkillRow />
-                        <SkillRow />
-                        <SkillRow />
                     </Container>
 
                     {/* Renders bottom divider with 'add' button */}
@@ -46,9 +40,7 @@ class SkillsPage extends React.Component {
                     
                 </Container>
             </>
-            
-        );
-        
+        );   
     }
 }
 export default SkillsPage;

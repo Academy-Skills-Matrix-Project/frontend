@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 
 export default function CircleButton(){
     return(
@@ -7,7 +6,10 @@ export default function CircleButton(){
             <a href='/'><img 
             className=
             'position-absolute top-0 start 50 translate-middle border border-2 border-dark bg-light rounded-circle p-2' 
-            src='Plus.png'/></a>
+            src='Plus.png'
+            data-testid='circle-button'
+            alt='Delete button'/>
+            </a>
         </>
             
         
