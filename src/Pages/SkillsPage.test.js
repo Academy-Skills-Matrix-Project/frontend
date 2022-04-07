@@ -41,3 +41,19 @@ describe('SkillRow.js', () => {test('<SkillRows /> components render to the page
     expect(skillRow).toBeInTheDocument();
 });
 });
+
+// User should see a heading that reads List and Rank your Work Related Skills
+describe('SkillsPage.js', () => {test("User should see a heading that reads 'List and Rank your Work Related Skills'", () => {
+    render(<SkillsPage />);
+    const skillsHeading = screen.getByText(/List and Rank your Work Related Skills/i);
+    expect(skillsHeading).toBeInTheDocument();
+});
+});
+
+// User should see a heading that reads 'Personal Information'
+describe('SkillsPage.js', () => {test("User should see a heading that reads 'Personal Information'", () => {
+    render(<SkillsPage />);
+    const personalInfo = screen.getByText(/Personal Information/i);
+    expect(personalInfo).toBeInTheDocument();
+});
+});
