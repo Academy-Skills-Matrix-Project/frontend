@@ -23,11 +23,11 @@ class NavHeader extends Component {
 
 
         return(
-            <Navbar className='navbar sticky-top border-bottom border-dark' data-testid='navbar'>    
+            <Navbar className='navbar sticky-top border-bottom border-dark p-0' data-testid='navbar'>    
                 <Container fluid>
-                    <Navbar.Brand className='navbar-brand'>
-                        <NavLink className='p-0 m-0'>
-                            <img  src='SWO_logo.png' href='/' width={250} alt ='SWO_Logo'/>
+                    <Navbar.Brand className='navbar-brand p-0'>
+                        <NavLink className='p-0'>
+                            <img src='SWO_logo.png' href='/' width={250} alt ='SWO_Logo'/>
                         </NavLink>
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto align-items-center" >
