@@ -10,7 +10,7 @@ class SkillsPage extends React.Component {
         return(
             <>
                 {/* Renders navbar and passes props to render just logout button */}
-                <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={true} />
+                <NavHeader isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={false} />
                 <Container fluid>
                     <Row 
                     style={{display:'flex', justifyContent:'left'}}

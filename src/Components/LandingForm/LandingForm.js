@@ -41,7 +41,7 @@ function LandingForm(){
             </Row>
             {/* Forgot Password */}
             <Row className="mt-3">
-                <Col>
+                <Col className='text-center'>
                     <a href="/" className="fs-5 fw-bold fst-italic text-center text-decoration-none">Forgot Password?</a>
                 </Col>
             </Row>

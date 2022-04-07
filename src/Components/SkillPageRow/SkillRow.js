@@ -28,7 +28,7 @@ class SkillRow extends Component {
                         {/* Renders the category dropdown menu and text field */}
                         <Col lg={6} xs={6} className='d-flex mx-auto text-center justify-content-center'>
                             <CategoryDropdown data-testid='category-dropdown' />
-                            <Form.Control className="textfield form-control border border-2 border-dark w-75 m-2" type="input" data-testid='skill-text-input'/>
+                            <Form.Control className="textfield form-control border border-2 w-75 m-2" type="input" data-testid='skill-text-input'/>
                         </Col>
 
                         {/* Renders star rating item */}
