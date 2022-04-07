@@ -24,7 +24,7 @@ describe('SkillsRow.js', () => {test("User should be able to click the delete bu
     render(<SkillRow />);
     const dropdown = screen.getByTestId('delete-button');
     fireEvent.click(dropdown);
-    expect(dropdown).toBeInTheDocument();
+    expect(dropdown).toBeEnabled();
 });
 });
 
@@ -49,7 +49,7 @@ describe('SkillsRow.js', () => {test("User should be able to click a text input 
     render(<SkillRow />);
     const dropdown = screen.getByTestId('skill-text-input');
     fireEvent.click(dropdown);
-    expect(dropdown).toBeInTheDocument();
+    expect(dropdown).toBeEnabled();
 });
 });
 

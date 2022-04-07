@@ -14,6 +14,6 @@ describe('Rating.js', () => {test("User should be able to click the star rater",
     render(<Rater />);
     const dropdown = screen.getByTestId('star-rater');
     fireEvent.click(dropdown);
-    expect(dropdown).toBeInTheDocument();
+    expect(dropdown).toBeEnabled();
 });
 });

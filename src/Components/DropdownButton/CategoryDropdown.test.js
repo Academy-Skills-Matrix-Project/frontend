@@ -14,6 +14,6 @@ test('Dropdown can be clicked', () => {
     render(<CategoryDropdown />);
     const dropdown = screen.getByTestId('category-dropdown');
     fireEvent.click(dropdown);
-    expect(dropdown).toBeInTheDocument();
+    expect(dropdown).toBeEnabled();
 });
 
