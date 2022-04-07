@@ -18,47 +18,47 @@ function GeneralInfo(){
             <Container>
             <Form>
                 
-                <Row className="mb-3 ">
-                    <Col>
+                <Row className="mb-3">
+                    <Col xs={8} sm={8} md={4}>
                     <h2>Name</h2>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridFirst" className="text-start">
+                    <Form.Group as={Col} controlId="formGridFirst" className="text-start" xs={8} sm={8} md={4}>
                         <Form.Label data-testid= 'fName-label'>First Name*</Form.Label>
                     <Form.Control type="first" placeholder="Enter First Name" />
                     </Form.Group>
 
 
-                    <Form.Group as={Col} controlId="formGridLast" className="text-start">
+                    <Form.Group as={Col} controlId="formGridLast" className="text-start" xs={8} sm={8} md={4}>
                     <Form.Label data-testid="lName-label">Last Name</Form.Label>
                     <Form.Control type="last" placeholder="Enter Last Name" />
                     </Form.Group>   
                 </Row>
                 <hr style= {{height: 3}}/>
                 <Row className="mb-3 ">
-                    <Col>
+                    <Col xs={8} sm={8} md={4}>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridJobT" className="text-start">
+                    <Form.Group as={Col} controlId="formGridJobT" className="text-start" xs={8} sm={8} md={4}>
                         <Form.Label data-testid="jTitle-label">Job Title</Form.Label>
                     <Form.Control type="job" placeholder="Enter Job Title" />
                     </Form.Group>
 
 
-                    <Form.Group as={Col} controlId="formGridDepartment" className="text-start">
+                    <Form.Group as={Col} controlId="formGridDepartment" className="text-start" xs={8} sm={8} md={4}>
                     <Form.Label data-testid="dTitle-label">Department</Form.Label>
                     <Form.Control type="department" placeholder="Enter Department" />
                     </Form.Group>   
                 </Row>
                 <Row className="mb-3">
-                    <Col>
+                    <Col xs={8} sm={8} md={4}>
                     <h2>Job</h2>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridTeam" className="text-start">
+                    <Form.Group as={Col} controlId="formGridTeam" className="text-start" xs={8} sm={8} md={4}>
                         <Form.Label data-testid="tTitle-label">Team</Form.Label>
                     <Form.Control type="team" placeholder="Enter Team Name" />
                     </Form.Group>
 
 
-                    <Form.Group as={Col} controlId="formGridLast" className="text-start">
+                    <Form.Group as={Col} controlId="formGridLast" className="text-start" xs={8} sm={8} md={4}>
                     <Form.Label data-testid="lTitle-label">Location/Time Zone</Form.Label>
                     <Form.Select>
                         <option></option>
@@ -71,16 +71,16 @@ function GeneralInfo(){
                 </Row>
                 <hr style= {{height: 3}}/>
                 <Row className="mb-3 ">
-                    <Col>
+                    <Col xs={8} sm={8} md={4}>
                     <h2>Contact <br></br> Information</h2>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridEmail" className="text-start">
+                    <Form.Group as={Col} controlId="formGridEmail" className="text-start" xs={8} sm={8} md={4}>
                         <Form.Label data-testid='email-Label'>Email</Form.Label>
                     <Form.Control type="email" placeholder="@softwareone.com" />
                     </Form.Group>
 
 
-                    <Form.Group as={Col} controlId="formGridMobile" className="text-start">
+                    <Form.Group as={Col} controlId="formGridMobile" className="text-start" xs={8} sm={8} md={4}>
                     <Form.Label data-testid= 'mNumber-label'>Mobile Number</Form.Label>
                     <Form.Control type="mobile" placeholder="Enter Phone #" />
                     </Form.Group>   
