@@ -18,10 +18,6 @@ class NavHeader extends Component {
         };
         //renders Navbar
     render() {
-
-
-
-
         return(
             <Navbar className='navbar sticky-top border-bottom border-dark p-0' data-testid='navbar'>    
                 <Container fluid>
