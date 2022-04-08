@@ -1,6 +1,9 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Form from './Components/LandingForm/LandingForm'
+import NavHeader from './Components/NavHeader/NavHeader';
 
 test('renders learn react link', () => {
-  render(<Form />);
+  render(<NavHeader />);
+  const testNavbarText = screen.getByTestId('navbar');
+  expect(testNavbarText).toBeInTheDocument();
 });

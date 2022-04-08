@@ -1,0 +1,41 @@
+.textfield{
+    min-width: 200px;
+}
+
+/* 
+@media only screen and (max-width: 1000px){
+    .skillrow{
+        position: relative;
+        justify-content: center;
+    } 
+
+    .skillcol{
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .skillcol1{
+        margin-bottom: 10px;
+        justify-content: center;
+        
+    }
+
+    .skillcol2{
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .skillcol3{
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
+    .skillbtn{
+        justify-content: start;
+    }
+
+    h1{
+        color: aqua ;
+        justify-content: center;
+    }
+} */
