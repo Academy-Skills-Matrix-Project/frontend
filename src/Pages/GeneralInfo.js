@@ -19,7 +19,7 @@ function GeneralInfo(){
             <Form>
                 
                 <Row className="mb-3">
-                    <Col xs={12} sm={12} md={4} className="mb-sm-4">
+                    <Col xs={12} sm={12} md={4} className="mb-sm-4 text-center">
                     <h3>Name</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridFirst" className="text-start" xs={6} sm={6} md={4}>
@@ -35,29 +35,29 @@ function GeneralInfo(){
                 </Row>
                 <hr style= {{height: 3}}/>
                 <Row className="mb-3 ">
-                    <Col xs={8} sm={{span:8, order:5}} md={{span:4, order:0}}>
+                    <Col xs={{span:8, order:5}} sm={{span:8, order:5}} md={{span:4, order:0}}>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridJobT" className="text-start" xs={6} sm={{span:6, order: 1}} md={{span:4, order:1}}>
+                    <Form.Group as={Col} controlId="formGridJobT" className="text-start" xs={{span:6, order: 1}} sm={{span:6, order: 1}} md={{span:4, order:1}}>
                         <Form.Label data-testid="jTitle-label" className= 'redAsterisks'>Job Title</Form.Label>
                     <Form.Control type="job" placeholder="Enter Job Title" />
                     </Form.Group>
 
 
-                    <Form.Group as={Col} controlId="formGridDepartment" className="text-start" xs={6} sm={{span:6, order: 2}} md={{span:4, order:2}}>
+                    <Form.Group as={Col} controlId="formGridDepartment" className="text-start" xs={{span:6, order: 2}} sm={{span:6, order: 2}} md={{span:4, order:2}}>
                     <Form.Label data-testid="dTitle-label" className= 'redAsterisks'>Department</Form.Label>
                     <Form.Control type="department" placeholder="Enter Department" />
                     </Form.Group> 
 
-                    <Col xs={12} sm={{span:12, order: 0}} md={{span:4, order:3}}>
+                    <Col xs={{span:12, order:0}} sm={{span:12, order: 0}} md={{span:4, order:3}} className='text-center'>
                     <h3>Job</h3>
                     </Col>
-                    <Form.Group as={Col} controlId="formGridTeam" className="text-start mt-3" xs={6} sm={{span:6, order:3}} md={{span:4, order:4}}>
+                    <Form.Group as={Col} controlId="formGridTeam" className="text-start mt-3" xs={{span:6, order:3}} sm={{span:6, order:3}} md={{span:4, order:4}}>
                         <Form.Label data-testid="tTitle-label"className= 'redAsterisks'>Team</Form.Label>
                     <Form.Control type="team" placeholder="Enter Team Name" />
                     </Form.Group>
 
 
-                    <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={6} sm={{span:6, order:4}} md={{span:4, order:5}}>
+                    <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
                     <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Location/Time Zone</Form.Label>
                     <Form.Select>
                         <option></option>
@@ -70,7 +70,7 @@ function GeneralInfo(){
                 
                 <hr style= {{height: 3}}/>
                 <Row className="mb-3 ">
-                    <Col xs={12} sm={12} md={4} className="mb-sm-4">
+                    <Col xs={12} sm={12} md={4} className="mb-sm-4 text-center">
                     <h3>Contact <br></br> Information</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridEmail" className="text-start" xs={6} sm={6} md={4}>
@@ -87,7 +87,7 @@ function GeneralInfo(){
                 <hr style= {{height: 3}}/>
 
                 <Row className="mb-3">
-                    <Col md={4} className="mb-sm-4 mt-3">
+                    <Col md={4} className="mb-sm-4 mt-3 text-center">
                     <h3>About Me</h3>
                     </Col>
                     <Form.Group as={Col} controlId="formGridFirst" md={8} lg={8}>
@@ -97,7 +97,7 @@ function GeneralInfo(){
                 </Row>
             </Form>
             </Container>
-            <Container>
+            <Container className= 'text-center'>
                 <Row>
                     <Col className= 'mb-3'>
                         <Button title='Continue' data-testid="general-button"/>
