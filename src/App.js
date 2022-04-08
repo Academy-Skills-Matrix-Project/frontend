@@ -1,12 +1,10 @@
+import React from 'react';
 import Banner from './Components/Banner/Banner';
 import LandingForm from './Components/LandingForm/LandingForm';
-
 import './App.css';
-
 import NavHeader from './Components/NavHeader/NavHeader';
 import GeneralInfo from './Pages/GeneralInfo';
-
-
+import SkillsPage from './Pages/SkillsPage';
 
 function App() {
   return (
@@ -16,6 +14,7 @@ function App() {
       <Banner />
       <LandingForm /> 
       <GeneralInfo  />
+      <SkillsPage />
     </div>
   );
 }
