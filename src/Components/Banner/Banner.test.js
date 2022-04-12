@@ -5,11 +5,7 @@ import Banner from './Banner';
 
  test('renders Banner onto page', () => {
    render(<Banner/>);
-   const banner = getByTestId('banner');
+   const banner = screen.getByTestId('banner');
    expect(banner).toBeInTheDocument();
  });
 
- test('banner render', () => {
-   render(<Banner />)
-   const banner = screen.debug();
- })
