@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import NavHeader from '../Components/NavHeader/NavHeader';
 import ProfileInfoPage from '../Pages/ProfileInfoPage';
 
 test('NavHeader.js renders NavHeader', () => {
@@ -23,7 +22,7 @@ describe('ProfileInfoPage.js', () => {test('Logo must have src = "/LogOut.png" a
     });
     });
 
-describe('ProfileInfoPage.js', () => {test('Logo must have src = "/Search.png" and alt = "Search"', () => {
+describe('ProfileInfoPage', () => {test('Logo must have src = "/Search.png" and alt = "Search"', () => {
         render(<ProfileInfoPage/>);
         const logo = screen.getByAltText('Search');
         expect(logo).toHaveAttribute('src', 'Search.png');
@@ -37,7 +36,7 @@ test('the edit button should be rendered', () => {
     expect(button).toBeInTheDocument();
     }) 
 
-test('edit ptofile button can be clicked', () => {
+test('edit profile button can be clicked', () => {
         render(<ProfileInfoPage />);
         const button = screen.getByTestId('button');
         fireEvent.click(button);
@@ -142,11 +141,11 @@ test('full name heading should have the text Full Name', () =>{
 })
 
 
-describe('ProfileInfoPage.js', () => {test('img must have src = "/ProfilePic.png" and alt = "Profile Picture"', () => {
+describe('ProfileInfoPg', () => {test('img must have src = "/ProfilePic.png" and alt = "Profile Picture"', () => {
         render(<ProfileInfoPage/>);
         const profilePic = screen.getByAltText('Profile Picture');
         expect(profilePic).toHaveAttribute('src', 'ProfilePic.png');
-        expect(profilePic).toHaveAttribute('alt', 'Profile Picture');
+        expect(profilePic).toHaveAttribute('alt', 'Profile');
     });
     });
 
