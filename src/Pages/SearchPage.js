@@ -61,10 +61,12 @@ class SearchPage extends React.Component {
                             </Col> 
                         </Row>       
                     </Container>        
-                    <Container className='justify-content-center text-left'>
+                    <Container className=''>
                         <SearchPageRow />
+                        <SearchPageRow />
+                        <SearchPageRow />
+                        
                     </Container>
-
                 </Container>
             </>
         );
