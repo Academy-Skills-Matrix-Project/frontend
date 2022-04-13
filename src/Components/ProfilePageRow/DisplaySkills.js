@@ -10,8 +10,8 @@ class DisplaySkills extends Component {
     render() {
         return (
             <>
-                <Container>
-                   <Row>
+                <Container fluid>
+                   <Row className='text-center' > 
                         <Col lg={3} md={12} xs ={12}>
                             <a href='/'>
                                 <img
@@ -19,13 +19,13 @@ class DisplaySkills extends Component {
                                 alt='Pencil'
                                 width={50}
 
-                            />
+                                />
                              </a>
                                 <p class= 'd-inline'>
                                      {this.props.skill}
                                 </p>
                         </Col>
-                        <Col lg={3} md={12} xs={12}>
+                        <Col lg={3} md={12} xs={12} className='my-auto'>
                             <Rating /> 
                         </Col>
 

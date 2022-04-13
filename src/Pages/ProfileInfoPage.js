@@ -13,10 +13,10 @@ class ProfileInfoPage extends React.Component {
                 <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} />
                <Container fluid>
                    <Row>
-                       <Col className= 'mt-4 ms-3'>
+                       <Col className= 'mt-4 text-start ms-4'>
                        <h3 data-testid='profile-title'>My Profile</h3>
                        </Col>
-                       <Col className= 'text-end mt-3 me-3'>
+                       <Col className= 'text-end mt-1 me-1'>
                        <Button  title='Edit Profile'  />
                        </Col>
                    </Row>
@@ -27,12 +27,12 @@ class ProfileInfoPage extends React.Component {
                                  width={250}/>
                             <h3 data-testid="name-title">Full Name</h3>
                         </Col>
-                       <Col className="mt-5 mx-auto" xs={5} lg={4}>
+                       <Col className="mt-5 mx-auto text-start" xs={5} lg={4}>
                             <h3 data-testid="email-title">Email:</h3>
                             <h3 data-testid="mobile-title">Mobile Number:</h3>
                             <h3 data-testid="location-title">Location/Time zone:</h3>
                        </Col>
-                       <Col className="mt-5 mx-auto" xs={5} lg={4}>
+                       <Col className="mt-5 mx-auto text-start" xs={5} lg={4}>
                             <h3 data-testid='department-title'>Department:</h3>
                             <h3 data-testid='team-title'> Team:</h3>
                             <h3 data-testid='job-title'>Job Title:</h3>
@@ -53,17 +53,25 @@ class ProfileInfoPage extends React.Component {
                             <Rating />
                        </Col>
                    </Row> */}
-                   <Container fluid className="mt-5 text-center">
-                    <Row>
-                   <Col xs={6}>
-                   <DisplaySkills skill="C#"/>
+                   <Container fluid className="mt-5  mb-5 me-5 ">
+                    <Row className='mx-auto'>
+                   <Col xs={6} lg={5} className=' mx-auto'>
+                    <Container className= 'text-start mb-3'>
+                    <h3>Skills</h3>
+                    </Container>
+                   <DisplaySkills skill="Microsoft Azure"/>
                    <DisplaySkills skill="C#"/>
                    <DisplaySkills skill="C#"/>
                    </Col>
-                   <Col xs={6}>
+                   <Col xs={6} lg={5} className=' mx-auto'>
+                    <Container className='text-start mb-3'>
+                   <h3>Languages</h3>
+                   </Container>
+                   
                    <DisplaySkills skill="C#"/>
+                   <DisplaySkills skill="JavaScript"/>
                    <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="C#"/>
+                   
                    </Col>
                    </Row>
                    </Container>
