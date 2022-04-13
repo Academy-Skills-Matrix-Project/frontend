@@ -5,20 +5,22 @@ import NavHeader from '../Components/NavHeader/NavHeader';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
+
 let schema = yup.object().shape({
-    firstName: yup.string().required("First Name is required"),    
-    lastName: yup.string().required("Last Name is required"),
-    jobTitle: yup.string().required("Job title is required"),
-    department: yup.string().required("Department is required"),
-    team: yup.string().required("Team is required"),
+    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First name is letters only"),  
+    lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last name is letters only"),
+    jobTitle: yup.string().required("Job title is required").matches(/^[a-zA-Z]+$/g, "Job title is letters only"),
+    department: yup.string().required("Department is required").matches(/^[a-zA-Z]+$/g, "Department is letters only"),
+    team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
     location: yup.string().required("A location must be required"),
-    email: yup.string().email().required("Email is required"),
+    email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
     mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not vaild format"),
     
 })
 
 
 function GeneralInfo(){
+    
     return (
         <div>
             <NavHeader isLogoutEnabled={true}/>
@@ -152,20 +154,18 @@ function GeneralInfo(){
 
                             <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
                                 <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Location/Time Zone</Form.Label>
-                                <Form.Select>
-                                    <option></option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </Form.Select>  
-                                <Form.Control 
-                                    name="location"
+                                <Form.Select  name="location"
                                     placeholder=""
                                     value={values.location}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.location}
-                                    isValid={touched.location && !errors.location} />
+                                    isValid={touched.location && !errors.location} >
+                                    <option></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </Form.Select>  
                                 <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
                  
                             </Form.Group>  
@@ -226,7 +226,7 @@ function GeneralInfo(){
             <Container className= 'text-center'>
                 <Row>
                     <Col className= 'mb-3'>
-                        <Button title='Continue' data-testid="general-button" type="submit"/>
+                        <Button title='Continue' data-testid="general-button" type="submit" page="GeneralInfo"/>
                     </Col>
                 </Row>
             </Container>

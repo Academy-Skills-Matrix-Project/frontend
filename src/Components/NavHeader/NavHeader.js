@@ -4,7 +4,13 @@ import { Navbar, Nav,  Container, NavLink } from 'react-bootstrap';
 
 
 
+
+
+
 class NavHeader extends Component {
+
+   
+
 
     constructor(props){
         super(props);
@@ -15,7 +21,11 @@ class NavHeader extends Component {
                 isMyAccountEnabled: props.isMyAccountEnabled,
                
             }
+
+            
         };
+
+
         //renders Navbar
     render() {
         return(
@@ -31,7 +41,7 @@ class NavHeader extends Component {
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto align-items-center" >
                         {this.state.isMyAccountEnabled && <a className='text-black p-2' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
-                        src='MyAccount.png' width={30} alt= 'MyAccount' />  My Account</a>}
+                        src='MyAccount.png' width={30} alt= 'MyAccount' />  My Account</a> }
                     
                         {this.state.isSearchEnabled && <a className='text-black p-2' href='/' style={{textDecoration:'none'}} ><img className='nav-item' 
                         src='Search.png'  width={30} alt= 'Search'/>  Search</a>}
