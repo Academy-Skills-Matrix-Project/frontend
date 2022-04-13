@@ -33,6 +33,7 @@ function LandingForm(){
                     </Col>
                 </Form.Group>
             </Form>
+
             {/* button row */}
             <Row className="text-center">
                 <Container>
