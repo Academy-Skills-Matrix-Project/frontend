@@ -15,7 +15,7 @@ export default function Rater() {
         transition
         onClick={handleRating} 
         ratingValue={rating}
-        fillColorArray={['#e80707', '#d66f15', '#f5f542', '#0647d4', '#06d425']}
+        fillColor='#FFD700'
         />
       </div>
     )

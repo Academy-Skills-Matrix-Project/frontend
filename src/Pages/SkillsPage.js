@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import AppButton from '../Components/Button/Button';
 import CircleButton from '../Components/Button/CircleButton';
 import NavHeader from '../Components/NavHeader/NavHeader';
-import SkillRow from '../Components/SkillPageRow/SkillRow';
+import SkillRow from '../Components/Rows/SkillRow';
 
 class SkillsPage extends React.Component {
     render() {
@@ -34,7 +34,7 @@ class SkillsPage extends React.Component {
                     </Container>
 
                     {/* Renders 'Continue' button */}
-                    <Container className='text-center mt-4'>
+                    <Container className='text-center mt-5'>
                         <AppButton title='Continue' />
                     </Container>
                     

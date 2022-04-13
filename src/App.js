@@ -6,6 +6,7 @@ import NavHeader from './Components/NavHeader/NavHeader';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import SearchPage from './Pages/SearchPage';
 
 function App() {
   return (
@@ -18,8 +19,12 @@ function App() {
         <Route path='/generalinfo'>
           <GeneralInfo />
         </Route>
+        <Route path='/searchpage'>
+          <SearchPage />
+        </Route>
         <Route path='/'>
-          <LandingForm />
+          {/* <LandingForm/> */}
+          <SearchPage/>
         </Route>
         
       </Switch>

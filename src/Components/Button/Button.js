@@ -15,7 +15,7 @@ function AppButton(props) {
 
     return (
         <Button 
-            className="btn btn-danger btn-lg mt-3" 
+            className="btn btn-danger" 
             type="submit" 
             data-testid="button"
             onClick={handleClick}
