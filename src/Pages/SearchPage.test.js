@@ -69,20 +69,17 @@ test('My Account button is visible', () =>{
 });
 
 // Test for Logout button in Nav Header
-/*
-test('Logout button is enabled', () => {
+test('Logout button is visible', () => {
     render(
         <MemoryRouter>
-            <NavHeader />
+            <SearchPage />
         </MemoryRouter>
     );
 
-    const navinheader = await screen.findByTestId('navinheader');
+    const logoutbtn = screen.getByAltText('LogOut');
 
-    expect(navinheader.properties.isLogoutEnabl).toBe(true);
+    expect(logoutbtn).toBeInTheDocument();
 });
-*/
-
 
 // Test that Users are rendered in the Search Page
 test('<SearchPageRow /> renders to page at least once', () => {
