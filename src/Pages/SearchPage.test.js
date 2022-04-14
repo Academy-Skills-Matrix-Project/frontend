@@ -16,11 +16,13 @@ test('NavHeader.js renders NavHeader', () => {
     expect(testNavbarText).toBeInTheDocument();
 });
 
-// Test for responsiveness, <Container> should have fluid property
+// Test for responsiveness, <Container> element from react-bootstrap should have fluid property
 test('SearchPage.js is responsive', () => {
-    render(<SearchPage />);
+    render(<Router><SearchPage /></Router>);
 
-    
+    const testContainer = screen.getByTestId('container');
+
+    expect(testContainer.classList.contains('container-fluid')).toBe(true);
 }); 
     
 
