@@ -6,14 +6,14 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 let schema = yup.object().shape({
-    firstName: yup.string().required("First Name is required"),    
-    lastName: yup.string().required("Last Name is required"),
-    jobTitle: yup.string().required("Job title is required"),
-    department: yup.string().required("Department is required"),
-    team: yup.string().required("Team is required"),
-    location: yup.string().required("A location must be required"),
-    email: yup.string().email().required("Email is required"),
-    mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not vaild format"),
+    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First name is letters only"),    
+    lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last name is letters only"),
+    jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job title is letters only"),
+    department: yup.string().required("Department is required").matches(/^[a-zA-Z]+$/g, "Department is letters only"),
+    team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
+    location: yup.string().required("Must choose a location/time zone"),
+    email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
+    mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),
     
 })
 
