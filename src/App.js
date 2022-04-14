@@ -1,8 +1,6 @@
 import React from 'react';
-import Banner from './Components/Banner/Banner';
 import LandingForm from './Pages/LandingForm';
 import './App.css';
-import NavHeader from './Components/NavHeader/NavHeader';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
@@ -25,6 +23,7 @@ function App() {
         <Route path='/'>
           {/* <LandingForm/> */}
           <SearchPage/>
+          <SkillsPage />
         </Route>
         
       </Switch>
