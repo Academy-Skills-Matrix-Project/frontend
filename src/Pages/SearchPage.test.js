@@ -16,15 +16,11 @@ test('NavHeader.js renders NavHeader', () => {
     expect(testNavbarText).toBeInTheDocument();
 });
 
-// Test that <Col> elements have sm property
+// Test for responsiveness, <Container> should have fluid property
 test('SearchPage.js is responsive', () => {
     render(<SearchPage />);
 
-    // Get <Col> elements
-    const col = screen.getAllByTestId('col');
-
-    // Check that <Col> elements have sm property
-    expect(col[0]).toHaveAttribute('sm');
+    
 }); 
     
 

@@ -38,7 +38,7 @@ class SearchPage extends React.Component {
                     
                     <Container className='align-items-center justify-content-center d-flex w-75 p-2'>
                         <Row className='justify-content-center align-items-center w-100'>
-                            <Col data-testid='col' lg={{span:4, maxWidth:'100px'}} md={4} sm={6} xs={12} className='' >
+                            <Col lg={{span:4, maxWidth:'100px'}} md={4} sm={6} xs={12} className='' >
                                 <DropdownList
                                 className='m-1'
                                 placeholder='Filter by...'
@@ -46,12 +46,12 @@ class SearchPage extends React.Component {
                                 onSelect={value => this.setFilterByValue(value)}
                                 data={['Name', 'Skill', 'Language', 'Job Title', 'Location/Time Zone']} />    
                             </Col>
-                            <Col data-testid='col' md={4} sm={6} xs={12} className=''>
+                            <Col md={4} sm={6} xs={12} className=''>
                                 <ComboBox 
                                 className='w-100 m-1'
                                 placeholder={`Search for ${this.state.filterByValue}`}/>
                             </Col>
-                            <Col data-testid='col' md={4} sm={12} xs={12} className='text-right w-auto'>
+                            <Col md={4} sm={12} xs={12} className='text-right w-auto'>
                                 <Button
                                 className="btn btn-danger m-2" 
                                 type="submit" 
