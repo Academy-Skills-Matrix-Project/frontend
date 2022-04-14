@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
 
 class SearchPageRow extends Component{
     render(){
@@ -12,24 +11,27 @@ class SearchPageRow extends Component{
             data-testid='search-row' 
             className="bg-light border border-2 rounded border shadow-sm my-3 position-relative justify-content-center" >
 
-                    <a><img
+                    <a href="/myaccount" to="/myaccount"><img
                     width={55} 
                     className="position-absolute start-0 top-50 translate-middle 
-                    border border-2 rounded-circle bg-light  " src="MyAccount.png" />
+                    border border-2 rounded-circle bg-light  " 
+                    src="MyAccount.png" 
+                    alt="Profile" />
                     </a>
 
-                    <a><img 
+                    <a href='/myaccount' to='/myaccount'><img 
                     src="Info2.png"
                     width={22}
                     className="position-absolute end-0 top-0"
+                    alt='More Info'
                     /></a>
                 <Row  className=" justify-content-center align-items-center mx-1" >
                     <Col lg={3} xs='auto' className="w-auto">
                         <Row lg={12} xs={7}>
-                        <Form.Label className="fs-5 fw-bold">First name</Form.Label>
+                        <Form.Label className="fs-5 fw-bold">First Name</Form.Label>
                         </Row>
                         <Row lg={12} xs={7}>
-                        <Form.Label className="fs-5 fw-bold">Last name</Form.Label>
+                        <Form.Label className="fs-5 fw-bold">Last Name</Form.Label>
                         </Row>     
                     </Col>
                     <Col lg={3} xs='auto' className="w-auto text-start">

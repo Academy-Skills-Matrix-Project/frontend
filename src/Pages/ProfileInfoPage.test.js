@@ -214,9 +214,9 @@ describe('ProfileInfoPg', () => {test('img must have src = "/ProfilePic.png" and
         <MemoryRouter>
             <ProfileInfoPage />
         </MemoryRouter>);
-        const profilePic = screen.getByAltText('Profile Picture');
+        const profilePic = screen.getByAltText('Profile');
         expect(profilePic).toHaveAttribute('src', 'ProfilePic.png');
-        expect(profilePic).toHaveAttribute('alt', 'Profile Picture');
+        expect(profilePic).toHaveAttribute('alt', 'Profile');
     });
     });
 

@@ -29,9 +29,9 @@ class NavHeader extends Component {
                                 data-testid='navbar-swo-logo'/>
                         </NavLink>
                     </Navbar.Brand>  
-                    <Nav className="bg-danger d-flex w-auto  align-items-end align-items-sm-start" >
+                    <Nav className="d-flex w-auto  align-items-end align-items-sm-start" >
                         {this.state.isMyAccountEnabled && 
-                        <NavLink className='bg-primary nav-link text-black p-2' to='/myaccount'>
+                        <NavLink className='nav-link text-black p-2' to='/profilepage'>
                             <img className='nav-item' src='MyAccount.png'
                             width={30} alt= 'MyAccount' />  Account</NavLink>}
                     
@@ -41,7 +41,7 @@ class NavHeader extends Component {
                             width={30} alt= 'Search'/>  Search</NavLink>}
                     
                         {this.state.isLogoutEnabled &&
-                        <NavLink className='bg-success nav-link text-black p-2' to="/" >
+                        <NavLink className=' nav-link text-black p-2' to="/" >
                             <img className='nav-item' src='LogOut.png'
                             width={30} alt='LogOut'/>  Logout</NavLink>}
                     </Nav>

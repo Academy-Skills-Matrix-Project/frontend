@@ -10,8 +10,8 @@ function AppButton(props) {
             case 'LandingPage': history.push('/generalinfo'); break;
             case 'GeneralInfo': history.push('/skillspage'); break;
             case 'SkillsPage': history.push('/languagepage'); break;
-            case 'LanguagePage': history.push('/accountpage'); break;
-            case 'AccountPageEdit': history.push('/skillspage'); break;
+            case 'LanguagePage': history.push('/profilepage'); break;
+            case 'ProfilePageEdit': history.push('/skillspage'); break;
             default: history.push('/');
         }  
     }

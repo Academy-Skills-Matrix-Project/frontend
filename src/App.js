@@ -4,9 +4,10 @@ import './App.css';
 //import NavHeader from './Components/NavHeader/NavHeader';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
+import LanguagesPage from './Pages/LanguagesPage';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import SearchPage from './Pages/SearchPage';
-
+import ProfileInfoPage from './Pages/ProfileInfoPage';
 
 
 function App() {
@@ -24,14 +25,17 @@ function App() {
         <Route path='/skillspage'>
           <SkillsPage/>
         </Route>
-        <Route path='/myaccount'>
+        <Route path='/languagepage'>
+          <LanguagesPage/>
+        </Route>
+        <Route path='/profilepage'>
           <ProfileInfoPage />
         </Route>
         <Route path='/searchpage'>
           <SearchPage />
         </Route>
         <Route path='/'>
-          <SearchPage/>
+          <LandingForm/>
         </Route>
       </Switch>
       </main>

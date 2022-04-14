@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import Rater from '../Rating/Rating';
-import CategoryDropdown from '../DropdownButton/CategoryDropdown';
+// import CategoryDropdown from '../DropdownButton/CategoryDropdown';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
@@ -31,13 +31,13 @@ class SkillRow extends Component {
                         {/* Renders the category dropdown menu and text field */}
                         <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
                             <DropdownList
-                            className='textfield w-100 mx-1'
+                            className='textfield w-100 mx-1 text-start'
                             filter={false}
                             placeholder='Category'
                             data={['Soft', 'Technical', 'Transferable']}
                             />
                             <ComboBox 
-                            className='textfield w-100 mx-1' 
+                            className='textfield w-100 mx-1 text-start' 
                             data-testid='skill-text-input'
                             hideEmptyPopup 
                             placeholder='Select skill' 

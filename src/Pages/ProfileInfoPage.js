@@ -17,13 +17,13 @@ class ProfileInfoPage extends React.Component {
                        <h3 data-testid='profile-title'>My Profile</h3>
                        </Col>
                        <Col className= 'text-end mt-1 me-1'>
-                       <Button  title='Edit Profile'  />
+                       <Button  title='Edit Profile' page='ProfilePageEdit'  />
                        </Col>
                    </Row>
                    <Row>
                        <Col className= "text-center" xs={12} lg={4} >
                             <img src= 'ProfilePic.png'
-                                 alt= 'Profile Picture'
+                                 alt= 'Profile'
                                  width={250}/>
                             <h3 data-testid="name-title">Full Name</h3>
                         </Col>
@@ -75,10 +75,6 @@ class ProfileInfoPage extends React.Component {
                    </Col>
                    </Row>
                    </Container>
-
-                  
-
-
                </Container>
             </>
         );
