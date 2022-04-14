@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import Rater from '../Rating/Rating';
-import CategoryDropdown from '../DropdownButton/CategoryDropdown';
+// import CategoryDropdown from '../DropdownButton/CategoryDropdown';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
