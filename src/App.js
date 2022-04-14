@@ -5,7 +5,7 @@ import './App.css';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-//import SearchPage from './Pages/SearchPage';
+import SearchPage from './Pages/SearchPage';
 
 
 
@@ -24,20 +24,14 @@ function App() {
             <Route path='/skillspage'>
               <SkillsPage/>
             </Route>
-            <Route path='/landingform'>
+            <Route path='/searchpage'>
+              <SearchPage />
+            </Route> 
+            <Route path='/'>
               <LandingForm/>
             </Route>
-            {/* <Route path='/searchpage'>
-              <SearchPage />
-            </Route> */}
-            <Route path='/'>
-              <GeneralInfo/>
-              {/* <SearchPage/> */}
-            </Route>
-            
           </Switch>
           </main>
-          
         </Router>
     </div>
   );
