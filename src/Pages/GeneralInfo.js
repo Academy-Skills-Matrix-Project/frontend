@@ -152,20 +152,20 @@ function GeneralInfo(){
 
                             <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
                                 <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Location/Time Zone</Form.Label>
-                                <Form.Select>
-                                    <option></option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </Form.Select>  
-                                <Form.Control 
+                                <Form.Select
                                     name="location"
                                     placeholder=""
                                     value={values.location}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.location}
-                                    isValid={touched.location && !errors.location} />
+                                    isValid={touched.location && !errors.location}
+                                >
+                                    <option></option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </Form.Select>  
                                 <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
                  
                             </Form.Group>  
@@ -226,7 +226,7 @@ function GeneralInfo(){
             <Container className= 'text-center'>
                 <Row>
                     <Col className= 'mb-3'>
-                        <Button title='Continue' data-testid="general-button" type="submit"/>
+                        <Button title='Continue' data-testid="general-button" type="submit" page="GeneralInfo"/>
                     </Col>
                 </Row>
             </Container>
