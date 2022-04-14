@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { MemoryRouter } from 'react-router-dom';
@@ -17,10 +16,12 @@ test('NavHeader.js renders NavHeader', () => {
 
 // Test for responsiveness, <Container> element from react-bootstrap should have fluid property
 test('SearchPage.js is responsive', () => {
-    render(<Router><SearchPage /></Router>);
+    render(
+        <MemoryRouter>
+            <SearchPage />
+        </MemoryRouter>);
 
     const testContainer = screen.getByTestId('container');
-
     expect(testContainer.classList.contains('container-fluid')).toBe(true);
 }); 
 
@@ -42,29 +43,35 @@ test('Components render to Search page', () =>{
 
 // Test for filter categories
 test('Filter categories render to Search page', () =>{
-    render(<MemoryRouter><SearchPage /></MemoryRouter>);
+    render(
+        <MemoryRouter>
+            <SearchPage />
+        </MemoryRouter>);
 
     const filterBy = screen.getByText('Filter by...');
-
     expect(filterBy).toBeInTheDocument();
 });
 
 // Test for submit button
 test('Submit button renders to Search page', () =>{
-    render(<MemoryRouter><SearchPage /></MemoryRouter>);
+    render(
+        <MemoryRouter>
+            <SearchPage />
+        </MemoryRouter>);
 
     const submitButton = screen.getByText('Submit');
-
     expect(submitButton).toBeInTheDocument();
 });
 
 
 // Test for visible My Account button
 test('My Account button is visible', () =>{
-    render(<MemoryRouter><SearchPage /></MemoryRouter>);
+    render(
+        <MemoryRouter>
+            <SearchPage />
+        </MemoryRouter>);
 
     const myAccountButton = screen.getByAltText('MyAccount');
-
     expect(myAccountButton).toBeInTheDocument();
 });
 
@@ -77,16 +84,17 @@ test('Logout button is visible', () => {
     );
 
     const logoutbtn = screen.getByAltText('LogOut');
-
     expect(logoutbtn).toBeInTheDocument();
 });
 
 // Test that Users are rendered in the Search Page
 test('<SearchPageRow /> renders to page at least once', () => {
-    render(<MemoryRouter><SearchPage /></MemoryRouter>);
+    render(
+        <MemoryRouter>
+            <SearchPage />
+        </MemoryRouter>);
 
     const searchPageRow = screen.getByTestId('search-row-container');
-
     expect(searchPageRow.children.length).toBeGreaterThan(0);
 });
 
