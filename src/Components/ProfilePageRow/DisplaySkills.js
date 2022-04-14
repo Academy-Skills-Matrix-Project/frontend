@@ -21,7 +21,7 @@ class DisplaySkills extends Component {
 
                                 />
                              </a>
-                                <p class= 'd-inline'>
+                                <p className= 'd-inline'>
                                      {this.props.skill}
                                 </p>
                         </Col>

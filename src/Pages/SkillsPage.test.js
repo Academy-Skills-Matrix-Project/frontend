@@ -10,7 +10,6 @@ test('NavHeader.js renders NavHeader', () => {
     <MemoryRouter>
         (<NavHeader />
     </MemoryRouter>);
-    render(<NavHeader />);
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
 });

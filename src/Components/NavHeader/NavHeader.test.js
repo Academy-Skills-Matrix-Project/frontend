@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import NavHeader from './NavHeader';
-import BrowserRouter from 'react-router-dom'
 import { MemoryRouter } from 'react-router-dom';
 
 //tests to see if the navbar is rendered to the page by using its test id
