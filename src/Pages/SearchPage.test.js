@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { MemoryRouter } from 'react-router-dom';
