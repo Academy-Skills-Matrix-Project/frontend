@@ -39,21 +39,34 @@ test('Components render to Search page', () =>{
     const searchRowContainer = screen.getByTestId('search-row-container');
     expect(searchRowContainer).toBeInTheDocument();
 });
- 
-// Test filter render
-
 
 // Test for filter categories
+test('Filter categories render to Search page', () =>{
+    render(<MemoryRouter><SearchPage /></MemoryRouter>);
 
+    const filterBy = screen.getByText('Filter by...');
 
-// Test for search bar
-
+    expect(filterBy).toBeInTheDocument();
+});
 
 // Test for submit button
+test('Submit button renders to Search page', () =>{
+    render(<MemoryRouter><SearchPage /></MemoryRouter>);
+
+    const submitButton = screen.getByText('Submit');
+
+    expect(submitButton).toBeInTheDocument();
+});
 
 
-// Test for My Account button in Nav Header
+// Test for visible My Account button
+test('My Account button is visible', () =>{
+    render(<MemoryRouter><SearchPage /></MemoryRouter>);
 
+    const myAccountButton = screen.getByAltText('MyAccount');
+
+    expect(myAccountButton).toBeInTheDocument();
+});
 
 // Test for Logout button in Nav Header
 /*
@@ -66,7 +79,7 @@ test('Logout button is enabled', () => {
 
     const navinheader = await screen.findByTestId('navinheader');
 
-    expect(navinheader.properties.isLogoutEnabled).toBe(true);
+    expect(navinheader.properties.isLogoutEnabl).toBe(true);
 });
 */
 
@@ -78,19 +91,5 @@ test('<SearchPageRow /> renders to page at least once', () => {
     const searchPageRow = screen.getByTestId('search-row-container');
 
     expect(searchPageRow.children.length).toBeGreaterThan(0);
-})
-
-// Test for User's name
-
-
-// Test for User's skill
-
-
-// Test for User's language
-
-
-// Test for User's job title
-
-
-// Test for User's location/time zone
+});
 

@@ -29,7 +29,7 @@ describe('SkillsRow.js', () => {test("User should be able to click the delete bu
 });
 
 //'I am proficent in...' text test
-describe('SkillsRow.js', () => {test("User should see test saying 'I am proficent in...'", () => {
+describe('SkillsRow.js', () => {test("User should see text saying 'I am proficent in...'", () => {
     render(<SkillRow />);
     const logo = screen.getByText('I am proficient in...');
     expect(logo).toBeInTheDocument();
