@@ -1,11 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import SearchPage from './SearchPage';
 
 // Test for the NavHeader component
 test('NavHeader.js renders NavHeader', () => {
-    render(<NavHeader />);
+    render(
+        <Router> {/* Added <Router> because of "invariant failed: You should not use <NavLink> outside of <Router>" error when testing */}
+            <NavHeader />
+        </Router>
+    );
+
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
 });
@@ -18,7 +24,7 @@ test('SearchPage.js is responsive', () => {
     const col = screen.getAllByTestId('col');
 
     // Check that <Col> elements have sm property
-    expect(col[0]).toHaveBeenCalledWith(props, 'sm');
+    expect(col[0]).toHaveAttribute('sm');
 }); 
     
 
