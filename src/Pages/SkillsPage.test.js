@@ -3,9 +3,12 @@ import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import SkillsPage from './SkillsPage';
 import SkillRow from '../Components/SkillPageRow/SkillRow';
+import {MemoryRouter} from 'react-router-dom';
 
 test('NavHeader.js renders NavHeader', () => {
-    render(<NavHeader />);
+    render(<MemoryRouter>
+        <NavHeader />
+    </MemoryRouter>);
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
 });
@@ -35,7 +38,7 @@ describe('SkillsPage.js', () => {test("User should see a heading that reads 'Lis
 });
 
 // User should see a heading that reads 'Personal Information'
-describe('SkillsPage.js', () => {test("User should see a heading that reads 'Personal Information'", () => {
+describe('SkillsPage', () => {test("User should see a heading that reads 'Personal Information'", () => {
     render(<SkillsPage />);
     const personalInfo = screen.getByText(/Personal Information/i);
     expect(personalInfo).toBeInTheDocument();
