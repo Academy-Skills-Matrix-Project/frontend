@@ -10,7 +10,7 @@ import DropdownList from 'react-widgets/DropdownList'
 class SkillRow extends Component {
     render() {
         return (
-            <>
+    
                 <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
 
                       {/* Renders image for red 'X' button in top left of item  */}
@@ -31,13 +31,13 @@ class SkillRow extends Component {
                         {/* Renders the category dropdown menu and text field */}
                         <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
                             <DropdownList
-                            className='textfield w-100 mx-1'
+                            className='textfield w-100 mx-1 text-start'
                             filter={false}
                             placeholder='Category'
                             data={['Soft', 'Technical', 'Transferable']}
                             />
                             <ComboBox 
-                            className='textfield w-100 mx-1' 
+                            className='textfield w-100 mx-1 text-start' 
                             data-testid='skill-text-input'
                             hideEmptyPopup 
                             placeholder='Select skill' 
@@ -52,7 +52,7 @@ class SkillRow extends Component {
                         </Col>       
                     </Row>
                 </Container>
-            </>
+            
         );
     }
 }

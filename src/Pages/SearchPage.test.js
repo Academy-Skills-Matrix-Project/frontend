@@ -2,16 +2,15 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
-import SearchPage from './SearchPage';
+import { MemoryRouter } from 'react-router-dom';
+import SearchPage from './SearchPage'
 
 // Test for the NavHeader component
 test('NavHeader.js renders NavHeader', () => {
     render(
-        <Router> {/* Added <Router> because of "invariant failed: You should not use <NavLink> outside of <Router>" error when testing */}
+        <MemoryRouter>
             <NavHeader />
-        </Router>
-    );
-
+        </MemoryRouter>);
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
 });
@@ -24,6 +23,38 @@ test('SearchPage.js is responsive', () => {
 
     expect(testContainer.classList.contains('container-fluid')).toBe(true);
 }); 
+
+test('Components render to Search page', () =>{
+    render(
+        <MemoryRouter>
+            <SearchPage/>
+        </MemoryRouter>
+    );
+    const header = screen.getByText('Search and Filter Co-Workers');
+    expect(header).toBeInTheDocument();
+    const dropdown = screen.getByTestId('dropdown');
+    expect(dropdown).toBeInTheDocument();
+    const combobox = screen.getByTestId('combobox');
+    expect(combobox).toBeInTheDocument();
+    const searchRowContainer = screen.getByTestId('search-row-container');
+    expect(searchRowContainer).toBeInTheDocument();
+});
+
+
+// Test that <Col> elements have sm property
+// test('SearchPage.js is responsive', () => {
+
+//     render(
+//     <MemoryRouter>
+//         <SearchPage />
+//     </MemoryRouter>);
+
+//     // Get <Col> elements
+//     const col = screen.getAllByTestId('col');
+
+//     // Check that <Col> elements have sm property
+//     expect(col[0]).toHaveBeenCalledWith(props, 'sm');
+// });
     
 
 // Test filter render
