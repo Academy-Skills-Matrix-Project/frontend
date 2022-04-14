@@ -1,7 +1,6 @@
 import React from 'react';
 import LandingForm from './Pages/LandingForm';
 import './App.css';
-//import NavHeader from './Components/NavHeader/NavHeader';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
 import LanguagesPage from './Pages/LanguagesPage';
@@ -13,7 +12,7 @@ import ProfileInfoPage from './Pages/ProfileInfoPage';
 function App() {
   return (
     <div className='App'>
-    <Router>
+   <Router>
       <main>
       <Switch>
         <Route path='/landingform'>

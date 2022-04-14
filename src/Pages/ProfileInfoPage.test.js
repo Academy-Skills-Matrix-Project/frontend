@@ -221,12 +221,12 @@ describe('ProfileInfoPg', () => {test('img must have src = "/ProfilePic.png" and
     });
 
     
-    test('renders Banner onto page', () => {
-        render(
-            <MemoryRouter>
-                <ProfileInfoPage />
-            </MemoryRouter>);
-        const banner = screen.getByTestId("banner");
-        expect(banner).toBeInTheDocument();
-    });
+test('renders Banner onto page', () => {
+    render(
+        <MemoryRouter>
+            <ProfileInfoPage />
+        </MemoryRouter>);
+    const banner = screen.getByTestId("banner");
+    expect(banner).toBeInTheDocument();
+});
       
