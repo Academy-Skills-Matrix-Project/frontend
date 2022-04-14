@@ -7,14 +7,15 @@ class SearchPageRow extends Component{
         return(
             <Container 
             fluid
-            style={{maxHeight:100}}
-            hoverable  
+            style={{maxHeight:100, maxWidth:900}}
+            hoverable='true' 
+            data-testid='search-row' 
             className="bg-light border border-2 rounded border shadow-sm my-3 position-relative justify-content-center" >
 
                     <a><img
-                    width={40} 
+                    width={55} 
                     className="position-absolute start-0 top-50 translate-middle 
-                    border border-2 rounded-circle bg-light w-auto " src="MyAccount.png" />
+                    border border-2 rounded-circle bg-light  " src="MyAccount.png" />
                     </a>
 
                     <a><img 
@@ -22,7 +23,7 @@ class SearchPageRow extends Component{
                     width={22}
                     className="position-absolute end-0 top-0"
                     /></a>
-                <Row  className="justify-content-center align-items-center mx-1" >
+                <Row  className=" justify-content-center align-items-center mx-1" >
                     <Col lg={3} xs='auto' className="w-auto">
                         <Row lg={12} xs={7}>
                         <Form.Label className="fs-5 fw-bold">First name</Form.Label>
@@ -31,33 +32,20 @@ class SearchPageRow extends Component{
                         <Form.Label className="fs-5 fw-bold">Last name</Form.Label>
                         </Row>     
                     </Col>
-                    <Col lg={3} xs='auto' className="w-auto">
-                        <Row xs='auto' className="align-items-center">
-                            <Col xs='auto' >
-                            <Form.Label className="fs-6">Top Skill: </Form.Label>
-                            </Col>
-                            <Col xs='auto'>
-                            <Form.Label className="fs-6">Communication</Form.Label>
-                            </Col>
+                    <Col lg={3} xs='auto' className="w-auto text-start">
+                        <Row lg={12}>
+                            <Form.Label className="fs-6"><strong>Top Skill: </strong> Communication</Form.Label>
                         </Row>
-                        <Row xs='auto' className="text-right">
-                            <Col xs='auto' className="">
-                            <Form.Label className="fs-6">Top Language: </Form.Label>
-                            </Col>
-                            <Col xs='auto' className="">
-                            <Form.Label className="fs-6">React + bootstrap</Form.Label>
-                            </Col>
+                        <Row lg={12}>
+                            <Form.Label className="fs-6"><strong>Top Language: </strong>React + bootstrap</Form.Label>
                         </Row>
                     </Col> 
-                    {/* <Col className="">
-                        <Form.Label className="fs-5">Top Language: React + bootstrap</Form.Label>
-                    </Col> */}
-                    <Col  lg={3} className="d-none d-lg-block w-auto">
+                    <Col  lg={3} className="d-none d-lg-block w-auto text-start">
                         <Row lg={12}>
-                        <Form.Label className="fs-6">Job Title: Junior Application Developer </Form.Label>
+                            <Form.Label className="fs-6"><strong>Job Title: </strong>Junior Application Developer </Form.Label>
                         </Row>
                         <Row lg={12}>
-                        <Form.Label className="fs-6">Location / Time Zone: Atlanta, Georgia (EST)</Form.Label>
+                            <Form.Label className="fs-6"><strong>Location / Time Zone: </strong>Atlanta, Georgia (EST)</Form.Label>
                         </Row>
                         
                     </Col>

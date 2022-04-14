@@ -37,21 +37,24 @@ class SearchPage extends React.Component {
                     </Row>
                     
                     <Container className='align-items-center justify-content-center d-flex w-75 p-2'>
-                        <Row className='justify-content-center align-items-center w-100'>
-                            <Col lg={{span:4, maxWidth:'100px'}} md={4} sm={6} xs={12} className='' >
+                        <Row className='align-items-center justify-content-center w-100'>
+                            <Col xl={4} lg={6} xs={12} className='d-flex justify-content-center' >
                                 <DropdownList
-                                className='m-1'
+                                style={{maxWidth:400}}
+                                className='m-1 text-start'
                                 placeholder='Filter by...'
                                 filter={false}
                                 onSelect={value => this.setFilterByValue(value)}
                                 data={['Name', 'Skill', 'Language', 'Job Title', 'Location/Time Zone']} />    
                             </Col>
-                            <Col md={4} sm={6} xs={12} className=''>
+                            <Col xl={4} lg={6} xs={12} className='d-flex justify-content-center '>
                                 <ComboBox 
-                                className='w-100 m-1'
-                                placeholder={`Search for ${this.state.filterByValue}`}/>
+                                style={{maxWidth:400}}
+                                className='w-100 m-1 text-start'
+                                placeholder={`Search for ${this.state.filterByValue}`}
+                                data={['React + Bootstrap', 'Java', 'Python', 'C', 'C++', 'C#', 'Ruby', 'Node', 'Go', 'HTML', 'CSS']}/>
                             </Col>
-                            <Col md={4} sm={12} xs={12} className='text-right w-auto'>
+                            <Col xl={4} lg={12} xs={12} className='w-auto'>
                                 <Button
                                 className="btn btn-danger m-2" 
                                 type="submit" 

@@ -5,7 +5,7 @@ import SkillRow from './SkillRow';
 //Test to see if the container for the skill page components is rendered
 describe('SkillsRow.js', () => {test("User should see a container for the components of the skill page", () => {
     render(<SkillRow />);
-    const logo = screen.getByTestId('skill-row-container');
+    const logo = screen.getByTestId('skill-row');
     expect(logo).toBeInTheDocument();
 });
 });

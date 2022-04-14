@@ -35,7 +35,7 @@ class SkillsPage extends React.Component {
 
                     {/* Renders 'Continue' button */}
                     <Container className='text-center mt-5'>
-                        <AppButton title='Continue' />
+                        <AppButton title='Continue' page='SkillsPage' />
                     </Container>
                     
                 </Container>
