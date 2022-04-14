@@ -10,28 +10,33 @@ class DisplaySkills extends Component {
     render() {
         return (
             <>
-                <Container fluid>
-                   <Row className='text-center' > 
-                        <Col lg={3} md={12} xs ={12}>
+                <Container  >
+                   <Row className='text-start me-5 ' data-testid='display-skills' > 
+                        <Col lg={2} md={4} sm ={4} xs={3} className="mb-3 ">
+                           
                             <a href='/'>
                                 <img
                                 src='EditPencil.png'
                                 alt='Pencil'
                                 width={50}
+                                className= ""
 
                                 />
                              </a>
-                                <p class= 'd-inline'>
+                        </Col>     
+                             <Col lg={6} md={4} sm={4} xs={6} className='mt-2'>
+                                <h5 className= '' >
                                      {this.props.skill}
-                                </p>
-                        </Col>
-                        <Col lg={3} md={12} xs={12} className='my-auto'>
+                                </h5>
+                                </Col>
+                        <Col lg={4} md={4} sm={4} xs={12} className=''>
                             <Rating /> 
                         </Col>
 
                     </Row>
                 </Container>
             </>
+            
         )
     }
 }

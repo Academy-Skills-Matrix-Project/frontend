@@ -1,6 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent} from "@testing-library/react";
 import GeneralInfo from '../Pages/GeneralInfo';
+import { MemoryRouter } from 'react-router-dom';
 
 
 
@@ -193,7 +194,12 @@ test('about text area should be in the document', () =>{
 
 // continue button is clickable
 test('continue button can be clicked', () => {
-    render(<GeneralInfo />);
+   
+    render(
+        <MemoryRouter>
+        <GeneralInfo />
+        </MemoryRouter>);
+    
     const button = screen.getByTestId('button');
     fireEvent.click(button);
     expect(button).toBeEnabled();

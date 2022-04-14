@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import ProfileInfoPage from '../Pages/ProfileInfoPage';
+import { MemoryRouter } from 'react-router-dom';
 
 test('NavHeader.js renders NavHeader', () => {
     render(<ProfileInfoPage />);
@@ -37,7 +38,10 @@ test('the edit button should be rendered', () => {
     }) 
 
 test('edit profile button can be clicked', () => {
-        render(<ProfileInfoPage />);
+        render(
+       <MemoryRouter>
+        <ProfileInfoPage />
+       </MemoryRouter>);
         const button = screen.getByTestId('button');
         fireEvent.click(button);
         expect(button).toBeEnabled();
@@ -143,7 +147,7 @@ test('full name heading should have the text Full Name', () =>{
 
 describe('ProfileInfoPg', () => {test('img must have src = "/ProfilePic.png" and alt = "Profile Picture"', () => {
         render(<ProfileInfoPage/>);
-        const profilePic = screen.getByAltText('Profile Picture');
+        const profilePic = screen.getByAltText('Profile');
         expect(profilePic).toHaveAttribute('src', 'ProfilePic.png');
         expect(profilePic).toHaveAttribute('alt', 'Profile');
     });
