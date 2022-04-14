@@ -39,24 +39,7 @@ test('Components render to Search page', () =>{
     const searchRowContainer = screen.getByTestId('search-row-container');
     expect(searchRowContainer).toBeInTheDocument();
 });
-
-
-// Test that <Col> elements have sm property
-// test('SearchPage.js is responsive', () => {
-
-//     render(
-//     <MemoryRouter>
-//         <SearchPage />
-//     </MemoryRouter>);
-
-//     // Get <Col> elements
-//     const col = screen.getAllByTestId('col');
-
-//     // Check that <Col> elements have sm property
-//     expect(col[0]).toHaveBeenCalledWith(props, 'sm');
-// });
-    
-
+ 
 // Test filter render
 
 
