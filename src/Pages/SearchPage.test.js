@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { MemoryRouter } from 'react-router-dom';
-import SearchPage from './SearchPage'
+import SearchPage from './SearchPage';
 
 // Test for the NavHeader component
 test('NavHeader.js renders NavHeader', () => {
@@ -49,9 +49,6 @@ test('Components render to Search page', () =>{
 // Test for search bar
 
 
-// Test search bar input field
-
-
 // Test for submit button
 
 
@@ -59,13 +56,29 @@ test('Components render to Search page', () =>{
 
 
 // Test for Logout button in Nav Header
+/*
+test('Logout button is enabled', () => {
+    render(
+        <MemoryRouter>
+            <NavHeader />
+        </MemoryRouter>
+    );
 
+    const navinheader = await screen.findByTestId('navinheader');
 
-// Test for header that reads "Search and Filter Co-Workers"
+    expect(navinheader.properties.isLogoutEnabled).toBe(true);
+});
+*/
 
 
 // Test that Users are rendered in the Search Page
+test('<SearchPageRow /> renders to page at least once', () => {
+    render(<MemoryRouter><SearchPage /></MemoryRouter>);
 
+    const searchPageRow = screen.getByTestId('search-row-container');
+
+    expect(searchPageRow.children.length).toBeGreaterThan(0);
+})
 
 // Test for User's name
 

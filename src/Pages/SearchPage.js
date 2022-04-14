@@ -30,7 +30,7 @@ class SearchPage extends React.Component {
     render() {
         return (
             <>
-                <NavHeader isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} />
+                <NavHeader data-testid='navinheader' isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} />
                 <Container data-testid='container' fluid className='justify-content-center'>
                     <Row className='text-center'>
                         <h3>Search and Filter Co-Workers</h3>
