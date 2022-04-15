@@ -6,9 +6,8 @@ import { MemoryRouter } from 'react-router-dom';
 import SkillRow from '../Components//Rows/SkillRow';
 
 test('NavHeader.js renders NavHeader', () => {
-    render(
-    <MemoryRouter>
-        (<NavHeader />
+    render(<MemoryRouter>
+        <NavHeader />
     </MemoryRouter>);
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
@@ -27,18 +26,19 @@ describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled
 
 // <SkillRows /> components render to the page
 describe('SkillRow.js', () => {test('<SkillRows /> components render to the page', () => {
-    render(<SkillRow/>);
+    render(<MemoryRouter>
+        <SkillRow />
+    </MemoryRouter>);
     const skillRow = screen.getByTestId('skill-row');
     expect(skillRow).toBeInTheDocument();
-});
+})
 });
 
 // User should see a heading that reads List and Rank your Work Related Skills
 describe('SkillsPage.js', () => {test("User should see a heading that reads 'List and Rank your Work Related Skills'", () => {
-    render(
-        <MemoryRouter>
-            <SkillsPage />
-        </MemoryRouter>);
+    render(<MemoryRouter>
+        <SkillsPage />
+    </MemoryRouter>);
     const skillsHeading = screen.getByText(/List and Rank your Work Related Skills/i);
     expect(skillsHeading).toBeInTheDocument();
 });
@@ -50,6 +50,7 @@ describe('SkillsPage.js', () => {test("User should see a heading that reads 'Per
         <MemoryRouter>
             <SkillsPage />
         </MemoryRouter>);
+
     const personalInfo = screen.getByText(/Personal Information/i);
     expect(personalInfo).toBeInTheDocument();
 });
