@@ -217,7 +217,6 @@ test('img must have src = "/ProfilePic.png" and alt = "Profile"', () => {
         expect(profilePic).toHaveAttribute('src', 'ProfilePic.png');
         expect(profilePic).toHaveAttribute('alt', 'Profile');
     });
-    });
 
 test('renders Banner onto page', () => {
     render(
