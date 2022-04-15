@@ -60,8 +60,7 @@ function GeneralInfo(){
                 errors, 
             }) => (
                 <Container>
-                    <Form noValidate onSubmit={handleSubmit}>  
-                    {console.log(values)}                 
+                    <Form noValidate onSubmit={handleSubmit}>                 
                         <Row className="mb-3">
                             <Col xs={12} sm={12} md={4} className="mb-sm-4 text-center">
                             <h3>Name</h3>
