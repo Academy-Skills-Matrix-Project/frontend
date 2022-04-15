@@ -1,12 +1,20 @@
 import React from 'react';
-import { Form, Container, Row, Col } from 'react-bootstrap';
-import './LandingForm';
-import AppButton from '../Button/Button';
-
+import { Form, Container, Row, Col,} from 'react-bootstrap';
+//import './LandingForm';
+import AppButton from '../Components/Button/Button';
+import { Link, Route } from 'react-router-dom';
+import NavHeader from '../Components/NavHeader/NavHeader';
+import Banner from '../Components/Banner/Banner';
 
 
 function LandingForm(){
+
+    
+
     return (
+        <>
+        <NavHeader isLogoutEnabled={false} isSearchEnabled={false} isMyAccountEnabled={false}/>
+        <Banner title='Welcome to the Skills Matrix' text='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh cras pulvinar mattis nunc sed blandit. Morbi tristique senectus et netus et malesuada fames ac. Sodales neque sodales ut etiam sit amet nisl purus in. Posuere ac ut consequat semper viverra nam libero justo. Nunc mattis enim ut tellus elementum sagittis vitae et. A lacus vestibulum sed arcu non odio euismod lacinia at. Amet volutpat consequat mauris nunc congue. Maecenas ultricies mi eget mauris pharetra et. Potenti nullam ac tortor vitae purus faucibus ornare suspendisse.'/>
         <Container className="mt-5">
             <Row>
                 <Col>
@@ -36,16 +44,22 @@ function LandingForm(){
             {/* button row */}
             <Row className="text-center">
                 <Container>
-                    <AppButton title="Sign-in"/>
+                    <AppButton title="Sign-in" page='LandingPage'/>
                 </Container>
             </Row>
             {/* Forgot Password */}
             <Row className="mt-3">
                 <Col className='text-center'>
-                    <a href="/" className="fs-5 fw-bold fst-italic text-center text-decoration-none">Forgot Password?</a>
+                    <Link to='/forgotpassword' className="fs-5 fw-bold fst-italic text-center text-decoration-none">Forgot Password?</Link>
+                    <Route path='/forgotpassword' component={() => {
+                        window.location.replace('https://softwareone.service-now.com/sp/?id=it_index');
+                        return null;
+                    }} />
                 </Col>
             </Row>
         </Container>
+        
+        </>
     )
 }
 
