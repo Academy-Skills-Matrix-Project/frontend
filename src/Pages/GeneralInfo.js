@@ -7,15 +7,14 @@ import * as yup from 'yup';
 
 
 let schema = yup.object().shape({
-    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First name is letters only"),  
+    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First name is letters only"),    
     lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last name is letters only"),
-    jobTitle: yup.string().required("Job title is required").matches(/^[a-zA-Z]+$/g, "Job title is letters only"),
+    jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job title is letters only"),
     department: yup.string().required("Department is required").matches(/^[a-zA-Z]+$/g, "Department is letters only"),
     team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
-    location: yup.string().required("A location must be required"),
+    location: yup.string().required("Must choose a location/time zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
-    mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not vaild format"),
-    
+    mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),    
 })
 
 
@@ -60,8 +59,7 @@ function GeneralInfo(){
                 errors, 
             }) => (
                 <Container>
-                    <Form noValidate onSubmit={handleSubmit}>  
-                    {console.log(values)}                 
+                    <Form noValidate onSubmit={handleSubmit}>                 
                         <Row className="mb-3">
                             <Col xs={12} sm={12} md={4} className="mb-sm-4 text-center">
                             <h3>Name</h3>
@@ -154,13 +152,15 @@ function GeneralInfo(){
 
                             <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
                                 <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Location/Time Zone</Form.Label>
-                                <Form.Select  name="location"
+                                <Form.Select
+                                    name="location"
                                     placeholder=""
                                     value={values.location}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.location}
-                                    isValid={touched.location && !errors.location} >
+                                    isValid={touched.location && !errors.location}
+                                >
                                     <option></option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
