@@ -4,9 +4,10 @@ import NavHeader from './Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 
 test('renders learn react link', () => {
-  render(<MemoryRouter>
-            <NavHeader />
-          </MemoryRouter>);
+  render(
+    <MemoryRouter>
+        <NavHeader />
+    </MemoryRouter>);
   const testNavbarText = screen.getByTestId('navbar');
   expect(testNavbarText).toBeInTheDocument();
 });

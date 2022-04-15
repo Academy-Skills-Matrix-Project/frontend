@@ -18,7 +18,7 @@ class ProfileInfoPage extends React.Component {
                        <h3 data-testid='profile-title'>My Profile</h3>
                        </Col>
                        <Col className= 'text-end mt-1 me-1'>
-                       <Button  title='Edit Profile'  />
+                       <Button  title='Edit Profile' page='ProfilePageEdit'  />
                        </Col>
                    </Row>
                    <Row>
@@ -75,10 +75,6 @@ class ProfileInfoPage extends React.Component {
                    </Col>
                    </Row>
                    </Container>
-
-                  
-
-
                </Container>
             </>
         );

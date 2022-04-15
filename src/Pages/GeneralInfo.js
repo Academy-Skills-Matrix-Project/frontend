@@ -23,7 +23,7 @@ function GeneralInfo(){
     return (
         <div>
             <NavHeader isLogoutEnabled={true}/>
-           <Container fluid data-testid="general-info" className="mb-5 mt-3">
+            <Container fluid data-testid="general-info" className="mb-5 mt-3">
             <Row>
                     <Col>
                         <h1 className= 'text-start h2 fw-bold'>Personal Information</h1>
@@ -179,6 +179,7 @@ function GeneralInfo(){
                             <Form.Group as={Col} controlId="formGridEmail" className="text-start" xs={6} sm={6} md={4}>
                                 <Form.Label data-testid='email-Label' className= 'redAsterisks'>Email</Form.Label>
                                 <Form.Control 
+                                    
                                     type="email" 
                                     name="email"
                                     placeholder="@softwareone.com"

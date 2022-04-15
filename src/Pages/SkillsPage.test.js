@@ -2,8 +2,8 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import SkillsPage from './SkillsPage';
-import SkillRow from '../Components/SkillPageRow/SkillRow';
-import {MemoryRouter} from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
+import SkillRow from '../Components//Rows/SkillRow';
 
 test('NavHeader.js renders NavHeader', () => {
     render(<MemoryRouter>
@@ -15,10 +15,11 @@ test('NavHeader.js renders NavHeader', () => {
 
 // Sign-out icon appears when isLogoutEnabled is true
 describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled is true', () => {
-    render(<MemoryRouter>
-    <NavHeader isLogoutEnabled={true} />
-    </MemoryRouter>);
-    const signOut = screen.getByAltText('Logout');
+    render(
+        <MemoryRouter>
+            <NavHeader isLogoutEnabled={true} />
+        </MemoryRouter>);
+    const signOut = screen.getByAltText('LogOut');
     expect(signOut).toBeInTheDocument();
 });
 });
@@ -44,10 +45,12 @@ describe('SkillsPage.js', () => {test("User should see a heading that reads 'Lis
 });
 
 // User should see a heading that reads 'Personal Information'
-describe('SkillsPage', () => {test("User should see a heading that reads 'Personal Information'", () => {
-    render(<MemoryRouter>
-        <SkillsPage />
-    </MemoryRouter>);
+describe('SkillsPage.js', () => {test("User should see a heading that reads 'Personal Information'", () => {
+    render(
+        <MemoryRouter>
+            <SkillsPage />
+        </MemoryRouter>);
+
     const personalInfo = screen.getByText(/Personal Information/i);
     expect(personalInfo).toBeInTheDocument();
 });

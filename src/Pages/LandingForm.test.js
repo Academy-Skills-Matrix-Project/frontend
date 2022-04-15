@@ -2,11 +2,12 @@ import React from 'react';
 import { render, screen} from '@testing-library/react';
 import LandingForm from './LandingForm';
 import NavHeader from '../Components/NavHeader/NavHeader';
-import {MemoryRouter} from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 // Test for Form Component Render
 test('Sign-in form should be rendered', () => {
-    render(<MemoryRouter>
+    render(
+        <MemoryRouter>
             <LandingForm />
         </MemoryRouter>);
 
@@ -19,7 +20,8 @@ test('Sign-in form should be rendered', () => {
 
 // Test for Form placeholder text
 test('Form text inputs should have placeholder text Email and Enter Password', () => {
-    render(<MemoryRouter>
+    render(
+        <MemoryRouter>
             <LandingForm />
         </MemoryRouter>);
 
@@ -32,7 +34,8 @@ test('Form text inputs should have placeholder text Email and Enter Password', (
 
 //Form heading test
 test('For should have heading text Sign in', () => {
-    render(<MemoryRouter>
+    render(
+        <MemoryRouter>
             <LandingForm />
         </MemoryRouter>);
     const signInLabel = screen.getByText('Sign in');
@@ -42,7 +45,8 @@ test('For should have heading text Sign in', () => {
 
 //Form labels text
 test('User should see form labels Email and Enter Password', () => {
-    render(<MemoryRouter>
+    render(
+        <MemoryRouter>
             <LandingForm />
         </MemoryRouter>);
     const email = screen.getByTestId('email-label');
@@ -54,9 +58,10 @@ test('User should see form labels Email and Enter Password', () => {
 
 //SWO Logo in navbar test
 describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and alt = "SWO Logo"', () => {
-    render(<MemoryRouter>
-        <NavHeader />
-    </MemoryRouter>);
+    render(
+        <MemoryRouter>
+            <NavHeader />
+        </MemoryRouter>);
     const logo = screen.getByTestId('navbar-swo-logo');
     expect(logo).toHaveAttribute('src', 'SWO_logo.png');
     expect(logo).toHaveAttribute('alt', 'SWO Logo');
@@ -65,7 +70,8 @@ describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and a
 
 // Forgot Password link test
 describe('LandingForm.js', () => {test('User should see forgot password link', () => {
-    render(<MemoryRouter>
+    render(
+        <MemoryRouter>
             <LandingForm />
         </MemoryRouter>);
     const forgotPasswordLink = screen.getByText(/Forgot Password?/i);
