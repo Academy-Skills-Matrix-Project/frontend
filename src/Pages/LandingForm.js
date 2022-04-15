@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Container, Row, Col,} from 'react-bootstrap';
-//import './LandingForm';
+import './LandingForm';
 import AppButton from '../Components/Button/Button';
 import { Link, Route } from 'react-router-dom';
 import NavHeader from '../Components/NavHeader/NavHeader';
