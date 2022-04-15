@@ -14,8 +14,6 @@ class NavHeader extends Component {
                 isMyAccountEnabled: props.isMyAccountEnabled,
             }
         };
-
-
         //renders Navbar
     render() {
          return(
@@ -33,13 +31,11 @@ class NavHeader extends Component {
                         {this.state.isMyAccountEnabled && 
                         <NavLink className='nav-link text-black p-2' to='/profilepage'>
                             <img className='nav-item' src='MyAccount.png'
-                            width={30} alt= 'MyAccount' />  Account</NavLink>}
-                    
+                            width={30} alt= 'MyAccount' />  Account</NavLink>}  
                         {this.state.isSearchEnabled && 
                         <NavLink className='nav-link text-black p-2' to='/searchpage'>
                            <img className='nav-item' src='Search.png' 
-                            width={30} alt= 'Search'/>  Search</NavLink>}
-                    
+                            width={30} alt= 'Search'/>  Search</NavLink>}                    
                         {this.state.isLogoutEnabled &&
                         <NavLink className=' nav-link text-black p-2' to="/" >
                             <img className='nav-item' src='LogOut.png'

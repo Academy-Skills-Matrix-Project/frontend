@@ -5,9 +5,8 @@ import { MemoryRouter } from 'react-router-dom';
 import NavHeader from '../Components/NavHeader/NavHeader'
 
 test('NavHeader.js renders NavHeader', () => {
-    render(
-        <MemoryRouter>
-            <NavHeader />
+    render(<MemoryRouter>
+        <ProfileInfoPage />
         </MemoryRouter>);
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
@@ -209,7 +208,7 @@ test('full name heading should have the text Full Name', () =>{
 })
 
 
-describe('ProfileInfoPg', () => {test('img must have src = "/ProfilePic.png" and alt = "Profile Picture"', () => {
+test('img must have src = "/ProfilePic.png" and alt = "Profile"', () => {
     render(
         <MemoryRouter>
             <ProfileInfoPage />
@@ -220,7 +219,6 @@ describe('ProfileInfoPg', () => {test('img must have src = "/ProfilePic.png" and
     });
     });
 
-    
 test('renders Banner onto page', () => {
     render(
         <MemoryRouter>

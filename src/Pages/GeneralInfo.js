@@ -14,8 +14,7 @@ let schema = yup.object().shape({
     team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
     location: yup.string().required("Must choose a location/time zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
-    mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),
-    
+    mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),    
 })
 
 

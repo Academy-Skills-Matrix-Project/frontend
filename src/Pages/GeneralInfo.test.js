@@ -5,6 +5,7 @@ import { MemoryRouter } from "react-router-dom";
 
 
 
+
 //test to see if general information page is rendered
 test('general page should be in the DOM', () => {
     render(
