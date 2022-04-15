@@ -1,8 +1,7 @@
 import React from 'react';
 import { Form, Container, Row, Col } from 'react-bootstrap';
 import './LandingForm';
-import AppButton from '../Button/Button';
-
+import AppButton from '../Components/Button/Button';
 
 
 function LandingForm(){

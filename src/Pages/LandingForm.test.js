@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen} from '@testing-library/react';
 import LandingForm from './LandingForm';
-import NavHeader from '../NavHeader/NavHeader';
+import NavHeader from '../Components/NavHeader/NavHeader';
 
 // Test for Form Component Render
 test('Sign-in form should be rendered', () => {

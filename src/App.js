@@ -1,6 +1,6 @@
 import React from 'react';
-import LandingForm from './Components/LandingForm/LandingForm';
 import './App.css';
+import LandingForm from './Pages/LandingForm';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
 import ProfileInfoPage from './Pages/ProfileInfoPage';
