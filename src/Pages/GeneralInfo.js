@@ -181,6 +181,7 @@ function GeneralInfo(){
                             <Form.Group as={Col} controlId="formGridEmail" className="text-start" xs={6} sm={6} md={4}>
                                 <Form.Label data-testid='email-Label' className= 'redAsterisks'>Email</Form.Label>
                                 <Form.Control 
+                                    
                                     type="email" 
                                     name="email"
                                     placeholder="@softwareone.com"
