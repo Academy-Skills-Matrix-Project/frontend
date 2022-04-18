@@ -27,7 +27,7 @@ function GeneralInfo(){
             <Container fluid data-testid="general-info" className="mb-5 mt-3">
             <Row>
                     <Col>
-                        <h1 className= 'text-start h2 fw-bold'>Personal Information</h1>
+                        <h2 className= 'text-start fw-bold'>Personal Information</h2>
                     </Col>
                 </Row>
             </Container>

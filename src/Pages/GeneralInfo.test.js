@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent} from "@testing-library/react";
 import GeneralInfo from '../Pages/GeneralInfo';
-import { MemoryRouter } from "react-router-dom";
+import {MemoryRouter} from 'react-router-dom';
+
 
 
 

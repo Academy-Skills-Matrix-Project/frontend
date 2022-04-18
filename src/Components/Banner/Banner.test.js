@@ -8,4 +8,3 @@ import Banner from './Banner';
    const banner = screen.getByTestId('banner');
    expect(banner).toBeInTheDocument();
  });
-
