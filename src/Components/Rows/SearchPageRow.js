@@ -1,29 +1,5 @@
-import React, {Component} from "react";
+import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-
-const userList = [
-    {
-        id: 1,
-        firstname: "Jonathan",
-        lastname: 'Amaya',
-        topSkill: 'React',
-        topLanguage: 'Java',
-        location: 'Atlanta, GA',
-        timeZone: 'EST',
-        jotTitle: 'Application Developer'
-    },
-    {
-        id: 2,
-        firstname: "Tom",
-        lastname: 'Brady',
-        topSkill: 'Communication',
-        topLanguage: 'Python',
-        location: 'Tampa, Florida',
-        timeZone: 'EST',
-        jotTitle: 'Consultant'
-    },
-
-];
 
 export default function SearchPageRow() {
 

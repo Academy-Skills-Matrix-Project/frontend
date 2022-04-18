@@ -1,5 +1,4 @@
-import React, {useState} from 'react';
-import SkillRow from '../Rows/SkillRow';
+import React from 'react';
 
 export default function CircleButton(props){
 
