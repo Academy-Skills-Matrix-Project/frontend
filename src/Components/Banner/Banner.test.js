@@ -7,4 +7,8 @@ import Banner from './Banner';
    render(<Banner/>);
    const banner = screen.getByTestId('banner');
    expect(banner).toBeInTheDocument();
+<<<<<<< HEAD
  });
+=======
+ });
+>>>>>>> 835243a580618005f4cb2f5261001775f8f414f3

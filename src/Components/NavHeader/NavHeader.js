@@ -31,7 +31,8 @@ class NavHeader extends Component {
                         {this.state.isMyAccountEnabled && 
                         <NavLink className='nav-link text-black p-2' to='/profilepage'>
                             <img className='nav-item' src='MyAccount.png'
-                            width={30} alt= 'MyAccount' />  Account</NavLink>}  
+                            width={30} alt= 'MyAccount' />  Account</NavLink>}
+                    
                         {this.state.isSearchEnabled && 
                         <NavLink className='nav-link text-black p-2' to='/searchpage'>
                            <img className='nav-item' src='Search.png' 

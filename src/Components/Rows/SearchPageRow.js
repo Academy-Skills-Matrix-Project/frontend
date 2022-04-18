@@ -1,8 +1,32 @@
 import React, {Component} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 
-class SearchPageRow extends Component{
-    render(){
+const userList = [
+    {
+        id: 1,
+        firstname: "Jonathan",
+        lastname: 'Amaya',
+        topSkill: 'React',
+        topLanguage: 'Java',
+        location: 'Atlanta, GA',
+        timeZone: 'EST',
+        jotTitle: 'Application Developer'
+    },
+    {
+        id: 2,
+        firstname: "Tom",
+        lastname: 'Brady',
+        topSkill: 'Communication',
+        topLanguage: 'Python',
+        location: 'Tampa, Florida',
+        timeZone: 'EST',
+        jotTitle: 'Consultant'
+    },
+
+];
+
+export default function SearchPageRow() {
+
         return(
             <Container 
             fluid
@@ -49,24 +73,9 @@ class SearchPageRow extends Component{
                         <Row lg={12}>
                             <Form.Label className="fs-6"><strong>Location / Time Zone: </strong>Atlanta, Georgia (EST)</Form.Label>
                         </Row>
-                        
                     </Col>
-                    {/* <Col  lg={3} className="d-none d-lg-block w-auto">
-                        <Row lg={12}>
-                        <Form.Label className="fs-6">Location / Time Zone: </Form.Label>
-                        </Row>
-                        <Row lg={12}>
-                        <Form.Label className="fs-6">Atlanta, Georgia (EST)</Form.Label>
-                        </Row>
-                    </Col> */}
-                    
                 </Row>
             </Container>
             
-        );
-    }
-        
-    
+        );  
 }
-
-export default SearchPageRow;
