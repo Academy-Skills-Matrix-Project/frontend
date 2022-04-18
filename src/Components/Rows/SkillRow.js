@@ -10,7 +10,6 @@ import DropdownList from 'react-widgets/DropdownList'
 class SkillRow extends Component {
     render() {
         return (
-    
                 <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
 
                       {/* Renders image for red 'X' button in top left of item  */}
