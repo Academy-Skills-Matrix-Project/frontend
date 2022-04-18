@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
+import LanguagesPage from './LanguagesPage';
 
 test('NavHeader.js renders NavHeader', () => {
     render(<MemoryRouter>
@@ -11,18 +12,50 @@ test('NavHeader.js renders NavHeader', () => {
     expect(testNavbarText).toBeInTheDocument();
 });
 
-// describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and alt = "SWO_Logo"', () => {
-//     render(<NavHeader/>);
-//     const logo = screen.getByAltText('SWO_Logo');
-//     expect(logo).toHaveAttribute('src', 'SWO_logo.png');
-//     expect(logo).toHaveAttribute('alt', 'SWO_Logo');
-// });
-// });
+describe('LanguagesPage.js', () => {test("User should see a heading that reads 'Laugauges and Proficiency'", () => {
+    render(<MemoryRouter>
+        <LanguagesPage />
+    </MemoryRouter>);
+    const languageHeading = screen.getByText(/Laugauges and Proficiency/i);
+    expect(languageHeading).toBeInTheDocument();
+});
+});
 
-// describe('NavHeader.js', () => {test('Logo must have src = "/LogOut.png" and alt = "LogOut"', () => {
-//     render(<NavHeader/>);
-//     const logo = screen.getByAltText('LogOut');
-//     expect(logo).toHaveAttribute('src', 'LogOut.png');
-//     expect(logo).toHaveAttribute('alt', 'LogOut');
-// });
-// });
+describe('LanguagesPage', () => {test("User should see a heading that reads 'Personal Information'", () => {
+    render(<MemoryRouter>
+        <LanguagesPage />
+    </MemoryRouter>);
+    const personalInfo = screen.getByText(/Personal Information/i);
+    expect(personalInfo).toBeInTheDocument();
+});
+});
+
+
+// Sign-out icon appears when isLogoutEnabled is true
+describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled is true', () => {
+    render(<MemoryRouter>
+    <NavHeader isLogoutEnabled={true} />
+    </MemoryRouter>);
+    const signOut = screen.getByAltText('Logout');
+    expect(signOut).toBeInTheDocument();
+});
+});
+
+// <SkillRows /> components render to the page
+describe('LanguageRow.js', () => {test('<LanguageRow /> components render to the page', () => {
+    render(<MemoryRouter>
+        <LanguageRow />
+    </MemoryRouter>);
+    const skillRow = screen.getByTestId('language-row');
+    expect(skillRow).toBeInTheDocument();
+})
+});
+
+test('save button should render to the screen', () => {
+    render(<MemoryRouter>
+        <LanguagesPage/>
+        </MemoryRouter>);
+        const saveButton = screen.getAllByTestId('button');
+        expect(saveButton).toBeInTheDocument();
+
+})
