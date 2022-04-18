@@ -6,6 +6,7 @@ import NavHeader from '../Components/NavHeader/NavHeader';
 import SkillRow from '../Components/Rows/SkillRow';
 
 class SkillsPage extends React.Component {
+    
     render() {
         return(
             <>
