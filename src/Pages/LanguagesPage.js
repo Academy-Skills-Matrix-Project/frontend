@@ -46,7 +46,7 @@ export default function LanguagesPage() {
                 </Container>
                        
                         <Container className='text-center mt-5'>
-                            <AppButton title="Continue" page='LanguagePage' />
+                            <AppButton title="Save" page='LanguagePage'/>
                         </Container>
                     
                     </Container>

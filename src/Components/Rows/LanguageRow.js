@@ -27,9 +27,9 @@ export default function LanguageRow(props) {
                     <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
                         <ComboBox 
                         className='textfield w-50 mx-1 text-start' 
-                        data-testid='skill-text-input'
+                        data-testid='language-text-input'
                         hideEmptyPopup 
-                        placeholder='Select skill' 
+                        placeholder='Select Language' 
                         data={['Communication','App Development', 'Public Speaking', 'Java', 'Python', 'asp','C++', 'a','b','c','5','1']}
                         />
                         {/* <Form.Control className="textfield form-control border border-2 w-75 m-2" type="input" data-testid='skill-text-input'/> */}
