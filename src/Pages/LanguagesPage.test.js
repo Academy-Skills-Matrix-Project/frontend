@@ -11,3 +11,4 @@ test('NavHeader.js renders NavHeader', () => {
     const testNavbarText = screen.getByTestId('navbar');
     expect(testNavbarText).toBeInTheDocument();
 });
+
