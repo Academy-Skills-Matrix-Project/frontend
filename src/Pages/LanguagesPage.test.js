@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 
@@ -13,7 +13,17 @@ test('NavHeader.js renders NavHeader', () => {
 });
 
 // User can logout successfully
-
+jest.mock("../App", () => {
+  return {
+    auth: () => {
+      return {
+        signOut: () => {
+          jest.fn();
+        }
+      }
+    }
+  }
+})
 
 // Five star ratings state updates successfully
 
