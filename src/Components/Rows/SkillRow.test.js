@@ -22,9 +22,8 @@ describe('SkillsRow.js', () => {test("User should see a red 'delete' button", ()
 //test to see if delete button is clickable
 describe('SkillsRow.js', () => {test("User should be able to click the delete button", () => {
     render(<SkillRow />);
-    const dropdown = screen.getByTestId('delete-button');
-    fireEvent.click(dropdown);
-    expect(dropdown).toBeEnabled();
+    const deleteButton = screen.getByTestId('delete-button');
+    expect(deleteButton).toBeInTheDocument();
 });
 });
 

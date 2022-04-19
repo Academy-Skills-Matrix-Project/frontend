@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import LanguagesPage from './Pages/LanguagesPage';
 import LandingForm from './Pages/LandingForm';
 import GeneralInfo from './Pages/GeneralInfo';
 import SkillsPage from './Pages/SkillsPage';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import SearchPage from './Pages/SearchPage';
 import ProfileInfoPage from './Pages/ProfileInfoPage';
+import LanguagesPage from './Pages/LanguagesPage';
 
 
 function App() {
