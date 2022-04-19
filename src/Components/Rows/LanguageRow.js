@@ -9,7 +9,7 @@ import ComboBox from 'react-widgets/Combobox';
 export default function LanguageRow(props) {
     const {onRemove} = props;
     return (
-        <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm ' data-testid='language-row-container'>
+        <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm ' data-testid='language-row'>
                     {/* Renders image for red 'X' button in top left of item  */}
                 <button className= ' position-absolute top-0 start-0 translate-middle bg-transparent border-0 '>
                 <img  

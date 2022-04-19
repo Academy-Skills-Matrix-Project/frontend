@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 import LanguagesPage from './LanguagesPage';
+import LanguageRow from '../Components/Rows/LanguageRow'
 
 test('NavHeader.js renders NavHeader', () => {
     render(
@@ -17,7 +18,7 @@ describe('LanguagesPage.js', () => {test("User should see a heading that reads '
     render(<MemoryRouter>
         <LanguagesPage />
     </MemoryRouter>);
-    const languageHeading = screen.getByText(/Laugauges and Proficiency/i);
+    const languageHeading = screen.getByText(/Languages and Proficiency/i);
     expect(languageHeading).toBeInTheDocument();
 });
 });
@@ -37,7 +38,7 @@ describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled
     render(<MemoryRouter>
     <NavHeader isLogoutEnabled={true} />
     </MemoryRouter>);
-    const signOut = screen.getByAltText('Logout');
+    const signOut = screen.getByAltText('LogOut');
     expect(signOut).toBeInTheDocument();
 });
 });
@@ -45,7 +46,7 @@ describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled
 // <SkillRows /> components render to the page
 describe('LanguageRow.js', () => {test('<LanguageRow /> components render to the page', () => {
     render(<MemoryRouter>
-        <LanguageRow />
+        <LanguageRow/>
     </MemoryRouter>);
     const skillRow = screen.getByTestId('language-row');
     expect(skillRow).toBeInTheDocument();
@@ -56,7 +57,7 @@ test('save button should render to the screen', () => {
     render(<MemoryRouter>
         <LanguagesPage/>
         </MemoryRouter>);
-        const saveButton = screen.getAllByTestId('button');
+        const saveButton = screen.getByTestId('button');
         expect(saveButton).toBeInTheDocument();
 
 })

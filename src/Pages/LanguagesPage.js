@@ -4,6 +4,7 @@ import NavHeader from '../Components/NavHeader/NavHeader';
 import { Container, Row } from 'react-bootstrap';
 import LanguageRow from '../Components/Rows/LanguageRow';
 import CircleButton from '../Components/Button/CircleButton';
+import { number } from 'yup';
 
 
 
@@ -35,7 +36,7 @@ export default function LanguagesPage() {
                        </Row>
                        <Container className= 'border-bottom border-top border-4 border-dark pb-5 '>
                            {row.map((rowNumber, index) => (
-                             <LanguageRow number= {rowNumber} onRemove={() => deleteRow(index)}/>
+                             <LanguageRow key={number.toString} number= {rowNumber} onRemove={() => deleteRow(index)}/>
                            ))}
                        </Container>
 
@@ -45,7 +46,7 @@ export default function LanguagesPage() {
                 </Container>
                        
                         <Container className='text-center mt-5'>
-                            <AppButton title="Continue" page='LanguagePage'/>
+                            <AppButton title="Continue" page='LanguagePage' />
                         </Container>
                     
                     </Container>
