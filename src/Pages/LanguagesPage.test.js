@@ -12,3 +12,22 @@ test('NavHeader.js renders NavHeader', () => {
     expect(testNavbarText).toBeInTheDocument();
 });
 
+// User can logout successfully
+
+
+// Five star ratings state updates successfully
+
+
+// Clicking on X will delete language row from page
+
+
+// Clicking on + will add a new language row to the page
+
+
+// Clicking save button will save state of page to user's profile
+
+
+// Header reads "Personal Information"
+
+
+// Banner reads "Languages and Proficiency"
