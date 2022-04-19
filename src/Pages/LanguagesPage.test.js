@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 import LanguagesPage from './LanguagesPage';
@@ -61,8 +61,19 @@ test('save button should render to the screen', () => {
         expect(saveButton).toBeInTheDocument();
 
 })
-// User can logout successfully
 
+// User can logout successfully
+jest.mock("../App", () => {
+  return {
+    auth: () => {
+      return {
+        signOut: () => {
+          jest.fn();
+        }
+      }
+    }
+  }
+})
 
 // Five star ratings state updates successfully
 
@@ -74,9 +85,3 @@ test('save button should render to the screen', () => {
 
 
 // Clicking save button will save state of page to user's profile
-
-
-// Header reads "Personal Information"
-
-
-// Banner reads "Languages and Proficiency"
