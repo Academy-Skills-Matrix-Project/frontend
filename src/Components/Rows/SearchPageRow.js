@@ -59,12 +59,12 @@ export default function SearchPageRow(props) {
     const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
     
         return(
-            <Container 
+            <Container
             fluid
             style={{maxHeight:100, maxWidth:900}}
             hoverable='true' 
             data-testid='search-row' 
-            className="bg-light border border-2 rounded border shadow-sm my-3 position-relative justify-content-center" >
+            className="border border-2 rounded border shadow-sm my-3 position-relative" >
 
                     <a href="/myaccount" to="/myaccount"><img
                     width={55} 
@@ -80,8 +80,8 @@ export default function SearchPageRow(props) {
                     className="position-absolute end-0 top-0"
                     alt='More Info'
                     /></a>
-                <Row  className=" justify-content-center align-items-center mx-1" >
-                    <Col lg={3} xs='auto' className="w-auto">
+                <Row className="justify-content-start align-items-center mx-3" >
+                    <Col lg={4} md={5} xs='auto' className="w-auto">
                         <Row lg={12} xs={7}>
                         <Form.Label className="fs-5 fw-bold">{firstname}</Form.Label>
                         </Row>
@@ -89,7 +89,7 @@ export default function SearchPageRow(props) {
                         <Form.Label className="fs-5 fw-bold">{lastname}</Form.Label>
                         </Row>     
                     </Col>
-                    <Col lg={3} xs='auto' className="w-auto text-start">
+                    <Col lg={4} md={7} xs='auto' className="w-auto text-start">
                         <Row lg={12}>
                             <Form.Label className="fs-6"><strong>Top Skill:</strong> {topSkill}</Form.Label>
                         </Row>
@@ -97,7 +97,7 @@ export default function SearchPageRow(props) {
                             <Form.Label className="fs-6"><strong>Top Language: </strong>{topLanguage}</Form.Label>
                         </Row>
                     </Col> 
-                    <Col  lg={3} className="d-none d-lg-block w-auto text-start">
+                    <Col  lg={4} className="d-none d-lg-block w-auto text-start">
                         <Row lg={12}>
                             <Form.Label className="fs-6"><strong>Job Title: </strong>{jobTitle}</Form.Label>
                         </Row>

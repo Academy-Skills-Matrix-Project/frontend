@@ -23,11 +23,7 @@ class SearchPage extends React.Component {
             filterValue: '',
             filteredResults: []
         } 
-        
-        
     }
-
-    
 
     componentDidMount(){
         fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
@@ -51,11 +47,18 @@ class SearchPage extends React.Component {
 
     searchItems(searchValue){
         console.log(searchValue)
-        
+        this.setState({searchInput: searchValue})
+
+        let sID = 0;
+        this.state.skills.forEach(skill => {
+            if(skill.title.includes(searchValue)){
+                sID = skill.skillId
+            }
+        });
+        console.log(sID);
+
         if(searchValue !== ''){
-            const filteredData = this.state.users.filter((item) => {
-                return Object.values(item.timeZone).join('').toLowerCase().includes(searchValue.toLowerCase());
-            });
+            const filteredData = this.state.users.filter(item => item.skillId === sID);
             console.log(filteredData)
             this.setState({filteredResults: filteredData});
             console.log(this.state.filteredResults)
@@ -104,12 +107,12 @@ class SearchPage extends React.Component {
                                 data-testid='dropdown' />    
                             </Col> */}
                             <Col xl={4} lg={6} xs={12} className='d-flex justify-content-center '>
-                                <ComboBox 
+                                <DropdownList 
                                 style={{maxWidth:400}}
                                 className='w-100 m-1 text-start'
                                 // placeholder={`Search for ${this.state.filterByValue}`}
                                 data={skillTitles}
-                                data-testid='combobox'
+                                data-testid='dropdown'
                                 onChange={value => this.searchItems(value)}/>
                             </Col>
                             <Col xl={4} lg={12} xs={12} className='w-auto'>

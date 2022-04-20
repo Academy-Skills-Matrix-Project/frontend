@@ -12,13 +12,31 @@ class SkillRow extends React.Component {
         super(props);
         this.removeSkillRow = this.removeSkillRow.bind(this);
 
+        this.state = {
+            skills: []
+        }
+
         console.log(this.props)
+    }
+
+    componentDidMount(){
+        fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
+        .then((res) => res.json())
+        .then((result) => { 
+            this.setState({skills: result});
+            console.log(this.state.skills);
+         },
+            (error) => { alert(error); console.log(error); }
+        )
+        
     }
 
     removeSkillRow(){
         this.props.removeSkillRow(this.props.id);
     }
     render(){
+
+        const skillTitles = this.state.skills.map(skill => skill.title);
         return (
             <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
 
@@ -53,7 +71,7 @@ class SkillRow extends React.Component {
                         data-testid='skill-text-input'
                         hideEmptyPopup 
                         placeholder='Select skill' 
-                        data={['Communication','App Development', 'Public Speaking', 'Java', 'Python', 'asp','C++', 'a','b','c','5','1']}
+                        data={skillTitles}
                         />
                         {/* <Form.Control className="textfield form-control border border-2 w-75 m-2" type="input" data-testid='skill-text-input'/> */}
                     </Col>
