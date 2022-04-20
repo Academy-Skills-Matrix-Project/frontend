@@ -1,33 +1,43 @@
 import React from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import Rater from '../Rating/Rating';
-// import CategoryDropdown from '../DropdownButton/CategoryDropdown';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
 import DropdownList from 'react-widgets/DropdownList'
 
-export default function SkillRow(props) {
-    const {onRemove} = props;
-    return (
+class SkillRow extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.removeSkillRow = this.removeSkillRow.bind(this);
+
+        console.log(this.props)
+    }
+
+    removeSkillRow(){
+        this.props.removeSkillRow(this.props.id);
+    }
+    render(){
+        return (
             <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
 
                     {/* Renders image for red 'X' button in top left of item  */}
-                    <button className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
+                    <button 
+                    onClick={this.removeSkillRow}
+                    className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
                         <img  
                             src="Cancel.png"
                             width={30}
                             alt='delete row'
                             data-testid='delete-button'
-                            onClick={() => onRemove()}
                             />
                     </button>
 
                 <Row data-testid='skill-row' className='py-1 text-center justify-content-center'>  
                     {/* Renders 'I am proficent in' text */}
                     <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
-                        <h4 className='px-3'>I am proficient in...</h4>
+                        <h4 className='px-3'>I am proficent in...</h4>
                     </Col>
 
                     {/* Renders the category dropdown menu and text field */}
@@ -55,5 +65,7 @@ export default function SkillRow(props) {
                 </Row>
             </Container>
         
-    );
-}
+            );
+        }
+    }
+export default SkillRow;
