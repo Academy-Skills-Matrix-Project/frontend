@@ -3,7 +3,8 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 import LanguagesPage from './LanguagesPage';
-import LanguageRow from '../Components/Rows/LanguageRow'
+import LanguageRow from '../Components/Rows/LanguageRow';
+import LandingForm from '../Pages/LandingForm';
 
 test('NavHeader.js renders NavHeader', () => {
     render(
@@ -63,16 +64,30 @@ test('save button should render to the screen', () => {
 })
 
 // User can logout successfully
-jest.mock("../App", () => {
-  return {
-    auth: () => {
-      return {
-        signOut: () => {
-          jest.fn();
-        }
-      }
-    }
-  }
+/*
+1. User clicks on the sign-out icon
+2. User is redirected to the login page
+*/
+test('User can logout successfully', () => {
+    render(
+    <MemoryRouter>
+        <NavHeader isLogoutEnabled={true} />
+    </MemoryRouter>
+    );
+
+    render(
+      <MemoryRouter>
+        <LandingForm />
+      </MemoryRouter>
+    )
+
+    const signOut = screen.getByAltText('LogOut');
+
+    fireEvent.click(signOut);
+
+    const loginPage = screen.getByText(/Sign in/i);
+
+    expect(loginPage).toBeInTheDocument();
 })
 
 // Five star ratings state updates successfully
