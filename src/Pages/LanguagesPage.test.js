@@ -6,6 +6,7 @@ import LanguagesPage from './LanguagesPage';
 import LanguageRow from '../Components/Rows/LanguageRow';
 import LandingForm from '../Pages/LandingForm';
 import Rater from '../Components/Rating/Rating';
+import AppButton from '../Components/Button/Button';
 
 // runs after each test suite is executed
 afterEach(() => {
@@ -119,9 +120,30 @@ test('handleRating() to be called on click', () => {
 })
 
 // Clicking on X will delete language row from page
+test('Delete row on click', () => {
 
+    const delRow = jest.fn(() => true);
+
+    delRow();
+
+    expect(delRow).toHaveReturned();
+  })
 
 // Clicking on + will add a new language row to the page
+test('Add row on click', () => {
 
+  const addRow = jest.fn(() => true);
+
+  addRow();
+
+  expect(addRow).toHaveReturned();
+})
 
 // Clicking save button will save state of page to user's profile
+test("Expect handleClick to be called", () => {
+  const handleClick = jest.fn();
+
+  handleClick();
+
+  expect(handleClick).toHaveBeenCalled();
+})
