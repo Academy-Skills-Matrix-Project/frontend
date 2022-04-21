@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppButton from '../Components/Button/Button';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { Container, Row } from 'react-bootstrap';
 import LanguageRow from '../Components/Rows/LanguageRow';
 import LanguageList from '../Components/Rows/LanguagesList';
-import CircleButton from '../Components/Button/CircleButton';
-import { number } from 'yup';
+import CircleButtonL from '../Components/Button/CircleButtonL';
 
 
 
@@ -54,13 +53,13 @@ export default class LanguagesPage extends React.Component {
                        </Row>
                        <Container className= 'border-bottom border-top border-4 border-dark pb-5 '>
                             {console.log(this.state.languageRows)}
-                             <LanguageList languageRows ={this.state.languageRows} removelangaugeRow={this.removeLanguageRow}/>
+                             <LanguageList languageRows ={this.state.languageRows} removeLanguageRow={this.removeLanguageRow}/>
                            
                        </Container>
 
                        {/* Renders bottom divider with 'add' button */}
                 <Container className='position-relative text-center '>
-                    <CircleButton data-testid='plus-button' addLanguageRow= {this.addLanguageRow} ref={(a) => this._inputElement = a} />
+                    <CircleButtonL data-testid='plus-button' addLanguageRow= {this.addLanguageRow} ref={(a) => this._inputElement = a} />
                 </Container>
                        
                         <Container className='text-center mt-5'>

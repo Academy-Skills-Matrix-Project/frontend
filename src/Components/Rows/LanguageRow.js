@@ -20,13 +20,13 @@ import ComboBox from 'react-widgets/Combobox';
     }
 
     componentDidMount(){
-        fetch("https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll")
+         fetch("https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll")
         .then((res) => res.json())
         .then((result) => {
             this.setState({languages: result});
             console.log(this.state.languages);
         },
-        (error) => {alert(error); console.log(error); }
+        (error) => { alert(error); console.log(error); }
         )
     }
 

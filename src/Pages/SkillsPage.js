@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React from 'react';
+import { Container, Row } from 'react-bootstrap';
 import AppButton from '../Components/Button/Button';
 import CircleButton from '../Components/Button/CircleButton';
 import NavHeader from '../Components/NavHeader/NavHeader';
