@@ -10,9 +10,9 @@ describe('SearchPageRow.js', () => {test("User should see a container for the co
         </MemoryRouter>);
     const logo = screen.getByTestId('search-row');
     expect(logo).toBeInTheDocument();
-    const firstName = screen.getByText('First Name');
+    const firstName = screen.getByTestId('First Name');
     expect(firstName).toBeInTheDocument();
-    const lastName = screen.getByText('Last Name');
+    const lastName = screen.getByTestId('Last Name');
     expect(lastName).toBeInTheDocument();
     const topSkill = screen.getByText('Top Skill:');
     expect(topSkill).toBeInTheDocument();

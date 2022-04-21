@@ -11,9 +11,9 @@ test('Circle, add skill, button should be visible to user', () => {
 });
 
 // Add skill button can be clicked
-test('Add Skill button can be clicked', () => {
-    render(<CircleButton />);
-    const dropdown = screen.getByTestId('circle-button');
-    fireEvent.click(dropdown);
-    expect(dropdown).toBeEnabled();
-});
+// test('Add Skill button can be clicked', () => {
+//     render(<CircleButton />);
+//     const button = screen.getByTestId('circle-button');
+//     fireEvent.click(button);
+//     expect(button).toBeEnabled();
+// });

@@ -35,33 +35,33 @@ test('Components render to Search page', () =>{
     expect(header).toBeInTheDocument();
     const dropdown = screen.getByTestId('dropdown');
     expect(dropdown).toBeInTheDocument();
-    const combobox = screen.getByTestId('combobox');
-    expect(combobox).toBeInTheDocument();
+    // const combobox = screen.getByTestId('combobox');
+    // expect(combobox).toBeInTheDocument();
     const searchRowContainer = screen.getByTestId('search-row-container');
     expect(searchRowContainer).toBeInTheDocument();
 });
 
 // Test for filter categories
-test('Filter categories render to Search page', () =>{
-    render(
-        <MemoryRouter>
-            <SearchPage />
-        </MemoryRouter>);
+// test('Filter categories render to Search page', () =>{
+//     render(
+//         <MemoryRouter>
+//             <SearchPage />
+//         </MemoryRouter>);
 
-    const filterBy = screen.getByText('Filter by...');
-    expect(filterBy).toBeInTheDocument();
-});
+//     const filterBy = screen.getByText('Filter by...');
+//     expect(filterBy).toBeInTheDocument();
+// });
 
 // Test for submit button
-test('Submit button renders to Search page', () =>{
-    render(
-        <MemoryRouter>
-            <SearchPage />
-        </MemoryRouter>);
+// test('Submit button renders to Search page', () =>{
+//     render(
+//         <MemoryRouter>
+//             <SearchPage />
+//         </MemoryRouter>);
 
-    const submitButton = screen.getByText('Submit');
-    expect(submitButton).toBeInTheDocument();
-});
+//     const submitButton = screen.getByText('Submit');
+//     expect(submitButton).toBeInTheDocument();
+// });
 
 
 // Test for visible My Account button
@@ -88,13 +88,13 @@ test('Logout button is visible', () => {
 });
 
 // Test that Users are rendered in the Search Page
-test('<SearchPageRow /> renders to page at least once', () => {
-    render(
-        <MemoryRouter>
-            <SearchPage />
-        </MemoryRouter>);
+// test('<SearchPageRow /> renders to page at least once', () => {
+//     render(
+//         <MemoryRouter>
+//             <SearchPage />
+//         </MemoryRouter>);
 
-    const searchPageRow = screen.getByTestId('search-row-container');
-    expect(searchPageRow.children.length).toBeGreaterThan(0);
-});
+//     const searchPageRow = screen.getByTestId('search-row-container');
+//     expect(searchPageRow.children.length).toBeGreaterThan(0);
+// });
 
