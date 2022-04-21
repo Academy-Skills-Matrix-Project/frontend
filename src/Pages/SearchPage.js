@@ -10,24 +10,82 @@ class SearchPage extends React.Component {
 
     constructor(props){
         super(props);
-        this.getFilterValue = this.getFilterValue.bind(this);
-        this.setFilterByValue = this.setFilterByValue.bind(this);
-    }
-    state = {
-        filterByValue: ''
+        // this.getFilterValue = this.getFilterValue.bind(this);
+        // this.setFilterByValue = this.setFilterByValue.bind(this);
+    
+        this.state = {
+            users: [],
+            jobs: [],
+            skills: [],
+            skillNames: [],
+            languages: [],
+            searchInput: '',
+            filterValue: '',
+            filteredResults: []
+        } 
     }
 
-    setFilterByValue = (value) => {
-        this.setState({
-            filterByValue: value
-        })
+    componentDidMount(){
+        fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
+        .then((res) => res.json())
+        .then((result) => { 
+            this.setState({users: result});
+            console.log(this.state.users);
+         },
+            (error) => { alert(error); console.log(error); }
+        )
+        fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
+        .then((res) => res.json())
+        .then((result) => { 
+            this.setState({skills: result});
+            console.log(this.state.skills);
+         },
+            (error) => { alert(error); console.log(error); }
+        )
+        
     }
 
-    getFilterValue = () => {
-        return this.state.filterByValue;
+    searchItems(searchValue){
+        console.log(searchValue)
+        this.setState({searchInput: searchValue})
+
+        let sID = 0;
+        this.state.skills.forEach(skill => {
+            if(skill.title.includes(searchValue)){
+                sID = skill.skillId
+            }
+        });
+        console.log(sID);
+
+        if(searchValue !== ''){
+            const filteredData = this.state.users.filter(item => item.skillId === sID);
+            console.log(filteredData)
+            this.setState({filteredResults: filteredData});
+            console.log(this.state.filteredResults)
+        } else {
+            this.setState({filteredResults: this.state.users});
+        }
+        console.log(this.state.filteredResults)
     }
+    // state = {
+    //     filterByValue: ''
+    // }
+
+    // setFilterByValue = (value) => {
+    //     this.setState({
+    //         filterByValue: value
+    //     })
+    // }
+
+    // getFilterValue = () => {
+    //     return this.state.filterByValue;
+    // }
+
+
 
     render() {
+        const { users } = this.state;
+        const skillTitles = this.state.skills.map(skill => skill.title);
         return (
             <>
                 <NavHeader data-testid='navinheader' isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} />
@@ -38,23 +96,24 @@ class SearchPage extends React.Component {
                     
                     <Container className='align-items-center justify-content-center d-flex w-75 p-2'>
                         <Row className='align-items-center justify-content-center w-100'>
-                            <Col xl={4} lg={6} xs={12} className='d-flex justify-content-center' data-testid='col' >
+                            {/* <Col xl={4} lg={6} xs={12} className='d-flex justify-content-center' data-testid='col' >
                                 <DropdownList
                                 style={{maxWidth:400}}
                                 className='m-1 text-start'
                                 placeholder='Filter by...'
                                 filter={false}
-                                onSelect={value => this.setFilterByValue(value)}
+                                // onSelect={value => this.setFilterByValue(value)}
                                 data={['Name', 'Skill', 'Language', 'Job Title', 'Location/Time Zone']}
                                 data-testid='dropdown' />    
-                            </Col>
+                            </Col> */}
                             <Col xl={4} lg={6} xs={12} className='d-flex justify-content-center '>
-                                <ComboBox 
+                                <DropdownList 
                                 style={{maxWidth:400}}
                                 className='w-100 m-1 text-start'
-                                placeholder={`Search for ${this.state.filterByValue}`}
-                                data={['React + Bootstrap', 'Java', 'Python', 'C', 'C++', 'C#', 'Ruby', 'Node', 'Go', 'HTML', 'CSS']}
-                                data-testid='combobox'/>
+                                // placeholder={`Search for ${this.state.filterByValue}`}
+                                data={skillTitles}
+                                data-testid='dropdown'
+                                onChange={value => this.searchItems(value)}/>
                             </Col>
                             <Col xl={4} lg={12} xs={12} className='w-auto'>
                                 <Button
@@ -67,9 +126,40 @@ class SearchPage extends React.Component {
                         </Row>       
                     </Container>        
                     <Container data-testid='search-row-container'>
-                        <SearchPageRow />
-                        <SearchPageRow />
-                        <SearchPageRow />
+                        {this.state.searchInput.length > 1 ? (
+                            this.state.filteredResults.map((user, index) => {
+                                return(
+                                <SearchPageRow 
+                                key={index} 
+                                users={users}
+                                fullName={user.fullName}
+                                location={user.location}
+                                timeZone={user.timeZone}
+                                jobId={user.jobId}
+                                skillId={user.skillId}
+                                languageId={user.languageId}
+                                />
+                            )
+                            })
+                        ) : (
+                            users.map((user, index) => {
+                                return(
+                                <SearchPageRow 
+                                key={index} 
+                                users={users}
+                                fullName={user.fullName}
+                                location={user.location}
+                                timeZone={user.timeZone}
+                                jobId={user.jobId}
+                                skillId={user.skillId}
+                                languageId={user.languageId}
+                                />
+                                );
+                            })
+                        )
+                    }
+                        
+                        
                         
                     </Container>
                 </Container>
