@@ -8,8 +8,7 @@ export default class CircleButton extends React.Component{
         this.addSkill = this.addSkill.bind(this);
     }
     addSkill(e){
-
-        let count = this.state.skillsCount;
+            let count = this.state.skillsCount;
             var newItem = {
               id: this.state.skillsCount,
               key: Date.now()
