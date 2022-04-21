@@ -1,9 +1,16 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, cleanup } from '@testing-library/react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 import LanguagesPage from './LanguagesPage';
-import LanguageRow from '../Components/Rows/LanguageRow'
+import LanguageRow from '../Components/Rows/LanguageRow';
+import LandingForm from '../Pages/LandingForm';
+import Rater from '../Components/Rating/Rating';
+
+// runs after each test suite is executed
+afterEach(() => {
+  cleanup(); // resets DOM after each test suite
+})
 
 test('NavHeader.js renders NavHeader', () => {
     render(
@@ -62,21 +69,54 @@ test('save button should render to the screen', () => {
 
 })
 
-// User can logout successfully
-jest.mock("../App", () => {
-  return {
-    auth: () => {
-      return {
-        signOut: () => {
-          jest.fn();
-        }
-      }
-    }
-  }
+// --------------- User can logout successfully
+/*
+1. User clicks on the sign-out icon
+2. User is redirected to the login page
+*/
+test('User can logout successfully', () => {
+    render(
+    <MemoryRouter>
+        <NavHeader isLogoutEnabled={true} />
+    </MemoryRouter>
+    );
+
+    render(
+      <MemoryRouter>
+        <LandingForm />
+      </MemoryRouter>
+    )
+
+    const signOut = screen.getByAltText('LogOut');
+
+    fireEvent.click(signOut);
+
+    const loginPage = screen.getByText(/Sign in/i);
+
+    expect(loginPage).toBeInTheDocument();
 })
 
-// Five star ratings state updates successfully
+// ---------------- Five star ratings state updates successfully
+/*
+1. User clicks on the five star rating
+2. handleRating() function is called
+*/
+test('handleRating() to be called on click', () => {
+  // Initialiize mock function
+  const handleRating = jest.fn();
 
+  render(<MemoryRouter><Rater onClick={handleRating} /></MemoryRouter>);
+
+  const starRating = screen.getByTestId('star-rater');
+
+  // Simulate click event on star rating
+  fireEvent.click(starRating);
+
+  // Assert that handleRating() function is called
+  handleRating();
+
+  expect(handleRating).toHaveBeenCalled();
+})
 
 // Clicking on X will delete language row from page
 
