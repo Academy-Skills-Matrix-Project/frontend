@@ -18,7 +18,7 @@ export default class SkillsPage extends React.Component {
     }
 
     addSkillRow(item){
-        {console.log(item)}
+        console.log(item)
         this.setState((prevState) => {
             return{
                 skillRows: prevState.skillRows.concat(<SkillRow key={item.key} id={item.id}/>)
@@ -27,7 +27,7 @@ export default class SkillsPage extends React.Component {
     }
 
     removeSkillRow(id){
-        {console.log(id)}
+        console.log(id)
         const skills = this.state.skillRows.filter(element => element.props.id !== id);
         this.setState({skillRows: skills});
     }

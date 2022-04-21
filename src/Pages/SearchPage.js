@@ -2,7 +2,6 @@ import React from 'react';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import "react-widgets/styles.css";
-import ComboBox from 'react-widgets/Combobox'
 import DropdownList from 'react-widgets/DropdownList'
 import SearchPageRow from '../Components/Rows/SearchPageRow';
 

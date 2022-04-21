@@ -19,7 +19,7 @@ export default class LanguagesPage extends React.Component {
         }    
     
         addLanguageRow(item){
-            {console.log(item)}
+            console.log(item)
             this.setState((prevState) => {
                 return{
                     languageRows: prevState.languageRows.concat(<LanguageRow key={item.key} id={item.id}/>)
@@ -29,7 +29,7 @@ export default class LanguagesPage extends React.Component {
         }
 
         removeLanguageRow(id){
-            {console.log(id)}
+            console.log(id)
             const languages = this.state.languageRows.filter(element => element.props.id !== id);
             this.setState({languageRows: languages});
         }
