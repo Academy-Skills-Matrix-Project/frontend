@@ -18,6 +18,7 @@ export default class CircleButton extends React.Component{
             count++;
             this.setState({skillsCount: count});
         }
+
     
 render(){
     return(
