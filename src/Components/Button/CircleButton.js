@@ -1,7 +1,26 @@
 import React from 'react';
 
-export default function CircleButton(props){
+export default class CircleButton extends React.Component{
 
+    constructor(props){
+        super(props);
+        this.state = { skillsCount: 1};
+        this.addSkill = this.addSkill.bind(this);
+    }
+    addSkill(e){
+            let count = this.state.skillsCount;
+            var newItem = {
+              id: this.state.skillsCount,
+              key: Date.now()
+            };
+
+            this.props.addSkillRow(newItem);
+            count++;
+            this.setState({skillsCount: count});
+        }
+
+    
+render(){
     return(
         <>
             <button><img 
@@ -10,11 +29,11 @@ export default function CircleButton(props){
             src='Plus.png'
             data-testid='circle-button'
             alt='Delete button'
-            onClick={props.onClick} />
+            onClick={this.addSkill} />
             </button>
         </>
             
         
     );
-
+    }
 }

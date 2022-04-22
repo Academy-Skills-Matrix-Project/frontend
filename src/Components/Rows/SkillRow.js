@@ -1,26 +1,54 @@
 import React from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
 import Rater from '../Rating/Rating';
-// import CategoryDropdown from '../DropdownButton/CategoryDropdown';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
 import DropdownList from 'react-widgets/DropdownList'
 
-export default function SkillRow(props) {
-    const {onRemove} = props;
-    return (
+class SkillRow extends React.Component {
 
+    constructor(props){
+        super(props);
+        this.removeSkillRow = this.removeSkillRow.bind(this);
+
+        this.state = {
+            skills: []
+        }
+
+        console.log(this.props)
+    }
+
+    componentDidMount(){
+        fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
+        .then((res) => res.json())
+        .then((result) => { 
+            this.setState({skills: result});
+            console.log(this.state.skills);
+         },
+            (error) => { alert(error); console.log(error); }
+        )
+        
+    }
+
+    removeSkillRow(){
+        this.props.removeSkillRow(this.props.id);
+    }
+    render(){
+
+        const skillTitles = this.state.skills.map(skill => skill.title);
+        return (
             <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
 
                     {/* Renders image for red 'X' button in top left of item  */}
-                    <button className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
+                    <button 
+                    onClick={this.removeSkillRow}
+                    className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
                         <img  
                             src="Cancel.png"
                             width={30}
                             alt='delete row'
                             data-testid='delete-button'
-                            onClick={() => onRemove()}
                             />
                     </button>
 
@@ -43,7 +71,7 @@ export default function SkillRow(props) {
                         data-testid='skill-text-input'
                         hideEmptyPopup 
                         placeholder='Select skill' 
-                        data={['Communication','App Development', 'Public Speaking', 'Java', 'Python', 'asp','C++', 'a','b','c','5','1']}
+                        data={skillTitles}
                         />
                         {/* <Form.Control className="textfield form-control border border-2 w-75 m-2" type="input" data-testid='skill-text-input'/> */}
                     </Col>
@@ -55,5 +83,7 @@ export default function SkillRow(props) {
                 </Row>
             </Container>
         
-    );
-}
+            );
+        }
+    }
+export default SkillRow;

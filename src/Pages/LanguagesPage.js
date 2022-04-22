@@ -1,27 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppButton from '../Components/Button/Button';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { Container, Row } from 'react-bootstrap';
 import LanguageRow from '../Components/Rows/LanguageRow';
-import CircleButton from '../Components/Button/CircleButton';
-import { number } from 'yup';
+import LanguageList from '../Components/Rows/LanguagesList';
+import CircleButtonL from '../Components/Button/CircleButtonL';
 
 
 
-export default function LanguagesPage() {
+export default class LanguagesPage extends React.Component {
 
-        const[row, setRow] = useState([<LanguageRow/>]);
+        constructor(props){
+            super(props);
+            this.state = {languageRows: [<LanguageRow id={0} key={Date.now()}/>]}
+            console.log(this.state.languageRows)
+            this.addLanguageRow = this.addLanguageRow.bind(this);
+            this.removeLanguageRow = this.removeLanguageRow.bind(this);
+        }    
+    
+        addLanguageRow(item){
+            this.setState((prevState) => {
+                return{
+                    languageRows: prevState.languageRows.concat(<LanguageRow key={item.key} id={item.id}/>)
 
-        const loadNewRow = () => {
-            const newRow = [...row, <LanguageRow/>];
-            setRow(newRow);
+                }
+            })
         }
+
+        removeLanguageRow(id){
+            const languages = this.state.languageRows.filter(element => element.props.id !== id);
+            this.setState({languageRows: languages});
+        }
+    
+    
+    
+
         
-        const deleteRow = (rowIndex) => {
-            const newRow = row.filter((row, index) => index !== rowIndex);
-            setRow(newRow);
-        }
-
+    render(){
         return (
             <>
                 <NavHeader isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={false} />      
@@ -35,14 +50,14 @@ export default function LanguagesPage() {
                        <h1>Languages and Proficiency</h1>
                        </Row>
                        <Container className= 'border-bottom border-top border-4 border-dark pb-5 '>
-                           {row.map((rowNumber, index) => (
-                             <LanguageRow key={number.toString} number= {rowNumber} onRemove={() => deleteRow(index)}/>
-                           ))}
+                            {console.log(this.state.languageRows)}
+                             <LanguageList languageRows ={this.state.languageRows} removeLanguageRow={this.removeLanguageRow}/>
+                           
                        </Container>
 
                        {/* Renders bottom divider with 'add' button */}
                 <Container className='position-relative text-center '>
-                    <CircleButton data-testid='plus-button' onClick={loadNewRow} />
+                    <CircleButtonL data-testid='plus-button' addLanguageRow= {this.addLanguageRow} ref={(a) => this._inputElement = a} />
                 </Container>
                        
                         <Container className='text-center mt-5'>
@@ -55,4 +70,5 @@ export default function LanguagesPage() {
             </>
         );
     
+    }
 }
