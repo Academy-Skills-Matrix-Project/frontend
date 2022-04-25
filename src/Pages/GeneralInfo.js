@@ -159,10 +159,39 @@ function GeneralInfo(){
                                     isInvalid={!!errors.location}
                                     isValid={touched.location && !errors.location}
                                 >
-                                    <option></option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <option>Select a Time Zone</option>
+                                    <option value="1">GMT: Greenwich Mean Time</option>
+                                    <option value="2">UTC: Universal Coordinated Time</option>
+                                    <option value="3">ECT: European Central Time</option>
+                                    <option value="4">EET: Eastern European Time</option>
+                                    <option value="5">ART: (Arabic) Egypt Standard Time</option>
+                                    <option value="6">EAT: Eastern African Time</option>
+                                    <option value="7">MET: Middle East Time</option>
+                                    <option value="8">NET: Near East Time</option>
+                                    <option value="9">PLT: Pakistan Lahore Time</option>
+                                    <option value="10">IST: India Standard Time</option>
+                                    <option value="11">BST: Bangladesh Standard Time</option>
+                                    <option value="12">VST: Vietnam Standard Time</option>
+                                    <option value="13">CTT: China Taiwan Time</option>
+                                    <option value="14">JST: Japan Standard Time</option>
+                                    <option value="15">ACT: Australia Central Time</option>
+                                    <option value="16">AET: Australia Eastern Time</option>
+                                    <option value="17">SST: Solomon Standard Time</option>
+                                    <option value="18">NST: New Zealand Standard Time</option>
+                                    <option value="19">MIT: Midway Islands Time</option>
+                                    <option value="20">HST: Hawaii Standard Time</option>
+                                    <option value="21">AST: Alaska Standard Time</option>
+                                    <option value="22">PST: Pacific Standard Time</option>
+                                    <option value="23">PNT: Phoenix Standard Time</option>
+                                    <option value="24">MST: Mountain Standard Time</option>
+                                    <option value="25">CST: Central Standard Time</option>
+                                    <option value="26">EST: Eastern Standard Time</option>
+                                    <option value="27">IET: Indiana Eastern Standard Time</option>
+                                    <option value="28">PRT: Puerto Rico and US Virgin Islands Time</option>
+                                    <option value="29">CNT: Canada Newfoundland Time</option>
+                                    <option value="30">AGT: Argentina Standard Time</option>
+                                    <option value="31">BET: Brazil Eastern Time</option>
+                                    <option value="32">CAT:Central African Time</option>
                                 </Form.Select>  
                                 <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
                  
