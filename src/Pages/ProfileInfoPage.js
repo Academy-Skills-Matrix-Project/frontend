@@ -5,14 +5,35 @@ import Button from '../Components/Button/Button';
 import Banner from '../Components/Banner/Banner';
 import DisplaySkills from '../Components/ProfilePageRow/DisplaySkills';
 import './ProfilePage.css';
+import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
  
 
-class ProfileInfoPage extends React.Component {
-    render() {
+function ProfileInfoPage(props) {
+
+        const [user, setUser] = useState({});
+   
+        let {id} = useParams();
+        console.log(props)
+        console.log(id)
+
+        useEffect(() => {
+            const fetchUser = async () => {
+                await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${id}`)
+                .then((res) => res.json())
+                .then((result) => { 
+                    setUser(result);
+                });
+                }
+                fetchUser();
+            }, []);
+
+ 
         return (
             <>
                 <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} />
-               <Container fluid  >
+                <Container fluid  >
                    <Row>
                        <Col className= 'mt-4 text-start ms-4'>
                        <h3 data-testid='profile-title'>My Profile</h3>
@@ -21,64 +42,71 @@ class ProfileInfoPage extends React.Component {
                        <Button  title='Edit Profile' page='ProfilePageEdit'  />
                        </Col>
                    </Row>
-                   <Row>
-                       <Col className= "text-center" xs={12} lg={4} >
-                            <img src= 'ProfilePic.png'
-                                 alt= 'Profile'
-                                 width={250}/>
-                            <h3 data-testid="name-title">Full Name</h3>
+                   <Row className='align-items-center'>
+                       <Col className= "text-center " xs={12} lg={3} >
+                           
+                            <img src= '/ProfilePic.png'
+                                alt= 'Profile'
+                                width={200}
+                                />
+                           
+                            <h3 className='' data-testid="name-title">{`${user.fullName}`}</h3>
                         </Col>
-                       <Col className="mt-5 mx-auto text-start" xs={5} lg={4}>
-                            <h3 data-testid="email-title">Email:</h3>
-                            <h3 data-testid="mobile-title">Mobile Number:</h3>
-                            <h3 data-testid="location-title">Location/Time zone:</h3>
+                       <Col className="mt-3 mt-lg-0 mx-auto text-center text-lg-start" xs={12} lg={5}>
+                            <h4 data-testid="email-title"><strong>Email: </strong>{user.email}</h4>
+                            <h4 data-testid="mobile-title"><strong>Phone Number: </strong>{user.phoneNumber}</h4>
+                            
                        </Col>
-                       <Col className="mt-5 mx-auto text-start" xs={5} lg={4}>
-                            <h3 data-testid='department-title'>Department:</h3>
-                            <h3 data-testid='team-title'> Team:</h3>
-                            <h3 data-testid='job-title'>Job Title:</h3>
+                       <Col className=" mx-auto text-center text-lg-start" xs={12} lg={4}>
+                            {/* <h3 data-testid='department-title'>Department:</h3>
+                            <h3 data-testid='team-title'> Team:</h3> */}
+                            <h4 data-testid='job-title'><strong>Job Title: </strong>{user.job}</h4>
+                            <h4 data-testid="location-title"><strong>Location: </strong> {user.location}</h4>
                        </Col>
                    </Row>
                    
                    <Row>
                        <Col>
-                        <Banner  title="About Me"  text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer vitae justo eget magna. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Pellentesque habitant morbi tristique senectus et netus et. Ut consequat semper viverra nam libero justo. Pretium lectus quam id leo. Adipiscing vitae proin sagittis nisl. Enim facilisis gravida neque convallis a cras semper auctor neque. Sit amet tellus cras adipiscing enim eu turpis egestas pretium. Sed egestas egestas fringilla phasellus. Sit amet justo donec enim diam vulputate ut pharetra. Malesuada fames ac turpis egestas sed tempus urna et. Suscipit adipiscing bibendum est ultricies integer quis auctor elit sed. Ut placerat orci nulla pellentesque dignissim. Adipiscing tristique risus nec feugiat in fermentum posuere urna. Massa tempor nec feugiat nisl pretium fusce id. Placerat orci nulla pellentesque dignissim enim. Tincidunt nunc pulvinar sapien et ligula ullamcorper malesuada proin libero. Aenean euismod elementum nisi quis eleifend quam adipiscing vitae. Dignissim convallis aenean et tortor."/>
+                        <Banner  title="About Me"  text={user.aboutMe}/>
                        </Col>
                    </Row>
                  
-                   <Container fluid className="mt-5  mb-5 me-5 "  >
-                    <Row className='mx-auto'>
-                   <Col xs={12} lg={5} className=' mx-auto ' >
-                    <Container className= 'text-start mb-3 '>
-                    <h3>Skills</h3>
-                    </Container>
-                         <Container className= "addScroll mb-3">
-                        <DisplaySkills skill="Microsoft Azure"/>
-                        <DisplaySkills skill="Cloud platform expansion"/>
-                
-                        </Container>
-                   </Col>
-                   <Col xs={12} lg={5} className=' mx-auto'>
-                    <Container className='text-start mb-3'>
-                   <h3>Languages</h3>
-                   </Container>
-                   <Container className="addScroll ">
-                   <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="JavaScript"/>
-                   <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="C#"/>
-                   <DisplaySkills skill="C#"/>
-                   </Container>
-                   </Col>
-                   </Row>
+                    <Container fluid className="mt-5 mb-5  me-5 "  >
+                        <Row className='mx-auto'>
+                            <Col xs={12} lg={5} className=' mx-auto ' >
+                                <Container className= 'text-start mb-2 '>
+                                    <Col className='d-flex align-items-center'>
+                                        <h3><strong>Skills:</strong></h3>
+                                    </Col>
+                                </Container>
+                                <Container className= "addScroll">
+                                    <DisplaySkills skill="Microsoft Azure"/>
+                                    <DisplaySkills skill="Cloud platform expansion"/>
+                                </Container>
+                            </Col>
+                            <Col xs={12} lg={5} className=' mx-auto'>
+                                <Container className='text-start mb-2'>
+                                    <Col className='d-flex align-items-center'>
+                                        <h3><strong>Languages:</strong></h3>
+                                    </Col>
+                                </Container>
+                                <Container className="addScroll">
+                                    <DisplaySkills skill="C#"/>
+                                    <DisplaySkills skill="JavaScript"/>
+                                    <DisplaySkills skill="C#"/>
+                                    <DisplaySkills skill="C#"/>
+                                    <DisplaySkills skill="C#"/>
+                                    <DisplaySkills skill="C#"/>
+                                    <DisplaySkills skill="C#"/>
+                                    <DisplaySkills skill="C#"/>
+                                </Container>
+                            </Col>
+                        </Row>
                    </Container>
                </Container>
             </>
         );
-    }
+    
 }
  
 export default ProfileInfoPage;

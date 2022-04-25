@@ -66,24 +66,10 @@ class SearchPage extends React.Component {
         }
         console.log(this.state.filteredResults)
     }
-    // state = {
-    //     filterByValue: ''
-    // }
-
-    // setFilterByValue = (value) => {
-    //     this.setState({
-    //         filterByValue: value
-    //     })
-    // }
-
-    // getFilterValue = () => {
-    //     return this.state.filterByValue;
-    // }
-
-
 
     render() {
         const { users } = this.state;
+        
         const skillTitles = this.state.skills.map(skill => skill.title);
         return (
             <>
@@ -104,14 +90,6 @@ class SearchPage extends React.Component {
                                 data-testid='dropdown'
                                 onChange={value => this.searchItems(value)}/>
                             </Col>
-                            {/* <Col xl={4} lg={12} xs={12} className='w-auto'>
-                                <Button
-                                className="btn btn-danger m-2" 
-                                type="submit" 
-                                data-testid="button">
-                                Submit
-                                </Button>
-                            </Col>  */}
                         </Row>       
                     </Container>        
                     <Container data-testid='search-row-container'>
@@ -121,6 +99,7 @@ class SearchPage extends React.Component {
                                     <SearchPageRow 
                                     key={index} 
                                     users={users}
+                                    userId={user.id}
                                     fullName={user.fullName}
                                     location={user.location}
                                     timeZone={user.timeZone}
@@ -136,6 +115,7 @@ class SearchPage extends React.Component {
                                     <SearchPageRow 
                                     key={index} 
                                     users={users}
+                                    userId={user.id}
                                     fullName={user.fullName}
                                     location={user.location}
                                     timeZone={user.timeZone}

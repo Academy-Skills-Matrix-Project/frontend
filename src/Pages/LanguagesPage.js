@@ -5,6 +5,8 @@ import { Container, Row } from 'react-bootstrap';
 import LanguageRow from '../Components/Rows/LanguageRow';
 import LanguageList from '../Components/Rows/LanguagesList';
 import CircleButtonL from '../Components/Button/CircleButtonL';
+import { Link, Route } from 'react-router-dom';
+import ProfileInfoPage from './ProfileInfoPage';
 
 
 
@@ -62,6 +64,7 @@ export default class LanguagesPage extends React.Component {
                        
                         <Container className='text-center mt-5'>
                             <AppButton title="Save" page='LanguagePage'/>
+                            
                         </Container>
                     
                     </Container>

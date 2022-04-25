@@ -12,7 +12,7 @@ import LanguagesPage from './Pages/LanguagesPage';
 function App() {
   return (
     <div className='App'>
-   <Router>
+    <Router>
       <main>
       <Switch>
         <Route path='/landingform'>
@@ -27,9 +27,12 @@ function App() {
         <Route path='/languagepage'>
           <LanguagesPage/>
         </Route>
-        <Route path='/profilepage'>
-          <ProfileInfoPage />
+        <Route path='/profilepage/:id'>
+          <ProfileInfoPage/>
         </Route>
+        {/* <Route path='/profilepage'>
+          <ProfileInfoPage/>
+        </Route> */}
         <Route path='/searchpage'>
           <SearchPage />
         </Route>
