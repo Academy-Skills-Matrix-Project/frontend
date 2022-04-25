@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import LandingForm from './Pages/LandingForm';
-import GeneralInfo from './Pages/GeneralInfo';
+import UserInfo from './Pages/UserInfo';
 import SkillsPage from './Pages/SkillsPage';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import SearchPage from './Pages/SearchPage';
@@ -18,8 +18,8 @@ function App() {
         <Route path='/landingform'>
           <LandingForm/>
         </Route>
-        <Route path='/generalinfo'>
-          <GeneralInfo />
+        <Route path='/userinfo'>
+          <UserInfo />
         </Route>
         <Route path='/skillspage'>
           <SkillsPage/>

@@ -23,7 +23,6 @@ function GeneralInfo(){
     
     return (
         <div>
-            <NavHeader isLogoutEnabled={true}/>
             <Container fluid data-testid="general-info" className="mb-5 mt-3">
             <Row>
                     <Col>

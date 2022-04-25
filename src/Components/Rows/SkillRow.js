@@ -4,7 +4,7 @@ import Rater from '../Rating/Rating';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
-import DropdownList from 'react-widgets/DropdownList'
+
 
 class SkillRow extends React.Component {
 
