@@ -1,5 +1,4 @@
 import React from 'react';
-import NavHeader from '../Components/NavHeader/NavHeader';
 import { Container, Row, Col} from 'react-bootstrap';
 import "react-widgets/styles.css";
 import Combobox from 'react-widgets/Combobox'
@@ -87,7 +86,6 @@ class SearchPage extends React.Component {
         const skillTitles = this.state.skills.map(skill => skill.title);
         return (
             <>
-                <NavHeader data-testid='navinheader' isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} />
                 <Container data-testid='container' fluid className='justify-content-center'>
                     <Row className='text-center'>
                         <h3>Search and Filter Co-Workers</h3>

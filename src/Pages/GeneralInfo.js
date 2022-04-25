@@ -1,7 +1,5 @@
 import React from 'react';
 import { Form, Col, Row, Container} from 'react-bootstrap';
-import Button from '../Components/Button/Button';
-import NavHeader from '../Components/NavHeader/NavHeader';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
@@ -224,13 +222,6 @@ function GeneralInfo(){
                 </Container>
                 )}
             </Formik>
-            <Container className= 'text-center'>
-                <Row>
-                    <Col className= 'mb-3'>
-                        <Button title='Continue' data-testid="general-button" type="submit" page="GeneralInfo"/>
-                    </Col>
-                </Row>
-            </Container>
         </div>
 
     )

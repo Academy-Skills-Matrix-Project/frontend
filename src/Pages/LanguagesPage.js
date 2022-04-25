@@ -1,6 +1,4 @@
 import React from 'react';
-import AppButton from '../Components/Button/Button';
-import NavHeader from '../Components/NavHeader/NavHeader';
 import { Container, Row } from 'react-bootstrap';
 import LanguageRow from '../Components/Rows/LanguageRow';
 import LanguageList from '../Components/Rows/LanguagesList';
@@ -38,8 +36,7 @@ export default class LanguagesPage extends React.Component {
         
     render(){
         return (
-            <>
-                <NavHeader isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={false} />      
+            <>   
                     <Container fluid>
                        <Row
                        style={{display:'flex', justifyContent:'left'}}
@@ -59,11 +56,6 @@ export default class LanguagesPage extends React.Component {
                 <Container className='position-relative text-center '>
                     <CircleButtonL data-testid='plus-button' addLanguageRow= {this.addLanguageRow} ref={(a) => this._inputElement = a} />
                 </Container>
-                       
-                        <Container className='text-center mt-5'>
-                            <AppButton title="Save" page='LanguagePage'/>
-                        </Container>
-                    
                     </Container>
                     
                 
