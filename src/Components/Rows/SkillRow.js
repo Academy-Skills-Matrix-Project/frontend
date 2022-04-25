@@ -60,14 +60,8 @@ class SkillRow extends React.Component {
 
                     {/* Renders the category dropdown menu and text field */}
                     <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
-                        <DropdownList
-                        className='textfield w-100 mx-1 text-start'
-                        filter={false}
-                        placeholder='Category'
-                        data={['Soft', 'Technical', 'Transferable']}
-                        />
                         <ComboBox 
-                        className='textfield w-100 mx-1 text-start' 
+                        className='textfield w-50 mx-1 text-start' 
                         data-testid='skill-text-input'
                         hideEmptyPopup 
                         placeholder='Select skill' 
