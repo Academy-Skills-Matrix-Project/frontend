@@ -37,14 +37,9 @@ export default class LanguagesPage extends React.Component {
     render(){
         return (
             <>   
-                    <Container fluid>
-                       <Row
-                       style={{display:'flex', justifyContent:'left'}}
-                       >
-                            <h2 className='p-2 fw-bold text-start mb-5'>Personal Information</h2>
-                       </Row>
-                       <Row className = 'text-center'> 
-                       <h1>Languages and Proficiency</h1>
+                    <Container fluid className="mt-5">                       
+                       <Row className = 'text-center mb-4'> 
+                       <h3>Coding Languages and Proficiency</h3>
                        </Row>
                        <Container className= 'border-bottom border-top border-4 border-dark pb-5 '>
                             {console.log(this.state.languageRows)}

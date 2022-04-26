@@ -31,14 +31,9 @@ export default class SkillsPage extends React.Component {
     render(){
         return(
             <>
-                <Container fluid>
-                    <Row 
-                    style={{display:'flex', justifyContent:'left'}}
-                    >
-                        <h2 className='p-2 fw-bold text-start mb-5'>Personal Information</h2>
-                    </Row>
-                    <Row className='text-center'>
-                        <h1>List and Rank your Work Related Skills</h1>
+                <Container fluid className="mt-5">                    
+                    <Row className='text-center mb-4'>
+                        <h3>Soft Skills and Proficiency</h3>
                     </Row>
 
                     {/* Renders the row for skill entry */}

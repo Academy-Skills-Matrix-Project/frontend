@@ -52,10 +52,10 @@ class SkillRow extends React.Component {
                             />
                     </button>
 
-                <Row data-testid='skill-row' className='py-1 text-center justify-content-center'>  
+                <Row data-testid='skill-row' className='py-1 text-center justify-content-center w-100'>  
                     {/* Renders 'I am proficent in' text */}
                     <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
-                        <h4 className='px-3'>I am proficient in...</h4>
+                        <h5 className='px-3 pt-2'>I am proficient in...</h5>
                     </Col>
 
                     {/* Renders the category dropdown menu and text field */}

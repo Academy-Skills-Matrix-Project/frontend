@@ -3,14 +3,12 @@ import { Container, Row, Col} from 'react-bootstrap';
 import "react-widgets/styles.css";
 import Combobox from 'react-widgets/Combobox'
 import SearchPageRow from '../Components/Rows/SearchPageRow';
+import NavHeader from '../Components/NavHeader/NavHeader';
 
 class SearchPage extends React.Component {
 
     constructor(props){
-        super(props);
-        // this.getFilterValue = this.getFilterValue.bind(this);
-        // this.setFilterByValue = this.setFilterByValue.bind(this);
-    
+        super(props);      
         this.state = {
             users: [],
             jobs: [],
@@ -64,29 +62,15 @@ class SearchPage extends React.Component {
             this.setState({filteredResults: this.state.users});
         }
         console.log(this.state.filteredResults)
-    }
-    // state = {
-    //     filterByValue: ''
-    // }
-
-    // setFilterByValue = (value) => {
-    //     this.setState({
-    //         filterByValue: value
-    //     })
-    // }
-
-    // getFilterValue = () => {
-    //     return this.state.filterByValue;
-    // }
-
-
+    }  
 
     render() {
         const { users } = this.state;
         const skillTitles = this.state.skills.map(skill => skill.title);
         return (
             <>
-                <Container data-testid='container' fluid className='justify-content-center'>
+                <NavHeader data-testid='navinheader' isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true}/>
+                <Container data-testid='container' fluid className='justify-content-center mt-5'>
                     <Row className='text-center'>
                         <h3>Search and Filter Co-Workers</h3>
                     </Row>
@@ -101,15 +85,7 @@ class SearchPage extends React.Component {
                                 data={skillTitles}
                                 data-testid='dropdown'
                                 onChange={value => this.searchItems(value)}/>
-                            </Col>
-                            {/* <Col xl={4} lg={12} xs={12} className='w-auto'>
-                                <Button
-                                className="btn btn-danger m-2" 
-                                type="submit" 
-                                data-testid="button">
-                                Submit
-                                </Button>
-                            </Col>  */}
+                            </Col>                            
                         </Row>       
                     </Container>        
                     <Container data-testid='search-row-container'>

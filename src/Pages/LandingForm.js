@@ -91,7 +91,7 @@ function LandingForm(){
             {/* button row */}
             <Row className="text-center">
                 <Container>
-                    <AppButton title="Sign-in" type='submit' page='LandingPage'/>
+                    <AppButton title="Sign-In" type='submit' page='LandingPage'/>
                 </Container>
             </Row>
             {/* Forgot Password */}

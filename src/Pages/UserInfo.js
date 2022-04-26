@@ -12,31 +12,33 @@ import AppButton from '../Components/Button/Button';
 function UserInfo() {
     return(
         <div>
-            <NavHeader isLogoutEnabled={true}/>
-            <Accordion defaultActiveKey="0">
-                <AccordionItem eventKey="0">
-                    <AccordionHeader>Personal Information</AccordionHeader>
-                    <AccordionBody>
-                        <GeneralInfo />
-                    </AccordionBody>
-                </AccordionItem>
-                <AccordionItem eventKey="1">
-                    <AccordionHeader>Skills</AccordionHeader>
-                    <AccordionBody>
-                        <SkillsPage />
-                    </AccordionBody>
-                </AccordionItem>
-                <AccordionItem eventKey="2">
-                    <AccordionHeader>Languages</AccordionHeader>
-                    <AccordionBody>
-                        <LanguagesPage />
-                    </AccordionBody>
-                </AccordionItem>
-            </Accordion>
+            <NavHeader isLogoutEnabled={true} isSearchEnabled={true}/>
+            <Container className="mt-5">
+                <Accordion defaultActiveKey="0">
+                    <AccordionItem eventKey="0">
+                        <AccordionHeader>Personal Information</AccordionHeader>
+                        <AccordionBody>
+                            <GeneralInfo />
+                        </AccordionBody>
+                    </AccordionItem>
+                    <AccordionItem eventKey="1">
+                        <AccordionHeader>Skills</AccordionHeader>
+                        <AccordionBody>
+                            <SkillsPage />
+                        </AccordionBody>
+                    </AccordionItem>
+                    <AccordionItem eventKey="2">
+                        <AccordionHeader>Languages</AccordionHeader>
+                        <AccordionBody>
+                            <LanguagesPage />
+                        </AccordionBody>
+                    </AccordionItem>
+                </Accordion>
+            </Container>                
             <Container className= 'text-center'>
                 <Row>
                     <Col className= 'mb-3 mt-5'>
-                        <AppButton title='Continue' data-testid="general-button" type="submit" page="GeneralInfo"/>
+                        <AppButton title='Save' data-testid="general-button" type="submit" page="UserInfo"/>
                     </Col>
                 </Row>
             </Container>

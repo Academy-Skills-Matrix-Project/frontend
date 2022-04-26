@@ -20,14 +20,7 @@ let schema = yup.object().shape({
 function GeneralInfo(){
     
     return (
-        <div>
-            <Container fluid data-testid="general-info" className="mb-5 mt-3">
-            <Row>
-                    <Col>
-                        <h2 className= 'text-start fw-bold'>Personal Information</h2>
-                    </Col>
-                </Row>
-            </Container>
+        <div className="mt-5">
             <Formik
                 initialValues={{
                     firstName:"",
@@ -149,7 +142,7 @@ function GeneralInfo(){
 
 
                             <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
-                                <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Location/Time Zone</Form.Label>
+                                <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Time Zone</Form.Label>
                                 <Form.Select
                                     name="location"
                                     placeholder=""

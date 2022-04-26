@@ -53,10 +53,10 @@ export default function SearchPageRow(props) {
         }
     });
 
-    // let fullname = props.fullName; // from php
-    // let tmpArray = fullname.split(' '); //split the name to an array
-    // const lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
-    // const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
+    let fullname = props.fullName; // from php
+    let tmpArray = fullname.split(' '); //split the name to an array
+    const lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
+    const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
     
         return(
             <Container
@@ -87,7 +87,7 @@ export default function SearchPageRow(props) {
                                 className="fs-5 fw-bold"
                                 data-testid='First Name'
                                 style={{textOverflow: 'ellipsis',overflow: 'hidden'}}
-                                >{props.fullName}
+                                >{firstname}
                             </Form.Label>
                         </Row>
                         <Row lg={12} xs={7}>
@@ -95,7 +95,7 @@ export default function SearchPageRow(props) {
                                 className="fs-5 fw-bold"  
                                 data-testid='Last Name'  
                                 style={{textOverflow: 'ellipsis',overflow: 'hidden'}}
-                                >{props.fullName}
+                                >{lastname}
                             </Form.Label>
                         </Row>     
                     </Col>

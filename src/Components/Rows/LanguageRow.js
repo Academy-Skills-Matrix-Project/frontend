@@ -52,7 +52,7 @@ import ComboBox from 'react-widgets/Combobox';
                 </button>
                 <Row data-testid='skill-row' className='py-1 text-center justify-content-center w-100'>
                     <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
-                        <h4 className='px-3'>I am proficient in...</h4>
+                        <h5 className='px-3 pt-2'>I am proficient in...</h5>
                     </Col>
                     <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
                         <ComboBox 
