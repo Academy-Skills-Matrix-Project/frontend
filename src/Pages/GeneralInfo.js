@@ -4,6 +4,7 @@ import Button from '../Components/Button/Button';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { useParams } from 'react-router-dom';
 
 
 let schema = yup.object().shape({
@@ -19,7 +20,11 @@ let schema = yup.object().shape({
 })
 
 
-function GeneralInfo(){
+function GeneralInfo(props){
+
+    let {id} = useParams();
+        console.log(props)
+        console.log(id)
     
     return (
         <div>

@@ -7,10 +7,10 @@ function AppButton(props) {
 
     const handleClick = e => {
         switch(props.page){
-            case 'LandingPage': history.push('/generalinfo'); break;
+            case 'LandingPage': history.push('/generalinfo/19'); break;
             case 'GeneralInfo': history.push('/skillspage'); break;
             case 'SkillsPage': history.push('/languagepage'); break;
-            case 'LanguagePage': history.push('/profilepage/0'); break;
+            case 'LanguagePage': history.push('/profilepage/20'); break;
             case 'ProfilePageEdit': history.push('/skillspage'); break;
             default: history.push('/');
         }  

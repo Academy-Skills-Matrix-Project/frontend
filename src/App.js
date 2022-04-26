@@ -18,7 +18,10 @@ function App() {
         <Route path='/landingform'>
           <LandingForm/>
         </Route>
-        <Route path='/generalinfo'>
+        {/* <Route path='/generalinfo'>
+          <GeneralInfo />
+        </Route> */}
+        <Route path='/generalinfo/:id'>
           <GeneralInfo />
         </Route>
         <Route path='/skillspage'>
