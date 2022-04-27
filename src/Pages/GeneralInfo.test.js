@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent} from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import GeneralInfo from '../Pages/GeneralInfo';
 import { MemoryRouter } from "react-router-dom";
 
@@ -16,25 +16,6 @@ test('general page should be in the DOM', () => {
     expect(page).toBeInTheDocument();
 })
 
-//test to see if the personal info renders to screen
-test('personal information is rendered', () => {
-    render(
-        <MemoryRouter>
-            <GeneralInfo />
-        </MemoryRouter>);
-    const personalInfoText = screen.getByText('Personal Information');
-    expect(personalInfoText).toBeInTheDocument();
-})
-
-//test to see if page heading has text Personal Information
-test('should have text Personal Information', () => {
-    render(
-        <MemoryRouter>
-            <GeneralInfo />
-        </MemoryRouter>);
-    const headingText = screen.getByText('Personal Information');
-    expect(headingText).toHaveTextContent('Personal Information');
-})
 
 //test to see if page has a first name field
 test('first name text field is in the document', () =>{
@@ -187,24 +168,14 @@ test('location text field is in the document', () =>{
 })
 
 //test to see if department input field label has text Department
-test('should have label text Location/Time zone', () => {
+test('should have label text Time zone', () => {
     render(
         <MemoryRouter>
             <GeneralInfo />
         </MemoryRouter>);
     const labelText = screen.getByTestId('lTitle-label');
-    expect(labelText).toHaveTextContent('Location/Time Zone');
+    expect(labelText).toHaveTextContent('Time Zone');
 })
-
-//test to see if button is in the DOM
-test('the form button should be rendered', () => {
-    render(
-        <MemoryRouter>
-            <GeneralInfo />
-        </MemoryRouter>);
-    const button = screen.getByTestId('button');
-    expect(button).toBeInTheDocument();
-}) 
 
 //test to see if page has a email field
 test('Email text field is in the document', () =>{
@@ -274,13 +245,3 @@ test('about text area should be in the document', () =>{
     expect(aboutTextArea).toBeInTheDocument();
 })
 
-// continue button is clickable
-test('continue button can be clicked', () => {
-    render(
-        <MemoryRouter>
-            <GeneralInfo />
-        </MemoryRouter>);
-    const button = screen.getByTestId('button');
-    fireEvent.click(button);
-    expect(button).toBeEnabled();
-});
