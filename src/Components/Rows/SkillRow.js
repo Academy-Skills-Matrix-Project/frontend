@@ -72,7 +72,7 @@ class SkillRow extends React.Component {
 
                     {/* Renders star rating item */}
                     <Col lg={3} md={12} xs={12}>
-                        <Rater/>
+                        <Rater toolTipShown={true}/>
                     </Col>       
                 </Row>
             </Container>

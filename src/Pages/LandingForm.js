@@ -57,7 +57,7 @@ function LandingForm(){
                 alert("No user found")
             }
         }catch(error){
-            alert('Not user found')
+            alert('No user found')
         }
         
         

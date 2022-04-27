@@ -9,9 +9,9 @@ let schema = yup.object().shape({
     firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First name is letters only"),    
     lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last name is letters only"),
     jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job title is letters only"),
-    department: yup.string().required("Department is required").matches(/^[a-zA-Z]+$/g, "Department is letters only"),
+    location: yup.string().required("Location is required").matches(/^[a-zA-Z]+$/g, "Location is letters only"),
     team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
-    location: yup.string().required("Must choose a location/time zone"),
+    timezone: yup.string().required("Must choose a time zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
     mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),
     
@@ -20,9 +20,23 @@ let schema = yup.object().shape({
 
 function GeneralInfo(props){
 
+    let firstname = '';
+    let lastname = '';
+
     let {id} = useParams();
         console.log(props)
         console.log(id)
+    const user = props.user;
+    {console.log(user)}
+    
+    if(user.fullName !== undefined){
+        let name = user.fullName;
+        let fullNameTrim = name.trim(); // from php
+        let tmpArray = fullNameTrim.split(' '); //split the name to an array
+        lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
+        firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
+    }
+    
     
     return (
         <div className="mt-5">
@@ -65,8 +79,8 @@ function GeneralInfo(props){
                                 <Form.Control 
                                 type="text" 
                                 name="firstName"
-                                placeholder="Enter First Name" 
-                                value={values.firstName}
+                                placeholder='Enter First Name'
+                                value={firstname}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 isInvalid={!!errors.firstName}
@@ -82,7 +96,7 @@ function GeneralInfo(props){
                                 type="text" 
                                 name="lastName"
                                 placeholder="Enter Last Name"
-                                value={values.lastName}
+                                value={lastname}
                                 onChange={handleChange}
                                 onBlur={handleBlur}
                                 isInvalid={!!errors.lastName}
@@ -112,12 +126,12 @@ function GeneralInfo(props){
 
 
                             <Form.Group as={Col} controlId="formGridDepartment" className="text-start" xs={{span:6, order: 2}} sm={{span:6, order: 2}} md={{span:4, order:2}}>
-                                <Form.Label data-testid="dTitle-label" className= 'redAsterisks'>Department</Form.Label>
+                                <Form.Label data-testid="dTitle-label" className= 'redAsterisks'>Location</Form.Label>
                                 <Form.Control 
                                     type="text" 
-                                    name="department"
-                                    placeholder="Enter Department"
-                                    value={values.department}
+                                    name="location"
+                                    placeholder="Enter Location"
+                                    value={user.location}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.department}
@@ -149,9 +163,9 @@ function GeneralInfo(props){
                             <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
                                 <Form.Label data-testid="lTitle-label" className= 'redAsterisks'>Time Zone</Form.Label>
                                 <Form.Select
-                                    name="location"
+                                    name="timezone"
                                     placeholder=""
-                                    value={values.location}
+                                    value={user.location}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.location}
@@ -208,7 +222,7 @@ function GeneralInfo(props){
                                     type="email" 
                                     name="email"
                                     placeholder="@softwareone.com"
-                                    value={values.email}
+                                    value={user.email}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.email}
@@ -224,7 +238,7 @@ function GeneralInfo(props){
                                     type="text" 
                                     name="mobileNumber"
                                     placeholder="Enter Phone #" 
-                                    value={values.mobileNumber}
+                                    value={user.phoneNumber}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     isInvalid={!!errors.mobileNumber}
@@ -241,7 +255,7 @@ function GeneralInfo(props){
                             <h3>About Me</h3>
                             </Col>
                             <Form.Group as={Col} controlId="formGridFirst" md={8} lg={8}>
-                            <   Form.Control as="textarea" rows={4} placeholder='Tell us about yourself!!'/>
+                            <   Form.Control as="textarea" rows={4} value={user.aboutMe} placeholder='Tell us about yourself!!'/>
                             </Form.Group>
 
                         </Row>

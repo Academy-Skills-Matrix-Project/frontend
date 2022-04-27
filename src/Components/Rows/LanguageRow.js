@@ -66,7 +66,7 @@ import ComboBox from 'react-widgets/Combobox';
                     </Col>
                     {/* Renders star rating item */}
                     <Col lg={3} md={12} xs={12}>
-                        <Rater/>
+                        <Rater toolTipShown={true}/>
                     </Col>       
                 </Row>
         </Container>
