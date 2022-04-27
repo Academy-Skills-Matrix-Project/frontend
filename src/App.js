@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
 import LandingForm from './Pages/LandingForm';
-import GeneralInfo from './Pages/GeneralInfo';
-import SkillsPage from './Pages/SkillsPage';
+import UserInfo from './Pages/UserInfo';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import SearchPage from './Pages/SearchPage';
 import ProfileInfoPage from './Pages/ProfileInfoPage';
-import LanguagesPage from './Pages/LanguagesPage';
+
 
 
 function App() {
@@ -18,25 +17,16 @@ function App() {
         <Route path='/landingform'>
           <LandingForm/>
         </Route>
-        {/* <Route path='/generalinfo'>
-          <GeneralInfo />
-        </Route> */}
-        <Route path='/generalinfo/:id'>
-          <GeneralInfo />
-        </Route>
-        <Route path='/skillspage'>
-          <SkillsPage/>
-        </Route>
-        <Route path='/languagepage'>
-          <LanguagesPage/>
-        </Route>
+        <Route path='/userinfo/:id'>
+          <UserInfo />
+        </Route>        
         <Route path='/profilepage/:id'>
-          <ProfileInfoPage/>
+          <ProfileInfoPage />
         </Route>
         {/* <Route path='/profilepage'>
           <ProfileInfoPage/>
         </Route> */}
-        <Route path='/searchpage'>
+        <Route path='/searchpage/:id'>
           <SearchPage />
         </Route>
         <Route path='/'>

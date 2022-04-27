@@ -15,7 +15,6 @@ function ProfileInfoPage(props) {
     const [user, setUser] = useState({});
 
     let {id} = useParams();
-    console.log(props)
     console.log(id)
 
     useEffect(() => {
@@ -45,7 +44,7 @@ function ProfileInfoPage(props) {
                     </Col>
                     <Col className= 'text-end mt-1 me-1'>
                         {parseInt(id) === 20 ? (
-                            <Link to={`/generalinfo/${id}`}>
+                            <Link to={`/userinfo/${id}`}>
                                 <Button  title='Edit Profile' />
                             </Link>
                         ) : (

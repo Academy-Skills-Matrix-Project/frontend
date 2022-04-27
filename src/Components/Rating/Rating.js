@@ -16,6 +16,9 @@ export default function Rater() {
         onClick={handleRating} 
         ratingValue={rating}
         fillColor='#FFD700'
+        showTooltip
+        tooltipDefaultText = 'Rate Your Proficiency'
+        tooltipArray={['Novice', 'Beginner', 'Competent', 'Proficient', 'Expert']}
         />
       </div>
     )

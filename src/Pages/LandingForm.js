@@ -1,11 +1,11 @@
-import React from 'react';
-import { Form, Container, Row, Col,} from 'react-bootstrap';
+import React, {useState, useEffect} from 'react';
+import { Form, Container, Row, Col, Button} from 'react-bootstrap';
 import './LandingForm';
 import AppButton from '../Components/Button/Button';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import Banner from '../Components/Banner/Banner';
-import { Formik } from 'formik';
+import { Formik, setNestedObjectValues } from 'formik';
 import * as yup from 'yup';
 
 let schema = yup.object().shape({
@@ -14,6 +14,50 @@ let schema = yup.object().shape({
 });
 
 function LandingForm(){
+    const history = useHistory();
+    var dbPassword = '';
+    var currentUserId = -1;
+    var path = '';
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [users, setUsers] = useState([]);
+
+    useEffect(() => {
+        fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
+        .then((res) => res.json())
+        .then((result) => { 
+            setUsers(result);
+         },
+            (error) => { alert(error); console.log(error); }
+        )
+    }, []);
+
+    const handleSubmit = () => {
+        const inputUsername = users.filter((key) => key.email.includes(username));
+        console.log(inputUsername);
+        dbPassword = inputUsername[0].password;
+        currentUserId = inputUsername[0].id;
+        path = '/searchpage/' + currentUserId;
+        console.log(path)
+        console.log(dbPassword)
+        console.log(currentUserId);
+
+        if(inputUsername.length !== 0){
+            console.log(dbPassword);
+            if(dbPassword === password){
+                
+                console.log(currentUserId);
+                return history.push(path);
+            } else {
+                console.log('fail 2')
+            }
+        } else{ 
+            console.log('fail 1')
+        }
+        console.log(inputUsername);
+        console.log(password)
+        
+    }
 
     return (
         <>
@@ -36,10 +80,10 @@ function LandingForm(){
                     console.log(values);
                     alert("Form is validated and in this block api call should be made..");
                     }}
-                    >
+            >
 
             {({
-                handleSubmit,
+                
                 handleChange,
                 handleBlur,
                 isSubmitting,
@@ -58,8 +102,8 @@ function LandingForm(){
                     type="email" 
                     name='email'
                     placeholder="Email"
-                    value={values.email}
-                    onChange={handleChange}
+                    defaultValue={values.email}
+                    onChange={(e) => setUsername(e.target.value)}
                     onBlur={handleBlur}
                     isInvalid={!!errors.email}
                     isValid={touched.email && !errors.email} />
@@ -77,8 +121,8 @@ function LandingForm(){
                     type="password" 
                     name='password'
                     placeholder="Enter Password" 
-                    value={values.password}
-                    onChange={handleChange}
+                    defaultValue={values.password}
+                    onChange={(e) => setPassword(e.target.value)}
                     onBlur={handleBlur}
                     isInvalid={!!errors.password}
                     isValid={touched.password && !errors.password}/>
@@ -91,7 +135,15 @@ function LandingForm(){
             {/* button row */}
             <Row className="text-center">
                 <Container>
-                    <AppButton title="Sign-in" type='submit' page='LandingPage'/>
+                    <Link >
+                    <Button 
+                    title="Sign-In" 
+                    type='submit' 
+                    // page='LandingPage'
+                    onClick={() => handleSubmit()}
+                    > Submit 
+                    </Button>
+                    </Link>
                 </Container>
             </Row>
             {/* Forgot Password */}

@@ -7,18 +7,16 @@ function AppButton(props) {
 
     const handleClick = e => {
         switch(props.page){
-            case 'LandingPage': history.push('/generalinfo/19'); break;
-            case 'GeneralInfo': history.push('/skillspage'); break;
-            case 'SkillsPage': history.push('/languagepage'); break;
-            case 'LanguagePage': history.push('/profilepage/20'); break;
-            case 'ProfilePageEdit': history.push('/skillspage'); break;
+            case 'LandingPage': history.push('/searchpage'); break;        
+            case 'UserInfo': history.push('/profilepage'); break;            
+            case 'ProfilePageEdit': history.push('/userinfo'); break;
             default: history.push('/');
         }  
     }
 
     return (
         <Button 
-            className="btn btn-danger" 
+            className="btn btn-danger btn-lg" 
             type="submit" 
             data-testid="button"
             onClick={handleClick}

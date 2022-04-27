@@ -76,13 +76,13 @@ export default function SearchPageRow(props) {
                         width={55} 
                         className="position-absolute start-0 top-50 translate-middle 
                         border border-2 rounded-circle bg-light  " 
-                        src="MyAccount.png" 
+                        src="/MyAccount.png" 
                         alt="Profile" />
                         </Link>
 
                 <Link to="/profilepage" >
                     <img 
-                        src="Info2.png"
+                        src="/Info2.png"
                         width={22}
                         className="position-absolute end-0 top-0"
                         alt='More Info'

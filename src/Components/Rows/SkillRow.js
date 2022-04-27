@@ -4,7 +4,7 @@ import Rater from '../Rating/Rating';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
-import DropdownList from 'react-widgets/DropdownList'
+
 
 class SkillRow extends React.Component {
 
@@ -45,29 +45,23 @@ class SkillRow extends React.Component {
                     onClick={this.removeSkillRow}
                     className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
                         <img  
-                            src="Cancel.png"
+                            src="/Cancel.png"
                             width={30}
                             alt='delete row'
                             data-testid='delete-button'
                             />
                     </button>
 
-                <Row data-testid='skill-row' className='py-1 text-center justify-content-center'>  
+                <Row data-testid='skill-row' className='py-1 text-center justify-content-center w-100'>  
                     {/* Renders 'I am proficent in' text */}
                     <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
-                        <h4 className='px-3'>I am proficient in...</h4>
+                        <h5 className='px-3 pt-2'>I am proficient in...</h5>
                     </Col>
 
                     {/* Renders the category dropdown menu and text field */}
                     <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
-                        <DropdownList
-                        className='textfield w-100 mx-1 text-start'
-                        filter={false}
-                        placeholder='Category'
-                        data={['Soft', 'Technical', 'Transferable']}
-                        />
                         <ComboBox 
-                        className='textfield w-100 mx-1 text-start' 
+                        className='textfield w-50 mx-1 text-start' 
                         data-testid='skill-text-input'
                         hideEmptyPopup 
                         placeholder='Select skill' 

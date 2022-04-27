@@ -13,14 +13,6 @@ afterEach(() => {
   cleanup(); // resets DOM after each test suite
 })
 
-test('NavHeader.js renders NavHeader', () => {
-    render(
-      <MemoryRouter>
-        <NavHeader />
-      </MemoryRouter>);
-    const testNavbarText = screen.getByTestId('navbar');
-    expect(testNavbarText).toBeInTheDocument();
-});
 
 describe('LanguagesPage.js', () => {test("User should see a heading that reads 'Laugauges and Proficiency'", () => {
     render(<MemoryRouter>
