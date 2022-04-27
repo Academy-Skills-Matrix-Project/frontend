@@ -12,6 +12,7 @@ class NavHeader extends Component {
                 isLogoutEnabled: props.isLogoutEnabled,
                 isSearchEnabled: props.isSearchEnabled,
                 isMyAccountEnabled: props.isMyAccountEnabled,
+                id: props.id
             }
         };
         //renders Navbar
@@ -29,12 +30,12 @@ class NavHeader extends Component {
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto  align-items-end align-items-sm-start" >
                         {this.state.isMyAccountEnabled && 
-                        <NavLink className='nav-link text-black p-2' to='/profilepage/20'>
+                        <NavLink className='nav-link text-black p-2' to={`/userinfo/${this.state.id}`}>
                             <img className='nav-item' src='/MyAccount.png'
                             width={30} alt= 'MyAccount' />  Account</NavLink>}
                     
                         {this.state.isSearchEnabled && 
-                        <NavLink className='nav-link text-black p-2' to='/searchpage'>
+                        <NavLink className='nav-link text-black p-2' to={`/searchpage/${this.state.id}`}>
                            <img className='nav-item' src='/Search.png' 
                             width={30} alt= 'Search'/>  Search</NavLink>}                    
                         {this.state.isLogoutEnabled &&

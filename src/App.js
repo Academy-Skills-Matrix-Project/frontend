@@ -20,7 +20,7 @@ function App() {
         <Route path='/userinfo/:id'>
           <UserInfo />
         </Route>        
-        <Route path='/profilepage/:id'>
+        <Route path='/profilepage/:id/:selectedId'>
           <ProfileInfoPage />
         </Route>
         {/* <Route path='/profilepage'>

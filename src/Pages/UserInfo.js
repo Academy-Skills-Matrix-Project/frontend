@@ -8,11 +8,15 @@ import AccordionHeader from 'react-bootstrap/esm/AccordionHeader';
 import AccordionBody from 'react-bootstrap/esm/AccordionBody';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import AppButton from '../Components/Button/Button';
+import { useParams } from 'react-router-dom';
 
 function UserInfo() {
+    let {id} = useParams();
+    console.log(id);
+
     return(
         <div>
-            <NavHeader isLogoutEnabled={true} isSearchEnabled={true}/>
+            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} id={id}/>
             <Container className="mt-5">
                 <Accordion defaultActiveKey="0">
                     <AccordionItem eventKey="0">

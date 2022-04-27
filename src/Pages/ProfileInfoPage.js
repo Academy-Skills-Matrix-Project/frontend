@@ -14,8 +14,9 @@ function ProfileInfoPage(props) {
 
     const [user, setUser] = useState({});
 
-    let {id} = useParams();
-    console.log(id)
+    let {id, selectedId} = useParams();
+    console.log(id);
+    console.log(selectedId);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -31,11 +32,11 @@ function ProfileInfoPage(props) {
 
     return (
         <>
-            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} />
+            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} id={id} />
             <Container fluid  >
                 <Row>
                     <Col className= 'mt-4 text-start ms-4'>
-                        {parseInt(id) === 20 ? (
+                        {parseInt(id) === parseInt(selectedId) ? (
                             <h3 data-testid='profile-title'>My Profile</h3>
                         ) : (
                             <></>
@@ -43,7 +44,7 @@ function ProfileInfoPage(props) {
                     
                     </Col>
                     <Col className= 'text-end mt-1 me-1'>
-                        {parseInt(id) === 20 ? (
+                        {parseInt(id) === parseInt(selectedId) ? (
                             <Link to={`/userinfo/${id}`}>
                                 <Button  title='Edit Profile' />
                             </Link>

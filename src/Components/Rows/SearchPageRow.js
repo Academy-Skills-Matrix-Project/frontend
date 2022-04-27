@@ -62,7 +62,6 @@ export default function SearchPageRow(props) {
     let tmpArray = fullname.trim().split(' '); //split the name to an array
     const lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
     const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
-    
     return(
         <Container
         fluid
@@ -71,7 +70,7 @@ export default function SearchPageRow(props) {
         data-testid='search-row' 
         className="border border-2 rounded border shadow-sm my-3 position-relative" >
 
-                <Link to={`/profilepage/${props.userId}`}>
+                <Link to={`/profilepage/${props.id}/${props.userId}`}>
                     <img
                         width={55} 
                         className="position-absolute start-0 top-50 translate-middle 
@@ -80,7 +79,7 @@ export default function SearchPageRow(props) {
                         alt="Profile" />
                         </Link>
 
-                <Link to="/profilepage" >
+                <Link to={`/profilepage/${props.id}/${props.userId}`} >
                     <img 
                         src="/Info2.png"
                         width={22}
