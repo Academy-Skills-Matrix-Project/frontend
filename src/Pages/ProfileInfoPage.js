@@ -20,14 +20,14 @@ function ProfileInfoPage(props) {
 
     useEffect(() => {
         const fetchUser = async () => {
-            await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${id}`)
+            await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
             .then((res) => res.json())
             .then((result) => { 
                 setUser(result);
             });
             }
             fetchUser();
-        }, [id]);
+        }, [selectedId]);
 
 
     return (

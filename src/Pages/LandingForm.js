@@ -33,29 +33,34 @@ function LandingForm(){
     }, []);
 
     const handleSubmit = () => {
-        const inputUsername = users.filter((key) => key.email.includes(username));
-        console.log(inputUsername);
-        dbPassword = inputUsername[0].password;
-        currentUserId = inputUsername[0].id;
-        path = '/searchpage/' + currentUserId;
-        console.log(path)
-        console.log(dbPassword)
-        console.log(currentUserId);
 
-        if(inputUsername.length !== 0){
-            console.log(dbPassword);
-            if(dbPassword === password){
-                
-                console.log(currentUserId);
-                return history.push(path);
-            } else {
-                console.log('fail 2')
+        try{
+            const inputUsername = users.filter((key) => key.email.includes(username));
+            console.log(inputUsername);
+            dbPassword = inputUsername[0].password;
+            currentUserId = inputUsername[0].id;
+            path = '/searchpage/' + currentUserId;
+            console.log(path)
+            console.log(dbPassword)
+            console.log(currentUserId);
+    
+            if(inputUsername.length !== 0){
+                console.log(dbPassword);
+                if(dbPassword === password){
+                    
+                    console.log(currentUserId);
+                    return history.push(path);
+                } else {
+                    alert("Incorrect Password")
+                }
+            } else{ 
+                alert("No user found")
             }
-        } else{ 
-            console.log('fail 1')
+        }catch(error){
+            alert('Not user found')
         }
-        console.log(inputUsername);
-        console.log(password)
+        
+        
         
     }
 
@@ -139,7 +144,7 @@ function LandingForm(){
                     <Button 
                     title="Sign-In" 
                     type='submit' 
-                    // page='LandingPage'
+                    className='bg-danger btn border border-0'
                     onClick={() => handleSubmit()}
                     > Submit 
                     </Button>
