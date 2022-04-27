@@ -12,7 +12,8 @@ class NavHeader extends Component {
                 isLogoutEnabled: props.isLogoutEnabled,
                 isSearchEnabled: props.isSearchEnabled,
                 isMyAccountEnabled: props.isMyAccountEnabled,
-                id: props.id
+                id: props.id,
+                selectedId: props.selectedId,
             }
         };
         //renders Navbar
@@ -30,7 +31,7 @@ class NavHeader extends Component {
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto  align-items-end align-items-sm-start" >
                         {this.state.isMyAccountEnabled && 
-                        <NavLink className='nav-link text-black p-2' to={`/userinfo/${this.state.id}`}>
+                        <NavLink className='nav-link text-black p-2' to={`/profilepage/${this.state.id}/${this.state.selectedId}`}>
                             <img className='nav-item' src='/MyAccount.png'
                             width={30} alt= 'MyAccount' />  Account</NavLink>}
                     

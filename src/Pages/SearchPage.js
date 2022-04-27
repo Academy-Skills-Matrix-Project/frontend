@@ -79,7 +79,7 @@ export default function SearchPage(props){
         const skillTitles = skills.map(skill => skill.title);
         return (
             <>
-                <NavHeader data-testid='navinheader' isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} id={id}/>
+                <NavHeader data-testid='navinheader' isLogoutEnabled={true} isSearchEnabled={false} isMyAccountEnabled={true} id={id} selectedId={id}/>
                 <Container data-testid='container' fluid className='justify-content-center mt-5'>
                     <Row className='text-center'>
                         <h3>Search and Filter Co-Workers</h3>
