@@ -17,7 +17,7 @@ function App() {
         <Route path='/landingform'>
           <LandingForm/>
         </Route>
-        <Route path='/userinfo/:id'>
+        <Route path='/userinfo/:id/:selectedId'>
           <UserInfo />
         </Route>        
         <Route path='/profilepage/:id/:selectedId'>

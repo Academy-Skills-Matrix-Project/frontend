@@ -23,16 +23,6 @@ describe('LanguagesPage.js', () => {test("User should see a heading that reads '
 });
 });
 
-describe('LanguagesPage', () => {test("User should see a heading that reads 'Personal Information'", () => {
-    render(<MemoryRouter>
-        <LanguagesPage />
-    </MemoryRouter>);
-    const personalInfo = screen.getByText(/Personal Information/i);
-    expect(personalInfo).toBeInTheDocument();
-});
-});
-
-
 // Sign-out icon appears when isLogoutEnabled is true
 describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled is true', () => {
     render(<MemoryRouter>

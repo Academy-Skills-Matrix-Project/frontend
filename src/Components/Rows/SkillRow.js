@@ -15,8 +15,6 @@ class SkillRow extends React.Component {
         this.state = {
             skills: []
         }
-
-        console.log(this.props)
     }
 
     componentDidMount(){
@@ -24,7 +22,6 @@ class SkillRow extends React.Component {
         .then((res) => res.json())
         .then((result) => { 
             this.setState({skills: result});
-            console.log(this.state.skills);
          },
             (error) => { alert(error); console.log(error); }
         )

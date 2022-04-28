@@ -23,16 +23,14 @@ export default function SearchPage(props){
     // }
 
     const [users, setUsers] = useState([]);
-    const [jobs, setJobs] = useState([]);
+    // const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
-    const [languages, setLanguages] = useState([]);
-    const [skillNames, setSkillNames] = useState([]);
+    // const [languages, setLanguages] = useState([]);
+    // const [skillNames, setSkillNames] = useState([]);
     const [searchInput, setSearcInput] = useState('');
-    const [filterValue, setFilterValue] = useState('');
+    // const [filterValue, setFilterValue] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
     let {id} = useParams();
-    console.log(id)
-
 
     useEffect(() => {
         fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")

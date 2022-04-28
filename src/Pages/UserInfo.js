@@ -9,10 +9,10 @@ import AccordionBody from 'react-bootstrap/esm/AccordionBody';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import AppButton from '../Components/Button/Button';
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function UserInfo() {
-    let {id} = useParams();
-    console.log(id);
+    let {id, selectedId} = useParams();
     const [user, setUser] = useState([]);
     useEffect(() => {
         const fetchUser = async () => {
@@ -24,7 +24,6 @@ function UserInfo() {
             }
             fetchUser();
         }, [id]);
-{console.log(user)}
     return(
         <div>
             <NavHeader isLogoutEnabled={true} isSearchEnabled={true} id={id}/>
@@ -53,7 +52,9 @@ function UserInfo() {
             <Container className= 'text-center'>
                 <Row>
                     <Col className= 'mb-3 mt-5'>
-                        <AppButton title='Save' data-testid="general-button" type="submit" page="UserInfo"/>
+                        <Link to={`/profilepage/${id}/${selectedId}`}>
+                            <AppButton title='Save' data-testid="general-button" type="submit"/>
+                        </Link>
                     </Col>
                 </Row>
             </Container>

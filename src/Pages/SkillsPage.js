@@ -10,7 +10,6 @@ export default class SkillsPage extends React.Component {
     constructor(props){
         super(props);
         this.state = {skillRows: [<SkillRow id={0} key={Date.now()}/>]}
-        console.log(this.state.skillRows)
         this.addSkillRow = this.addSkillRow.bind(this);
         this.removeSkillRow = this.removeSkillRow.bind(this);
     }
@@ -39,7 +38,6 @@ export default class SkillsPage extends React.Component {
                     {/* Renders the row for skill entry */}
                     <Container className='border-bottom border-top border-4 border-dark pb-5'>
                         {/* {row} */}
-                        {console.log(this.state.skillRows)}
                         <SkillsList skillRows={this.state.skillRows} removeSkillRow={this.removeSkillRow} />
                     </Container>
 

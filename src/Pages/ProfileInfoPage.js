@@ -15,8 +15,6 @@ function ProfileInfoPage(props) {
     const [user, setUser] = useState({});
 
     let {id, selectedId} = useParams();
-    console.log(id);
-    console.log(selectedId);
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -45,7 +43,7 @@ function ProfileInfoPage(props) {
                     </Col>
                     <Col className= 'text-end mt-1 me-1'>
                         {parseInt(id) === parseInt(selectedId) ? (
-                            <Link to={`/userinfo/${id}`}>
+                            <Link to={`/userinfo/${id}/${selectedId}`}>
                                 <Button  title='Edit Profile' />
                             </Link>
                         ) : (

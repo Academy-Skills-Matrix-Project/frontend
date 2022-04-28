@@ -63,7 +63,7 @@ describe('NavHeader.js', () => {test('Logo must have src = "/SWO_logo.png" and a
             <NavHeader />
         </MemoryRouter>);
     const logo = screen.getByTestId('navbar-swo-logo');
-    expect(logo).toHaveAttribute('src', 'SWO_logo.png');
+    expect(logo).toHaveAttribute('src', '/SWO_logo.png');
     expect(logo).toHaveAttribute('alt', 'SWO Logo');
 });
 });

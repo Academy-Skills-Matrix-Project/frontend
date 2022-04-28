@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import { Form, Container, Row, Col, Button} from 'react-bootstrap';
 import './LandingForm';
-import AppButton from '../Components/Button/Button';
 import { Link, Route, useHistory } from 'react-router-dom';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import Banner from '../Components/Banner/Banner';
-import { Formik, setNestedObjectValues } from 'formik';
+import { Formik } from 'formik';
 import * as yup from 'yup';
 
 let schema = yup.object().shape({
@@ -140,7 +139,6 @@ function LandingForm(){
             {/* button row */}
             <Row className="text-center">
                 <Container>
-                    <Link >
                     <Button 
                     title="Sign-In" 
                     type='submit' 
@@ -148,7 +146,6 @@ function LandingForm(){
                     onClick={() => handleSubmit()}
                     > Submit 
                     </Button>
-                    </Link>
                 </Container>
             </Row>
             {/* Forgot Password */}

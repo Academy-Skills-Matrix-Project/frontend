@@ -15,8 +15,6 @@ import ComboBox from 'react-widgets/Combobox';
         this.state = {
             languages: []
         }
-
-        console.log(this.props)
     }
 
     componentDidMount(){
@@ -24,7 +22,6 @@ import ComboBox from 'react-widgets/Combobox';
         .then((res) => res.json())
         .then((result) => {
             this.setState({languages: result});
-            console.log(this.state.languages);
         },
         (error) => { alert(error); console.log(error); }
         )

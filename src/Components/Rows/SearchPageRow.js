@@ -1,14 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import { Link, Route } from 'react-router-dom';
-import ProfileInfoPage from "../../Pages/ProfileInfoPage";
-import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export default function SearchPageRow(props) {
-    let history = useHistory();
     let jobTitle = '';
     let topSkill = '';
     let topLanguage = '';
+    let firstname = '';
+    let lastname = '';
     const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
@@ -58,10 +57,15 @@ export default function SearchPageRow(props) {
         }
     });
 
-    let fullname = props.fullName; // from php
-    let tmpArray = fullname.trim().split(' '); //split the name to an array
-    const lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
-    const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
+    if(props.fullName !== undefined){
+        let fullname = props.fullName;
+        let tmpArray = fullname.trim().split(' ');
+        lastname = tmpArray.pop();
+        firstname = tmpArray.join(' ');
+    } else{
+        firstname = 'Error'
+        lastname = 'Loading data'
+    }
     return(
         <Container
         fluid
