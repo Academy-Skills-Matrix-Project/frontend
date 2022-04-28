@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen} from '@testing-library/react';
+import { render, screen, fireEvent} from '@testing-library/react';
 import LandingForm from './LandingForm';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { MemoryRouter } from 'react-router-dom';
@@ -38,8 +38,8 @@ test('For should have heading text Sign in', () => {
         <MemoryRouter>
             <LandingForm />
         </MemoryRouter>);
-    const signInLabel = screen.getByText('Sign in');
-    expect(signInLabel).toHaveTextContent('Sign in');
+    const signInLabel = screen.getByTestId('header');
+    expect(signInLabel).toHaveTextContent('Sign In');
 
 })
 
@@ -77,3 +77,15 @@ describe('LandingForm.js', () => {test('User should see forgot password link', (
     const forgotPasswordLink = screen.getByText(/Forgot Password?/i);
     expect(forgotPasswordLink).toBeInTheDocument();
 })})
+
+// continue button is clickable
+test('continue button can be clicked', () => {
+    render(
+        <MemoryRouter>
+            <LandingForm />
+        </MemoryRouter>            
+        );
+    const button = screen.getByTestId('button');
+    fireEvent.click(button);
+    expect(button).toBeEnabled();
+});

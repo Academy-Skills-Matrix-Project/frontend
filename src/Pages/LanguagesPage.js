@@ -3,35 +3,30 @@ import { Container, Row } from 'react-bootstrap';
 import LanguageRow from '../Components/Rows/LanguageRow';
 import LanguageList from '../Components/Rows/LanguagesList';
 import CircleButtonL from '../Components/Button/CircleButtonL';
-import AppButton from '../Components/Button/Button';
 
 export default class LanguagesPage extends React.Component {
 
-        constructor(props){
-            super(props);
-            this.state = {languageRows: [<LanguageRow id={0} key={Date.now()}/>]}
-            this.addLanguageRow = this.addLanguageRow.bind(this);
-            this.removeLanguageRow = this.removeLanguageRow.bind(this);
-        }    
-    
-        addLanguageRow(item){
-            this.setState((prevState) => {
-                return{
-                    languageRows: prevState.languageRows.concat(<LanguageRow key={item.key} id={item.id}/>)
+    constructor(props){
+        super(props);
+        this.state = {languageRows: [<LanguageRow id={0} key={Date.now()}/>]}
+        this.addLanguageRow = this.addLanguageRow.bind(this);
+        this.removeLanguageRow = this.removeLanguageRow.bind(this);
+    }    
 
-                }
-            })
-        }
+    addLanguageRow(item){
+        this.setState((prevState) => {
+            return{
+                languageRows: prevState.languageRows.concat(<LanguageRow key={item.key} id={item.id}/>)
 
-        removeLanguageRow(id){
-            const languages = this.state.languageRows.filter(element => element.props.id !== id);
-            this.setState({languageRows: languages});
-        }
-    
-    
-    
+            }
+        })
+    }
 
-        
+    removeLanguageRow(id){
+        const languages = this.state.languageRows.filter(element => element.props.id !== id);
+        this.setState({languageRows: languages});
+    }
+    
     render(){
         return (
             <>   

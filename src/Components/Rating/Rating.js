@@ -3,7 +3,7 @@ import { Rating } from 'react-simple-star-rating'
 
 export default function Rater(props) {
     const [rating, setRating] = useState(0); // initial rating value
-    const [toolTipShown, setToolTipShown] = useState(props.toolTipShown)
+    const [toolTipShown] = useState(props.toolTipShown)
     // Catch Rating value
     const handleRating = (rate) => {
       setRating(rate)

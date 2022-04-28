@@ -1,12 +1,10 @@
 import React from 'react';
 import { fireEvent, render, screen, cleanup } from '@testing-library/react';
-import NavHeader from '../Components/NavHeader/NavHeader';
 import {MemoryRouter} from 'react-router-dom';
 import LanguagesPage from './LanguagesPage';
 import LanguageRow from '../Components/Rows/LanguageRow';
-import LandingForm from '../Pages/LandingForm';
 import Rater from '../Components/Rating/Rating';
-import AppButton from '../Components/Button/Button';
+import NavHeader from '../Components/NavHeader/NavHeader'
 
 // runs after each test suite is executed
 afterEach(() => {
@@ -14,11 +12,11 @@ afterEach(() => {
 })
 
 
-describe('LanguagesPage.js', () => {test("User should see a heading that reads 'Laugauges and Proficiency'", () => {
+describe('LanguagesPage.js', () => {test("User should see a heading that reads 'Coding Laugauges and Proficiency'", () => {
     render(<MemoryRouter>
         <LanguagesPage />
     </MemoryRouter>);
-    const languageHeading = screen.getByText(/Languages and Proficiency/i);
+    const languageHeading = screen.getByText(/Coding Languages and Proficiency/i);
     expect(languageHeading).toBeInTheDocument();
 });
 });
@@ -42,42 +40,6 @@ describe('LanguageRow.js', () => {test('<LanguageRow /> components render to the
     expect(skillRow).toBeInTheDocument();
 })
 });
-
-test('save button should render to the screen', () => {
-    render(<MemoryRouter>
-        <LanguagesPage/>
-        </MemoryRouter>);
-        const saveButton = screen.getByTestId('button');
-        expect(saveButton).toBeInTheDocument();
-
-})
-
-// --------------- User can logout successfully
-/*
-1. User clicks on the sign-out icon
-2. User is redirected to the login page
-*/
-test('User can logout successfully', () => {
-    render(
-    <MemoryRouter>
-        <NavHeader isLogoutEnabled={true} />
-    </MemoryRouter>
-    );
-
-    render(
-      <MemoryRouter>
-        <LandingForm />
-      </MemoryRouter>
-    )
-
-    const signOut = screen.getByAltText('LogOut');
-
-    fireEvent.click(signOut);
-
-    const loginPage = screen.getByText(/Sign in/i);
-
-    expect(loginPage).toBeInTheDocument();
-})
 
 // ---------------- Five star ratings state updates successfully
 /*
@@ -121,11 +83,3 @@ test('Add row on click', () => {
   expect(addRow).toHaveReturned();
 })
 
-// Clicking save button will save state of page to user's profile
-test("Expect handleClick to be called", () => {
-  const handleClick = jest.fn();
-
-  handleClick();
-
-  expect(handleClick).toHaveBeenCalled();
-})

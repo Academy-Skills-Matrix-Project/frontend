@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent} from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import GeneralInfo from '../Pages/GeneralInfo';
 import { MemoryRouter } from "react-router-dom";
 
@@ -177,7 +177,7 @@ test('location text field is in the document', () =>{
 })
 
 //test to see if department input field label has text Department
-test('should have label text Location/Time zone', () => {
+test('should have label text Time zone', () => {
     render(
         <MemoryRouter>
             <GeneralInfo user={user} />
@@ -254,13 +254,3 @@ test('about text area should be in the document', () =>{
     expect(aboutTextArea).toBeInTheDocument();
 })
 
-// continue button is clickable
-// test('continue button can be clicked', () => {
-//     render(
-//         <MemoryRouter>
-//             <GeneralInfo />
-//         </MemoryRouter>);
-//     const button = screen.getByTestId('button');
-//     fireEvent.click(button);
-//     expect(button).toBeEnabled();
-// });
