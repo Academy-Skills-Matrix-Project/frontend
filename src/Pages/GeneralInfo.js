@@ -9,9 +9,9 @@ let schema = yup.object().shape({
     firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First Name is letters only"),    
     lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last Name is letters only"),
     jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job Title is letters only"),
-    department: yup.string().required("Department is required").matches(/^[a-zA-Z]+$/g, "Department is letters only"),
+    location: yup.string().required("Location is required").matches(/^[a-zA-Z]+$/g, "Location is letters only"),
     team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
-    location: yup.string().required("Must choose a Time Zone"),
+    timeZone: yup.string().required("Must choose a Time Zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
     mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),
     
@@ -37,14 +37,14 @@ function GeneralInfo(props){
         <div className="mt-5">
             <Formik
                 initialValues={{
-                    firstName:"",
-                    lastName:"",
-                    jobTitle:"",
-                    department:"",
-                    team:"",
-                    location:"",
-                    mobileNumber:"",
-                    email:""
+                    firstName: firstname,
+                    lastName: lastname,
+                    jobTitle: user.jobTitle,
+                    department: user.department,
+                    team:user.team,
+                    location: user.location,
+                    mobileNumber: user.mobileNumber,
+                    email: user.email
                 }}
                 validationSchema={schema}
                 onSubmit={(values) => {
@@ -129,9 +129,9 @@ function GeneralInfo(props){
                                     defaultValue={user.location}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    isInvalid={!!errors.department}
-                                    isValid={touched.department && !errors.department} />
-                                <Form.Control.Feedback  type="invalid">{errors.department}</Form.Control.Feedback>
+                                    isInvalid={!!errors.location}
+                                    isValid={touched.location && !errors.location} />
+                                <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
 
                             </Form.Group> 
 
@@ -160,11 +160,11 @@ function GeneralInfo(props){
                                 <Form.Select
                                     name="timezone"
                                     placeholder=""
-                                    defaultValue={user.location}
+                                    defaultValue={26}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
-                                    isInvalid={!!errors.location}
-                                    isValid={touched.location && !errors.location}
+                                    isInvalid={!!errors.timeZone}
+                                    isValid={touched.timeZone && !errors.timeZone}
                                 >
                                     <option>Select a Time Zone</option>
                                     <option value="1">(GMT) Greenwich Mean Time</option>
@@ -200,7 +200,7 @@ function GeneralInfo(props){
                                     <option value="31">(BET) Brazil Eastern Time</option>
                                     <option value="32">(CAT) Central African Time</option>
                                 </Form.Select>  
-                                <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
+                                <Form.Control.Feedback  type="invalid">{errors.timeZone}</Form.Control.Feedback>
                  
                             </Form.Group>  
                         </Row>

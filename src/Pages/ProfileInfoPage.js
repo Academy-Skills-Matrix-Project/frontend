@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 function ProfileInfoPage(props) {
 
     const [user, setUser] = useState({});
-
+    // let isMyAccountEnabledButton = false;
     let {id, selectedId} = useParams();
 
     useEffect(() => {
@@ -27,10 +27,13 @@ function ProfileInfoPage(props) {
             fetchUser();
         }, [selectedId]);
 
+    // if(id !== selectedId){
+    //     isMyAccountEnabledButton = true;
+    // }
 
     return (
         <>
-            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} id={id} />
+            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={true} id={id} selectedId={id} />
             <Container fluid  >
                 <Row>
                     <Col className= 'mt-4 text-start ms-4'>
@@ -71,7 +74,7 @@ function ProfileInfoPage(props) {
                         {/* <h3 data-testid='department-title'>Department:</h3>
                         <h3 data-testid='team-title'> Team:</h3> */}
                         <h4 data-testid='job-title'><strong>Job Title: </strong>{user.job}</h4>
-                        <h4 data-testid="location-title"><strong>Location: </strong> {user.location}</h4>
+                        <h4 data-testid="location-title"><strong>Location: </strong> {`${user.location} (${user.timeZone})`}</h4>
                     </Col>
                 </Row>
                 
