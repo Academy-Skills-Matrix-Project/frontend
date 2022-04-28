@@ -4,6 +4,9 @@ import GeneralInfo from '../Pages/GeneralInfo';
 import { MemoryRouter } from "react-router-dom";
 
 
+
+
+
 const user = {
     id: 999,
     fullName: 'Test User',
@@ -15,6 +18,40 @@ const user = {
     admin: false,
     location: "Atlanta"
 }
+
+let firstname = '';
+let lastname = '';
+
+let name = user?.fullName;
+        let fullNameTrim = name?.trim(); // from php
+        let tmpArray = fullNameTrim?.split(' '); //split the name to an array
+        lastname = tmpArray?.pop(); // pop the last element of the aray and store it in "lastname" variable
+        firstname = tmpArray?.join(' '); // join the array to make first and middlename and sto
+
+test('texts fields match passed in value', () => {
+    render(
+        <MemoryRouter>
+            <GeneralInfo user = {user} />
+        </MemoryRouter>);
+        const emailField = screen.getByPlaceholderText('@softwareone.com');
+        expect(emailField.defaultValue).toEqual(user.email);
+
+        const phoneField = screen.getByPlaceholderText('Enter Phone #');
+        expect(phoneField.defaultValue).toEqual(user.phoneNumber);
+
+        const aboutField = screen.getByPlaceholderText('Tell us about yourself!!');
+        expect(aboutField.defaultValue).toEqual(user.aboutMe);
+
+        const fnameField = screen.getByPlaceholderText('Enter First Name');
+        expect(fnameField.defaultValue).toEqual(firstname);
+
+        const lnameField = screen.getByPlaceholderText('Enter Last Name');
+        expect(lnameField.defaultValue).toEqual(lastname);
+        
+        const locationField = screen.getByPlaceholderText('Enter Location');
+        expect(locationField.defaultValue).toEqual(user.location);
+    
+})
 
 //test to see if general information page is rendered
 test('general page should be in the DOM', () => {
