@@ -17,7 +17,7 @@ class NavHeader extends Component {
         //renders Navbar
     render() {
          return(
-            <Navbar className='navbar sticky-top border-bottom border-dark p-0' data-testid='navbar'>    
+            <Navbar className='navbar sticky-top border-bottom border-dark p-0'data-testid='navbar'>    
                 <Container fluid>
                     <Navbar.Brand className='navbar-brand p-0'>
                         <NavLink to="/" className='p-0'> 

@@ -1,11 +1,11 @@
 import React from 'react';
-import './UserInfo.css';
 import {Container, Row, Col, Accordion} from 'react-bootstrap';
 import GeneralInfo from './GeneralInfo';
 import SkillsPage from './SkillsPage';
 import LanguagesPage from './LanguagesPage';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import AppButton from '../Components/Button/Button';
+import './UserInfo.css';
 
 
 function UserInfo() {

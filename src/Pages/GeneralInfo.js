@@ -5,12 +5,12 @@ import * as yup from 'yup';
 
 
 let schema = yup.object().shape({
-    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First name is letters only"),    
-    lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last name is letters only"),
-    jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job title is letters only"),
+    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First Name is letters only"),    
+    lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last Name is letters only"),
+    jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job Title is letters only"),
     department: yup.string().required("Department is required").matches(/^[a-zA-Z]+$/g, "Department is letters only"),
     team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
-    location: yup.string().required("Must choose a location/time zone"),
+    location: yup.string().required("Must choose a Time Zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
     mobileNumber: yup.string().matches(/^\+[1-9]\d{1,14}$/, "Not a vaild format. Must be +xxxxxxxxxxx"),
     
@@ -153,38 +153,38 @@ function GeneralInfo(){
                                     isValid={touched.location && !errors.location}
                                 >
                                     <option>Select a Time Zone</option>
-                                    <option value="1">GMT: Greenwich Mean Time</option>
-                                    <option value="2">UTC: Universal Coordinated Time</option>
-                                    <option value="3">ECT: European Central Time</option>
-                                    <option value="4">EET: Eastern European Time</option>
-                                    <option value="5">ART: (Arabic) Egypt Standard Time</option>
-                                    <option value="6">EAT: Eastern African Time</option>
-                                    <option value="7">MET: Middle East Time</option>
-                                    <option value="8">NET: Near East Time</option>
-                                    <option value="9">PLT: Pakistan Lahore Time</option>
-                                    <option value="10">IST: India Standard Time</option>
-                                    <option value="11">BST: Bangladesh Standard Time</option>
-                                    <option value="12">VST: Vietnam Standard Time</option>
-                                    <option value="13">CTT: China Taiwan Time</option>
-                                    <option value="14">JST: Japan Standard Time</option>
-                                    <option value="15">ACT: Australia Central Time</option>
-                                    <option value="16">AET: Australia Eastern Time</option>
-                                    <option value="17">SST: Solomon Standard Time</option>
-                                    <option value="18">NST: New Zealand Standard Time</option>
-                                    <option value="19">MIT: Midway Islands Time</option>
-                                    <option value="20">HST: Hawaii Standard Time</option>
-                                    <option value="21">AST: Alaska Standard Time</option>
-                                    <option value="22">PST: Pacific Standard Time</option>
-                                    <option value="23">PNT: Phoenix Standard Time</option>
-                                    <option value="24">MST: Mountain Standard Time</option>
-                                    <option value="25">CST: Central Standard Time</option>
-                                    <option value="26">EST: Eastern Standard Time</option>
-                                    <option value="27">IET: Indiana Eastern Standard Time</option>
-                                    <option value="28">PRT: Puerto Rico and US Virgin Islands Time</option>
-                                    <option value="29">CNT: Canada Newfoundland Time</option>
-                                    <option value="30">AGT: Argentina Standard Time</option>
-                                    <option value="31">BET: Brazil Eastern Time</option>
-                                    <option value="32">CAT:Central African Time</option>
+                                    <option value="1">(GMT) Greenwich Mean Time</option>
+                                    <option value="2">(UTC) Universal Coordinated Time</option>
+                                    <option value="3">(ECT) European Central Time</option>
+                                    <option value="4">(EET) Eastern European Time</option>
+                                    <option value="5">(ART) (Arabic) Egypt Standard Time</option>
+                                    <option value="6">(EAT) Eastern African Time</option>
+                                    <option value="7">(MET) Middle East Time</option>
+                                    <option value="8">(NET) Near East Time</option>
+                                    <option value="9">(PLT) Pakistan Lahore Time</option>
+                                    <option value="10">(IST) India Standard Time</option>
+                                    <option value="11">(BST) Bangladesh Standard Time</option>
+                                    <option value="12">(VST) Vietnam Standard Time</option>
+                                    <option value="13">(CTT) China Taiwan Time</option>
+                                    <option value="14">(JST) Japan Standard Time</option>
+                                    <option value="15">(ACT) Australia Central Time</option>
+                                    <option value="16">(AET) Australia Eastern Time</option>
+                                    <option value="17">(SST) Solomon Standard Time</option>
+                                    <option value="18">(NST) New Zealand Standard Time</option>
+                                    <option value="19">(MIT) Midway Islands Time</option>
+                                    <option value="20">(HST) Hawaii Standard Time</option>
+                                    <option value="21">(AST) Alaska Standard Time</option>
+                                    <option value="22">(PST) Pacific Standard Time</option>
+                                    <option value="23">(PNT) Phoenix Standard Time</option>
+                                    <option value="24">(MST) Mountain Standard Time</option>
+                                    <option value="25">(CST) Central Standard Time</option>
+                                    <option value="26">(EST) Eastern Standard Time</option>
+                                    <option value="27">(IET) Indiana Eastern Standard Time</option>
+                                    <option value="28">(PRT) Puerto Rico and US Virgin Islands Time</option>
+                                    <option value="29">(CNT) Canada Newfoundland Time</option>
+                                    <option value="30">(AGT) Argentina Standard Time</option>
+                                    <option value="31">(BET) Brazil Eastern Time</option>
+                                    <option value="32">(CAT) Central African Time</option>
                                 </Form.Select>  
                                 <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
                  

@@ -12,12 +12,12 @@ class ProfileInfoPage extends React.Component {
         return (
             <>
                 <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={false} />
-               <Container fluid  >
+               <Container fluid="lg"  className="mt-4">
                    <Row>
-                       <Col className= 'mt-4 text-start ms-4'>
-                       <h3 data-testid='profile-title'>My Profile</h3>
+                       <Col className= 'text-start ms-4'>
+                       <h3 data-testid='profile-title' className="fw-bold">My Profile</h3>
                        </Col>
-                       <Col className= 'text-end mt-1 me-1'>
+                       <Col className= 'text-end me-1'>
                        <Button  title='Edit Profile' page='ProfilePageEdit'  />
                        </Col>
                    </Row>
@@ -26,17 +26,17 @@ class ProfileInfoPage extends React.Component {
                             <img src= 'ProfilePic.png'
                                  alt= 'Profile'
                                  width={250}/>
-                            <h3 data-testid="name-title">Full Name</h3>
+                            <h4 data-testid="name-title" className="fw-bold">Full Name</h4>
                         </Col>
                        <Col className="mt-5 mx-auto text-start" xs={5} lg={4}>
-                            <h3 data-testid="email-title">Email:</h3>
-                            <h3 data-testid="mobile-title">Mobile Number:</h3>
-                            <h3 data-testid="location-title">Location/Time zone:</h3>
+                            <h4 data-testid="email-title" className="fw-bold mb-3">Email:</h4>
+                            <h4 data-testid="mobile-title" className="fw-bold mb-3">Mobile Number:</h4>
+                            <h4 data-testid="location-title" className="fw-bold">Time Zone:</h4>
                        </Col>
                        <Col className="mt-5 mx-auto text-start" xs={5} lg={4}>
-                            <h3 data-testid='department-title'>Department:</h3>
-                            <h3 data-testid='team-title'> Team:</h3>
-                            <h3 data-testid='job-title'>Job Title:</h3>
+                            <h4 data-testid='department-title' className="fw-bold mb-3">Department:</h4>
+                            <h4 data-testid='team-title' className="fw-bold mb-3"> Team:</h4>
+                            <h4 data-testid='job-title' className="fw-bold">Job Title:</h4>
                        </Col>
                    </Row>
                    
@@ -49,7 +49,7 @@ class ProfileInfoPage extends React.Component {
                    <Container fluid className="mt-5  mb-5 me-5 "  >
                     <Row className='mx-auto'>
                    <Col xs={12} lg={5} className=' mx-auto ' >
-                    <Container className= 'text-start mb-3 '>
+                    <Container className= 'text-start mb-4'>
                     <h3>Skills</h3>
                     </Container>
                          <Container className= "addScroll mb-3">
@@ -59,7 +59,7 @@ class ProfileInfoPage extends React.Component {
                         </Container>
                    </Col>
                    <Col xs={12} lg={5} className=' mx-auto'>
-                    <Container className='text-start mb-3'>
+                    <Container className='text-start mb-4'>
                    <h3>Languages</h3>
                    </Container>
                    <Container className="addScroll ">

@@ -107,13 +107,13 @@ test('location heading should be rendered', () => {
     expect(locationTitle).toBeInTheDocument();
 })
 
-test('location heading should have text Location/Time zone', () => {
+test('location heading should have texT Time Zone', () => {
     render(
         <MemoryRouter>
             <ProfileInfoPage />
         </MemoryRouter>);
     const locationTitle = screen.getByTestId('location-title');
-    expect(locationTitle).toHaveTextContent('Location/Time zone:');
+    expect(locationTitle).toHaveTextContent('Time Zone:');
 })
 
 

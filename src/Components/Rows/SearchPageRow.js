@@ -54,9 +54,9 @@ export default function SearchPageRow(props) {
     });
 
     let fullname = props.fullName; // from php
-    let tmpArray = fullname.split(' '); //split the name to an array
-    const lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
-    const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
+    let tmpArray = fullname?.split(' '); //split the name to an array
+    const lastname = tmpArray?.pop(); // pop the last element of the aray and store it in "lastname" variable
+    const firstname = tmpArray?.join(' '); // join the array to make first and middlename and sto
     
         return(
             <Container
@@ -112,7 +112,7 @@ export default function SearchPageRow(props) {
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Job Title: </strong>{jobTitle}</Form.Label>
                         </Row>
                         <Row lg={12}>
-                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Location / Time Zone: </strong>{`${props.location} (${props.timeZone})`}</Form.Label>
+                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${props.location} (${props.timeZone})`}</Form.Label>
                         </Row>
                     </Col>
                 </Row>
