@@ -70,7 +70,7 @@ function LandingForm(){
         <Container className="mt-5">
             <Row>
                 <Col>
-                    <h1 className="h3 fw-bold text-center">Sign in</h1>
+                    <h1 className="fs-2 fw-bold text-center">Sign in</h1>
                 </Col>
             </Row>
             {/* form row */}
@@ -96,13 +96,13 @@ function LandingForm(){
                 errors, 
             }) => (
             <Form data-testid="sign-in-form" className="mt-5 mx-5" noValidate onSubmit={handleSubmit}>
-                <Form.Group as={Row} className="mb-3 mx-auto" controlId="formHorizontalEmail">
-                    <Form.Label column xs={6} md={4} className="fs-3 fw-bold text-end redAsterisks" data-testid="email-label">
+                <Form.Group as={Row} className="mb-3 mx-auto align-items-center" controlId="formHorizontalEmail">
+                    <Form.Label column xs={6} md={4} className="fs-4 fw-bold text-end redAsterisks" data-testid="email-label">
                     Email
                     </Form.Label>
                     <Col xs={6} md={4}>
                     <Form.Control 
-                    className="form-control form-control-lg border border-3"
+                    className="form-control border border-3"
                     type="email" 
                     name='email'
                     placeholder="Email"
@@ -115,13 +115,13 @@ function LandingForm(){
                 <Form.Control.Feedback  type="invalid">{errors.email}</Form.Control.Feedback>
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-3 mx-auto" controlId="formHorizontalPassword">
-                    <Form.Label column xs={6} md={4} className="fs-3 fw-bold text-end redAsterisks" data-testid="password-label">
+                <Form.Group as={Row} className="mb-3 mx-auto align-items-center" controlId="formHorizontalPassword">
+                    <Form.Label column xs={6} md={4} className="fs-4 fw-bold text-end redAsterisks" data-testid="password-label">
                     Password
                     </Form.Label>
                     <Col xs={6} md={4}>
                     <Form.Control 
-                    className="form-control form-control-lg border border-3" 
+                    className="form-control border border-3" 
                     type="password" 
                     name='password'
                     placeholder="Enter Password" 

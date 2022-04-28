@@ -48,9 +48,9 @@ export default class LanguagesPage extends React.Component {
                         <CircleButtonL data-testid='plus-button' addLanguageRow= {this.addLanguageRow} ref={(a) => this._inputElement = a} />
                     </Container>
                     
-                    <Container className='text-center mt-5'>
+                    {/* <Container className='text-center mt-5'>
                         <AppButton title="Save" page="LanguagePage" />
-                    </Container>
+                    </Container> */}
                 
                 </Container>
                     
