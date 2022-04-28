@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, getByText } from '@testing-library/react';
 import ProfileInfoPage from '../Pages/ProfileInfoPage';
 import { MemoryRouter } from 'react-router-dom';
 import NavHeader from '../Components/NavHeader/NavHeader'
