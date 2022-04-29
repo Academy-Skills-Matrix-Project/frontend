@@ -4,7 +4,7 @@ export default class CircleButtonL extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = { languagesCount: 1};
+        this.state = { languagesCount: 3};
         this.addLanguage = this.addLanguage.bind(this);
     }
  
