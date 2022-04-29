@@ -11,7 +11,8 @@ export default function SearchPageRow(props) {
     const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
-
+    
+    let rando = Math.floor(Math.random() * 10 + 1);
     useEffect(() => {
         const fetchJobs = async () => {
             await fetch("https://cohort3skillsmatrix.azurewebsites.net/Jobs/GetAll")
@@ -42,17 +43,17 @@ export default function SearchPageRow(props) {
     }, [])
 
     jobs.forEach(job => {
-        if(job.jobId === props.jobId){
+        if(job.id === rando){
             jobTitle = job.title;
         }
     });
     skills.forEach(skill => {
-        if(skill.skillId === props.skillId){
+        if(skill.id === rando){
             topSkill = skill.title;
         }
     });
     languages.forEach(language => {
-        if(language.languageId === props.languageId){
+        if(language.id === rando){
             topLanguage = language.title;
         }
     });
@@ -108,7 +109,11 @@ export default function SearchPageRow(props) {
                     </Col>
                     <Col lg={4} md={7} xs={8} className="text-start">
                         <Row lg={12}>
-                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Top Skill:</strong> {topSkill}</Form.Label>
+                            <Form.Label 
+                                className="fs-6" 
+                                style={{textOverflow: 'ellipsis',overflow: 'hidden'}}>
+                                <strong>Top Skill:</strong> {topSkill}
+                                </Form.Label>
                         </Row>
                         <Row lg={12}>
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Top Language: </strong>{topLanguage}</Form.Label>
