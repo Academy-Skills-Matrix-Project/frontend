@@ -32,7 +32,7 @@ class SkillRow extends React.Component {
         this.props.removeSkillRow(this.props.id);
     }
     render(){
-
+        const rand = Math.floor(Math.random() * 10 + 1)
         const skillTitles = this.state.skills.map(skill => skill.title);
         return (
             <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
@@ -61,7 +61,7 @@ class SkillRow extends React.Component {
                         className='textfield w-50 mx-1 text-start' 
                         data-testid='skill-text-input'
                         hideEmptyPopup 
-                        placeholder='Select skill' 
+                        placeholder={skillTitles[rand]} 
                         data={skillTitles}
                         />
                         {/* <Form.Control className="textfield form-control border border-2 w-75 m-2" type="input" data-testid='skill-text-input'/> */}
@@ -69,7 +69,7 @@ class SkillRow extends React.Component {
 
                     {/* Renders star rating item */}
                     <Col lg={3} md={12} xs={12}>
-                        <Rater toolTipShown={true}/>
+                        <Rater toolTipShown={true} hoverable={true} editable={false}/>
                     </Col>       
                 </Row>
             </Container>

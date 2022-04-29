@@ -9,7 +9,7 @@ export default class SkillsPage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {skillRows: [<SkillRow id={0} key={Date.now()}/>]}
+        this.state = {skillRows: [<SkillRow id={0} editable={true} key={Date.now()}/>, <SkillRow id={0} key={Date.now()+1}/> ,<SkillRow id={0} editable={true} key={Date.now()+2}/>]}
         this.addSkillRow = this.addSkillRow.bind(this);
         this.removeSkillRow = this.removeSkillRow.bind(this);
     }

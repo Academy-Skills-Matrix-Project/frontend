@@ -5,7 +5,10 @@ import Rating from '../Rating/Rating';
 
 class DisplaySkills extends Component {
     
-    
+    constructor(props){
+        super(props);
+        // skillRating = props.skillRating;
+    }
     
     render() {
         return (
@@ -18,7 +21,7 @@ class DisplaySkills extends Component {
                             </h5>
                         </Col>
                         <Col md={6} xs={12} className='text-center text-md-end'>
-                            <Rating /> 
+                            <Rating hoverable={false} editable={false}  /> 
                         </Col>
                     </Row>
                 </Container>

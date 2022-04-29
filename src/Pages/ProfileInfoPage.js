@@ -73,7 +73,7 @@ function ProfileInfoPage(props) {
                     <Col className=" mx-auto text-center text-lg-start" xs={12} lg={4}>
                         {/* <h3 data-testid='department-title'>Department:</h3>
                         <h3 data-testid='team-title'> Team:</h3> */}
-                        <h4 data-testid='job-title'><strong>Job Title: </strong>{user.job}</h4>
+                        <h4 data-testid='job-title'><strong>Job Title: </strong>Associate Developer</h4>
                         <h4 data-testid="location-title"><strong>Location: </strong> {`${user.location} (${user.timeZone})`}</h4>
                     </Col>
                 </Row>
@@ -93,8 +93,9 @@ function ProfileInfoPage(props) {
                                 </Col>
                             </Container>
                             <Container className= "addScroll">
-                                <DisplaySkills skill="Microsoft Azure"/>
-                                <DisplaySkills skill="Cloud platform expansion"/>
+                                <DisplaySkills skillRating={4} skill="Microsoft Azure"/>
+                                <DisplaySkills skillRating={1} skill="Cloud platform expansion"/>
+                                <DisplaySkills skillRating={5} skill="AWS EC2"/>
                             </Container>
                         </Col>
                         <Col xs={12} lg={5} className=' mx-auto'>
@@ -106,12 +107,7 @@ function ProfileInfoPage(props) {
                             <Container className="addScroll">
                                 <DisplaySkills skill="C#"/>
                                 <DisplaySkills skill="JavaScript"/>
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="C#"/>
+                                
                             </Container>
                         </Col>
                     </Row>

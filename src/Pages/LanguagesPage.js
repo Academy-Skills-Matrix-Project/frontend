@@ -8,7 +8,7 @@ export default class LanguagesPage extends React.Component {
 
     constructor(props){
         super(props);
-        this.state = {languageRows: [<LanguageRow id={0} key={Date.now()}/>]}
+        this.state = {languageRows: [<LanguageRow id={0} key={Date.now()}/>, <LanguageRow id={0} key={Date.now() + 1}/>]}
         this.addLanguageRow = this.addLanguageRow.bind(this);
         this.removeLanguageRow = this.removeLanguageRow.bind(this);
     }    
