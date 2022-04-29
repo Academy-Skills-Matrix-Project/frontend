@@ -27,7 +27,7 @@ export default function SearchPage(props){
     const [skills, setSkills] = useState([]);
     // const [languages, setLanguages] = useState([]);
     // const [skillNames, setSkillNames] = useState([]);
-    const [searchInput, setSearcInput] = useState('');
+    const [searchInput, setSearchInput] = useState('');
     // const [filterValue, setFilterValue] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
     let {id} = useParams();
@@ -48,31 +48,35 @@ export default function SearchPage(props){
             (error) => { alert(error); console.log(error); }
         )
     }, [])
-        
-        
-    
 
+    
+   
     const searchItems = (searchValue) => {
         console.log(searchValue)
-        setSearcInput(searchValue)
+        setSearchInput(searchValue)
 
-        let sID = 0;
+        let sID = 0
         skills.forEach(skill => {
             if(skill.title.includes(searchValue)){
                 sID = skill.skillId
+                console.log(skill.skillId)
             }
         });
         console.log(sID);
 
         if(searchValue !== ''){
-            const filteredData = users.filter(item => item.skillId === sID);
+            const filteredData = users.filter(item => item.id === sID);
             console.log(filteredData)
             setFilteredResults(filteredData);
             console.log(filteredResults)
         } else {
             setFilteredResults(users);
         }
-    }  
+    } 
+
+    
+
+     
        
         const skillTitles = skills.map(skill => skill.title);
         return (

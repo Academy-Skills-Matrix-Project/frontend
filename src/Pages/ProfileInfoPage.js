@@ -80,7 +80,7 @@ function ProfileInfoPage(props) {
                 
                 <Row>
                     <Col>
-                    <Banner  title="About Me"  text={user.aboutMe}/>
+                    <Banner  title="About Me"  text='Experienced in Ruby on Rails and JavaScript-based programming with a background in Environmental Policy/Conservation and the Evolution of Earth. Scrum Master Certification, as well as MS-900, AWS Certified Cloud Practitioner, PCEP and AZ-900. I am open to working on any team that deals with migrating on-premises data to the cloud.'/>
                     </Col>
                 </Row>
                 
