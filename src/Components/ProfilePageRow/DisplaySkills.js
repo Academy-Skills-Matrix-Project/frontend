@@ -5,10 +5,6 @@ import Rating from '../Rating/Rating';
 
 class DisplaySkills extends Component {
     
-    constructor(props){
-        super(props);
-        // skillRating = props.skillRating;
-    }
     
     render() {
         return (

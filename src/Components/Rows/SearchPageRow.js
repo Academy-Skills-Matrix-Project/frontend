@@ -13,7 +13,6 @@ export default function SearchPageRow(props) {
     const [languages, setLanguages] = useState([]);
     
     let rando = Math.floor(Math.random() * 10 + 1);
-    {console.log(skills)}
     useEffect(() => {
         const fetchJobs = async () => {
             await fetch("https://cohort3skillsmatrix.azurewebsites.net/Jobs/GetAll")
