@@ -13,7 +13,6 @@ export default class SkillsList extends React.Component{
     render(){
         return(
             <Container>
-                {console.log(this.props.skillRows)}
                 {this.props.skillRows.map(skill => 
                     <SkillRow 
                     key={skill.key} 

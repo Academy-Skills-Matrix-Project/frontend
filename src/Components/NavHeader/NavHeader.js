@@ -12,16 +12,18 @@ class NavHeader extends Component {
                 isLogoutEnabled: props.isLogoutEnabled,
                 isSearchEnabled: props.isSearchEnabled,
                 isMyAccountEnabled: props.isMyAccountEnabled,
+                id: props.id,
+                selectedId: props.selectedId,
             }
         };
         //renders Navbar
     render() {
          return(
-            <Navbar className='navbar sticky-top border-bottom border-dark p-0' data-testid='navbar'>    
+            <Navbar className='navbar sticky-top border-bottom border-dark p-0'data-testid='navbar'>    
                 <Container fluid>
                     <Navbar.Brand className='navbar-brand p-0'>
                         <NavLink to="/" className='p-0'> 
-                                <img src='SWO_logo.png' 
+                                <img src='/SWO_logo.png' 
                                 width={250} 
                                 alt ='SWO Logo' 
                                 data-testid='navbar-swo-logo'/>
@@ -29,17 +31,17 @@ class NavHeader extends Component {
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto  align-items-end align-items-sm-start" >
                         {this.state.isMyAccountEnabled && 
-                        <NavLink className='nav-link text-black p-2' to='/profilepage'>
-                            <img className='nav-item' src='MyAccount.png'
+                        <NavLink className='nav-link text-black p-2' to={`/profilepage/${this.state.id}/${this.state.selectedId}`}>
+                            <img className='nav-item' src='/MyAccount.png'
                             width={30} alt= 'MyAccount' />  Account</NavLink>}
                     
                         {this.state.isSearchEnabled && 
-                        <NavLink className='nav-link text-black p-2' to='/searchpage'>
-                           <img className='nav-item' src='Search.png' 
+                        <NavLink className='nav-link text-black p-2' to={`/searchpage/${this.state.id}`}>
+                           <img className='nav-item' src='/Search.png' 
                             width={30} alt= 'Search'/>  Search</NavLink>}                    
                         {this.state.isLogoutEnabled &&
                         <NavLink className=' nav-link text-black p-2' to="/" >
-                            <img className='nav-item' src='LogOut.png'
+                            <img className='nav-item' src='/LogOut.png'
                             width={30} alt='LogOut'/>  Logout</NavLink>}
                     </Nav>
                 </Container>

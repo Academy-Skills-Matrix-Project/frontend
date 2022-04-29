@@ -14,7 +14,7 @@ describe('SkillsRow.js', () => {test("User should see a container for the compon
 describe('SkillsRow.js', () => {test("User should see a red 'delete' button", () => {
     render(<SkillRow />);
     const logo = screen.getByTestId('delete-button');
-    expect(logo).toHaveAttribute('src', 'Cancel.png');
+    expect(logo).toHaveAttribute('src', '/Cancel.png');
     expect(logo).toHaveAttribute('alt', 'delete row');
 });
 });

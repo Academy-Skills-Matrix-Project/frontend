@@ -20,7 +20,7 @@ describe('NavHeader.js renders SWO Logo', () => {test("SWO Logo appears on left 
             <NavHeader />
         </MemoryRouter>);
     const logo = screen.getByTestId('navbar-swo-logo');
-    expect(logo).toHaveAttribute('src', 'SWO_logo.png');
+    expect(logo).toHaveAttribute('src', '/SWO_logo.png');
     expect(logo).toHaveAttribute('alt', 'SWO Logo');
 });
 });
@@ -36,20 +36,3 @@ describe('NavHeader.js', () => {test("User should be able to click the SWO logo 
     expect(dropdown).toBeInTheDocument();
 });
 });
-
-// describe('NavHeader.js', () => {test('Logo must have src = "/MyAccount.png" and alt = "MyAccount"', () => {
-//     render(<NavHeader/>);
-//     const logo = screen.getByAltText('MyAccount');
-//     expect(logo).toHaveAttribute('src', 'MyAccount.png');
-//     expect(logo).toHaveAttribute('alt', 'MyAccount');
-// });
-// });
-// describe('NavHeader.js', () => {test('Logo must have src = "/Search.png" and alt = "Search"', () => {
-//     render(<NavHeader/>);
-//     const logo = screen.getByAltText('Search');
-//     expect(logo).toHaveAttribute('src', 'Search.png');
-//     expect(logo).toHaveAttribute('alt', 'Search');
-// });
-// });
-
-//

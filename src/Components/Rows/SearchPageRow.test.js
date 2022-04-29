@@ -18,7 +18,7 @@ describe('SearchPageRow.js', () => {test("User should see a container for the co
     expect(topSkill).toBeInTheDocument();
     const topLang = screen.getByText('Top Language:');
     expect(topLang).toBeInTheDocument();
-    const location = screen.getByText('Location / Time Zone:');
+    const location = screen.getByText('Time Zone:');
     expect(location).toBeInTheDocument();
     const jobTitle = screen.getByText('Job Title:');
     expect(jobTitle).toBeInTheDocument();

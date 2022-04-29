@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 
 export default function SearchPageRow(props) {
     let jobTitle = '';
     let topSkill = '';
     let topLanguage = '';
+    let firstname = '';
+    let lastname = '';
     const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
@@ -35,6 +38,7 @@ export default function SearchPageRow(props) {
         fetchLanguages();
         fetchJobs();
         fetchSkills();
+
     }, [])
 
     jobs.forEach(job => {
@@ -53,10 +57,10 @@ export default function SearchPageRow(props) {
         }
     });
 
-    // let fullname = props.fullName; // from php
-    // let tmpArray = fullname.split(' '); //split the name to an array
-    // const lastname = tmpArray.pop(); // pop the last element of the aray and store it in "lastname" variable
-    // const firstname = tmpArray.join(' '); // join the array to make first and middlename and sto
+    let fullname = props.fullName; // from php
+    let tmpArray = fullname?.split(' '); //split the name to an array
+    lastname = tmpArray?.pop(); // pop the last element of the aray and store it in "lastname" variable
+    firstname = tmpArray?.join(' '); // join the array to make first and middlename and sto
     
         return(
             <Container
@@ -66,20 +70,23 @@ export default function SearchPageRow(props) {
             data-testid='search-row' 
             className="border border-2 rounded border shadow-sm my-3 position-relative" >
 
-                    <a href="/profilepage" to="/profilepage"><img
-                    width={55} 
-                    className="position-absolute start-0 top-50 translate-middle 
-                    border border-2 rounded-circle bg-light  " 
-                    src="MyAccount.png" 
-                    alt="Profile" />
-                    </a>
+                <Link to={`/profilepage/${props.id}/${props.userId}`}>
+                    <img
+                        width={55} 
+                        className="position-absolute start-0 top-50 translate-middle 
+                        border border-2 rounded-circle bg-light  " 
+                        src="/MyAccount.png" 
+                        alt="Profile" 
+                        /></Link>
 
-                    <a href='/profilepage' to='/profilepage'><img 
-                    src="Info2.png"
-                    width={22}
-                    className="position-absolute end-0 top-0"
-                    alt='More Info'
-                    /></a>
+                <Link to={`/profilepage/${props.id}/${props.userId}`} >
+                    <img 
+                        src="/Info2.png"
+                        width={22}
+                        className="position-absolute end-0 top-0"
+                        alt='More Info'
+                        /></Link>
+                    
                 <Row className="justify-content-start align-items-center mx-3" >
                     <Col lg={3} md={5} xs={4} className="text-start">
                         <Row lg={12} xs={7}>
@@ -87,7 +94,7 @@ export default function SearchPageRow(props) {
                                 className="fs-5 fw-bold"
                                 data-testid='First Name'
                                 style={{textOverflow: 'ellipsis',overflow: 'hidden'}}
-                                >{props.fullName}
+                                >{firstname}
                             </Form.Label>
                         </Row>
                         <Row lg={12} xs={7}>
@@ -95,7 +102,7 @@ export default function SearchPageRow(props) {
                                 className="fs-5 fw-bold"  
                                 data-testid='Last Name'  
                                 style={{textOverflow: 'ellipsis',overflow: 'hidden'}}
-                                >{props.fullName}
+                                >{lastname}
                             </Form.Label>
                         </Row>     
                     </Col>
@@ -112,11 +119,13 @@ export default function SearchPageRow(props) {
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Job Title: </strong>{jobTitle}</Form.Label>
                         </Row>
                         <Row lg={12}>
-                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Location / Time Zone: </strong>{`${props.location} (${props.timeZone})`}</Form.Label>
+                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${props.location} (${props.timeZone})`}</Form.Label>
                         </Row>
                     </Col>
                 </Row>
             </Container>
         );
     }
+   
+
 

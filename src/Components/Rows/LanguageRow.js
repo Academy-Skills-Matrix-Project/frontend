@@ -15,8 +15,6 @@ import ComboBox from 'react-widgets/Combobox';
         this.state = {
             languages: []
         }
-
-        console.log(this.props)
     }
 
     componentDidMount(){
@@ -24,7 +22,6 @@ import ComboBox from 'react-widgets/Combobox';
         .then((res) => res.json())
         .then((result) => {
             this.setState({languages: result});
-            console.log(this.state.languages);
         },
         (error) => { alert(error); console.log(error); }
         )
@@ -43,16 +40,16 @@ import ComboBox from 'react-widgets/Combobox';
                 <button 
                 onClick={this.removeLanguageRow}
                 className= ' position-absolute top-0 start-0 translate-middle bg-transparent border-0 '>
-                <img  
-                            src="Cancel.png"
-                            width={30}
-                            alt='delete row'
-                            data-testid='delete-button'
-                            />
+                    <img  
+                        src="/Cancel.png"
+                        width={30}
+                        alt='delete row'
+                        data-testid='delete-button'
+                        />
                 </button>
                 <Row data-testid='skill-row' className='py-1 text-center justify-content-center w-100'>
                     <Col lg={3} md={12} xs={12} className='justify-content-center align-items-center' >
-                        <h4 className='px-3'>I am proficient in...</h4>
+                        <h5 className='px-3 pt-2'>I am proficient in...</h5>
                     </Col>
                     <Col lg={6} xs={6} className='d-flex mx-auto justify-content-center align-items-center'>
                         <ComboBox 
@@ -66,7 +63,7 @@ import ComboBox from 'react-widgets/Combobox';
                     </Col>
                     {/* Renders star rating item */}
                     <Col lg={3} md={12} xs={12}>
-                        <Rater/>
+                        <Rater toolTipShown={true}/>
                     </Col>       
                 </Row>
         </Container>
