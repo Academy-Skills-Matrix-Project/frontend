@@ -4,7 +4,7 @@ export default class CircleButton extends React.Component{
 
     constructor(props){
         super(props);
-        this.state = { skillsCount: 1};
+        this.state = { skillsCount: 4};
         this.addSkill = this.addSkill.bind(this);
     }
     addSkill(e){
