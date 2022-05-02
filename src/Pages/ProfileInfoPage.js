@@ -13,8 +13,12 @@ import { useState, useEffect } from 'react';
 function ProfileInfoPage(props) {
 
     const [user, setUser] = useState({});
-    // let isMyAccountEnabledButton = false;
+    const [skills, setSkills] = useState([]);
     let {id, selectedId} = useParams();
+
+    let skillsArray = []
+    let tempSkills = JSON.parse(localStorage.getItem('skills'));
+    skillsArray = tempSkills;
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -24,12 +28,64 @@ function ProfileInfoPage(props) {
                 setUser(result);
             });
             }
+        const fetchSkills = async () => {
+            await fetch('https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll')
+            .then((res) => res.json())
+            .then((result) => { 
+                setSkills(result);
+            });
+            }
+            fetchSkills();
             fetchUser();
         }, [selectedId]);
 
-    // if(id !== selectedId){
-    //     isMyAccountEnabledButton = true;
+    let usersSkills;
+    let filteredSkills = [];
+    if(skills.length > 0){
+        usersSkills = skillsArray.filter(skill => skill.userId === user.id)
+        
+        filteredSkills = skills.filter(el => {
+            return usersSkills.find(element => {
+                return element.skillId === el.id
+            })
+        })
+        filteredSkills.forEach(skill => {
+            usersSkills.find(element =>{
+                if(element.skillId === skill.id){
+                    return skill.level = element.skillLevel
+                }
+            })
+        })
+
+        filteredSkills.sort((a, b) => {
+            return b.level - a.level
+        })
+        console.log(filteredSkills)
+    }
+    // const languagesPerUser = languageArray.filter(lang => lang.userId === users.id)
+
+    // if(skillsPerUser.length > 0){
+    //     topSkillObject = skillsPerUser.reduce(function(prev, current) {
+    //         return (prev.skillLevel >= current.skillLevel) ? prev : current
+    //     })
     // }
+    // skills.forEach(skill => {
+    //     if(skill.id === user.id){
+    //         personalSkills = skill.title;
+    //     }
+    // });
+    
+
+    // if(languagesPerUser.length > 0){
+    //     topLanguageObject = languagesPerUser.reduce(function(prev, current){
+    //         return (prev.skillLevel >= current.skillLevel) ? prev : current
+    //     })
+    // }
+    // languages.forEach(lang => {
+    //     if(lang.id === topLanguageObject.languageId){
+    //         topLanguage = lang.title;
+    //     }
+    // });
 
     return (
         <>
@@ -93,9 +149,9 @@ function ProfileInfoPage(props) {
                                 </Col>
                             </Container>
                             <Container className= "addScroll">
-                                <DisplaySkills skillRating={4} skill="Microsoft Azure"/>
-                                <DisplaySkills skillRating={1} skill="Cloud platform expansion"/>
-                                <DisplaySkills skillRating={5} skill="AWS EC2"/>
+                                {filteredSkills.map(skill => 
+                                    <DisplaySkills key={skill.id} skill={skill} />
+                                    )}
                             </Container>
                         </Col>
                         <Col xs={12} lg={5} className=' mx-auto'>
@@ -105,8 +161,6 @@ function ProfileInfoPage(props) {
                                 </Col>
                             </Container>
                             <Container className="addScroll">
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="JavaScript"/>
                                 
                             </Container>
                         </Col>

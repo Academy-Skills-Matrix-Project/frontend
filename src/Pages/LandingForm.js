@@ -32,7 +32,6 @@ function LandingForm(){
     }, []);
 
     const handleSubmit = () => {
-
         try{
             const inputUsername = users.filter((key) => key.email.includes(username));
             console.log(inputUsername);

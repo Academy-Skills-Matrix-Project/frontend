@@ -6,27 +6,42 @@ export default function Rater(props) {
     const [toolTipShown] = useState(props.toolTipShown);
     const [isEditable] = useState(props.editable);
     const [isHover] = useState(props.hoverable);
+    const [level] = useState(props.level)
     // Catch Rating value
     const handleRating = (rate) => {
       setRating(rate)
     }
-
-    const rand = Math.floor(Math.random() * 5 + 1);
   
     return (
-      <div className='rater' data-testid='star-rater'>
-        <Rating 
-        transition
-        onClick={handleRating} 
-        ratingValue={rating}
-        fillColor='#FFD700'
-        showTooltip={toolTipShown}
-        tooltipDefaultText = 'Rate Your Proficiency'
-        tooltipArray={['Novice', 'Beginner', 'Competent', 'Proficient', 'Expert']}
-        initialValue={rand}
-        readonly={isEditable}
-        allowHover={isHover}
-        />
-      </div>
+      <>
+      {isEditable ? (
+        <div className='rater' data-testid='star-rater'>
+          <Rating 
+          transition
+          onClick={handleRating} 
+          ratingValue={rating}
+          fillColor='#FFD700'
+          showTooltip={toolTipShown}
+          tooltipDefaultText = 'Rate Your Proficiency'
+          tooltipArray={['Novice', 'Beginner', 'Competent', 'Proficient', 'Expert']}
+          initialValue={level}
+          readonly={false}
+          allowHover={isHover}
+          />
+        </div>
+      ) : (
+        <div className='rater' data-testid='star-rater'>
+          <Rating 
+          fillColor='#FFD700'
+          showTooltip={toolTipShown}
+          tooltipDefaultText = 'Rate Your Proficiency'
+          tooltipArray={['Novice', 'Beginner', 'Competent', 'Proficient', 'Expert']}
+          initialValue={level}
+          readonly={true}
+          allowHover={isHover}
+          />
+        </div>
+      )}
+      </>
     )
   }

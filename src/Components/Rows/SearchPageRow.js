@@ -1,3 +1,4 @@
+import { useSSRSafeId } from "@react-aria/ssr";
 import React, {useEffect, useState} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
@@ -5,63 +6,73 @@ import { Link } from 'react-router-dom';
 export default function SearchPageRow(props) {
     let jobTitle = '';
     let topSkill = '';
+    let topSkillObject = '';
+    let topLanguageObject = '';
     let topLanguage = '';
     let firstname = '';
     let lastname = '';
     const [jobs, setJobs] = useState([]);
-    const [skills, setSkills] = useState([]);
-    const [languages, setLanguages] = useState([]);
-    
-    let rando = Math.floor(Math.random() * 10 + 1);
-    useEffect(() => {
-        const fetchJobs = async () => {
-            await fetch("https://cohort3skillsmatrix.azurewebsites.net/Jobs/GetAll")
-            .then((res) => res.json())
-            .then((result) => { 
-                setJobs(result);
-            });
-            }
-        const fetchSkills = async () => {
-            await fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
-            .then((res) => res.json())
-            .then((result) => { 
-                setSkills(result);
-             });
-            }
-        const fetchLanguages = async () => {
-            await fetch("https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll")
-            .then((res) => res.json())
-            .then((result) => { 
-                setLanguages(result);
-                });
-            }
+    const [users, setUsers] = useState(props.users)
+    const [skills, setSkills] = useState(props.skills);
+    const [languages, setLanguages] = useState(props.languages);
+    const [skillArray, setSkillArray] = useState(props.skillArray);
+    const [languageArray, setLanguageArray] = useState(props.languageArray)
+    const skillsPerUser = skillArray.filter(skill => skill.userId === users.id)
+    const languagesPerUser = languageArray.filter(lang => lang.userId === users.id)
 
-        fetchLanguages();
-        fetchJobs();
-        fetchSkills();
-
-    }, [])
-
-    jobs.forEach(job => {
-        if(job.id === rando){
-            jobTitle = job.title;
-        }
-    });
+    if(skillsPerUser.length > 0){
+        topSkillObject = skillsPerUser.reduce(function(prev, current) {
+            return (prev.skillLevel >= current.skillLevel) ? prev : current
+        })
+    }
     skills.forEach(skill => {
-        if(skill.id === rando){
+        if(skill.id === topSkillObject.skillId){
             topSkill = skill.title;
         }
     });
-    languages.forEach(language => {
-        if(language.id === rando){
-            topLanguage = language.title;
+
+    if(languagesPerUser.length > 0){
+        topLanguageObject = languagesPerUser.reduce(function(prev, current){
+            return (prev.skillLevel >= current.skillLevel) ? prev : current
+        })
+    }
+    languages.forEach(lang => {
+        if(lang.id === topLanguageObject.languageId){
+            topLanguage = lang.title;
         }
     });
 
-    let fullname = props.fullName; // from php
-    let tmpArray = fullname?.split(' '); //split the name to an array
-    lastname = tmpArray?.pop(); // pop the last element of the aray and store it in "lastname" variable
-    firstname = tmpArray?.join(' '); // join the array to make first and middlename and sto
+    // useEffect(() => {
+    //     const fetchUsers = async () => {
+    //         await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${skills.userId}`)
+    //         .then((res) => res.json())
+    //         .then((result) => { 
+    //             setUsers(result);
+    //          },
+    //             (error) => { alert(error); console.log(error); }
+    //         )};
+    //         fetchUsers();
+    // },[])
+   
+    // jobs.forEach(job => {
+    //     if(job.id === userSkill){
+    //         jobTitle = job.title;
+    //     }
+    // });
+    // skills.forEach(skill => {
+    //     if(skill.id === userSkill){
+    //         topSkill = skill.title;
+    //     }
+    // });
+    // languages.forEach(language => {
+    //     if(language.id === rando){
+    //         topLanguage = language.title;
+    //     }
+    // });
+    let fullname = users.fullName?.trim();
+    let tmpArray = fullname?.split(' ');
+    lastname = tmpArray?.pop();
+    firstname = tmpArray?.pop();
     
         return(
             <Container
@@ -71,7 +82,7 @@ export default function SearchPageRow(props) {
             data-testid='search-row' 
             className="border border-2 rounded border shadow-sm my-3 position-relative" >
 
-                <Link to={`/profilepage/${props.id}/${props.userId}`}>
+                <Link to={`/profilepage/${props.id}/${users.id}`}>
                     <img
                         width={55} 
                         className="position-absolute start-0 top-50 translate-middle 
@@ -80,7 +91,7 @@ export default function SearchPageRow(props) {
                         alt="Profile" 
                         /></Link>
 
-                <Link to={`/profilepage/${props.id}/${props.userId}`} >
+                <Link to={`/profilepage/${props.id}/${users.id}`} >
                     <img 
                         src="/Info2.png"
                         width={22}
@@ -124,7 +135,7 @@ export default function SearchPageRow(props) {
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Job Title: </strong>{jobTitle}</Form.Label>
                         </Row>
                         <Row lg={12}>
-                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${props.location} (${props.timeZone})`}</Form.Label>
+                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${users.location} (${users.timeZone})`}</Form.Label>
                         </Row>
                     </Col>
                 </Row>

@@ -25,7 +25,6 @@ class SkillRow extends React.Component {
          },
             (error) => { alert(error); console.log(error); }
         )
-        
     }
 
     removeSkillRow(){
@@ -69,7 +68,7 @@ class SkillRow extends React.Component {
 
                     {/* Renders star rating item */}
                     <Col lg={3} md={12} xs={12}>
-                        <Rater toolTipShown={true} hoverable={true} editable={false}/>
+                        <Rater toolTipShown={true} hoverable={true} editable={true}/>
                     </Col>       
                 </Row>
             </Container>
