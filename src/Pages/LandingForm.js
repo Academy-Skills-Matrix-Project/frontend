@@ -9,7 +9,7 @@ import * as yup from 'yup';
 
 let schema = yup.object().shape({
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
-    password: yup.string().required("Password is required").matches("12345") 
+    password: yup.string().required("Password is required") 
 });
 
 function LandingForm(){
@@ -129,7 +129,13 @@ function LandingForm(){
                     onChange={(e) => setPassword(e.target.value)}
                     onBlur={handleBlur}
                     isInvalid={!!errors.password}
-                    isValid={touched.password && !errors.password}/>
+                    isValid={touched.password && !errors.password}
+                    onKeyDown={event => {
+                        if(event.key === "Enter" || "Return") {
+                            handleSubmit()
+                        }
+                    }}
+                    />
                     </Col>
                 <Form.Control.Feedback  type="invalid">{errors.password}</Form.Control.Feedback>
                 </Form.Group>

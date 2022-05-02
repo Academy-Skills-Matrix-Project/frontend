@@ -21,13 +21,11 @@ class NavHeader extends Component {
          return(
             <Navbar className='navbar sticky-top border-bottom border-dark p-0'data-testid='navbar'>    
                 <Container fluid>
-                    <Navbar.Brand className='navbar-brand p-0'>
-                        <NavLink to="/" className='p-0'> 
+                    <Navbar.Brand className='navbar-brand p-0'>                        
                                 <img src='/SWO_logo.png' 
                                 width={250} 
                                 alt ='SWO Logo' 
-                                data-testid='navbar-swo-logo'/>
-                        </NavLink>
+                                data-testid='navbar-swo-logo'/>                      
                     </Navbar.Brand>  
                     <Nav className="d-flex w-auto  align-items-end align-items-sm-start" >
                         {this.state.isMyAccountEnabled && 
