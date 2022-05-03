@@ -89,7 +89,7 @@ function ProfileInfoPage(props) {
 
     return (
         <>
-            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} isMyAccountEnabled={true} id={id} selectedId={id} />
+            <NavHeader isLogoutEnabled={true} isSearchEnabled={true} id={id} selectedId={id} />
             <Container fluid  >
                 <Row>
                     <Col className= 'mt-4 text-start ms-4'>
