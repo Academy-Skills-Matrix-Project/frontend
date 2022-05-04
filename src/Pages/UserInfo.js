@@ -42,7 +42,7 @@ function UserInfo() {
                     <Accordion.Item eventKey="2">
                         <Accordion.Header>Languages</Accordion.Header>
                         <Accordion.Body>
-                            <LanguagesPage />
+                            <LanguagesPage selectedId={selectedId} />
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

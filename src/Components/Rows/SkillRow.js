@@ -5,6 +5,7 @@ import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
 import { Rating } from 'react-simple-star-rating';
+import { useSSRSafeId } from '@react-aria/ssr';
 
 export default function SkillRow(props) {
 
@@ -14,14 +15,14 @@ export default function SkillRow(props) {
 
     const [title, setTitle] = useState(skill.title);
     const [level, setLevel] = useState(0);
-    const [id, setID] = useState(0);
+    let [sID, setSID] = useState(0);
 
     const [rating, setRating] = useState(0); // initial rating value
     const handleRating = (rate) => {
         setRating(rate)
       }
     let selectedIdSkillId;
-    let sID;
+    
     const fetchSkills = async () => {
         await fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
         .then((res) => res.json())
@@ -34,20 +35,17 @@ export default function SkillRow(props) {
 
     const setSkillId = (value) => {
         selectedIdSkillId = skills.filter(skill => {
+            
             return skill.title === value
-            // if(skill.title === value){
-            //     sID = skill.id;
-            //     console.log(sID)
-            // } else {
-            //     console.log('error')
-            // }
+              
         });
-        console.log(selectedIdSkillId[0])
-        setID(selectedIdSkillId[0].id)
+        console.log(selectedIdSkillId[0].id)
+        setSID(selectedIdSkillId[0].id)
+        
     }
     useEffect(() => {
-        
-         fetchSkills()
+        setSID(skill.id)
+        fetchSkills()
     }, [])
 
     let skillTitles;
@@ -58,7 +56,7 @@ export default function SkillRow(props) {
     return (
         <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
                 <button 
-                onClick={() => props.removeSkillRow(skill.id)}
+                onClick={() => props.removeSkillRow(skill.id, props.selectedId)}
                 className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
                     <img  
                         src="/Cancel.png"
@@ -67,7 +65,7 @@ export default function SkillRow(props) {
                         data-testid='delete-button'
                         />
                 </button>
-                <button onClick={() => {console.log(id);props.handleSave(id, title, level)}} className=' position-absolute top-0 end-0 translate-middle bg-transparent border-0'>
+                <button onClick={() => {props.handleSave(sID, title, level)}} className=' position-absolute top-0 end-0 translate-middle bg-transparent border-0'>
                     Save
                 </button>
 
@@ -83,7 +81,7 @@ export default function SkillRow(props) {
                     className='textfield w-50 mx-1 text-start' 
                     data-testid='skill-text-input'
                     hideEmptyPopup 
-                    placeholder={''} 
+                    placeholder={'Find Skill'} 
                     data={skillTitles}
                     value={title}
                     onChange={(value) => {setTitle(value); setSkillId(value);}}
@@ -92,8 +90,7 @@ export default function SkillRow(props) {
                 <Col lg={3} md={12} xs={12}>
                     {/* <Rater toolTipShown={true} hoverable={true} editable={true} level={skill.level}/> */}
                     <Rating 
-                        
-                        onClick={(value) => setLevel((value / 20))} 
+                        onClick={(value) => {setLevel((value / 20))}} 
                         ratingValue={rating}
                         fillColor='#FFD700'
                         showTooltip={true}

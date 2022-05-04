@@ -16,9 +16,29 @@ export default function SearchPageRow(props) {
     const [skills, setSkills] = useState(props.skills);
     const [languages, setLanguages] = useState(props.languages);
     const [skillArray, setSkillArray] = useState(props.skillArray);
-    const [languageArray, setLanguageArray] = useState(props.languageArray)
+    const [languageArray, setLanguageArray] = useState(props.languageArray);
     const skillsPerUser = skillArray.filter(skill => skill.userId === users.id)
     const languagesPerUser = languageArray.filter(lang => lang.userId === users.id)
+    let tempSkillsPerUser;
+    let tempLanguagesPerUser
+    // useEffect(() => {
+    //     let tempSkills = JSON.stringify(localStorage.getItem('skills'))
+    //     let tempLanguages = JSON.stringify(localStorage.getItem('languages'))
+    //     console.log(tempSkills)
+    //     setSkillArray(tempSkills)
+    //     setLanguageArray(tempLanguages)
+    //     console.log(skillArray)
+    //     if(skillArray.length > 0){
+    //          tempSkillsPerUser = skillArray.filter(skill => skill.userId === users.id)
+    //     }
+    //     if(languageArray.length > 0){
+    //          tempLanguagesPerUser = languageArray.filter(lang => lang.userId === users.id)
+    //     }
+        
+    //     setSkillsPerUser(tempSkillsPerUser)
+    //     setLanguagesPerUser(tempLanguagesPerUser)
+    //     console.log(skillsPerUser)
+    // },[tempSkillsPerUser])
 
     if(skillsPerUser.length > 0){
         topSkillObject = skillsPerUser.reduce(function(prev, current) {
