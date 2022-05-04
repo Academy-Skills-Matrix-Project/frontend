@@ -4,7 +4,7 @@ import "react-widgets/styles.css";
 import Combobox from 'react-widgets/Combobox'
 import SearchPageRow from '../Components/Rows/SearchPageRow';
 import NavHeader from '../Components/NavHeader/NavHeader';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 export default function SearchPage(props){
 
@@ -31,6 +31,7 @@ export default function SearchPage(props){
     // const [filterValue, setFilterValue] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
     let {id} = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
@@ -46,8 +47,17 @@ export default function SearchPage(props){
             setSkills(result);
          },
             (error) => { alert(error); console.log(error); }
-        )
+        )  
     }, [])
+
+    useEffect(() => {
+        //Get token. If there's no token redirect to landing page
+        const token = localStorage.getItem("my_token");
+
+        if(!token){
+            history.push('/')
+        }
+    },)
 
     
    

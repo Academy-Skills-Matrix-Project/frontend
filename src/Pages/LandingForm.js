@@ -56,6 +56,7 @@ function LandingForm(){
                     
                         if(inputUsername.length !== 0){
                             if(dbPassword === values.password){
+                                localStorage.setItem("my_token", "token");
                                 return history.push(path);
                             } else {
                                 alert("Incorrect Password");
