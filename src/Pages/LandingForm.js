@@ -49,7 +49,8 @@ function LandingForm(){
                 validationSchema={schema}
                 onSubmit={(values) => {
                     try{
-                        const inputUsername = users.filter((key) => key.email.includes(values.email));
+                        const lowerEmail = values.email.toLowerCase();
+                        const inputUsername = users.filter((key) => key.email.toLowerCase().includes(lowerEmail));                       
                         dbPassword = inputUsername[0].password;
                         currentUserId = inputUsername[0].id;
                         path = '/searchpage/' + currentUserId;                     
