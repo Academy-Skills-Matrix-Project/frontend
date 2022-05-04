@@ -32,7 +32,7 @@ import ComboBox from 'react-widgets/Combobox';
     }
     
     render(){
-    const rand = Math.floor(Math.random() * 10 + 1)
+    // const rand = Math.floor(Math.random() * 10 + 1)
     const languageTitles = this.state.languages.map(language => language.title);
     return (
         <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm ' data-testid='language-row'>
@@ -56,14 +56,14 @@ import ComboBox from 'react-widgets/Combobox';
                         className='textfield w-50 mx-1 text-start' 
                         data-testid='language-text-input'
                         hideEmptyPopup 
-                        placeholder={languageTitles[rand]}
+                        placeholder={this.props.language.title}
                         data={languageTitles}
                         />
                         {/* <Form.Control className="textfield form-control border border-2 w-75 m-2" type="input" data-testid='skill-text-input'/> */}
                     </Col>
                     {/* Renders star rating item */}
                     <Col lg={3} md={12} xs={12}>
-                        <Rater toolTipShown={true} hoverable={true} editable={true}/>
+                        <Rater toolTipShown={true} hoverable={true} editable={true} level={this.props.language.level}/>
                     </Col>       
                 </Row>
         </Container>

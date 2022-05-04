@@ -1,28 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import SkillRow from "./SkillRow";
 
-export default class SkillsList extends React.Component{
+export default function SkillsList(props){
 
-    // constructor(props){
-    //     super(props);
-    //     console.log(props.skillRows)
-    // }
-
-
-    render(){
+    const {skillsArray} = props
+    const [key, setKey] = useState(1);
+    // const [skillsArray, setSkillsArray] = useState(temp)
+    // let x;
+    // useEffect(() => {
+    //     x = key++
+    //     setKey(x)
+    // }, [x])
+    
+   console.log(skillsArray)
+        let i = 1;
         return(
             <Container>
-                {this.props.skillRows.map(skill => 
+                {skillsArray.map(skill => {
+                    return(
                     <SkillRow 
-                    key={skill.key} 
-                    id={skill.props.id}
-                    removeSkillRow={this.props.removeSkillRow} />
-                
-                )}
+                    skill={skill}
+                    key={skill.id}
+                    id={skill.id}
+                    removeSkillRow={props.removeSkillRow} 
+                    handleSave={props.handleSave}/>
+                    )
+                })}
                 
                 
             </Container>
         );
-    }
+    
 }

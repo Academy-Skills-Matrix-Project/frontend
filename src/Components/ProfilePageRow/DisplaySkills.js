@@ -8,7 +8,6 @@ class DisplaySkills extends Component {
     
     render() {
         const skill = this.props.skill
-        console.log(skill)
         return (
             <>
                 <Container xs='auto' className='border-bottom' >

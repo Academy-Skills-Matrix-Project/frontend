@@ -42,33 +42,6 @@ export default function SearchPageRow(props) {
         }
     });
 
-    // useEffect(() => {
-    //     const fetchUsers = async () => {
-    //         await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${skills.userId}`)
-    //         .then((res) => res.json())
-    //         .then((result) => { 
-    //             setUsers(result);
-    //          },
-    //             (error) => { alert(error); console.log(error); }
-    //         )};
-    //         fetchUsers();
-    // },[])
-   
-    // jobs.forEach(job => {
-    //     if(job.id === userSkill){
-    //         jobTitle = job.title;
-    //     }
-    // });
-    // skills.forEach(skill => {
-    //     if(skill.id === userSkill){
-    //         topSkill = skill.title;
-    //     }
-    // });
-    // languages.forEach(language => {
-    //     if(language.id === rando){
-    //         topLanguage = language.title;
-    //     }
-    // });
     let fullname = users.fullName?.trim();
     let tmpArray = fullname?.split(' ');
     lastname = tmpArray?.pop();

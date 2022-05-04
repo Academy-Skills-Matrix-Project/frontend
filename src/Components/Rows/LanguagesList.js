@@ -4,14 +4,18 @@ import LanguageRow from "./LanguageRow";
 
 export default class LanguageList extends React.Component{
     render(){
+
+        let languageArray = []
+        let tempLanguages = JSON.parse(localStorage.getItem('usersLanguages'));
+        languageArray = tempLanguages;
         return(
             <Container>
-                {this.props.languageRows.map(language =>
+                {languageArray.map(language =>
                     <LanguageRow 
-                      key= {language.key}
-                      id={language.props.id}
-                      removeLanguageRow={this.props.removeLanguageRow} />
-                      
+                        language={language}
+                        key= {language.id}
+                        id={language.id}
+                        removeLanguageRow={this.props.removeLanguageRow} />
                       )}
             </Container>
         );

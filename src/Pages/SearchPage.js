@@ -8,20 +8,6 @@ import { useParams } from 'react-router-dom';
 
 export default function SearchPage(props){
 
-    // constructor(props){
-    //     super(props);      
-    //     this.state = {
-    //         users: [],
-    //         jobs: [],
-    //         skills: [],
-    //         skillNames: [],
-    //         languages: [],
-    //         searchInput: '',
-    //         filterValue: '',
-    //         filteredResults: []
-    //     } 
-    // }
-
     const [users, setUsers] = useState([]);
     // const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
@@ -82,7 +68,7 @@ export default function SearchPage(props){
     ]
     localStorage.setItem('skills', JSON.stringify(skillArray));
     localStorage.setItem('languages', JSON.stringify(languageArray));
-
+    console.log(JSON.stringify(localStorage.getItem('skills')))
     useEffect(() => {
         const fetchUsers = async () => {
         await fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
@@ -136,8 +122,6 @@ export default function SearchPage(props){
         searchItems();
     }, [searchInput])
    
-    console.log(filteredResults)
-    console.log(users)
     let filteredLanguageArray;
     let filteredUsers=[];
     if(filteredResults.length > 0){

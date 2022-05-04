@@ -14,11 +14,15 @@ function ProfileInfoPage(props) {
 
     const [user, setUser] = useState({});
     const [skills, setSkills] = useState([]);
+    const [languages, setLanguages] = useState([]);
     let {id, selectedId} = useParams();
 
     let skillsArray = []
+    let languageArray = []
     let tempSkills = JSON.parse(localStorage.getItem('skills'));
+    let tempLanguages = JSON.parse(localStorage.getItem('languages'));
     skillsArray = tempSkills;
+    languageArray = tempLanguages;
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -35,12 +39,23 @@ function ProfileInfoPage(props) {
                 setSkills(result);
             });
             }
+        const fetchLanguages = async () => {
+            await fetch('https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll')
+            .then((res) => res.json())
+            .then((result) => { 
+                setLanguages(result);
+            });
+            }
+
+            fetchLanguages();
             fetchSkills();
             fetchUser();
         }, [selectedId]);
 
     let usersSkills;
+    let usersLanguages;
     let filteredSkills = [];
+    let filteredLanguages = [];
     if(skills.length > 0){
         usersSkills = skillsArray.filter(skill => skill.userId === user.id)
         
@@ -56,37 +71,34 @@ function ProfileInfoPage(props) {
                 }
             })
         })
-
         filteredSkills.sort((a, b) => {
             return b.level - a.level
         })
-        console.log(filteredSkills)
     }
-    // const languagesPerUser = languageArray.filter(lang => lang.userId === users.id)
 
-    // if(skillsPerUser.length > 0){
-    //     topSkillObject = skillsPerUser.reduce(function(prev, current) {
-    //         return (prev.skillLevel >= current.skillLevel) ? prev : current
-    //     })
-    // }
-    // skills.forEach(skill => {
-    //     if(skill.id === user.id){
-    //         personalSkills = skill.title;
-    //     }
-    // });
+    if(languages.length > 0){
+        usersLanguages = languageArray.filter(lang => lang.userId === user.id)
+
+        filteredLanguages = languages.filter(el => {
+            return usersLanguages.find(element => {
+                return element.languageId === el.id
+            })
+        })
+        filteredLanguages.forEach(lang => {
+            usersLanguages.find(element => {
+                if(element.languageId === lang.id){
+                    return lang.level = element.skillLevel
+                }
+            })
+        })
+        filteredLanguages.sort((a, b) => {
+            return b.level - a.level
+        })
+    }
+
+    localStorage.setItem('usersSkills', JSON.stringify(filteredSkills));
+    localStorage.setItem('usersLanguages', JSON.stringify(filteredLanguages));
     
-
-    // if(languagesPerUser.length > 0){
-    //     topLanguageObject = languagesPerUser.reduce(function(prev, current){
-    //         return (prev.skillLevel >= current.skillLevel) ? prev : current
-    //     })
-    // }
-    // languages.forEach(lang => {
-    //     if(lang.id === topLanguageObject.languageId){
-    //         topLanguage = lang.title;
-    //     }
-    // });
-
     return (
         <>
             <NavHeader isLogoutEnabled={true} isSearchEnabled={true} id={id} selectedId={id} />
@@ -161,7 +173,9 @@ function ProfileInfoPage(props) {
                                 </Col>
                             </Container>
                             <Container className="addScroll">
-                                
+                                {filteredLanguages.map(lang =>
+                                <DisplaySkills key={lang.id} skill={lang} />
+                                    )}
                             </Container>
                         </Col>
                     </Row>
