@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import { Form, Container, Row, Col, Button} from 'react-bootstrap';
-import './LandingForm';
+import './LandingForm.css';
 import { Link, Route, useHistory } from 'react-router-dom';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import Banner from '../Components/Banner/Banner';
 import { Formik } from 'formik';
-import * as yup from 'yup';
+import * as Yup from 'yup';
 
-let schema = yup.object().shape({
-    email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
-    password: yup.string().required("Password is required").matches("12345") 
+const schema = Yup.object().shape({
+    email: Yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format, must be @softwareone.com"),
+    password: Yup.string().required("Password is required"), 
 });
 
 function LandingForm(){
@@ -17,8 +17,7 @@ function LandingForm(){
     var dbPassword = '';
     var currentUserId = -1;
     var path = '';
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+ 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -26,42 +25,11 @@ function LandingForm(){
         .then((res) => res.json())
         .then((result) => { 
             setUsers(result);
+            console.log(result);
          },
             (error) => { alert(error); console.log(error); }
         )
     }, []);
-
-    const handleSubmit = () => {
-
-        try{
-            const inputUsername = users.filter((key) => key.email.includes(username));
-            console.log(inputUsername);
-            dbPassword = inputUsername[0].password;
-            currentUserId = inputUsername[0].id;
-            path = '/searchpage/' + currentUserId;
-            console.log(path)
-            console.log(dbPassword)
-            console.log(currentUserId);
-    
-            if(inputUsername.length !== 0){
-                console.log(dbPassword);
-                if(dbPassword === password){
-                    
-                    console.log(currentUserId);
-                    return history.push(path);
-                } else {
-                    alert("Incorrect Password")
-                }
-            } else{ 
-                alert("No user found")
-            }
-        }catch(error){
-            alert('No user found')
-        }
-        
-        
-        
-    }
 
     return (
         <>
@@ -81,70 +49,97 @@ function LandingForm(){
                 }}
                 validationSchema={schema}
                 onSubmit={(values) => {
-                    console.log(values);
-                    alert("Form is validated and in this block api call should be made..");
+                    try{
+                        const inputUsername = users.filter((key) => key.email.includes(values.email));
+                        console.log(inputUsername);
+                        dbPassword = inputUsername[0].password;
+                        currentUserId = inputUsername[0].id;
+                        path = '/searchpage/' + currentUserId;
+                        console.log(path)
+                        console.log(dbPassword)
+                        console.log(currentUserId);
+                    
+                
+                        if(inputUsername.length !== 0){
+                            console.log(dbPassword);
+                            if(dbPassword === values.password){
+                                
+                                console.log(currentUserId);
+                                return history.push(path);
+                            } else {
+                                alert("Incorrect Password");
+                            }
+                        } else{ 
+                            alert("No user found");
+                        }
+                    }catch(error){
+                        alert("No user found");
+                        console.log(error);
+                    }
                     }}
             >
 
             {({
-                
-                handleChange,
+                handleSubmit,
                 handleBlur,
+                handleChange,               
                 isSubmitting,
                 values,
                 touched,
-                errors, 
+                errors,            
             }) => (
             <Form data-testid="sign-in-form" className="mt-5 mx-5" noValidate onSubmit={handleSubmit}>
-                <Form.Group as={Row} className="mb-3 mx-auto align-items-center" controlId="formHorizontalEmail">
-                    <Form.Label column xs={6} md={4} className="fs-4 fw-bold text-end redAsterisks" data-testid="email-label">
+            {console.log(values)}
+            <input type="submit" style={{display: "none"}} />
+                <Form.Group as={Row} className="mb-4 mx-auto align-items-center" controlId="formHorizontalEmail">
+                    <Form.Label column xs={12} md={4} className="fs-4 fw-bold text-md-end redAsterisks" data-testid="email-label">
                     Email
                     </Form.Label>
-                    <Col xs={6} md={4}>
+                    <Col xs={12} md={6}>
                     <Form.Control 
-                    className="form-control border border-3"
+                    size="lg"
                     type="email" 
                     name='email'
-                    placeholder="Email"
-                    defaultValue={values.email}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="@softwareone.com"
+                    value={values.email}
+                    onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={!!errors.email}
-                    isValid={touched.email && !errors.email} />
+                    className={touched.email && errors.email ? "error" : null}
+                     />
                    </Col>
-                <Form.Control.Feedback  type="invalid">{errors.email}</Form.Control.Feedback>
+                   {touched.email && errors.email ? (
+                <div className="error-message">{errors.email}</div>
+              ): null}
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-3 mx-auto align-items-center" controlId="formHorizontalPassword">
-                    <Form.Label column xs={6} md={4} className="fs-4 fw-bold text-end redAsterisks" data-testid="password-label">
+                <Form.Group as={Row} className="mb-5css bold font mx-auto align-items-center" controlId="formHorizontalPassword">
+                    <Form.Label column xs={12} md={4} className="fs-4 fw-bold text-md-end redAsterisks" data-testid="password-label">
                     Password
                     </Form.Label>
-                    <Col xs={6} md={4}>
+                    <Col xs={12} md={6}>
                     <Form.Control 
-                    className="form-control border border-3" 
+                    size="lg"
                     type="password" 
                     name='password'
                     placeholder="Enter Password" 
-                    defaultValue={values.password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={values.password}
+                    onChange={handleChange}
                     onBlur={handleBlur}
-                    isInvalid={!!errors.password}
-                    isValid={touched.password && !errors.password}/>
+                    className={touched.email && errors.email ? "error" : null}                                
+                    />
                     </Col>
-                <Form.Control.Feedback  type="invalid">{errors.password}</Form.Control.Feedback>
-                </Form.Group>
-            </Form>
-            )}
-            </Formik>
-            {/* button row */}
-            <Row className="text-center">
+                    {touched.password && errors.password ? (
+                <div className="error-message">{errors.password}</div>
+              ): null}
+                </Form.Group> 
+                {/* button row */}
+            <Row className="text-center mt-3">
                 <Container>
-                    <Button 
+                    <Button       
                     data-testid="button"
                     title="Sign-In" 
                     type='submit' 
                     className='bg-danger btn border border-0'
-                    onClick={() => handleSubmit()}
                     > Submit 
                     </Button>
                 </Container>
@@ -158,7 +153,11 @@ function LandingForm(){
                         return null;
                     }} />
                 </Col>
-            </Row>
+            </Row>               
+            </Form>
+            )}
+            </Formik>
+            
         </Container>
         
         </>
