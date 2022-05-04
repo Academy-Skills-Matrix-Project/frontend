@@ -85,7 +85,7 @@ function LandingForm(){
                     <Form.Label column xs={12} md={4} className="fs-4 fw-bold text-md-end redAsterisks" data-testid="email-label">
                     Email
                     </Form.Label>
-                    <Col xs={12} md={6}>
+                    <Col xs={12} md={4}>
                     <Form.Control 
                     size="lg"
                     type="email" 
@@ -102,11 +102,11 @@ function LandingForm(){
               ): null}
                 </Form.Group>
 
-                <Form.Group as={Row} className="mb-5css bold font mx-auto align-items-center" controlId="formHorizontalPassword">
+                <Form.Group as={Row} className="mb-5 bold font mx-auto align-items-center" controlId="formHorizontalPassword">
                     <Form.Label column xs={12} md={4} className="fs-4 fw-bold text-md-end redAsterisks" data-testid="password-label">
                     Password
                     </Form.Label>
-                    <Col xs={12} md={6}>
+                    <Col xs={12} md={4}>
                     <Form.Control 
                     size="lg"
                     type="password" 
