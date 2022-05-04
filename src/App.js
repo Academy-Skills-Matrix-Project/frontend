@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import LandingForm from './Pages/LandingForm';
 import UserInfo from './Pages/UserInfo';
-import { BrowserRouter as Route, Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import SearchPage from './Pages/SearchPage';
 import ProfileInfoPage from './Pages/ProfileInfoPage';
 import { HashRouter } from 'react-router-dom';
@@ -12,7 +12,7 @@ import { HashRouter } from 'react-router-dom';
 function App() {
   return (
     <div className='App'>
-    <HashRouter>
+    <HashRouter hashType='hashbang'>
       <main>
       <Switch>
         <Route  path='/landingform'>
@@ -36,7 +36,11 @@ function App() {
       </Switch>
       </main>
     </HashRouter>
+    <Router></Router>
     </div>
+   
+    
+    
   );
 }
 
