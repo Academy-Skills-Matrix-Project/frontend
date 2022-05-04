@@ -25,7 +25,7 @@ test('Form text inputs should have placeholder text Email and Enter Password', (
             <LandingForm />
         </MemoryRouter>);
 
-    const emailPlaceholder = screen.getByPlaceholderText('Email');
+    const emailPlaceholder = screen.getByPlaceholderText('@softwareone.com');
     const passwordPlaceholder = screen.getByPlaceholderText('Enter Password');
 
     expect(emailPlaceholder).toBeInTheDocument();

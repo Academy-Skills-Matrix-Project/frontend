@@ -1,26 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
-import Rater from '../Rating/Rating';
 import './SkillRow.css';
 import "react-widgets/styles.css";
 import ComboBox from 'react-widgets/Combobox';
 import { Rating } from 'react-simple-star-rating';
-import { useSSRSafeId } from '@react-aria/ssr';
 
 export default function SkillRow(props) {
 
     const {skill} = props
-    // const [skillTitles, setSkillTitle] = useState();
     const [skills, setSkills] = useState([]);
-
+    const [editable, setEditable] = useState(false);
     const [title, setTitle] = useState(skill.title);
-    const [level, setLevel] = useState(0);
+    const [level, setLevel] = useState(skill.level);
     let [sID, setSID] = useState(0);
-
-    const [rating, setRating] = useState(0); // initial rating value
-    const handleRating = (rate) => {
-        setRating(rate)
-      }
+    const [rating] = useState(0); 
+    
     let selectedIdSkillId;
     
     const fetchSkills = async () => {
@@ -35,18 +29,16 @@ export default function SkillRow(props) {
 
     const setSkillId = (value) => {
         selectedIdSkillId = skills.filter(skill => {
-            
             return skill.title === value
-              
         });
-        console.log(selectedIdSkillId[0].id)
+        
         setSID(selectedIdSkillId[0].id)
         
     }
     useEffect(() => {
         setSID(skill.id)
         fetchSkills()
-    }, [])
+    }, [skill.id])
 
     let skillTitles;
     if(skills.length > 1){
@@ -55,6 +47,7 @@ export default function SkillRow(props) {
         
     return (
         <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
+                
                 <button 
                 onClick={() => props.removeSkillRow(skill.id, props.selectedId)}
                 className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
@@ -65,9 +58,19 @@ export default function SkillRow(props) {
                         data-testid='delete-button'
                         />
                 </button>
-                <button onClick={() => {props.handleSave(sID, title, level)}} className=' position-absolute top-0 end-0 translate-middle bg-transparent border-0'>
-                    Save
+                {editable ? (
+                <button onClick={() => 
+                        {setEditable(false); ((title !== '' && level !== 0 ) ? props.handleSave(sID, title, level, props.selectedId, skill.id) : alert("Make sure Skill and Level are selected"))}}
+                        className=' position-absolute top-0 start-100 translate-middle bg-transparent border-0'>
+                        <img src='/Save.png' width={30} alt='Save' />
                 </button>
+                
+                ) : (
+                <button onClick={() => setEditable(true)} className=' position-absolute top-0 start-100 translate-middle bg-transparent border-0'>
+                    <img src='/Edit.png' width={30} alt='Edit' />
+                </button>
+                )}
+                
 
             <Row data-testid='skill-row' className='py-1 text-center justify-content-center w-100'>  
                 {/* Renders 'I am proficent in' text */}
@@ -84,6 +87,7 @@ export default function SkillRow(props) {
                     placeholder={'Find Skill'} 
                     data={skillTitles}
                     value={title}
+                    readOnly={!editable}
                     onChange={(value) => {setTitle(value); setSkillId(value);}}
                     />
                 </Col>
@@ -97,8 +101,8 @@ export default function SkillRow(props) {
                         tooltipDefaultText = 'Rate Your Proficiency'
                         tooltipArray={['Novice', 'Beginner', 'Competent', 'Proficient', 'Expert']}
                         initialValue={skill.level}
-                        readonly={false}
-                        allowHover={true}
+                        readonly={!editable}
+                        allowHover={!editable}
                         />
                 </Col>       
             </Row>

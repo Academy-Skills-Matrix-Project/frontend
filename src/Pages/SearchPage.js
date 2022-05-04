@@ -55,21 +55,21 @@ export default function SearchPage(props){
         let tempLanguages = JSON.parse(localStorage.getItem('languages'))
          setSkillArray(tempSkills)
          setLanguageArray(tempLanguages)
+
+         
         fetchUsers();
         fetchSkills();
         fetchLanguages();
 
         const searchItems = () => {
-            
-            console.log(searchInput)
             let sID = 0;
+
             skills.forEach(skill => {
                 if(skill.title === searchInput){
                     sID = skill.id;
                 }
             });
-            console.log(sID);
-            console.log(searchInput);
+            
             if(searchInput !== ''){
                 setFilteredResults(skillArray.filter(item => item.skillId === sID));
                 
@@ -81,14 +81,14 @@ export default function SearchPage(props){
     }, [searchInput])
    
     let filteredLanguageArray;
-    let filteredUsers=[];
+    // let filteredUsers=[];
     if(filteredResults.length > 0){
         filteredLanguageArray = languageArray.filter(item => item.userId === filteredResults[0].userId)
-        filteredUsers = users.filter(el => {
-            return filteredResults.find(element => {
-                return element.userId === el.id
-            })
-        })
+        // filteredUsers = users.filter(el => {
+        //     return filteredResults.find(element => {
+        //         return element.userId === el.id
+        //     })
+        // })
     }
 
         const skillTitles = skills.map(skill => skill.title);

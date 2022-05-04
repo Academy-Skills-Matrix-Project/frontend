@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
-import CircleButton from '../Components/Button/CircleButton';
-import SkillRow from '../Components/Rows/SkillRow';
 import SkillsList from '../Components/Rows/SkillsList';
 
 
@@ -9,105 +7,94 @@ export default function SkillsPage(props) {
 
     let [skillsArray, setSkillsArray] = useState([]);
     const [tempSkills, setTempSkills] = useState([]);
-    const [skills, setSkills] = useState([]);
-    const [user, setUser] = useState([]);
-    const [selectedId, setSelectedId] = useState(parseInt(props.selectedId));
-    let usersSkills
-    let [length, setLength] = useState(skillsArray.length)
+    // const [skills, setSkills] = useState([]);
+    // const [user, setUser] = useState([]);
+    const [selectedId] = useState(parseInt(props.selectedId));
     
     useEffect(() =>{
-        let tempAllSkills = JSON.parse(localStorage.getItem('skills'))
+        // let tempAllSkills = JSON.parse(localStorage.getItem('skills'))
         let tempAllUserSkills = JSON.parse(localStorage.getItem('usersSkills'))
-        console.log(tempAllSkills)
-        console.log(tempAllUserSkills)
+        
         setSkillsArray(tempAllUserSkills);
-        fetchUser();
-        setSkills(tempAllSkills);
+        // setSkills(tempAllSkills);
+        // fetchUser();
 
-    if(skills.length > 0){
-        usersSkills = skills.filter(skill => skill.userId === user.id)
-    }      
+    // if(skills.length > 0){
+    //     usersSkills = skills.filter(skill => skill.userId === user.id)
+    // }      
     }, [tempSkills])
     
-    // const fetchSkills = async () => {
-    //         await fetch('https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll')
-    //         .then((res) => res.json())
-    //         .then((result) => { 
-    //             setSkills(result);
-    //         });
-    //         }
-    const fetchUser = async () => {
-        await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
-        .then((res) => res.json())
-        .then((result) => { 
-            setUser(result);
-        });
-        }
+    // const fetchUser = async () => {
+    //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
+    //     .then((res) => res.json())
+    //     .then((result) => { 
+    //         setUser(result);
+    //     });
+    //     }
     
     const addSkillRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersSkills'))
-        console.log(temp)
         temp.push({id: 0, title: '', level: 0})
-        console.log(temp)
-        
         localStorage.setItem('usersSkills', JSON.stringify(temp));
         setTempSkills(temp)
-        // let newps = JSON.parse(localStorage.getItem('usersSkills'))
-        // let news = JSON.parse(localStorage.getItem('skills'))
-        // console.log(newps)
-        // console.log(news)
+    }
+    
+    const handleSave = (sid, title, level, userId, currentId) => {
         
-    }
-    let updatedArray = []
-    const handleSave = (id, title, level) => {
-        let temp = JSON.parse(localStorage.getItem('usersSkills'))
-        console.log(temp)
-        console.log(id)
-        console.log(level)
-        console.log(title)
-        temp.forEach(e => {
-            if(e.id === 0){
-                e.id = id;
-                e.title = title;
-                e.level = level;
-            
-
-            localStorage.setItem('usersSkills', JSON.stringify(temp))
-            let tempSkills = JSON.parse(localStorage.getItem('skills'))
-            tempSkills.push({userId: selectedId, skillId: id, skillLevel: level})
-            localStorage.setItem('skills', JSON.stringify(tempSkills))
-                setTempSkills(temp)
-            // let newps = JSON.parse(localStorage.getItem('usersSkills'))
-            // let news = JSON.parse(localStorage.getItem('skills'))
-            // console.log(newps)
-            // console.log(news)
-            }
-        });
-    }
-
-    const removeSkillRow = (sid, userId) =>{
-        console.log(sid)
-        console.log(userId)
-        const removedUserSkill = skillsArray.filter(element => element.id !== sid);
-        console.log(removedUserSkill)
+        const removedUserSkill = skillsArray.filter(element => element.id !== currentId);
         setSkillsArray(removedUserSkill)
         localStorage.setItem('usersSkills', JSON.stringify(removedUserSkill))
 
         const temp = JSON.parse(localStorage.getItem('skills'))
-        console.log(temp)
+        setTempSkills(temp)
+        const removedUser = temp.filter(t =>{
+            return t.userId !== userId;
+        });
+        localStorage.setItem('skills', JSON.stringify(removedUser))
+        
+
+        let updateSkill = JSON.parse(localStorage.getItem('skills'))
+        let updatedTemp = JSON.parse(localStorage.getItem('usersSkills'));
+        
+        updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.id, skillLevel: t.level}))
+        localStorage.setItem('skills',JSON.stringify(updateSkill))
+        setTempSkills(temp)
+
+        let a = JSON.parse(localStorage.getItem('usersSkills'));
+        a.push({id: sid, title: title, level: level})
+        localStorage.setItem('usersSkills', JSON.stringify(a))
+        setTempSkills(temp)
+
+        const updatedUserSkills = {userId: selectedId, skillId: sid, skillLevel: level}
+        const updatedAllSkills = JSON.parse(localStorage.getItem('skills'))
+        updatedAllSkills.push(updatedUserSkills)
+        localStorage.setItem('skills',JSON.stringify(updatedAllSkills))
+        setTempSkills(temp)
+    
+    }
+
+    const removeSkillRow = (sid, userId) =>{
+        
+        const removedUserSkill = skillsArray.filter(element => element.id !== sid);
+        setSkillsArray(removedUserSkill)
+        localStorage.setItem('usersSkills', JSON.stringify(removedUserSkill))
+
+        const temp = JSON.parse(localStorage.getItem('skills'))
         const removedSkill = temp.filter(t =>{
-            return t.skillId !== sid && t.userId !== userId;
+            return t.userId !== userId;
         });
             
-        console.log(removedSkill)
-    
         localStorage.setItem('skills', JSON.stringify(removedSkill))
         setTempSkills(temp)
-        let newps = JSON.parse(localStorage.getItem('usersSkills'))
-        let news = JSON.parse(localStorage.getItem('skills'))
-        console.log(newps)
-        console.log(news)
+        
+        let updateSkill = JSON.parse(localStorage.getItem('skills'))
+        let updatedTemp = JSON.parse(localStorage.getItem('usersSkills'));
+        
+        updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.id, skillLevel: t.level}))
+        localStorage.setItem('skills',JSON.stringify(updateSkill))
     }
+
+
     return(
         <>
             
@@ -120,8 +107,10 @@ export default function SkillsPage(props) {
                     <SkillsList selectedId={selectedId} skillsArray={skillsArray} removeSkillRow={removeSkillRow} handleSave={handleSave} />
                 </Container>
 
-                <Container className='position-relative text-center '>
-                    <a onClick={() => addSkillRow()}><img src="/plus.png" /></a>
+                <Container className='position-relative text-center mb-4'>
+                    <button onClick={() => addSkillRow()} className='position-absolute top-0 start 50 translate-middle border border-2 border-dark bg-light rounded-circle p-2'>
+                        <img src="/plus.png" alt='Add Row' />
+                    </button>
                 </Container>
             </Container>
             
