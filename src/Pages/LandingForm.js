@@ -24,8 +24,7 @@ function LandingForm(){
         fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
         .then((res) => res.json())
         .then((result) => { 
-            setUsers(result);
-            console.log(result);
+            setUsers(result);            
          },
             (error) => { alert(error); console.log(error); }
         )
@@ -51,20 +50,12 @@ function LandingForm(){
                 onSubmit={(values) => {
                     try{
                         const inputUsername = users.filter((key) => key.email.includes(values.email));
-                        console.log(inputUsername);
                         dbPassword = inputUsername[0].password;
                         currentUserId = inputUsername[0].id;
-                        path = '/searchpage/' + currentUserId;
-                        console.log(path)
-                        console.log(dbPassword)
-                        console.log(currentUserId);
+                        path = '/searchpage/' + currentUserId;                     
                     
-                
                         if(inputUsername.length !== 0){
-                            console.log(dbPassword);
                             if(dbPassword === values.password){
-                                
-                                console.log(currentUserId);
                                 return history.push(path);
                             } else {
                                 alert("Incorrect Password");
@@ -74,7 +65,6 @@ function LandingForm(){
                         }
                     }catch(error){
                         alert("No user found");
-                        console.log(error);
                     }
                     }}
             >
@@ -89,7 +79,6 @@ function LandingForm(){
                 errors,            
             }) => (
             <Form data-testid="sign-in-form" className="mt-5 mx-5" noValidate onSubmit={handleSubmit}>
-            {console.log(values)}
             <input type="submit" style={{display: "none"}} />
                 <Form.Group as={Row} className="mb-4 mx-auto align-items-center" controlId="formHorizontalEmail">
                     <Form.Label column xs={12} md={4} className="fs-4 fw-bold text-md-end redAsterisks" data-testid="email-label">
