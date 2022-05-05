@@ -9,61 +9,54 @@ import { useParams } from 'react-router-dom';
 export default function SearchPage(props){
 
     const [users, setUsers] = useState([]);
-    // const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
-    // const [skillNames, setSkillNames] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [value, setValue] = useState('');
-    // const [filterValue, setFilterValue] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
     const [skillArray, setSkillArray] = useState([])
     const [languageArray, setLanguageArray] = useState([])
     let {id} = useParams();
 
-    
-
     useEffect(() => {
-        const fetchUsers = async () => {
-        await fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
-        .then((res) => res.json())
-        .then((result) => { 
-            setUsers(result);
-         },
-            (error) => { alert(error); console.log(error); }
-        )};
-
-        const fetchSkills = async () => {
-        await fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
-        .then((res) => res.json())
-        .then((result) => { 
-            setSkills(result);
-         },
-            (error) => { alert(error); console.log(error); }
-        )};
-
-        const fetchLanguages = async () => {
-        await fetch("https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll")
-        .then((res) => res.json())
-        .then((result) => { 
-            setLanguages(result);
-         },
-            (error) => { alert(error); console.log(error); }
-        )};
-
+        
         let tempSkills = JSON.parse(localStorage.getItem('skills'))
         let tempLanguages = JSON.parse(localStorage.getItem('languages'))
-         setSkillArray(tempSkills)
-         setLanguageArray(tempLanguages)
+        setSkillArray(tempSkills)
+        setLanguageArray(tempLanguages)
 
+        const fetchUsers = async () => {
+            await fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
+            .then((res) => res.json())
+            .then((result) => { 
+                setUsers(result);
+            },
+                (error) => { alert(error); console.log(error); }
+            )};
+    
+        const fetchSkills = async () => {
+            await fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
+            .then((res) => res.json())
+            .then((result) => { 
+                setSkills(result);
+            },
+                (error) => { alert(error); console.log(error); }
+            )};
+    
+        const fetchLanguages = async () => {
+            await fetch("https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll")
+            .then((res) => res.json())
+            .then((result) => { 
+                setLanguages(result);
+            },
+                (error) => { alert(error); console.log(error); }
+            )};
          
-        fetchUsers();
-        fetchSkills();
-        fetchLanguages();
+        
 
         const searchItems = () => {
             let sID = 0;
-
+    
             skills.forEach(skill => {
                 if(skill.title === searchInput){
                     sID = skill.id;
@@ -77,18 +70,18 @@ export default function SearchPage(props){
                 setFilteredResults(users);
             }
         } 
+        fetchUsers();
+        fetchSkills();
+        fetchLanguages();
         searchItems();
     }, [searchInput])
+
+    
    
     let filteredLanguageArray;
-    // let filteredUsers=[];
     if(filteredResults.length > 0){
         filteredLanguageArray = languageArray.filter(item => item.userId === filteredResults[0].userId)
-        // filteredUsers = users.filter(el => {
-        //     return filteredResults.find(element => {
-        //         return element.userId === el.id
-        //     })
-        // })
+        
     }
 
         const skillTitles = skills.map(skill => skill.title);
@@ -100,7 +93,7 @@ export default function SearchPage(props){
                         <h3>Search and Filter Co-Workers</h3>
                     </Row>
                     
-                    <Container className='align-items-center justify-content-center d-flex w-75 p-2'>
+                    <Container data-testid='search-row-container' className='align-items-center justify-content-center d-flex w-75 p-2'>
                         <Row className='align-items-center justify-content-center w-100'>
                             <Col className='d-flex justify-content-center '>
                                 <Combobox 
@@ -110,9 +103,9 @@ export default function SearchPage(props){
                                 data={skillTitles}
                                 data-testid='dropdown'
                                 value={value}
-                                onChange={(value) => setValue()}
+                                onChange={() => setValue()}
                                 onSelect={(value) => {
-                                    setSearchInput(value); 
+                                    setSearchInput(value);
                                     }}
                                     />
                             </Col>                            
@@ -133,12 +126,6 @@ export default function SearchPage(props){
                                     filteredLanguageArray={filteredLanguageArray}
                                     id={id}
                                     userId={user.id}
-                                    // fullName={user.fullName}
-                                    // location={user.location}
-                                    // timeZone={user.timeZone}
-                                    // jobId={user.jobId}
-                                    // skillId={user.skillId}
-                                    // languageId={user.languageId}
                                     />
                                 )
                             })
@@ -154,12 +141,6 @@ export default function SearchPage(props){
                                     languageArray={languageArray}
                                     id={id}
                                     userId={user.id}
-                                    // fullName={user.fullName}
-                                    // location={user.location}
-                                    // timeZone={user.timeZone}
-                                    // jobId={user.jobId}
-                                    // skillId={user.skillId}
-                                    // languageId={user.languageId}
                                     />
                                     );
                                 })

@@ -4,9 +4,14 @@ import SearchPageRow from './SearchPageRow';
 import { MemoryRouter } from 'react-router-dom'
 
 describe('SearchPageRow.js', () => {test("User should see a container for the components of the search page", () => {
+    let tempSkills = [{userId: 1, skillId: 2, skillLevel: 1}, {userId: 2, skillId: 3, skillLevel: 2}]
+    let tempLangs = [{userId: 1, LanguageId: 2, skillLevel: 1}, {userId: 2, LanguageId: 3, skillLevel: 2}]
+    let skills = [{id: 1}, {id:2}]
+    let languages = [{id: 1}, {id: 2}]
+
     render(
         <MemoryRouter>
-            <SearchPageRow/>
+            <SearchPageRow skillArray={tempSkills} languageArray={tempLangs} skills={skills} languages={languages} users={{id: 1}}/>
         </MemoryRouter>);
     const logo = screen.getByTestId('search-row');
     expect(logo).toBeInTheDocument();

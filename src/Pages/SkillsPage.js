@@ -7,30 +7,14 @@ export default function SkillsPage(props) {
 
     let [skillsArray, setSkillsArray] = useState([]);
     const [tempSkills, setTempSkills] = useState([]);
-    // const [skills, setSkills] = useState([]);
-    // const [user, setUser] = useState([]);
     const [selectedId] = useState(parseInt(props.selectedId));
     
     useEffect(() =>{
-        // let tempAllSkills = JSON.parse(localStorage.getItem('skills'))
         let tempAllUserSkills = JSON.parse(localStorage.getItem('usersSkills'))
         
         setSkillsArray(tempAllUserSkills);
-        // setSkills(tempAllSkills);
-        // fetchUser();
-
-    // if(skills.length > 0){
-    //     usersSkills = skills.filter(skill => skill.userId === user.id)
-    // }      
+            
     }, [tempSkills])
-    
-    // const fetchUser = async () => {
-    //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
-    //     .then((res) => res.json())
-    //     .then((result) => { 
-    //         setUser(result);
-    //     });
-    //     }
     
     const addSkillRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersSkills'))

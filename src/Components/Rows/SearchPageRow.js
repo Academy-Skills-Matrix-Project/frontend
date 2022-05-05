@@ -1,5 +1,4 @@
-import { useSSRSafeId } from "@react-aria/ssr";
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
@@ -11,18 +10,14 @@ export default function SearchPageRow(props) {
     let topLanguage = '';
     let firstname = '';
     let lastname = '';
-    const [jobs, setJobs] = useState([]);
-    const [users, setUsers] = useState(props.users)
-    const [skills, setSkills] = useState(props.skills);
-    const [languages, setLanguages] = useState(props.languages);
-    const [skillArray, setSkillArray] = useState(props.skillArray);
-    const [languageArray, setLanguageArray] = useState(props.languageArray);
+    const [users] = useState(props.users)
+    const [skills] = useState(props.skills);
+    const [languages] = useState(props.languages);
+    const [skillArray] = useState(props.skillArray);
+    const [languageArray] = useState(props.languageArray);
     const skillsPerUser = skillArray.filter(skill => skill.userId === users.id)
     const languagesPerUser = languageArray.filter(lang => lang.userId === users.id)
-    let tempSkillsPerUser;
-    let tempLanguagesPerUser
     
-
     if(skillsPerUser.length > 0){
         topSkillObject = skillsPerUser.reduce(function(prev, current) {
             return (prev.skillLevel >= current.skillLevel) ? prev : current

@@ -8,7 +8,7 @@ export default class CircleButton extends React.Component{
         let skillsArray = []
         let tempSkills = JSON.parse(localStorage.getItem('usersSkills'));
         skillsArray = tempSkills;
-        this.state = { skillsCount: skillsArray.length};
+        
         this.addSkill = this.addSkill.bind(this);
     }
     addSkill(e){

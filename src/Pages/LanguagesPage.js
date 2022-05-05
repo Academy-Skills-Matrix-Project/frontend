@@ -6,30 +6,13 @@ export default function LanguagesPage(props){
 
     let [languagesArray, setLanguagesArray] = useState([]);
     const [tempLangs, setTempLangs] = useState();
-    // const [langs, setLangs] = useState([]);
-    // const [user, setUser] = useState([]);
     const [selectedId] = useState(parseInt(props.selectedId));
     
     useEffect(() =>{
         let tempUsersLangs = JSON.parse(localStorage.getItem('usersLanguages'))
-        // let tempAllLangs = JSON.parse(localStorage.getItem('languages'))
-
         setLanguagesArray(tempUsersLangs);
-        // setLangs(tempAllLangs)
-        // fetchUser();
         
-    // if(langs.length > 0){
-    //     usersLangs = langs.filter(lang => lang.userId === user.id)
-    // }
     }, [tempLangs])
-
-    // const fetchUser = async () => {
-    //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
-    //     .then((res) => res.json())
-    //     .then((result) => { 
-    //         setUser(result);
-    //     });
-    //     }
 
     const addLanguageRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersLanguages'))

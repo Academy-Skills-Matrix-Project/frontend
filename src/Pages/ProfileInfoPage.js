@@ -68,6 +68,8 @@ function ProfileInfoPage(props) {
             usersSkills.find(element =>{
                 if(element.skillId === skill.id){
                     return skill.level = element.skillLevel
+                } else {
+                    return skill.level
                 }
             })
         })
@@ -88,6 +90,8 @@ function ProfileInfoPage(props) {
             usersLanguages.find(element => {
                 if(element.languageId === lang.id){
                     return lang.level = element.skillLevel
+                } else {
+                    return lang.level
                 }
             })
         })

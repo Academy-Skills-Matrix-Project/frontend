@@ -10,10 +10,10 @@ import { HashRouter } from 'react-router-dom';
 let skillArray = [
   {userId: 1, skillId: 1, skillLevel: 1}, {userId: 1, skillId: 4, skillLevel: 2}, {userId: 1, skillId: 20, skillLevel: 3}, 
   {userId: 2, skillId: 4, skillLevel: 5}, {userId: 2, skillId: 26, skillLevel: 3},
-  {userId: 3, skillId: 18, skillLevel: 3}, {userId: 3, skillId: 21, skillLevel: 2}, {userId: 3, skillId: 4, skillLevel: 4}, {userId: 3, skillId: 16, skillLevel: 5},
+  {userId: 3, skillId: 31, skillLevel: 3}, {userId: 3, skillId: 21, skillLevel: 2}, {userId: 3, skillId: 4, skillLevel: 4}, {userId: 3, skillId: 16, skillLevel: 5},
   {userId: 4, skillId: 7, skillLevel: 5}, {userId: 4, skillId: 33, skillLevel: 4},
   {userId: 5, skillId: 1, skillLevel: 4}, {userId: 5, skillId: 100, skillLevel: 5}, {userId: 5, skillId: 18, skillLevel: 3},
-  {userId: 6, skillId: 42, skillLevel: 3}, {userId: 6, skillId: 268, skillLevel: 3}, {userId: 6, skillId: 77, skillLevel: 4},
+  {userId: 6, skillId: 42, skillLevel: 3}, {userId: 6, skillId: 21, skillLevel: 3}, {userId: 6, skillId: 77, skillLevel: 4},
   {userId: 7, skillId: 43, skillLevel: 5}, {userId: 7, skillId: 88, skillLevel: 5}, {userId: 7, skillId: 21, skillLevel: 4},
   {userId: 8, skillId: 1, skillLevel: 1}, {userId: 8, skillId: 32, skillLevel: 4}, {userId: 8, skillId: 33, skillLevel: 5},
   {userId: 9, skillId: 45, skillLevel: 3}, {userId: 9, skillId: 34, skillLevel: 1}, {userId: 9, skillId: 25, skillLevel: 2},

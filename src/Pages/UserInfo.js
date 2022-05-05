@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './UserInfo.css';
 
-function UserInfo() {
+function UserInfo(props) {
     let {id, selectedId} = useParams();
     const [user, setUser] = useState([]);
     useEffect(() => {
