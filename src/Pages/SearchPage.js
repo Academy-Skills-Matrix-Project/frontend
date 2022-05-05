@@ -30,7 +30,6 @@ export default function SearchPage(props){
          setLanguageArray(tempLanguages)
 
         const fetchUsers = async () => {
-            console.log('s')
             await fetch("https://cohort3skillsmatrix.azurewebsites.net/Users/GetAll")
             .then((res) => res.json())
             .then((result) => { 
@@ -38,9 +37,10 @@ export default function SearchPage(props){
             },
                 (error) => { alert(error); console.log(error); }
             )};
+
+        
     
         const fetchSkills = async () => {
-            console.log('q')
             await fetch("https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll")
             .then((res) => res.json())
             .then((result) => { 
@@ -50,7 +50,7 @@ export default function SearchPage(props){
             )};
     
         const fetchLanguages = async () => {
-            console.log('a')
+            
             await fetch("https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll")
             .then((res) => res.json())
             .then((result) => { 
@@ -68,6 +68,7 @@ console.log(filteredResults)
         // searchItems();
     }, [searchInput, filteredResults])
 
+    let t;
     const searchItems = () => {
         console.log(searchInput)
         let sID = 0;
@@ -85,27 +86,36 @@ console.log(filteredResults)
             temp = skillArray.filter(item => item.skillId === sID);
             console.log(temp)
             setFilteredResults(temp)
-        } else {
-            alert("Enter something to search")
-        }
+        } 
         console.log(sID)
         console.log(temp)
         let tempUsers = JSON.parse(localStorage.getItem('skills'))
-        let t = tempUsers.filter(t => t.skillId === sID)
-        setSeachUsers(t)
-        console.log(searchUsers)
+        t = tempUsers.filter(t => t.skillId === sID)
+        console.log(t)
+        let update = [];
+        t.forEach((a) => {
+            console.log(users)
+            console.log(a.userId)
+            let com = {}
+            com = users.find(s => a.userId === s.userId)
+            console.log(com)
+            update.push(com)
+        })
+        console.log(update)
+        setSeachUsers(update)
+        // t.forEach(s => {
+        //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById${s.userId}`)
+        //     .then((res) => res.json())
+        //     .then((result) => { 
+        //         update.push(result)
+        //     },
+        //         (error) => { alert(error); console.log(error); }
+        //     )};
+        // })
+        
+        
     } 
    
-    let filteredLanguageArray;
-    // let filteredUsers=[];
-    if(filteredResults.length > 0){
-        filteredLanguageArray = languageArray.filter(item => item.userId === filteredResults[0].userId)
-        // filteredUsers = users.filter(el => {
-        //     return filteredResults.find(element => {
-        //         return element.userId === el.id
-        //     })
-        // })
-    }
 
         const skillTitles = skills.map(skill => skill.title);
         return (
@@ -116,9 +126,9 @@ console.log(filteredResults)
                         <h3>Search and Filter Co-Workers</h3>
                     </Row>
                     
-                    <Container className='align-items-center justify-content-center d-flex w-75 p-2'>
+                    <Container data-testid='search-row-container' className='align-items-center justify-content-center d-flex w-75 p-2'>
                         <Row className='align-items-center justify-content-center w-100'>
-                            <Col className='d-flex justify-content-center '>
+                            <Col xs={12} md={6} className='d-flex justify-content-end '>
                                 <Combobox 
                                 style={{maxWidth:400}}
                                 className='w-100 m-1 text-start'
@@ -130,8 +140,8 @@ console.log(filteredResults)
                                 // onSelect={(value) => {setSearchInput(value);}}
                                     />
                             </Col>   
-                            <Col>
-                                <Button onClick={(e) => {setSearchInput(e.target.value); searchItems();}}>
+                            <Col xs={12} md={3} className='text-center text-md-start'>
+                                <Button className='bg-danger border border-0' onClick={(e) => {setSearchInput(e.target.value); searchItems();}}>
                                     Search
                                 </Button>
                             </Col>                         
@@ -140,35 +150,36 @@ console.log(filteredResults)
                     {(skills.length > 0) && (languages.length > 0) & (users.length > 0) ? (
                     <Container data-testid='search-row-container'>
                         {(searchUsers.length > 0) ? (
-                            searchUsers.map((user, index) => {
+                            searchUsers.map((user) => {
+                                console.log(searchUsers)
                                 console.log(user)
                                 return(
                                     <SearchPageRow 
-                                    key={index} 
+                                    key={user.userId} 
                                     user={user}
-                                    userId={user.userId}
+                                    // userId={user.userId}
                                     skills={skills}
                                     languages={languages}
                                     skillArray={skillArray}
                                     languageArray={languageArray}
-                                    filteredLanguageArray={filteredLanguageArray}
+                                    
                                     id={id}
                                     />
                                 )
                             })
                         ) : (
-                            users.map((user, index) => {
+                            users.map((user) => {
                                 console.log(user)
                                 return(
                                     <SearchPageRow 
-                                    key={index} 
+                                    key={user.userId} 
                                     user={user}
                                     skills={skills}
                                     languages={languages}
                                     skillArray={skillArray}
                                     languageArray={languageArray}
                                     id={id}
-                                    userId={user.userId}
+                                    // userId={user.userId}
                                     />
                                     );
                                 })

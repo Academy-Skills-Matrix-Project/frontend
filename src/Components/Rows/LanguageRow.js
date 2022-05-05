@@ -31,13 +31,14 @@ export default function LanguageRow(props) {
         selectedIdLanguageId = languages.filter(lang => {
             return lang.title === value
         });
-        console.log(selectedIdLanguageId[0])
-        setSID(selectedIdLanguageId[0].id)
+        
+        setSID(selectedIdLanguageId[0].languageId)
     }
+
     useEffect(() => {
-        setSID(language.id)
+        setSID(language.languageId)
          fetchLanguages()
-    }, [language.id])
+    }, [language.languageId])
 
     let languageTitles;
     if(languages.length > 1){
@@ -46,7 +47,7 @@ export default function LanguageRow(props) {
     return (
         <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm ' data-testid='language-row'>
                 <button 
-                onClick={() => props.removeLanguageRow(language.id, props.selectedId)}
+                onClick={() => props.removeLanguageRow(language.languageId, props.selectedId)}
                 className= ' position-absolute top-0 start-0 translate-middle bg-transparent border-0 '>
                     <img  
                         src="/Cancel.png"
@@ -57,7 +58,7 @@ export default function LanguageRow(props) {
                 </button>
                 {editable ? (
                     <button onClick={() => 
-                        {setEditable(false); ((title !== '' && level !== 0 ) ? props.handleSave(sID, title, level, props.selectedId, language.id) : alert("Make sure Skill and Level are selected"))}}
+                        {setEditable(false); ((title !== '' && level !== 0 ) ? props.handleSave(sID, title, level, props.selectedId, language.languageId) : alert("Make sure Skill and Level are selected"))}}
                     className=' position-absolute top-0 start-100 translate-middle bg-transparent border-0'>
                         <img src='/Save.png' width={30} alt='Save' />
                     </button>

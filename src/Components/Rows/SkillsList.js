@@ -4,8 +4,7 @@ import SkillRow from "./SkillRow";
 
 export default function SkillsList(props){
 
-    const {skillsArray} = props
-        console.log(skillsArray)
+    const {skillsArray} = props;
     return(
         <Container>
             {skillsArray.map(skill => {

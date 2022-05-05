@@ -33,13 +33,13 @@ export default function LanguagesPage(props){
 
     const addLanguageRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersLanguages'))
-        temp.push({id: 0, title: '', level: 0})
+        temp.push({languageId: 0, title: '', level: 0})
         localStorage.setItem('usersLanguages', JSON.stringify(temp));
         setTempLangs(temp)
     }
 
     const handleSave = (sid, title, level, userId, currentId) => {
-        const removedUserLang = languagesArray.filter(element => element.id !== currentId);
+        const removedUserLang = languagesArray.filter(element => element.languageId !== currentId);
         setLanguagesArray(removedUserLang)
         localStorage.setItem('usersLanguages', JSON.stringify(removedUserLang))
 
@@ -53,17 +53,19 @@ export default function LanguagesPage(props){
         let updateLang = JSON.parse(localStorage.getItem('languages'))
         let updatedTemp = JSON.parse(localStorage.getItem('usersLanguages'));
 
-        updatedTemp.forEach(t => updateLang.push({userId: selectedId, languageId: t.id, skillLevel: t.level}))
+        updatedTemp.forEach(t => updateLang.push({userId: selectedId, languageId: t.languageId, skillLevel: t.level}))
         localStorage.setItem('languages',JSON.stringify(updateLang))
         setTempLangs(temp)
         
         let a = JSON.parse(localStorage.getItem('usersLanguages'));
-        a.push({id: sid, title: title, level: level})
+        a.push({languageId: sid, title: title, level: level})
         localStorage.setItem('usersLanguages', JSON.stringify(a))
         setTempLangs(temp)
 
         const updatedUserLang = {userId: selectedId, languageId: sid, skillLevel: level}
         const updatedAllLang = JSON.parse(localStorage.getItem('languages'))
+console.log(updatedUserLang)
+console.log(updatedAllLang)
 
         updatedAllLang.push(updatedUserLang)
         localStorage.setItem('languages',JSON.stringify(updatedAllLang))
@@ -71,7 +73,7 @@ export default function LanguagesPage(props){
     }
 
     const removeLanguageRow = (sid, userId) =>{
-        const removedUserLang = languagesArray.filter(element => element.id !== sid);
+        const removedUserLang = languagesArray.filter(element => element.languageId !== sid);
         setLanguagesArray(removedUserLang)
         localStorage.setItem('usersLanguages', JSON.stringify(removedUserLang))
         
@@ -86,7 +88,7 @@ export default function LanguagesPage(props){
         let updateLang = JSON.parse(localStorage.getItem('languages'))
         let updatedTemp = JSON.parse(localStorage.getItem('usersLanguages'));
         
-        updatedTemp.forEach(t => updateLang.push({userId: selectedId, languageId: t.id, skillLevel: t.level}))
+        updatedTemp.forEach(t => updateLang.push({userId: selectedId, languageId: t.languageId, skillLevel: t.level}))
         localStorage.setItem('languages',JSON.stringify(updateLang))
     }
     

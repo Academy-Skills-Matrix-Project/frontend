@@ -34,14 +34,14 @@ export default function SkillsPage(props) {
     
     const addSkillRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersSkills'))
-        temp.push({id: 0, title: '', level: 0})
+        temp.push({skillId: 0, title: '', level: 0})
         localStorage.setItem('usersSkills', JSON.stringify(temp));
         setTempSkills(temp)
     }
     
     const handleSave = (sid, title, level, userId, currentId) => {
         
-        const removedUserSkill = skillsArray.filter(element => element.userId !== currentId);
+        const removedUserSkill = skillsArray.filter(element => element.skillId !== currentId);
         setSkillsArray(removedUserSkill)
         localStorage.setItem('usersSkills', JSON.stringify(removedUserSkill))
 
@@ -55,21 +55,19 @@ export default function SkillsPage(props) {
 
         let updateSkill = JSON.parse(localStorage.getItem('skills'))
         let updatedTemp = JSON.parse(localStorage.getItem('usersSkills'));
-        console.log(updateSkill)
-        updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.id, skillLevel: t.level}))
+
+        updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.skillId, skillLevel: t.level}))
         localStorage.setItem('skills',JSON.stringify(updateSkill))
         setTempSkills(temp)
 
         let a = JSON.parse(localStorage.getItem('usersSkills'));
-        a.push({id: sid, title: title, level: level})
+        a.push({skillId: sid, title: title, level: level})
         localStorage.setItem('usersSkills', JSON.stringify(a))
         setTempSkills(temp)
 
         const updatedUserSkills = {userId: selectedId, skillId: sid, skillLevel: level}
         const updatedAllSkills = JSON.parse(localStorage.getItem('skills'))
 
-        console.log(updatedAllSkills)
-        console.log(a)
         updatedAllSkills.push(updatedUserSkills)
         localStorage.setItem('skills',JSON.stringify(updatedAllSkills))
         setTempSkills(temp)
@@ -77,15 +75,11 @@ export default function SkillsPage(props) {
     }
 
     const removeSkillRow = (sid, userId) =>{
-        console.log(sid)
-        console.log(userId)
         const removedUserSkill = skillsArray.filter(element => element.skillId !== sid);
-        
         setSkillsArray(removedUserSkill)
         localStorage.setItem('usersSkills', JSON.stringify(removedUserSkill))
 
         const temp = JSON.parse(localStorage.getItem('skills'))
-        console.log(temp)
         const removedSkill = temp.filter(t =>{
             return t.userId !== userId;
         });
@@ -96,7 +90,8 @@ export default function SkillsPage(props) {
         let updateSkill = JSON.parse(localStorage.getItem('skills'))
         let updatedTemp = JSON.parse(localStorage.getItem('usersSkills'));
         
-        updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.id, skillLevel: t.level}))
+        updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.skillId, skillLevel: t.level}))
+        console.log(updateSkill)
         localStorage.setItem('skills',JSON.stringify(updateSkill))
     }
 

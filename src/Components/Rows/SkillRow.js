@@ -31,7 +31,7 @@ export default function SkillRow(props) {
         selectedIdSkillId = skills.filter(skill => {
             return skill.title === value
         });
-        console.log(selectedIdSkillId[0].skillId)
+        
         setSID(selectedIdSkillId[0].skillId)
         
     }
