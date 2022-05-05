@@ -51,7 +51,7 @@ function LandingForm(){
                     try{
                         const inputUsername = users.filter((key) => key.email.includes(values.email));
                         dbPassword = inputUsername[0].password;
-                        currentUserId = inputUsername[0].id;
+                        currentUserId = inputUsername[0].userId;
                         path = '/searchpage/' + currentUserId;                     
                     
                         if(inputUsername.length !== 0){
