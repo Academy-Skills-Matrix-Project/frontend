@@ -18,6 +18,15 @@ function ProfileInfoPage(props) {
     let {id, selectedId} = useParams();
     const history = useHistory();
 
+    useEffect(() => {
+        //Get token. If there's no token redirect to landing page
+        const token = localStorage.getItem("my_token");
+
+        if(!token){
+            history.push('/')
+        }
+    },)
+
     let skillsArray = []
     let languageArray = []
     let tempSkills = JSON.parse(localStorage.getItem('skills'));
@@ -83,14 +92,7 @@ function ProfileInfoPage(props) {
         usersLanguages = languageArray.filter(lang => lang.userId === user.userId)
 
 
-         useEffect(() => {
-        //Get token. If there's no token redirect to landing page
-        const token = localStorage.getItem("my_token");
-
-        if(!token){
-            history.push('/')
-        }
-    },)
+        
 
 
         filteredLanguages = languages.filter(el => {
