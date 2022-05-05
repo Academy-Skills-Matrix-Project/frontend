@@ -13,9 +13,17 @@ import { useState, useEffect } from 'react';
 function ProfileInfoPage(props) {
 
     const [user, setUser] = useState({});
-    // let isMyAccountEnabledButton = false;
+    const [skills, setSkills] = useState([]);
+    const [languages, setLanguages] = useState([]);
     let {id, selectedId} = useParams();
     const history = useHistory();
+
+    let skillsArray = []
+    let languageArray = []
+    let tempSkills = JSON.parse(localStorage.getItem('skills'));
+    let tempLanguages = JSON.parse(localStorage.getItem('languages'));
+    skillsArray = tempSkills;
+    languageArray = tempLanguages;
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -25,12 +33,55 @@ function ProfileInfoPage(props) {
                 setUser(result);
             });
             }
+        const fetchSkills = async () => {
+            await fetch('https://cohort3skillsmatrix.azurewebsites.net/Skills/GetAll')
+            .then((res) => res.json())
+            .then((result) => { 
+                setSkills(result);
+            });
+            }
+        const fetchLanguages = async () => {
+            await fetch('https://cohort3skillsmatrix.azurewebsites.net/Languages/GetAll')
+            .then((res) => res.json())
+            .then((result) => { 
+                setLanguages(result);
+            });
+            }
+
+            fetchLanguages();
+            fetchSkills();
             fetchUser();
         }, [selectedId]);
 
-    // if(id !== selectedId){
-    //     isMyAccountEnabledButton = true;
-    // }
+    let usersSkills;
+    let usersLanguages;
+    let filteredSkills = [];
+    let filteredLanguages = [];
+    if(skills.length > 0){
+        usersSkills = skillsArray.filter(skill => skill.userId === user.userId)
+        
+        filteredSkills = skills.filter(el => {
+            return usersSkills.find(element => {
+                return element.skillId === el.skillId
+            })
+        })
+        filteredSkills.forEach(skill => {
+            usersSkills.find(element =>{
+                if(element.skillId === skill.skillId){
+                    return skill.level = element.skillLevel
+                } else {
+                    return skill.level
+                }
+            })
+        })
+        filteredSkills.sort((a, b) => {
+            return b.level - a.level
+        })
+    }
+
+    if(languages.length > 0){
+        usersLanguages = languageArray.filter(lang => lang.userId === user.userId)
+
 
          useEffect(() => {
         //Get token. If there's no token redirect to landing page
@@ -40,6 +91,30 @@ function ProfileInfoPage(props) {
             history.push('/')
         }
     },)
+
+
+        filteredLanguages = languages.filter(el => {
+            return usersLanguages.find(element => {
+                return element.languageId === el.languageId
+            })
+        })
+        filteredLanguages.forEach(lang => {
+            usersLanguages.find(element => {
+                if(element.languageId === lang.languageId){
+                    return lang.level = element.skillLevel
+                } else {
+                    return lang.level
+                }
+            })
+        })
+        filteredLanguages.sort((a, b) => {
+            return b.level - a.level
+        })
+    }
+
+    localStorage.setItem('usersSkills', JSON.stringify(filteredSkills));
+    localStorage.setItem('usersLanguages', JSON.stringify(filteredLanguages));
+    
 
     return (
         <>
@@ -83,11 +158,10 @@ function ProfileInfoPage(props) {
                     <Col className=" mx-auto text-center text-lg-start" xs={12} lg={4}>
                         {/* <h3 data-testid='department-title'>Department:</h3>
                         <h3 data-testid='team-title'> Team:</h3> */}
-                        <h4 data-testid='job-title'><strong>Job Title: </strong>Associate Developer</h4>
+                        <h4 data-testid='job-title'><strong>Job Title: </strong>{user.jobTitle}</h4>
                         <h4 data-testid="location-title"><strong>Location: </strong> {`${user.location} (${user.timeZone})`}</h4>
                     </Col>
                 </Row>
-                
                 <Row>
                     <Col>
                     <Banner  title="About Me"  text='Experienced in Ruby on Rails and JavaScript-based programming with a background in Environmental Policy/Conservation and the Evolution of Earth. Scrum Master Certification, as well as MS-900, AWS Certified Cloud Practitioner, PCEP and AZ-900. I am open to working on any team that deals with migrating on-premises data to the cloud.'/>
@@ -103,9 +177,9 @@ function ProfileInfoPage(props) {
                                 </Col>
                             </Container>
                             <Container className= "addScroll">
-                                <DisplaySkills skillRating={4} skill="Microsoft Azure"/>
-                                <DisplaySkills skillRating={1} skill="Cloud platform expansion"/>
-                                <DisplaySkills skillRating={5} skill="AWS EC2"/>
+                                {filteredSkills.map(skill => 
+                                    <DisplaySkills key={skill.skillId} skill={skill} />
+                                    )}
                             </Container>
                         </Col>
                         <Col xs={12} lg={5} className=' mx-auto'>
@@ -115,9 +189,9 @@ function ProfileInfoPage(props) {
                                 </Col>
                             </Container>
                             <Container className="addScroll">
-                                <DisplaySkills skill="C#"/>
-                                <DisplaySkills skill="JavaScript"/>
-                                
+                                {filteredLanguages.map(lang =>
+                                <DisplaySkills key={lang.languageId} skill={lang} />
+                                    )}
                             </Container>
                         </Col>
                     </Row>

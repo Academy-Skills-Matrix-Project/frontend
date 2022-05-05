@@ -2,16 +2,20 @@ import React from 'react';
 
 export default class CircleButton extends React.Component{
 
+    
     constructor(props){
         super(props);
-        this.state = { skillsCount: 4};
+        let skillsArray = []
+        let tempSkills = JSON.parse(localStorage.getItem('usersSkills'));
+        skillsArray = tempSkills;
+        this.state = { skillsCount: skillsArray.length};
         this.addSkill = this.addSkill.bind(this);
     }
     addSkill(e){
             let count = this.state.skillsCount;
             var newItem = {
               id: this.state.skillsCount,
-              key: Date.now()
+              key: this.state.skillsCount
             };
 
             this.props.addSkillRow(newItem);
@@ -32,8 +36,6 @@ render(){
             onClick={this.addSkill} />
             </button>
         </>
-            
-        
     );
     }
 }

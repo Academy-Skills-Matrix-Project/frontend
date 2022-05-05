@@ -9,7 +9,7 @@ let schema = yup.object().shape({
     firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First Name is letters only"),    
     lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last Name is letters only"),
     jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job Title is letters only"),
-    location: yup.string().required("Location is required").matches(/^[a-zA-Z]+$/g, "Location is letters only"),
+    location: yup.string().required("Location is required").matches(/^[ A-Za-z0-9_@.,/#&+-]*$/, "Location is letters only"),
     team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
     timeZone: yup.string().required("Must choose a Time Zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
@@ -36,6 +36,7 @@ function GeneralInfo(props){
     return (
         <div className="mt-5">
             <Formik
+                enableReinitialize
                 initialValues={{
                     firstName: firstname,
                     lastName: lastname,
@@ -43,12 +44,14 @@ function GeneralInfo(props){
                     department: user.department,
                     team:user.team,
                     location: user.location,
-                    mobileNumber: user.mobileNumber,
-                    email: user.email
+                    mobileNumber: user.phoneNumber,
+                    email: user.email,
+                    timeZone: user.timeZone,
+                    aboutMe: user.aboutMe
                 }}
                 validationSchema={schema}
                 onSubmit={(values) => {
-                    console.log(values);
+                    console.log(values)
                     alert("Form is validated and in this block api call should be made..");
                     }
                 }
@@ -56,15 +59,12 @@ function GeneralInfo(props){
 
             {({
                 handleSubmit,
-                handleChange,
-                handleBlur,
-                isSubmitting,
-                values,
-                touched,
+                handleChange,            
+                values,                
                 errors, 
             }) => (
                 <Container data-testid="general-info">
-                    <Form noValidate onSubmit={handleSubmit}>                 
+                    <Form noValidate onSubmit={handleSubmit}>                                  
                         <Row className="mb-3">
                             <Col xs={12} sm={12} md={4} className="mb-sm-4 text-center">
                             <h3>Name</h3>
@@ -75,11 +75,9 @@ function GeneralInfo(props){
                                 type="text" 
                                 name="firstName"
                                 placeholder='Enter First Name'
-                                defaultValue={firstname}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                isInvalid={!!errors.firstName}
-                                isValid={touched.firstName && !errors.firstName}   
+                                defaultValue={values.firstName}
+                                onChange={handleChange}                                
+                                isInvalid={!!errors.firstName}                                  
                                 />
                                 <Form.Control.Feedback  type="invalid">{errors.firstName}</Form.Control.Feedback>
                             </Form.Group>
@@ -91,11 +89,10 @@ function GeneralInfo(props){
                                 type="text" 
                                 name="lastName"
                                 placeholder="Enter Last Name"
-                                defaultValue={lastname}
-                                onChange={handleChange}
-                                onBlur={handleBlur}
+                                defaultValue={values.lastName}
+                                onChange={handleChange}                                
                                 isInvalid={!!errors.lastName}
-                                isValid={touched.lastName && !errors.lastName} />
+                                 />
                                 <Form.Control.Feedback  type="invalid">{errors.lastName}</Form.Control.Feedback>
 
                             </Form.Group>   
@@ -111,10 +108,9 @@ function GeneralInfo(props){
                                     name="jobTitle"
                                     placeholder="Enter Job Title"
                                     defaultValue={values.jobTitle}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    onChange={handleChange}                                   
                                     isInvalid={!!errors.jobTitle}
-                                    isValid={touched.jobTitle && !errors.jobTitle} />
+                                     />
                                 <Form.Control.Feedback  type="invalid">{errors.jobTitle}</Form.Control.Feedback>
 
                             </Form.Group>
@@ -126,11 +122,10 @@ function GeneralInfo(props){
                                     type="text" 
                                     name="location"
                                     placeholder="Enter Location"
-                                    defaultValue={user.location}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    value={values.location}
+                                    onChange={handleChange}                                    
                                     isInvalid={!!errors.location}
-                                    isValid={touched.location && !errors.location} />
+                                     />
                                 <Form.Control.Feedback  type="invalid">{errors.location}</Form.Control.Feedback>
 
                             </Form.Group> 
@@ -145,10 +140,8 @@ function GeneralInfo(props){
                                     name="team"
                                     placeholder="Enter Team Name" 
                                     defaultValue={values.team}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    isInvalid={!!errors.team}
-                                    isValid={touched.team && !errors.team}
+                                    onChange={handleChange}                                    
+                                    isInvalid={!!errors.team}                                    
                                     />
                                 <Form.Control.Feedback  type="invalid">{errors.team}</Form.Control.Feedback>
 
@@ -160,45 +153,43 @@ function GeneralInfo(props){
                                 <Form.Select
                                     name="timezone"
                                     placeholder=""
-                                    defaultValue={26}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    isInvalid={!!errors.timeZone}
-                                    isValid={touched.timeZone && !errors.timeZone}
+                                    value={values.timeZone}
+                                    onChange={handleChange}                                    
+                                    isInvalid={!!errors.timeZone}                                    
                                 >
                                     <option>Select a Time Zone</option>
-                                    <option value="1">(GMT) Greenwich Mean Time</option>
-                                    <option value="2">(UTC) Universal Coordinated Time</option>
-                                    <option value="3">(ECT) European Central Time</option>
-                                    <option value="4">(EET) Eastern European Time</option>
-                                    <option value="5">(ART) (Arabic) Egypt Standard Time</option>
-                                    <option value="6">(EAT) Eastern African Time</option>
-                                    <option value="7">(MET) Middle East Time</option>
-                                    <option value="8">(NET) Near East Time</option>
-                                    <option value="9">(PLT) Pakistan Lahore Time</option>
-                                    <option value="10">(IST) India Standard Time</option>
-                                    <option value="11">(BST) Bangladesh Standard Time</option>
-                                    <option value="12">(VST) Vietnam Standard Time</option>
-                                    <option value="13">(CTT) China Taiwan Time</option>
-                                    <option value="14">(JST) Japan Standard Time</option>
-                                    <option value="15">(ACT) Australia Central Time</option>
-                                    <option value="16">(AET) Australia Eastern Time</option>
-                                    <option value="17">(SST) Solomon Standard Time</option>
-                                    <option value="18">(NST) New Zealand Standard Time</option>
-                                    <option value="19">(MIT) Midway Islands Time</option>
-                                    <option value="20">(HST) Hawaii Standard Time</option>
-                                    <option value="21">(AST) Alaska Standard Time</option>
-                                    <option value="22">(PST) Pacific Standard Time</option>
-                                    <option value="23">(PNT) Phoenix Standard Time</option>
-                                    <option value="24">(MST) Mountain Standard Time</option>
-                                    <option value="25">(CST) Central Standard Time</option>
-                                    <option value="26">(EST) Eastern Standard Time</option>
-                                    <option value="27">(IET) Indiana Eastern Standard Time</option>
-                                    <option value="28">(PRT) Puerto Rico and US Virgin Islands Time</option>
-                                    <option value="29">(CNT) Canada Newfoundland Time</option>
-                                    <option value="30">(AGT) Argentina Standard Time</option>
-                                    <option value="31">(BET) Brazil Eastern Time</option>
-                                    <option value="32">(CAT) Central African Time</option>
+                                    <option value="GMT">(GMT) Greenwich Mean Time</option>
+                                    <option value="UTC">(UTC) Universal Coordinated Time</option>
+                                    <option value="ECT">(ECT) European Central Time</option>
+                                    <option value="EET">(EET) Eastern European Time</option>
+                                    <option value="ART">(ART) (Arabic) Egypt Standard Time</option>
+                                    <option value="EAT">(EAT) Eastern African Time</option>
+                                    <option value="MET">(MET) Middle East Time</option>
+                                    <option value="NET">(NET) Near East Time</option>
+                                    <option value="PLT">(PLT) Pakistan Lahore Time</option>
+                                    <option value="IST">(IST) India Standard Time</option>
+                                    <option value="BST">(BST) Bangladesh Standard Time</option>
+                                    <option value="VST">(VST) Vietnam Standard Time</option>
+                                    <option value="CTT">(CTT) China Taiwan Time</option>
+                                    <option value="JST">(JST) Japan Standard Time</option>
+                                    <option value="ACT">(ACT) Australia Central Time</option>
+                                    <option value="AET">(AET) Australia Eastern Time</option>
+                                    <option value="SST">(SST) Solomon Standard Time</option>
+                                    <option value="NST">(NST) New Zealand Standard Time</option>
+                                    <option value="MIT">(MIT) Midway Islands Time</option>
+                                    <option value="HST">(HST) Hawaii Standard Time</option>
+                                    <option value="AST">(AST) Alaska Standard Time</option>
+                                    <option value="PST">(PST) Pacific Standard Time</option>
+                                    <option value="PNT">(PNT) Phoenix Standard Time</option>
+                                    <option value="MST">(MST) Mountain Standard Time</option>
+                                    <option value="CST">(CST) Central Standard Time</option>
+                                    <option value="EST">(EST) Eastern Standard Time</option>
+                                    <option value="IET">(IET) Indiana Eastern Standard Time</option>
+                                    <option value="PRT">(PRT) Puerto Rico and US Virgin Islands Time</option>
+                                    <option value="CNT">(CNT) Canada Newfoundland Time</option>
+                                    <option value="AGT">(AGT) Argentina Standard Time</option>
+                                    <option value="BET">(BET) Brazil Eastern Time</option>
+                                    <option value="CAT">(CAT) Central African Time</option>
                                 </Form.Select>  
                                 <Form.Control.Feedback  type="invalid">{errors.timeZone}</Form.Control.Feedback>
                  
@@ -218,10 +209,9 @@ function GeneralInfo(props){
                                     name="email"
                                     placeholder="@softwareone.com"
                                     defaultValue={user.email}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
+                                    onChange={handleChange}                                    
                                     isInvalid={!!errors.email}
-                                    isValid={touched.email && !errors.email} />
+                                     />
                                 <Form.Control.Feedback  type="invalid">{errors.email}</Form.Control.Feedback>
 
                             </Form.Group>
@@ -233,11 +223,9 @@ function GeneralInfo(props){
                                     type="text" 
                                     name="mobileNumber"
                                     placeholder="Enter Phone #" 
-                                    defaultValue={user.phoneNumber}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    isInvalid={!!errors.mobileNumber}
-                                    isValid={touched.mobileNumber && !errors.mobileNumber}
+                                    defaultValue={values.mobileNumber}
+                                    onChange={handleChange}                                   
+                                    isInvalid={!!errors.mobileNumber}                                    
                                     />
                                 <Form.Control.Feedback  type="invalid">{errors.mobileNumber}</Form.Control.Feedback>
 
@@ -250,7 +238,7 @@ function GeneralInfo(props){
                             <h3>About Me</h3>
                             </Col>
                             <Form.Group as={Col} controlId="formGridFirst" md={8} lg={8}>
-                            <   Form.Control as="textarea" rows={4} defaultValue={user.aboutMe} placeholder='Tell us about yourself!!'/>
+                            <   Form.Control as="textarea" rows={4} defaultValue={values.aboutMe} placeholder='Tell us about yourself!!'/>
                             </Form.Group>
 
                         </Row>

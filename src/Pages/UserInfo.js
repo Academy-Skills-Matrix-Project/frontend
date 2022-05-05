@@ -47,13 +47,13 @@ function UserInfo() {
                     <Accordion.Item eventKey="1">
                         <Accordion.Header>Skills</Accordion.Header>
                         <Accordion.Body>
-                            <SkillsPage />
+                            <SkillsPage selectedId={selectedId} />
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="2">
                         <Accordion.Header>Languages</Accordion.Header>
                         <Accordion.Body>
-                            <LanguagesPage />
+                            <LanguagesPage selectedId={selectedId} />
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
