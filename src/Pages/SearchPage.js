@@ -126,7 +126,7 @@ export default function SearchPage(props){
                                     Search
                                 </Button>
                                 <Button className='bg-danger border border-0 ms-1' onClick={() => setSeachUsers([])}>
-                                    Clear
+                                    Reset
                                 </Button>
                             </Col>                         
                         </Row>       
