@@ -6,23 +6,20 @@ import LanguageRow from '../Components/Rows/LanguageRow';
 import Rater from '../Components/Rating/Rating';
 import NavHeader from '../Components/NavHeader/NavHeader'
 
-const language = {id: 1, title: 'Test', level:3}
-let tempSkills = [{id: 1, title: 'Test', level:3}, {id: 2, title: 'Test2', level:1}]
-
 // runs after each test suite is executed
 afterEach(() => {
   cleanup(); // resets DOM after each test suite
 })
 
 
-// describe('LanguagesPage.js', () => {test("User should see a heading that reads 'Coding Laugauges and Proficiency'", () => {
-//     render(<MemoryRouter>
-//         <LanguagesPage language={language} languagesArray={tempSkills}/>
-//     </MemoryRouter>);
-//     const languageHeading = screen.getByText(/Coding Languages and Proficiency/i);
-//     expect(languageHeading).toBeInTheDocument();
-// });
-// });
+describe('LanguagesPage.js', () => {test("User should see a heading that reads 'Coding Laugauges and Proficiency'", () => {
+    render(<MemoryRouter>
+        <LanguagesPage />
+    </MemoryRouter>);
+    const languageHeading = screen.getByText(/Coding Languages and Proficiency/i);
+    expect(languageHeading).toBeInTheDocument();
+});
+});
 
 // Sign-out icon appears when isLogoutEnabled is true
 describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled is true', () => {
@@ -37,7 +34,7 @@ describe('NavHeader.js', () => {test('Sign-out icon appears when isLogoutEnabled
 // <SkillRows /> components render to the page
 describe('LanguageRow.js', () => {test('<LanguageRow /> components render to the page', () => {
     render(<MemoryRouter>
-        <LanguageRow language={language} languagesArray={tempSkills}/>
+        <LanguageRow/>
     </MemoryRouter>);
     const skillRow = screen.getByTestId('language-row');
     expect(skillRow).toBeInTheDocument();

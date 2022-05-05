@@ -9,8 +9,10 @@ import { useParams } from 'react-router-dom';
 export default function SearchPage(props){
 
     const [users, setUsers] = useState([]);
+    // const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
+    // const [skillNames, setSkillNames] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [searchUsers, setSeachUsers] = useState([]);
     // const [setValue] = useState('');
@@ -24,8 +26,8 @@ export default function SearchPage(props){
     useEffect(() => {
         let tempSkills = JSON.parse(localStorage.getItem('skills'))
         let tempLanguages = JSON.parse(localStorage.getItem('languages'))
-        setSkillArray(tempSkills)
-        setLanguageArray(tempLanguages)
+         setSkillArray(tempSkills)
+         setLanguageArray(tempLanguages)
 
         const fetchUsers = async () => {
             console.log('s')
@@ -95,9 +97,14 @@ console.log(filteredResults)
     } 
    
     let filteredLanguageArray;
+    // let filteredUsers=[];
     if(filteredResults.length > 0){
         filteredLanguageArray = languageArray.filter(item => item.userId === filteredResults[0].userId)
-        
+        // filteredUsers = users.filter(el => {
+        //     return filteredResults.find(element => {
+        //         return element.userId === el.id
+        //     })
+        // })
     }
 
         const skillTitles = skills.map(skill => skill.title);
@@ -109,7 +116,7 @@ console.log(filteredResults)
                         <h3>Search and Filter Co-Workers</h3>
                     </Row>
                     
-                    <Container data-testid='search-row-container' className='align-items-center justify-content-center d-flex w-75 p-2'>
+                    <Container className='align-items-center justify-content-center d-flex w-75 p-2'>
                         <Row className='align-items-center justify-content-center w-100'>
                             <Col className='d-flex justify-content-center '>
                                 <Combobox 
