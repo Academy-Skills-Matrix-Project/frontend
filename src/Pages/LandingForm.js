@@ -52,7 +52,7 @@ function LandingForm(){
                         const lowerEmail = values.email.toLowerCase();
                         const inputUsername = users.filter((key) => key.email.toLowerCase().includes(lowerEmail));                       
                         dbPassword = inputUsername[0].password;
-                        currentUserId = inputUsername[0].id;
+                        currentUserId = inputUsername[0].userId;
                         path = '/searchpage/' + currentUserId;                     
                     
                         if(inputUsername.length !== 0){
