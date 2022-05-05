@@ -90,8 +90,12 @@ export default function SearchPage(props){
             com = users.find(s => a.userId === s.userId)
             update.push(com)
         })
+        if(update.length > 0){
+            setSeachUsers(update)
+        } else {
+            alert("No users found with that skill")
+        }
         
-        setSeachUsers(update)   
     } 
    
 
@@ -117,9 +121,12 @@ export default function SearchPage(props){
                                 onChange={(value) => {setSearchInput(value);}}
                                     />
                             </Col>   
-                            <Col xs={12} md={3} className='text-center text-md-start'>
-                                <Button className='bg-danger border border-0' onClick={(e) => {setSearchInput(e.target.value); searchItems();}}>
+                            <Col xs={12} md={3} className='d-flex flex-row justify-content-center justify-content-md-start'>
+                                <Button className='bg-danger border border-0 me-1' onClick={(e) => {setSearchInput(e.target.value); searchItems();}}>
                                     Search
+                                </Button>
+                                <Button className='bg-danger border border-0 ms-1' onClick={() => setSeachUsers([])}>
+                                    Reset
                                 </Button>
                             </Col>                         
                         </Row>       
