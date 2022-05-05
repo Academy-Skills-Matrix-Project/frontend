@@ -26,7 +26,7 @@ function LandingForm(){
         .then((result) => { 
             setUsers(result);            
          },
-            (error) => { alert(error); console.log(error); }
+            
         )
     }, []);
 
