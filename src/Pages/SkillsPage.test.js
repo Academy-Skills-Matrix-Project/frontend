@@ -5,23 +5,15 @@ import { MemoryRouter } from 'react-router-dom';
 import SkillRow from '../Components//Rows/SkillRow';
 
 
-// <SkillRows /> components render to the page
-describe('SkillRow.js', () => {test('<SkillRows /> components render to the page', () => {
+const skill = {skillId: 1, title: 'Test', level:3}
+let tempSkills = [{skillId: 1, title: 'Test', level:3}, {skillId: 2, title: 'Test2', level:1}]
+
+describe('SkillRow.js', () => {test('<LanguageRow /> components render to the page', () => {
     render(<MemoryRouter>
-        <SkillRow />
+        <SkillRow skill={skill} skillsArray={tempSkills}/>
     </MemoryRouter>);
     const skillRow = screen.getByTestId('skill-row');
     expect(skillRow).toBeInTheDocument();
 })
-});
-
-// User should see a heading that reads List and Rank your Work Related Skills
-describe('SkillsPage.js', () => {test("User should see a heading that reads 'Soft Skills and Proficiency'", () => {
-    render(<MemoryRouter>
-        <SkillsPage />
-    </MemoryRouter>);
-    const skillsHeading = screen.getByText(/Soft Skills and Proficiency/i);
-    expect(skillsHeading).toBeInTheDocument();
-});
 });
 

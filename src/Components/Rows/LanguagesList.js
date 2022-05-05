@@ -2,18 +2,25 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import LanguageRow from "./LanguageRow";
 
-export default class LanguageList extends React.Component{
-    render(){
-        return(
-            <Container>
-                {this.props.languageRows.map(language =>
-                    <LanguageRow 
-                      key= {language.key}
-                      id={language.props.id}
-                      removeLanguageRow={this.props.removeLanguageRow} />
-                      
-                      )}
-            </Container>
-        );
-    }
+export default function LanguageList(props){
+    
+    const {languagesArray} = props
+    
+    return(
+        <Container>
+            {languagesArray.map(language =>{
+                return(
+                <LanguageRow 
+                    language={language}
+                    key= {language.languageId}
+                    id={language.languageId}
+                    removeLanguageRow={props.removeLanguageRow}
+                    handleSave={props.handleSave} 
+                    selectedId={props.selectedId}/>
+                    )
+                })}
+                
+        </Container>
+    );
+    
 }
