@@ -5,7 +5,7 @@ import Button from '../Components/Button/Button';
 import Banner from '../Components/Banner/Banner';
 import DisplaySkills from '../Components/ProfilePageRow/DisplaySkills';
 import './ProfilePage.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
  
@@ -15,6 +15,7 @@ function ProfileInfoPage(props) {
     const [user, setUser] = useState({});
     // let isMyAccountEnabledButton = false;
     let {id, selectedId} = useParams();
+    const history = useHistory();
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -30,6 +31,15 @@ function ProfileInfoPage(props) {
     // if(id !== selectedId){
     //     isMyAccountEnabledButton = true;
     // }
+
+         useEffect(() => {
+        //Get token. If there's no token redirect to landing page
+        const token = localStorage.getItem("my_token");
+
+        if(!token){
+            history.push('/')
+        }
+    },)
 
     return (
         <>

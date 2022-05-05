@@ -15,7 +15,15 @@ class NavHeader extends Component {
                 id: props.id,
                 selectedId: props.selectedId,
             }
+            this.removeToken = this.removeToken.bind(this);
         };
+
+        removeToken(){
+            localStorage.removeItem("my_token");
+            window.location.reload();
+        }
+
+        
         //renders Navbar
     render() {
          return(
@@ -38,7 +46,7 @@ class NavHeader extends Component {
                            <img className='nav-item' src='/Search.png' 
                             width={30} alt= 'Search'/>  Search</NavLink>}                    
                         {this.state.isLogoutEnabled &&
-                        <NavLink className=' nav-link text-black p-2' to="/" >
+                        <NavLink className=' nav-link text-black p-2' to="/" onClick={this.removeToken}>
                             <img className='nav-item' src='/LogOut.png'
                             width={30} alt='LogOut'/>  Logout</NavLink>}
                     </Nav>
