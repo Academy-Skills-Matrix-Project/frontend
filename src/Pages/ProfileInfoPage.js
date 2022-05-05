@@ -91,10 +91,6 @@ function ProfileInfoPage(props) {
     if(languages.length > 0){
         usersLanguages = languageArray.filter(lang => lang.userId === user.userId)
 
-
-        
-
-
         filteredLanguages = languages.filter(el => {
             return usersLanguages.find(element => {
                 return element.languageId === el.languageId
@@ -117,7 +113,6 @@ function ProfileInfoPage(props) {
     localStorage.setItem('usersSkills', JSON.stringify(filteredSkills));
     localStorage.setItem('usersLanguages', JSON.stringify(filteredLanguages));
     
-
     return (
         <>
             <NavHeader isLogoutEnabled={true} isSearchEnabled={true} id={id} selectedId={id} />
