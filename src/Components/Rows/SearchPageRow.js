@@ -3,7 +3,6 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
 export default function SearchPageRow(props) {
-    let jobTitle = '';
     let topSkill = '';
     let topSkillObject = '';
     let topLanguageObject = '';
