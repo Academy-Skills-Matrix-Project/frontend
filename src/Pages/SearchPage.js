@@ -58,62 +58,40 @@ export default function SearchPage(props){
             },
                 (error) => { alert(error); console.log(error); }
             )};
-            
-        
-console.log(filteredResults)
         
         fetchUsers();
         fetchSkills();
         fetchLanguages();
-        // searchItems();
+
     }, [searchInput, filteredResults])
 
     let t;
     const searchItems = () => {
-        console.log(searchInput)
+        
         let sID = 0;
-        console.log(skills)
         skills.forEach(skill => {
             if(skill.title === searchInput){
-                console.log(skill.title)
                 sID = skill.skillId;
             }
         });
-        console.log(sID)
-        console.log(skillArray)
+        
         let temp;
         if(searchInput !== ''){
             temp = skillArray.filter(item => item.skillId === sID);
-            console.log(temp)
             setFilteredResults(temp)
         } 
-        console.log(sID)
-        console.log(temp)
+        
         let tempUsers = JSON.parse(localStorage.getItem('skills'))
         t = tempUsers.filter(t => t.skillId === sID)
-        console.log(t)
+        
         let update = [];
         t.forEach((a) => {
-            console.log(users)
-            console.log(a.userId)
             let com = {}
             com = users.find(s => a.userId === s.userId)
-            console.log(com)
             update.push(com)
         })
-        console.log(update)
-        setSeachUsers(update)
-        // t.forEach(s => {
-        //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById${s.userId}`)
-        //     .then((res) => res.json())
-        //     .then((result) => { 
-        //         update.push(result)
-        //     },
-        //         (error) => { alert(error); console.log(error); }
-        //     )};
-        // })
         
-        
+        setSeachUsers(update)   
     } 
    
 
@@ -128,7 +106,7 @@ console.log(filteredResults)
                     
                     <Container data-testid='search-row-container' className='align-items-center justify-content-center d-flex w-75 p-2'>
                         <Row className='align-items-center justify-content-center w-100'>
-                            <Col xs={12} md={6} className='d-flex justify-content-end '>
+                            <Col xs={12} md={6} className='d-flex justify-content-center justify-content-md-end '>
                                 <Combobox 
                                 style={{maxWidth:400}}
                                 className='w-100 m-1 text-start'
@@ -137,7 +115,6 @@ console.log(filteredResults)
                                 data-testid='dropdown'
                                 value={searchInput}
                                 onChange={(value) => {setSearchInput(value);}}
-                                // onSelect={(value) => {setSearchInput(value);}}
                                     />
                             </Col>   
                             <Col xs={12} md={3} className='text-center text-md-start'>
@@ -151,8 +128,7 @@ console.log(filteredResults)
                     <Container data-testid='search-row-container'>
                         {(searchUsers.length > 0) ? (
                             searchUsers.map((user) => {
-                                console.log(searchUsers)
-                                console.log(user)
+                                
                                 return(
                                     <SearchPageRow 
                                     key={user.userId} 
@@ -169,7 +145,7 @@ console.log(filteredResults)
                             })
                         ) : (
                             users.map((user) => {
-                                console.log(user)
+                                
                                 return(
                                     <SearchPageRow 
                                     key={user.userId} 
@@ -179,7 +155,6 @@ console.log(filteredResults)
                                     skillArray={skillArray}
                                     languageArray={languageArray}
                                     id={id}
-                                    // userId={user.userId}
                                     />
                                     );
                                 })

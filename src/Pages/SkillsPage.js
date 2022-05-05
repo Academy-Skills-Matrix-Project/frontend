@@ -7,30 +7,14 @@ export default function SkillsPage(props) {
 
     let [skillsArray, setSkillsArray] = useState([]);
     const [tempSkills, setTempSkills] = useState([]);
-    // const [skills, setSkills] = useState([]);
-    // const [user, setUser] = useState([]);
     const [selectedId] = useState(parseInt(props.selectedId));
     
     useEffect(() =>{
-        // let tempAllSkills = JSON.parse(localStorage.getItem('skills'))
+
         let tempAllUserSkills = JSON.parse(localStorage.getItem('usersSkills'))
-
         setSkillsArray(tempAllUserSkills);
-        // setSkills(tempAllSkills);
-        // fetchUser();
-
-    // if(skills.length > 0){
-    //     usersSkills = skills.filter(skill => skill.userId === user.id)
-    // }      
+            
     }, [tempSkills])
-    
-    // const fetchUser = async () => {
-    //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
-    //     .then((res) => res.json())
-    //     .then((result) => { 
-    //         setUser(result);
-    //     });
-    //     }
     
     const addSkillRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersSkills'))
@@ -91,7 +75,6 @@ export default function SkillsPage(props) {
         let updatedTemp = JSON.parse(localStorage.getItem('usersSkills'));
         
         updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.skillId, skillLevel: t.level}))
-        console.log(updateSkill)
         localStorage.setItem('skills',JSON.stringify(updateSkill))
     }
 
@@ -110,7 +93,7 @@ export default function SkillsPage(props) {
 
                 <Container className='position-relative text-center mb-4'>
                     <button onClick={() => addSkillRow()} className='position-absolute top-0 start 50 translate-middle border border-2 border-dark bg-light rounded-circle p-2'>
-                        <img src="/plus.png" alt='Add Row' />
+                        <img src="/Plus.png" alt='Add Row' />
                     </button>
                 </Container>
             </Container>

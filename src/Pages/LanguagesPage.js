@@ -6,30 +6,13 @@ export default function LanguagesPage(props){
 
     let [languagesArray, setLanguagesArray] = useState([]);
     const [tempLangs, setTempLangs] = useState();
-    // const [langs, setLangs] = useState([]);
-    // const [user, setUser] = useState([]);
     const [selectedId] = useState(parseInt(props.selectedId));
     
     useEffect(() =>{
         let tempUsersLangs = JSON.parse(localStorage.getItem('usersLanguages'))
-        // let tempAllLangs = JSON.parse(localStorage.getItem('languages'))
-
         setLanguagesArray(tempUsersLangs);
-        // setLangs(tempAllLangs)
-        // fetchUser();
         
-    // if(langs.length > 0){
-    //     usersLangs = langs.filter(lang => lang.userId === user.id)
-    // }
     }, [tempLangs])
-
-    // const fetchUser = async () => {
-    //     await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)
-    //     .then((res) => res.json())
-    //     .then((result) => { 
-    //         setUser(result);
-    //     });
-    //     }
 
     const addLanguageRow = () =>{
         let temp = JSON.parse(localStorage.getItem('usersLanguages'))
@@ -64,8 +47,6 @@ export default function LanguagesPage(props){
 
         const updatedUserLang = {userId: selectedId, languageId: sid, skillLevel: level}
         const updatedAllLang = JSON.parse(localStorage.getItem('languages'))
-console.log(updatedUserLang)
-console.log(updatedAllLang)
 
         updatedAllLang.push(updatedUserLang)
         localStorage.setItem('languages',JSON.stringify(updatedAllLang))
@@ -104,7 +85,7 @@ console.log(updatedAllLang)
                 </Container>
                 <Container className='position-relative text-center mb-4'>
                     <button onClick={() => addLanguageRow()}  className='position-absolute top-0 start 50 translate-middle border border-2 border-dark bg-light rounded-circle p-2'>
-                        <img src="/plus.png" alt='Add Row' />
+                        <img src="/Plus.png" alt='Add Row' />
                     </button>
                 </Container>
             </Container>

@@ -64,8 +64,6 @@ function ProfileInfoPage(props) {
                 return element.skillId === el.skillId
             })
         })
-        console.log(filteredSkills)
-        console.log(usersSkills)
         filteredSkills.forEach(skill => {
             usersSkills.find(element =>{
                 if(element.skillId === skill.skillId){
@@ -147,11 +145,10 @@ function ProfileInfoPage(props) {
                     <Col className=" mx-auto text-center text-lg-start" xs={12} lg={4}>
                         {/* <h3 data-testid='department-title'>Department:</h3>
                         <h3 data-testid='team-title'> Team:</h3> */}
-                        <h4 data-testid='job-title'><strong>Job Title: </strong>Associate Developer</h4>
+                        <h4 data-testid='job-title'><strong>Job Title: </strong>{user.jobTitle}</h4>
                         <h4 data-testid="location-title"><strong>Location: </strong> {`${user.location} (${user.timeZone})`}</h4>
                     </Col>
                 </Row>
-                
                 <Row>
                     <Col>
                     <Banner  title="About Me"  text='Experienced in Ruby on Rails and JavaScript-based programming with a background in Environmental Policy/Conservation and the Evolution of Earth. Scrum Master Certification, as well as MS-900, AWS Certified Cloud Practitioner, PCEP and AZ-900. I am open to working on any team that deals with migrating on-premises data to the cloud.'/>
