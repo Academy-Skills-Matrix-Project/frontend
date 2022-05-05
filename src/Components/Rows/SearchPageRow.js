@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
@@ -10,21 +10,44 @@ export default function SearchPageRow(props) {
     let topLanguage = '';
     let firstname = '';
     let lastname = '';
-    const [users] = useState(props.users)
+    const [user, setUser] = useState({})
+    const [userId] = useState(props.userId)
     const [skills] = useState(props.skills);
     const [languages] = useState(props.languages);
     const [skillArray] = useState(props.skillArray);
     const [languageArray] = useState(props.languageArray);
-    const skillsPerUser = skillArray.filter(skill => skill.userId === users.id)
-    const languagesPerUser = languageArray.filter(lang => lang.userId === users.id)
-    
+console.log(props.userId)
+
+    useEffect(() => {
+        const fetchUsers = async () => {
+            console.log('s')
+            if(userId !== undefined){
+            await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${userId}`)
+            .then((res) => res.json())
+            .then((result) => { 
+                setUser(result);
+            },
+                (error) => { }
+            )};
+        }
+            fetchUsers();
+    },[userId])
+    // console.log()
+    // console.log(skillArray)
+    // console.log(languageArray)
+    const skillsPerUser = skillArray.filter(skill => skill.userId === user.userId)
+    const languagesPerUser = languageArray.filter(lang => lang.userId === user.userId)
+    // console.log(skillsPerUser)
+    // console.log(languagesPerUser)
+
+
     if(skillsPerUser.length > 0){
         topSkillObject = skillsPerUser.reduce(function(prev, current) {
             return (prev.skillLevel >= current.skillLevel) ? prev : current
         })
     }
     skills.forEach(skill => {
-        if(skill.id === topSkillObject.skillId){
+        if(skill.skillId === topSkillObject.skillId){
             topSkill = skill.title;
         }
     });
@@ -35,12 +58,14 @@ export default function SearchPageRow(props) {
         })
     }
     languages.forEach(lang => {
-        if(lang.id === topLanguageObject.languageId){
+        if(lang.languageId === topLanguageObject.languageId){
             topLanguage = lang.title;
         }
     });
-
-    let fullname = users.fullName?.trim();
+//     console.log(topSkill)
+//     console.log(topSkillObject)
+// console.log(user)
+    let fullname = user.fullName?.trim();
     let tmpArray = fullname?.split(' ');
     lastname = tmpArray?.pop();
     firstname = tmpArray?.pop();
@@ -53,7 +78,7 @@ export default function SearchPageRow(props) {
             data-testid='search-row' 
             className="border border-2 rounded border shadow-sm my-3 position-relative" >
 
-                <Link to={`/profilepage/${props.id}/${users.id}`}>
+                <Link to={`/profilepage/${props.id}/${userId}`}>
                     <img
                         width={55} 
                         className="position-absolute start-0 top-50 translate-middle 
@@ -62,7 +87,7 @@ export default function SearchPageRow(props) {
                         alt="Profile" 
                         /></Link>
 
-                <Link to={`/profilepage/${props.id}/${users.id}`} >
+                <Link to={`/profilepage/${props.id}/${userId}`} >
                     <img 
                         src="/Info2.png"
                         width={22}
@@ -106,7 +131,7 @@ export default function SearchPageRow(props) {
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Job Title: </strong>{jobTitle}</Form.Label>
                         </Row>
                         <Row lg={12}>
-                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${users.location} (${users.timeZone})`}</Form.Label>
+                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${user.location} (${user.timeZone})`}</Form.Label>
                         </Row>
                     </Col>
                 </Row>

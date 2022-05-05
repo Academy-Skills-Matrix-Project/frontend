@@ -57,16 +57,18 @@ function ProfileInfoPage(props) {
     let filteredSkills = [];
     let filteredLanguages = [];
     if(skills.length > 0){
-        usersSkills = skillsArray.filter(skill => skill.userId === user.id)
+        usersSkills = skillsArray.filter(skill => skill.userId === user.userId)
         
         filteredSkills = skills.filter(el => {
             return usersSkills.find(element => {
-                return element.skillId === el.id
+                return element.skillId === el.skillId
             })
         })
+        console.log(filteredSkills)
+        console.log(usersSkills)
         filteredSkills.forEach(skill => {
             usersSkills.find(element =>{
-                if(element.skillId === skill.id){
+                if(element.skillId === skill.skillId){
                     return skill.level = element.skillLevel
                 } else {
                     return skill.level
@@ -79,16 +81,16 @@ function ProfileInfoPage(props) {
     }
 
     if(languages.length > 0){
-        usersLanguages = languageArray.filter(lang => lang.userId === user.id)
+        usersLanguages = languageArray.filter(lang => lang.userId === user.userId)
 
         filteredLanguages = languages.filter(el => {
             return usersLanguages.find(element => {
-                return element.languageId === el.id
+                return element.languageId === el.languageId
             })
         })
         filteredLanguages.forEach(lang => {
             usersLanguages.find(element => {
-                if(element.languageId === lang.id){
+                if(element.languageId === lang.languageId){
                     return lang.level = element.skillLevel
                 } else {
                     return lang.level
@@ -166,7 +168,7 @@ function ProfileInfoPage(props) {
                             </Container>
                             <Container className= "addScroll">
                                 {filteredSkills.map(skill => 
-                                    <DisplaySkills key={skill.id} skill={skill} />
+                                    <DisplaySkills key={skill.skillId} skill={skill} />
                                     )}
                             </Container>
                         </Col>
@@ -178,7 +180,7 @@ function ProfileInfoPage(props) {
                             </Container>
                             <Container className="addScroll">
                                 {filteredLanguages.map(lang =>
-                                <DisplaySkills key={lang.id} skill={lang} />
+                                <DisplaySkills key={lang.languageId} skill={lang} />
                                     )}
                             </Container>
                         </Col>

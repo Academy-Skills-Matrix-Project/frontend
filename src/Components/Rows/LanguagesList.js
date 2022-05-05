@@ -12,8 +12,8 @@ export default function LanguageList(props){
                 return(
                 <LanguageRow 
                     language={language}
-                    key= {language.id}
-                    id={language.id}
+                    key= {language.languageId}
+                    id={language.languageId}
                     removeLanguageRow={props.removeLanguageRow}
                     handleSave={props.handleSave} 
                     selectedId={props.selectedId}/>

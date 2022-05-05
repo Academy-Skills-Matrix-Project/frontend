@@ -11,7 +11,7 @@ export default function SkillsPage(props) {
     
     useEffect(() =>{
         let tempAllUserSkills = JSON.parse(localStorage.getItem('usersSkills'))
-        
+
         setSkillsArray(tempAllUserSkills);
             
     }, [tempSkills])
@@ -25,7 +25,7 @@ export default function SkillsPage(props) {
     
     const handleSave = (sid, title, level, userId, currentId) => {
         
-        const removedUserSkill = skillsArray.filter(element => element.id !== currentId);
+        const removedUserSkill = skillsArray.filter(element => element.userId !== currentId);
         setSkillsArray(removedUserSkill)
         localStorage.setItem('usersSkills', JSON.stringify(removedUserSkill))
 
@@ -39,7 +39,7 @@ export default function SkillsPage(props) {
 
         let updateSkill = JSON.parse(localStorage.getItem('skills'))
         let updatedTemp = JSON.parse(localStorage.getItem('usersSkills'));
-        
+        console.log(updateSkill)
         updatedTemp.forEach(t => updateSkill.push({userId: selectedId, skillId: t.id, skillLevel: t.level}))
         localStorage.setItem('skills',JSON.stringify(updateSkill))
         setTempSkills(temp)
@@ -51,6 +51,9 @@ export default function SkillsPage(props) {
 
         const updatedUserSkills = {userId: selectedId, skillId: sid, skillLevel: level}
         const updatedAllSkills = JSON.parse(localStorage.getItem('skills'))
+
+        console.log(updatedAllSkills)
+        console.log(a)
         updatedAllSkills.push(updatedUserSkills)
         localStorage.setItem('skills',JSON.stringify(updatedAllSkills))
         setTempSkills(temp)
@@ -58,12 +61,15 @@ export default function SkillsPage(props) {
     }
 
     const removeSkillRow = (sid, userId) =>{
+        console.log(sid)
+        console.log(userId)
+        const removedUserSkill = skillsArray.filter(element => element.skillId !== sid);
         
-        const removedUserSkill = skillsArray.filter(element => element.id !== sid);
         setSkillsArray(removedUserSkill)
         localStorage.setItem('usersSkills', JSON.stringify(removedUserSkill))
 
         const temp = JSON.parse(localStorage.getItem('skills'))
+        console.log(temp)
         const removedSkill = temp.filter(t =>{
             return t.userId !== userId;
         });

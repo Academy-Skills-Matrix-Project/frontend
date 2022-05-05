@@ -31,14 +31,14 @@ export default function SkillRow(props) {
         selectedIdSkillId = skills.filter(skill => {
             return skill.title === value
         });
-        
-        setSID(selectedIdSkillId[0].id)
+        console.log(selectedIdSkillId[0].skillId)
+        setSID(selectedIdSkillId[0].skillId)
         
     }
     useEffect(() => {
-        setSID(skill.id)
+        setSID(skill.skillId)
         fetchSkills()
-    }, [skill.id])
+    }, [skill.skillId])
 
     let skillTitles;
     if(skills.length > 1){
@@ -49,7 +49,7 @@ export default function SkillRow(props) {
         <Container fluid className='position-relative mt-4 bg-light border rounded shadow-sm' data-testid='skill-row-container'>
                 
                 <button 
-                onClick={() => props.removeSkillRow(skill.id, props.selectedId)}
+                onClick={() => props.removeSkillRow(skill.skillId, props.selectedId)}
                 className='position-absolute top-0 start-0 translate-middle bg-transparent border-0' >
                     <img  
                         src="/Cancel.png"
@@ -60,7 +60,7 @@ export default function SkillRow(props) {
                 </button>
                 {editable ? (
                 <button onClick={() => 
-                        {setEditable(false); ((title !== '' && level !== 0 ) ? props.handleSave(sID, title, level, props.selectedId, skill.id) : alert("Make sure Skill and Level are selected"))}}
+                        {setEditable(false); ((title !== '' && level !== 0 ) ? props.handleSave(sID, title, level, props.selectedId, skill.skillId) : alert("Make sure Skill and Level are selected"))}}
                         className=' position-absolute top-0 start-100 translate-middle bg-transparent border-0'>
                         <img src='/Save.png' width={30} alt='Save' />
                 </button>
