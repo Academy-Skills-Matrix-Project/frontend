@@ -51,7 +51,7 @@ function GeneralInfo(props){
                 }}
                 validationSchema={schema}
                 onSubmit={(values) => {
-                    console.log(values);
+                    console.log(values)
                     alert("Form is validated and in this block api call should be made..");
                     }
                 }
