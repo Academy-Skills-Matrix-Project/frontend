@@ -5,13 +5,24 @@ import SkillsPage from './SkillsPage';
 import LanguagesPage from './LanguagesPage';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import AppButton from '../Components/Button/Button';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import './UserInfo.css';
 
 function UserInfo() {
     let {id, selectedId} = useParams();
     const [user, setUser] = useState([]);
+    const history = useHistory();
+
+    useEffect(() => {
+        //Get token. If there's no token redirect to landing page
+        const token = localStorage.getItem("my_token");
+        console.log(token)
+        if(!token){
+            history.push('/')
+        }
+    }, [])
+
     useEffect(() => {
         const fetchUser = async () => {
             await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${id}`)

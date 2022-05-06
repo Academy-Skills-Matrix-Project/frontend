@@ -3,12 +3,12 @@ import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import SearchPage from './SearchPage';
 
-
+const token = localStorage.getItem("my_token");
 // Test for responsiveness, <Container> element from react-bootstrap should have fluid property
 test('SearchPage.js is responsive', () => {
     render(
         <MemoryRouter>
-            <SearchPage />
+            <SearchPage  />
         </MemoryRouter>);
 
     const testContainer = screen.getByTestId('container');

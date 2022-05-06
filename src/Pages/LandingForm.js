@@ -25,9 +25,7 @@ function LandingForm(){
         .then((res) => res.json())
         .then((result) => { 
             setUsers(result);            
-         },
-            (error) => { alert(error); console.log(error); }
-        )
+         })
     }, []);
 
     return (
@@ -57,6 +55,7 @@ function LandingForm(){
                     
                         if(inputUsername.length !== 0){
                             if(dbPassword === values.password){
+                                localStorage.setItem("my_token", "token");
                                 return history.push(path);
                             } else {
                                 alert("Incorrect Password");
