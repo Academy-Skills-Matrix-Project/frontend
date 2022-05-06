@@ -1,16 +1,15 @@
 import React from 'react';
-import { Form, Col, Row, Container} from 'react-bootstrap';
+import { Form, Col, Row, Container, Button} from 'react-bootstrap';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
+const axios = require('axios').default;
 
 
 let schema = yup.object().shape({
     firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First Name is letters only"),    
     lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last Name is letters only"),
-    jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job Title is letters only"),
-    location: yup.string().required("Location is required").matches(/^[ A-Za-z0-9_@.,/#&+-]*$/, "Location is letters only"),
-    team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
+    jobTitle: yup.string().required("Job Title is required").matches(/^[ A-Za-z0-9_@.,/#&+-]*$/, "Job Title is letters only"),
+    location: yup.string().required("Location is required").matches(/^[ A-Za-z0-9_@.,/#&+-]*$/, "Location is letters only"),    
     timeZone: yup.string().required("Must choose a Time Zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
     mobileNumber: yup.string().matches(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, "Not a vaild format."),
@@ -50,10 +49,26 @@ function GeneralInfo(props){
                     aboutMe: user.aboutMe
                 }}
                 validationSchema={schema}
-                onSubmit={(values) => {
-                    console.log(values)
-                    alert("Form is validated and in this block api call should be made..");
-                    }
+                onSubmit={
+                    async(values, actions) => {
+                    actions.setSubmitting(true);
+                    //POST
+                    try {
+                        await axios.put(
+                            "https://cohort3skillsmatrix.azurewebsites.net/Users/Update", 
+                            values,
+                            {
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                            }
+                            )
+                    } catch(err) {
+                        } finally {        
+                            console.log("submit") ;                   
+                            actions.setSubmitting(false);
+                        }                  
+                    }                
                 }
             >
 
@@ -132,23 +147,10 @@ function GeneralInfo(props){
 
                             <Col xs={{span:12, order:0}} sm={{span:12, order: 0}} md={{span:4, order:3}} className='text-center'>
                             <h3>Job</h3>
-                            </Col>
-                            <Form.Group as={Col} controlId="formGridTeam" className="text-start mt-3" xs={{span:6, order:3}} sm={{span:6, order:3}} md={{span:4, order:4}}>
-                                <Form.Label data-testid="tTitle-label"className= 'redAsterisks'>Team</Form.Label>
-                                <Form.Control 
-                                    type="text" 
-                                    name="team"
-                                    placeholder="Enter Team Name" 
-                                    defaultValue={values.team}
-                                    onChange={handleChange}                                    
-                                    isInvalid={!!errors.team}                                    
-                                    />
-                                <Form.Control.Feedback  type="invalid">{errors.team}</Form.Control.Feedback>
-
-                            </Form.Group>
+                            </Col>                           
 
 
-                            <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
+                            <Form.Group as={Col} controlId="formGridLast" className="text-start mt-3" xs={{span:6, order:3}} sm={{span:6, order:3}} md={{span:4, order:4}}>
                                 <Form.Label data-testid="tzTitle-label" className= 'redAsterisks'>Time Zone</Form.Label>
                                 <Form.Select
                                     name="timezone"
@@ -194,6 +196,9 @@ function GeneralInfo(props){
                                 <Form.Control.Feedback  type="invalid">{errors.timeZone}</Form.Control.Feedback>
                  
                             </Form.Group>  
+                            <Col xs={{span:6, order:4}} sm={{span:6, order:4}} md={{span:4, order:5}}>
+
+                                </Col>
                         </Row>
                         
                         <hr style= {{height: 3}}/>
@@ -240,7 +245,9 @@ function GeneralInfo(props){
                             <Form.Group as={Col} controlId="formGridFirst" md={8} lg={8}>
                             <   Form.Control as="textarea" rows={4} defaultValue={values.aboutMe} placeholder='Tell us about yourself!!'/>
                             </Form.Group>
-
+                        </Row>
+                        <Row>
+                            <Button type="submit" className="invisible">Hidden Button</Button>
                         </Row>
                     </Form>
                 </Container>
