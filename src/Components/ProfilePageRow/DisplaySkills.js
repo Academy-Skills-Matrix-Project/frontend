@@ -10,7 +10,7 @@ class DisplaySkills extends Component {
         const skill = this.props.skill
         return (
             <>
-                <Container xs='auto' className='border-bottom' >
+                <Container xs='auto ' className='border-bottom' >
                    <Row className='align-items-center text-center textmd-start me-5 mb-1 py-1'  data-testid='display-skills' >
                         <Col md={6} xs={12} className=''>
                             <h5 className= '' >
