@@ -90,7 +90,7 @@ export default function SearchPageRow(props) {
                             </Form.Label>
                         </Row>     
                     </Col>
-                    <Col lg={4} md={7} xs={8} className="text-start">
+                    <Col lg={5} md={7} xs={8} className="text-start">
                         <Row lg={12}>
                             <Form.Label 
                                 className="fs-6" 
@@ -102,12 +102,12 @@ export default function SearchPageRow(props) {
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Top Language: </strong>{topLanguage}</Form.Label>
                         </Row>
                     </Col> 
-                    <Col  lg={5} className="d-none d-lg-block text-start">
+                    <Col  lg={4} className="d-none d-lg-block text-start">
                         <Row lg={12}>
                             <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Job Title: </strong>{user.jobTitle}</Form.Label>
                         </Row>
                         <Row lg={12}>
-                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Time Zone: </strong>{`${user.location} (${user.timeZone})`}</Form.Label>
+                            <Form.Label className="fs-6" style={{textOverflow: 'ellipsis',overflow: 'hidden'}}><strong>Location: </strong>{`${user.location} (${user.timeZone})`}</Form.Label>
                         </Row>
                     </Col>
                 </Row>

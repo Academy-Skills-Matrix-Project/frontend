@@ -5,7 +5,7 @@ import Button from '../Components/Button/Button';
 import Banner from '../Components/Banner/Banner';
 import DisplaySkills from '../Components/ProfilePageRow/DisplaySkills';
 import './ProfilePage.css';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
  
@@ -16,7 +16,6 @@ function ProfileInfoPage(props) {
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
     let {id, selectedId} = useParams();
-
     let skillsArray = []
     let languageArray = []
     let tempSkills = JSON.parse(localStorage.getItem('skills'));
@@ -24,6 +23,17 @@ function ProfileInfoPage(props) {
     skillsArray = tempSkills;
     languageArray = tempLanguages;
 
+    const history = useHistory();
+
+    useEffect(() => {
+        //Get token. If there's no token redirect to landing page
+        const token = localStorage.getItem("my_token");
+        console.log(token)
+        if(!token){
+            history.push('/')
+        }
+    }, [history])
+    
     useEffect(() => {
         const fetchUser = async () => {
             await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)

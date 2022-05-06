@@ -5,23 +5,29 @@ import Combobox from 'react-widgets/Combobox'
 import SearchPageRow from '../Components/Rows/SearchPageRow';
 import NavHeader from '../Components/NavHeader/NavHeader';
 import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function SearchPage(props){
 
     const [users, setUsers] = useState([]);
-    // const [jobs, setJobs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [languages, setLanguages] = useState([]);
-    // const [skillNames, setSkillNames] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     const [searchUsers, setSeachUsers] = useState([]);
-    // const [setValue] = useState('');
     const [filteredResults, setFilteredResults] = useState([]);
     const [skillArray, setSkillArray] = useState([])
     const [languageArray, setLanguageArray] = useState([])
     let {id} = useParams();
+    const history = useHistory();
 
-    
+    useEffect(() => {
+        //Get token. If there's no token redirect to landing page
+        const token = localStorage.getItem("my_token");
+        console.log(token)
+        if(!token){
+            history.push('/')
+        }
+    }, [history])
 
     useEffect(() => {
         let tempSkills = JSON.parse(localStorage.getItem('skills'))

@@ -8,11 +8,11 @@ import ProfileInfoPage from './Pages/ProfileInfoPage';
 import { HashRouter } from 'react-router-dom';
 
 let skillArray = [
-  {userId: 1, skillId: 1, skillLevel: 1}, {userId: 1, skillId: 4, skillLevel: 2}, {userId: 1, skillId: 20, skillLevel: 3}, 
-  {userId: 2, skillId: 4, skillLevel: 5}, {userId: 2, skillId: 2, skillLevel: 3},
-  {userId: 3, skillId: 31, skillLevel: 3}, {userId: 3, skillId: 21, skillLevel: 2}, {userId: 3, skillId: 4, skillLevel: 4}, {userId: 3, skillId: 16, skillLevel: 5},
+  {userId: 1, skillId: 1, skillLevel: 3}, {userId: 1, skillId: 21, skillLevel: 2}, {userId: 1, skillId: 75, skillLevel: 3}, 
+  {userId: 2, skillId: 4, skillLevel: 5}, {userId: 2, skillId: 175, skillLevel: 3},
+  {userId: 3, skillId: 2, skillLevel: 3}, {userId: 3, skillId: 77, skillLevel: 2}, {userId: 3, skillId: 175, skillLevel: 4}, {userId: 3, skillId: 22, skillLevel: 5},
   {userId: 4, skillId: 7, skillLevel: 5}, {userId: 4, skillId: 33, skillLevel: 4},
-  {userId: 5, skillId: 1, skillLevel: 4}, {userId: 5, skillId: 2, skillLevel: 5}, {userId: 5, skillId: 18, skillLevel: 3},
+  {userId: 5, skillId: 1, skillLevel: 4}, {userId: 5, skillId: 21, skillLevel: 5}, {userId: 5, skillId: 18, skillLevel: 3},
   // {userId: 6, skillId: 42, skillLevel: 3}, {userId: 6, skillId: 21, skillLevel: 3}, {userId: 6, skillId: 77, skillLevel: 4},
   // {userId: 7, skillId: 43, skillLevel: 5}, {userId: 7, skillId: 88, skillLevel: 5}, {userId: 7, skillId: 21, skillLevel: 4},
   // {userId: 8, skillId: 1, skillLevel: 1}, {userId: 8, skillId: 32, skillLevel: 4}, {userId: 8, skillId: 33, skillLevel: 5},
@@ -32,9 +32,9 @@ let skillArray = [
 ]
 
 let languageArray = [
-  {userId: 1, languageId: 1, skillLevel: 3}, {userId: 1, languageId: 7, skillLevel: 4}, {userId: 1, languageId: 3, skillLevel: 3},
-  {userId: 2, languageId: 5, skillLevel: 4}, {userId: 2, languageId: 11, skillLevel: 1}, {userId: 2, languageId: 12, skillLevel: 2}, {userId: 2, languageId: 13, skillLevel: 3},
-  {userId: 3, languageId: 2, skillLevel: 2}, {userId: 3, languageId: 12, skillLevel: 4},
+  {userId: 1, languageId: 11, skillLevel: 3}, {userId: 1, languageId: 7, skillLevel: 4}, {userId: 1, languageId: 3, skillLevel: 3},
+  {userId: 2, languageId: 5, skillLevel: 4}, {userId: 2, languageId: 1, skillLevel: 1}, {userId: 2, languageId: 12, skillLevel: 2}, {userId: 2, languageId: 13, skillLevel: 3},
+  {userId: 3, languageId: 4, skillLevel: 3}, {userId: 3, languageId: 1, skillLevel: 1}, {userId: 3, languageId: 5, skillLevel: 3}, 
   {userId: 4, languageId: 4, skillLevel: 4}, {userId: 4, languageId: 7, skillLevel: 3}, {userId: 4, languageId: 17, skillLevel: 3},
   {userId: 5, languageId: 3, skillLevel: 1},
   // {userId: 6, languageId: 8, skillLevel: 2},

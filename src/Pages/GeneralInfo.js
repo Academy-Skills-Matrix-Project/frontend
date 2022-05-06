@@ -6,11 +6,11 @@ import * as yup from 'yup';
 
 
 let schema = yup.object().shape({
-    firstName: yup.string().required("First Name is required").matches(/^[a-zA-Z]+$/g, "First Name is letters only"),    
-    lastName: yup.string().required("Last Name is required").matches(/^[a-zA-Z]+$/g, "Last Name is letters only"),
-    jobTitle: yup.string().required("Job Title is required").matches(/^[a-zA-Z]+$/g, "Job Title is letters only"),
+    firstName: yup.string().required("First Name is required").matches(/^[ a-zA-Z]+$/g, "First Name is letters only"),    
+    lastName: yup.string().required("Last Name is required").matches(/^[ a-zA-Z]+$/g, "Last Name is letters only"),
+    jobTitle: yup.string().required("Job Title is required").matches(/^[ a-zA-Z]+$/g, "Job Title is letters only"),
     location: yup.string().required("Location is required").matches(/^[ A-Za-z0-9_@.,/#&+-]*$/, "Location is letters only"),
-    team: yup.string().required("Team is required").matches(/^[a-zA-Z]+$/g, "Team is letters only"),
+    team: yup.string().required("Team is required").matches(/^[ a-zA-Z]+$/g, "Team is letters only"),
     timeZone: yup.string().required("Must choose a Time Zone"),
     email: yup.string().email().required("Email is required").matches(/^[A-Za-z0-9._%+-]+@softwareone.com$/, "Invalid format"),
     mobileNumber: yup.string().matches(/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, "Not a vaild format."),
