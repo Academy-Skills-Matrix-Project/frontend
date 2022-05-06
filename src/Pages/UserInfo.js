@@ -21,7 +21,7 @@ function UserInfo() {
         if(!token){
             history.push('/')
         }
-    }, [])
+    }, [history])
 
     useEffect(() => {
         const fetchUser = async () => {

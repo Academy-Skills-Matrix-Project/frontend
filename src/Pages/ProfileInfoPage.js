@@ -32,8 +32,8 @@ function ProfileInfoPage(props) {
         if(!token){
             history.push('/')
         }
-    }, [])
-
+    }, [history])
+    
     useEffect(() => {
         const fetchUser = async () => {
             await fetch(`https://cohort3skillsmatrix.azurewebsites.net/Users/GetById/${selectedId}`)

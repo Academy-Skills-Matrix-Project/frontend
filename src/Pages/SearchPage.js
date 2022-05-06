@@ -27,7 +27,7 @@ export default function SearchPage(props){
         if(!token){
             history.push('/')
         }
-    }, [])
+    }, [history])
 
     useEffect(() => {
         let tempSkills = JSON.parse(localStorage.getItem('skills'))
